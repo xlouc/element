@@ -1,0 +1,54 @@
+{
+  "name": "yak-ui",
+  "version": "1.2.4",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit"
+  },
+  "dependencies": {
+    "async-validator": "^3.0.2",
+    "deepmerge": "^4.0.0",
+    "normalize-wheel": "^1.0.1",
+    "popper.js": "^1.15.0",
+    "resize-observer-polyfill": "^1.5.1",
+    "throttle-debounce": "^2.1.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.10.0",
+    "@vue/cli-plugin-eslint": "^3.10.0",
+    "@vue/cli-plugin-unit-jest": "^3.10.0",
+    "@vue/cli-service": "^3.10.0",
+    "@vue/component-compiler-utils": "^3.0.0",
+    "@vue/eslint-config-prettier": "^5.0.0",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "core-js": "^2.6.5",
+    "eslint": "^5.16.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "lint-staged": "^8.1.5",
+    "markdown-it": "^9.0.1",
+    "markdown-it-container": "^2.0.0",
+    "prettier": "^1.18.2",
+    "prismjs": "^1.17.1",
+    "sass": "^1.18.0",
+    "sass-loader": "^7.1.0",
+    "sinon": "^7.4.1",
+    "vue": "^2.6.10",
+    "vue-router": "^3.1.2",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,vue}": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  }
+}
