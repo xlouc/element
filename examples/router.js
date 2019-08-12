@@ -29,7 +29,7 @@ navs.forEach(nav => {
 function addRoute(page) {
   const component = page.path === '/changelog' ? () => import('./components/changelog.vue') : () => import(`./views${page.path}.md`)
   let child = {
-    path: page.path,
+    path: page.path.slice(1),
     meta: {
       title: page.title || page.name,
       description: page.description
@@ -40,12 +40,11 @@ function addRoute(page) {
   routes.push(child)
 }
 
-console.log('routes', routes)
-
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/components',
+      component: () => import('./components/component.vue'),
       children: routes
     }
   ]

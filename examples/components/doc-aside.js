@@ -3,6 +3,7 @@
 import navConfig from '../nav.config.json'
 
 const verticalRender = function(h, context) {
+  const { base } = context.props
   let menus = []
   navConfig.forEach(function(nav) {
     if (nav.href) {
@@ -23,7 +24,7 @@ const verticalRender = function(h, context) {
                 <span slot="title">{group.groupName}</span>
                 {group.list.map(child => {
                   return (
-                    <el-menu-item index={child.path}>
+                    <el-menu-item index={base + child.path}>
                       <span slot="title">{child.title}</span>
                     </el-menu-item>
                   )
@@ -39,7 +40,7 @@ const verticalRender = function(h, context) {
           <span slot="title">{nav.name}</span>
           {nav.children.map(child => {
             return (
-              <el-menu-item index={child.path}>
+              <el-menu-item index={base + child.path}>
                 <span slot="title">{child.name}</span>
               </el-menu-item>
             )
@@ -48,7 +49,7 @@ const verticalRender = function(h, context) {
       )
     } else {
       menus.push(
-        <el-menu-item index={nav.path}>
+        <el-menu-item index={base + nav.path}>
           <span slot="title">{nav.name}</span>
         </el-menu-item>
       )
@@ -58,6 +59,7 @@ const verticalRender = function(h, context) {
   return menus
 }
 const horizontalRender = function(h, context) {
+  const { base } = context.props
   let menus = []
   navConfig.forEach(function(nav) {
     if (nav.href) {
@@ -75,7 +77,7 @@ const horizontalRender = function(h, context) {
             <span slot="title">{group.groupName}</span>
             {group.list.map(child => {
               return (
-                <el-menu-item index={child.path}>
+                <el-menu-item index={base + child.path}>
                   <span slot="title">{child.title}</span>
                 </el-menu-item>
               )
@@ -89,7 +91,7 @@ const horizontalRender = function(h, context) {
           <span slot="title">{nav.name}</span>
           {nav.children.map(child => {
             return (
-              <el-menu-item index={child.path}>
+              <el-menu-item index={base + child.path}>
                 <span slot="title">{child.name}</span>
               </el-menu-item>
             )
@@ -98,7 +100,7 @@ const horizontalRender = function(h, context) {
       )
     } else {
       menus.push(
-        <el-menu-item index={nav.path}>
+        <el-menu-item index={base + nav.path}>
           <span slot="title">{nav.name}</span>
         </el-menu-item>
       )
@@ -108,6 +110,13 @@ const horizontalRender = function(h, context) {
 }
 
 export default {
+  name: 'DocAside',
+  props: {
+    base: {
+      type: String,
+      default: ''
+    }
+  },
   functional: true,
   render: function(h, context) {
     let menus = []

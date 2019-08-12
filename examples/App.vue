@@ -4,15 +4,18 @@
   <div id="app">
     <el-container>
       <doc-header></doc-header>
-      <el-main>
-        <router-view />
-      </el-main>
+      <div>
+        <el-scrollbar wrap-class="doc-scrollbar-wrap" view-class="container">
+          <router-view />
+        </el-scrollbar>
+      </div>
     </el-container>
   </div>
 </template>
 
 <script>
 import DocHeader from './components/header.vue'
+
 export default {
   components: { DocHeader }
 }
@@ -58,6 +61,10 @@ img {
   background-position: 0 0;
   background-repeat: repeat-x;
   background-color: rgba($--color-primary, 0.4) !important;
+}
+
+.doc-scrollbar-wrap {
+  height: calc(100vh - 60px) !important;
 }
 
 .doc-header-section {

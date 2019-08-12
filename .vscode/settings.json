@@ -1,0 +1,39 @@
+{
+  "files.trimFinalNewlines": true, // 删除掉文件结尾多余的空行
+  "files.insertFinalNewline": true, // 文件结尾保留一个空行
+  "editor.tabSize": 2,
+  "editor.formatOnSave": false, //关闭编辑器保存自动格式化
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true
+  },
+  // prettier 插件配置
+  "prettier.eslintIntegration": true,
+  // eslint 插件配置
+  "eslint.enable": true,
+  "eslint.run": "onType",
+  "eslint.validate": [
+    {
+      "language": "vue",
+      "autoFix": true
+    },
+    {
+      "language": "html",
+      "autoFix": true
+    },
+    {
+      "language": "javascript",
+      "autoFix": true
+    },
+    {
+      "language": "javascriptreact",
+      "autoFix": true
+    }
+  ],
+  "eslint.alwaysShowStatus": true,
+  "eslint.autoFixOnSave": true,
+  // vetur 格式化配置
+  "vetur.format.defaultFormatter.js": "prettier",
+  "vetur.format.defaultFormatter.css": "prettier"
+}

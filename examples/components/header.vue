@@ -11,7 +11,28 @@
           </a>
         </el-col>
         <el-col :span="20">
-          <doc-aside mode="horizontal"></doc-aside>
+          <div class="doc-header-nav">
+            <!-- <div class="doc-header-nav--left">
+              <ul class="doc-nav">
+                <li class="doc-nav-item">
+                  <router-link to="/components">组件</router-link>
+                </li>
+              </ul>
+            </div> -->
+            <div class="doc-header-nav--right">
+              <ul class="doc-nav">
+                <li class="doc-nav-item">
+                  <router-link to="/design">指南</router-link>
+                </li>
+                <li class="doc-nav-item">
+                  <router-link to="/components">组件</router-link>
+                </li>
+                <li class="doc-nav-item">
+                  <router-link to="/resource">资源</router-link>
+                </li>
+              </ul>
+            </div>
+          </div>
         </el-col>
       </el-row>
     </div>
@@ -19,9 +40,68 @@
 </template>
 
 <script>
-import DocAside from './doc-aside.js'
 export default {
-  name: 'DocHeader',
-  components: { DocAside }
+  name: 'DocHeader'
 }
 </script>
+
+<style lang="scss">
+@import 'main/style/common/var.scss';
+.doc-header-nav {
+  align-items: center;
+  display: block;
+  justify-content: space-between;
+  width: 100%;
+
+  &--left {
+    align-items: center;
+    display: flex;
+    float: left;
+  }
+
+  &--right {
+    align-items: center;
+    display: flex;
+    float: right;
+  }
+}
+
+.doc-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  &-item {
+    float: left;
+    list-style: none;
+  }
+
+  a {
+    color: #fff;
+    display: block;
+    font-size: 14px;
+    height: 60px;
+    line-height: 60px;
+    margin-right: 20px;
+    position: relative;
+
+    &:hover {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+  .router-link-active {
+    &:after {
+      background: $--color-primary;
+      bottom: 0;
+      content: '';
+      height: 2px;
+      left: 0;
+      position: absolute;
+      right: 0;
+      z-index: 30;
+    }
+  }
+}
+</style>

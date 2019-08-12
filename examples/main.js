@@ -11,6 +11,8 @@ Vue.config.productionTip = false
 
 Vue.use(Yak)
 
+Vue.component('DocAside', () => import('./components/doc-aside'))
+
 new Vue({
   router,
   render: h => h(App)
