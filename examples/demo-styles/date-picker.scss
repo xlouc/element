@@ -1,10 +1,10 @@
-.demo-block.demo-date-picker .source > div {
+.code-block.code-date-picker .source > div {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
 }
 
-.demo-date-picker .block {
+.code-date-picker .block {
   padding: 30px 0;
   text-align: center;
   border-right: solid 1px #eff2f6;
@@ -14,7 +14,7 @@
   }
 }
 
-.demo-date-picker .container {
+.code-date-picker .container {
   flex: 1;
   border-right: solid 1px #eff2f6;
   .block {
@@ -28,7 +28,7 @@
   }
 }
 
-.demo-date-picker .demonstration {
+.code-date-picker .demonstration {
   display: block;
   color: #8492a6;
   font-size: 14px;

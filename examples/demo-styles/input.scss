@@ -1,4 +1,4 @@
-.demo-input {
+.code-input {
   .el-select .el-input {
     width: 130px;
   }
@@ -11,7 +11,7 @@
   .el-input-group {
     width: 100%;
   }
-  .demo-input-size {
+  .code-input-size {
     .el-input {
       vertical-align: top;
       margin: 0 10px 10px 0;
@@ -20,7 +20,7 @@
   .input-with-select .el-input-group__prepend {
     background-color: #fff;
   }
-  .demo-autocomplete {
+  .code-autocomplete {
     text-align: center;
 
     .sub-title {
@@ -57,7 +57,7 @@
     }
   }
 }
-.demo-input-suffix {
+.code-input-suffix {
   margin-bottom: 15px;
   .el-input {
     margin-right: 15px;

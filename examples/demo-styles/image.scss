@@ -3,7 +3,7 @@
   100% { width: 1em; margin-right: 0; }
 }
 
-.demo-image {
+.code-image {
   .block {
     padding: 30px 0;
     text-align: center;
@@ -25,8 +25,8 @@
   }
 }
 
-.demo-image__placeholder, .demo-image__error {
-  @extend .demo-image;
+.code-image__placeholder, .code-image__error {
+  @extend .code-image;
 
   .block {
     width: 49%;
@@ -49,20 +49,20 @@
   }
 }
 
-.demo-image__placeholder {
+.code-image__placeholder {
   .dot {
     animation: dot 2s infinite steps(3, start);
     overflow: hidden;
   }
 }
 
-.demo-image__error {
+.code-image__error {
   .image-slot {
     font-size: 30px;
   }
 }
 
-.demo-image__lazy {
+.code-image__lazy {
   height: 400px;
   overflow-y: auto;
 

@@ -1,4 +1,5 @@
 /** @format */
+/*eslint-disable*/
 const { compileTemplate } = require('@vue/component-compiler-utils')
 const compiler = require('vue-template-compiler')
 
@@ -44,11 +45,7 @@ function genInlineComponentText(template, script) {
   }
   // errors
   if (compiled.errors && compiled.errors.length) {
-    console.error(
-      `\n  Error compiling template:\n${pad(compiled.source)}\n` +
-        compiled.errors.map(e => `  - ${e}`).join('\n') +
-        '\n'
-    )
+    console.error(`\n  Error compiling template:\n${pad(compiled.source)}\n` + compiled.errors.map(e => `  - ${e}`).join('\n') + '\n')
   }
   let demoComponentContent = `
     ${compiled.code}

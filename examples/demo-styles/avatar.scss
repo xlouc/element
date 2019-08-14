@@ -1,9 +1,9 @@
-.demo-avatar {
+.code-avatar {
 
-  &.demo-basic {
+  &.code-basic {
     text-align: center;
 
-    .demo-basic--circle, .demo-basic--square {
+    .code-basic--circle, .code-basic--square {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -28,7 +28,7 @@
     border-right: 1px solid rgba(224,230,237,.5);
   }
 
-  .demo-type {
+  .code-type {
     display: flex;
 
     >div {
@@ -41,7 +41,7 @@
     }
   }
 
-  .demo-fit {
+  .code-fit {
     display: flex;
     text-align: center;
     justify-content: space-between;

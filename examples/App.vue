@@ -71,6 +71,21 @@ img {
   background: #2b2f3e;
 }
 
+.element-doc {
+  code:not(.html) {
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 0 5px;
+    background: #fafcfc;
+    border: 1px solid #f0f4f7;
+    border-radius: 4px;
+    color: #b93d6a;
+    font-family: Source Code Pro, Menlo, monospace;
+    font-size: 13px;
+    line-height: 20px;
+  }
+}
+
 .container {
   padding-right: 15px;
   padding-left: 15px;
@@ -93,6 +108,36 @@ img {
 @media (min-width: 1200px) {
   .container {
     width: 1170px;
+  }
+}
+
+.doc-table {
+  width: 100%;
+  min-width: 719px;
+  margin: 2em 0;
+  font-size: 14px;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  line-height: 1.5;
+  border-width: 0;
+  empty-cells: show;
+  border: 1px solid #ebedf0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  th {
+    color: #5c6b77;
+    font-weight: 500;
+    white-space: nowrap;
+    background: rgba(0, 0, 0, 0.02);
+    padding: 14px 16px;
+    border: 1px solid #e8e8e8;
+    border-width: 0 0 2px 0;
+  }
+  td {
+    margin: 0;
+    padding: 14px 16px;
+    border-width: 1px 0;
+    text-align: left;
+    border: 1px solid #e8e8e8;
   }
 }
 </style>

@@ -1,4 +1,4 @@
-.demo-carousel .block {
+.code-carousel .block {
   padding: 30px;
   text-align: center;
   border-right: solid 1px #eff2f6;
@@ -10,18 +10,18 @@
   }
 }
 
-.demo-carousel .demonstration {
+.code-carousel .demonstration {
   display: block;
   color: #8492a6;
   font-size: 14px;
   margin-bottom: 20px;
 }
 
-.demo-carousel .el-carousel__container {
+.code-carousel .el-carousel__container {
   text-align: center;
 }
 
-.demo-carousel .el-carousel__item {
+.code-carousel .el-carousel__item {
   h3 {
     color: #fff;
     font-size: 18px;
@@ -43,4 +43,3 @@
     background-color: #d3dce6;
   }
 }
-

@@ -38,6 +38,8 @@ module.exports = {
       .rule('eslint')
       .exclude.add(path.resolve(__dirname, 'examples/views'))
       .end()
+      .exclude.add(path.resolve(__dirname, 'build'))
+      .end()
 
     // markdown loader 配置
     config.module
