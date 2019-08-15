@@ -94,16 +94,13 @@ export default {
       }
 
       if (!popper || !reference) return
+      if (this.visibleArrow) this.appendArrow(popper)
       if (this.appendToBody) document.body.appendChild(this.popperElm)
       if (this.popperJS && this.popperJS.destroy) {
         this.popperJS.destroy()
       }
 
       options.placement = this.currentPlacement
-
-      if (this.visibleArrow) {
-        SetVal(options, 'modifiers.arrow.element', this.appendArrow(popper))
-      }
 
       if (typeof this.popperOptions.preventOverflowOrder !== 'undefined') {
         SetVal(options, 'modifiers.preventOverflow.priority', this.popperOptions.preventOverflowOrder)
@@ -115,18 +112,18 @@ export default {
 
       if (typeof this.popperOptions.boundariesElement !== 'undefined') {
         SetVal(options, 'modifiers.preventOverflow.boundariesElement', this.popperOptions.boundariesElement)
+      } else {
+        SetVal(options, 'modifiers.preventOverflow.boundariesElement', 'viewport')
       }
 
       if (typeof this.popperOptions.gpuAcceleration !== 'undefined') {
         SetVal(options, 'modifiers.computeStyle.gpuAcceleration', this.popperOptions.gpuAcceleration)
+      } else {
+        SetVal(options, 'modifiers.preventOverflow.boundariesElement', false)
       }
 
       if (typeof this.offset !== 'undefined') {
         SetVal(options, 'modifiers.offset.offset', this.offset)
-      }
-
-      if (typeof this.arrowOffset !== 'undefined') {
-        SetVal(options, 'modifiers.arrow.enabled', false)
       }
 
       options.onCreate = _ => {
@@ -182,6 +179,17 @@ export default {
           : ['top', 'bottom'].indexOf(placement) > -1
           ? `center ${origin}`
           : `${origin} center`
+      if (this.arrowOffset && this.visibleArrow) {
+        let placementArrowMap = {
+          top: 'left',
+          bottom: 'left',
+          left: 'top',
+          right: 'top'
+        }
+        origin = placementArrowMap[placement]
+        let arrow = this.popperJS.popper.querySelector('[x-arrow]')
+        arrow.style[origin] = `${this.arrowOffset}px`
+      }
     },
 
     appendArrow(element) {
@@ -207,7 +215,6 @@ export default {
       arrow.setAttribute('x-arrow', '')
       arrow.className = 'popper__arrow'
       element.appendChild(arrow)
-      return arrow
     }
   },
 
