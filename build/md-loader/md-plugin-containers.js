@@ -59,7 +59,7 @@ function createContainer(className, md) {
             .slice(className.length)
             .trim()
           if (token.nesting === 1) {
-            return `<div class="doc-note doc-note--${className}"><p class="doc-note__title">${info || md}</p>\n`
+            return `<div class="doc-note doc-note--${className}" title="${info || md}">\n`
           } else {
             return `</div>\n`
           }

@@ -47,6 +47,26 @@ export default {
 
 <style lang="scss">
 @import 'main/style/common/var.scss';
+
+#logo {
+  float: left;
+  height: 60px;
+  overflow: hidden;
+  line-height: 60px;
+  white-space: nowrap;
+  text-decoration: none;
+
+  img {
+    height: 32px;
+  }
+
+  img + img {
+    position: relative;
+    top: 1px;
+    height: 16px;
+  }
+}
+
 .doc-header-nav {
   align-items: center;
   display: block;

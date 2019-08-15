@@ -36,25 +36,6 @@ img {
   border-style: none;
 }
 
-#logo {
-  float: left;
-  height: 60px;
-  overflow: hidden;
-  line-height: 60px;
-  white-space: nowrap;
-  text-decoration: none;
-
-  img {
-    height: 32px;
-  }
-
-  img + img {
-    position: relative;
-    top: 1px;
-    height: 16px;
-  }
-}
-
 .doc-header {
   position: relative;
   background-image: url('./assets/inner_bg.png');
@@ -65,25 +46,7 @@ img {
 
 .doc-scrollbar-wrap {
   height: calc(100vh - 60px) !important;
-}
-
-.doc-header-section {
-  background: #2b2f3e;
-}
-
-.element-doc {
-  code:not(.html) {
-    box-sizing: border-box;
-    display: inline-block;
-    padding: 0 5px;
-    background: #fafcfc;
-    border: 1px solid #f0f4f7;
-    border-radius: 4px;
-    color: #b93d6a;
-    font-family: Source Code Pro, Menlo, monospace;
-    font-size: 13px;
-    line-height: 20px;
-  }
+  padding-bottom: 15px;
 }
 
 .container {
