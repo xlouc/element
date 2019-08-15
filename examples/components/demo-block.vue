@@ -2,7 +2,7 @@
 
 <template>
   <div class="code-block" :class="blockClass">
-    <section class="code-block-demo">
+    <section class="code-block-demo source">
       <slot name="source"></slot>
     </section>
     <section class="code-block-meta">

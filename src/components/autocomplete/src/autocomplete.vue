@@ -1,14 +1,7 @@
 <!-- @format -->
 
-<slot>
-  <div
-    class="el-autocomplete"
-    v-clickoutside="close"
-    aria-haspopup="listbox"
-    role="combobox"
-    :aria-expanded="suggestionVisible"
-    :aria-owns="id"
-  >
+<template>
+  <div class="el-autocomplete" v-clickoutside="close" aria-haspopup="listbox" role="combobox" :aria-expanded="suggestionVisible" :aria-owns="id">
     <el-input
       ref="input"
       v-bind="[$props, $attrs]"
@@ -58,7 +51,7 @@
       </li>
     </el-autocomplete-suggestions>
   </div>
-</slot>
+</template>
 <script>
 import { debounce } from 'throttle-debounce'
 import ElInput from 'yak-ui/components/input'

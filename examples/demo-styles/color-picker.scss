@@ -1,3 +1,7 @@
+.code-color-picker .source > div {
+  display: flex;
+}
+
 .code-color-picker .block {
   padding: 30px 0;
   text-align: center;
@@ -9,12 +13,14 @@
     border-right: none;
   }
 }
+
 .code-color-picker .demonstration {
   display: block;
   color: #8492a6;
   font-size: 14px;
   margin-bottom: 20px;
 }
+
 .code-color-picker .el-color-picker + .el-color-picker {
   margin-left: 20px;
 }

@@ -25,7 +25,7 @@
   }
 }
 
-.code-image__placeholder, .code-image__error {
+.demo-image__placeholder, .demo-image__error {
   @extend .code-image;
 
   .block {
@@ -49,20 +49,20 @@
   }
 }
 
-.code-image__placeholder {
+.demo-image__placeholder {
   .dot {
     animation: dot 2s infinite steps(3, start);
     overflow: hidden;
   }
 }
 
-.code-image__error {
+.demo-image__error {
   .image-slot {
     font-size: 30px;
   }
 }
 
-.code-image__lazy {
+.demo-image__lazy {
   height: 400px;
   overflow-y: auto;
 

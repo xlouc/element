@@ -1,6 +1,6 @@
 .code-avatar {
 
-  &.code-basic {
+  &.demo-basic {
     text-align: center;
 
     .code-basic--circle, .code-basic--square {
@@ -28,7 +28,7 @@
     border-right: 1px solid rgba(224,230,237,.5);
   }
 
-  .code-type {
+  .demo-type {
     display: flex;
 
     >div {
@@ -41,7 +41,7 @@
     }
   }
 
-  .code-fit {
+  .demo-fit {
     display: flex;
     text-align: center;
     justify-content: space-between;

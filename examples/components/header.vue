@@ -2,7 +2,7 @@
 
 <template functional>
   <el-header class="doc-header">
-    <div class="container">
+    <div class="doc-container">
       <el-row>
         <el-col :span="4">
           <a id="logo" href="#/">
@@ -22,13 +22,13 @@
             <div class="doc-header-nav--right">
               <ul class="doc-nav">
                 <li class="doc-nav-item">
-                  <router-link to="/design">指南</router-link>
+                  <router-link to="/design">指 南</router-link>
                 </li>
                 <li class="doc-nav-item">
-                  <router-link to="/components">组件</router-link>
+                  <router-link to="/components">组 件</router-link>
                 </li>
                 <li class="doc-nav-item">
-                  <router-link to="/resource">资源</router-link>
+                  <router-link to="/resource">资 源</router-link>
                 </li>
               </ul>
             </div>
@@ -94,6 +94,7 @@ export default {
   &-item {
     float: left;
     list-style: none;
+    margin: 0 5px;
   }
 
   a {
@@ -102,7 +103,7 @@ export default {
     font-size: 14px;
     height: 60px;
     line-height: 60px;
-    margin-right: 20px;
+    padding: 0 10px;
     position: relative;
 
     &:hover {

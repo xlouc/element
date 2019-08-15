@@ -9,7 +9,7 @@
 :::demo
 ```html
 <template>
-  <el-row class="demo-avatar demo-basic">
+  <el-row class="code-avatar demo-basic">
     <el-col :span="12">
       <div class="sub-title">circle</div>
       <div class="demo-basic--circle">

@@ -61,7 +61,7 @@
 
 我们提供了以下几种边框样式，以供选择。
 
-<table class="demo-border">
+<table class="demo-border doc-table">
   <tbody>
     <tr>
       <td class="text">名称</td>

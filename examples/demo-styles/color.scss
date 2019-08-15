@@ -1,4 +1,4 @@
-.code-color-box {
+.demo-color-box {
   position: relative;
   border-radius: 4px;
   padding: 20px;
@@ -14,21 +14,21 @@
     line-height: 24px;
   }
 }
-.code-color-box-other {
+.demo-color-box-other {
   height: 74px;
   margin: 10px 0 !important;
   border-radius: 4px 4px 4px 4px !important;
   padding: 15px 20px;
 }
-.code-color-box-group {
-  .code-color-box {
+.demo-color-box-group {
+  .demo-color-box {
     border-radius: 0;
     margin: 0;
   }
-  .code-color-box:first-child {
+  .demo-color-box:first-child {
     border-radius: 4px 4px 0 0;
   }
-  .code-color-box:last-child {
+  .demo-color-box:last-child {
     border-radius: 0 0 4px 4px;
   }
 }
@@ -67,6 +67,6 @@
   background-position: center center;
   background-size: 100% 100%, auto;
 }
-.code-color-box-lite {
+.demo-color-box-lite {
   color: #303133;
 }

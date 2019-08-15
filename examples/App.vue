@@ -5,7 +5,7 @@
     <el-container>
       <doc-header></doc-header>
       <div>
-        <el-scrollbar wrap-class="doc-scrollbar-wrap" view-class="container">
+        <el-scrollbar wrap-class="doc-scrollbar-wrap" view-class="doc-container">
           <router-view />
         </el-scrollbar>
       </div>
@@ -36,6 +36,11 @@ img {
   border-style: none;
 }
 
+:after,
+:before {
+  box-sizing: border-box;
+}
+
 .doc-header {
   position: relative;
   background-image: url('./assets/inner_bg.png');
@@ -49,28 +54,49 @@ img {
   padding-bottom: 15px;
 }
 
-.container {
+.doc-container {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
 }
 
+.element-doc {
+  code:not([class^='language-']) {
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 0 5px;
+    background: #fafcfc;
+    border: 1px solid #f0f4f7;
+    border-radius: 4px;
+    color: #b93d6a;
+    font-family: Source Code Pro, Menlo, monospace;
+    font-size: 13px;
+    line-height: 20px;
+  }
+}
+
 @media (min-width: 768px) {
-  .container {
+  .doc-container {
     width: 750px;
   }
 }
 
 @media (min-width: 992px) {
-  .container {
+  .doc-container {
     width: 970px;
   }
 }
 
 @media (min-width: 1200px) {
-  .container {
+  .doc-container {
     width: 1170px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .doc-container {
+    width: 1270px;
   }
 }
 
