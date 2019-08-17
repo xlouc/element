@@ -86,16 +86,16 @@ export default {
     iconClasses: {
       type: [Array, Object],
       default() {
-        return ['el-icon-star-on', 'el-icon-star-on', 'el-icon-star-on']
+        return ['el-icon-star-fill', 'el-icon-star-fill', 'el-icon-star-fill']
       }
     },
     voidIconClass: {
       type: String,
-      default: 'el-icon-star-off'
+      default: 'el-icon-star'
     },
     disabledVoidIconClass: {
       type: String,
-      default: 'el-icon-star-on'
+      default: 'el-icon-star-fill'
     },
     disabled: {
       type: Boolean,

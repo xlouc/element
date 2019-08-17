@@ -88,7 +88,7 @@ export const cellForced = {
       }
       return (
         <div class={classes} on-click={callback}>
-          <i class="el-icon el-icon-arrow-right"></i>
+          <i class="el-icon el-icon-right"></i>
         </div>
       )
     },
@@ -119,15 +119,26 @@ export function treeCellPrefix(h, { row, treeNode, store }) {
   }
   if (typeof treeNode.expanded === 'boolean' && !treeNode.noLazyChildren) {
     const expandClasses = ['el-table__expand-icon', treeNode.expanded ? 'el-table__expand-icon--expanded' : '']
-    let iconClasses = ['el-icon-arrow-right']
+    let iconClasses = ['el-icon-right']
     if (treeNode.loading) {
-      iconClasses = ['el-icon-loading']
+      iconClasses = ['el-icon-loading', 'anticon']
+      ele.push(
+        <div class={expandClasses} on-click={callback}>
+          <i class={iconClasses}>
+            <svg viewBox="0 0 32 32" width="1em" height="1em" fill="currentColor">
+              <title>spinner</title>
+              <path d="M13 29c0-1.657 1.343-3 3-3s3 1.343 3 3c0 1.657-1.343 3-3 3s-3-1.343-3-3zM0 16c0-1.657 1.343-3 3-3s3 1.343 3 3c0 1.657-1.343 3-3 3s-3-1.343-3-3zM26 16c0-1.657 1.343-3 3-3s3 1.343 3 3c0 1.657-1.343 3-3 3s-3-1.343-3-3zM3.808 6.808c0-1.657 1.343-3 3-3s3 1.343 3 3c0 1.657-1.343 3-3 3s-3-1.343-3-3zM22.192 25.192c0-1.657 1.343-3 3-3s3 1.343 3 3c0 1.657-1.343 3-3 3s-3-1.343-3-3zM3.808 25.192c0-1.657 1.343-3 3-3s3 1.343 3 3c0 1.657-1.343 3-3 3s-3-1.343-3-3zM22.192 6.808c0-1.657 1.343-3 3-3s3 1.343 3 3c0 1.657-1.343 3-3 3s-3-1.343-3-3z"></path>
+            </svg>
+          </i>
+        </div>
+      )
+    } else {
+      ele.push(
+        <div class={expandClasses} on-click={callback}>
+          <i class={iconClasses}></i>
+        </div>
+      )
     }
-    ele.push(
-      <div class={expandClasses} on-click={callback}>
-        <i class={iconClasses}></i>
-      </div>
-    )
   } else {
     ele.push(<span class="el-table__placeholder"></span>)
   }

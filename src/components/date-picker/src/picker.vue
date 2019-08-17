@@ -331,7 +331,7 @@ export default {
     prefixIcon: String,
     clearIcon: {
       type: String,
-      default: 'el-icon-circle-close'
+      default: 'el-icon-close-circle'
     },
     name: {
       default: '',
@@ -455,7 +455,7 @@ export default {
     },
 
     triggerClass() {
-      return this.prefixIcon || (this.type.indexOf('time') !== -1 ? 'el-icon-time' : 'el-icon-date')
+      return this.prefixIcon || (this.type.indexOf('time') !== -1 ? 'el-icon-time-circle' : 'el-icon-calendar')
     },
 
     selectionMode() {

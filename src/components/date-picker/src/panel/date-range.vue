@@ -61,7 +61,7 @@
                 ></time-picker>
               </span>
             </span>
-            <span class="el-icon-arrow-right"></span>
+            <span class="el-icon-right"></span>
             <span class="el-date-range-picker__editors-wrap is-right">
               <span class="el-date-range-picker__time-picker-wrap">
                 <el-input
@@ -99,15 +99,15 @@
           </div>
           <div class="el-picker-panel__content el-date-range-picker__content is-left">
             <div class="el-date-range-picker__header">
-              <button type="button" @click="leftPrevYear" class="el-picker-panel__icon-btn el-icon-d-arrow-left"></button>
-              <button type="button" @click="leftPrevMonth" class="el-picker-panel__icon-btn el-icon-arrow-left"></button>
+              <button type="button" @click="leftPrevYear" class="el-picker-panel__icon-btn el-icon-doubleleft"></button>
+              <button type="button" @click="leftPrevMonth" class="el-picker-panel__icon-btn el-icon-left"></button>
               <button
                 type="button"
                 @click="leftNextYear"
                 v-if="unlinkPanels"
                 :disabled="!enableYearArrow"
                 :class="{ 'is-disabled': !enableYearArrow }"
-                class="el-picker-panel__icon-btn el-icon-d-arrow-right"
+                class="el-picker-panel__icon-btn el-icon-doubleright"
               ></button>
               <button
                 type="button"
@@ -115,7 +115,7 @@
                 v-if="unlinkPanels"
                 :disabled="!enableMonthArrow"
                 :class="{ 'is-disabled': !enableMonthArrow }"
-                class="el-picker-panel__icon-btn el-icon-arrow-right"
+                class="el-picker-panel__icon-btn el-icon-right"
               ></button>
               <div>{{ leftLabel }}</div>
             </div>
@@ -140,7 +140,7 @@
                 v-if="unlinkPanels"
                 :disabled="!enableYearArrow"
                 :class="{ 'is-disabled': !enableYearArrow }"
-                class="el-picker-panel__icon-btn el-icon-d-arrow-left"
+                class="el-picker-panel__icon-btn el-icon-doubleleft"
               ></button>
               <button
                 type="button"
@@ -148,10 +148,10 @@
                 v-if="unlinkPanels"
                 :disabled="!enableMonthArrow"
                 :class="{ 'is-disabled': !enableMonthArrow }"
-                class="el-picker-panel__icon-btn el-icon-arrow-left"
+                class="el-picker-panel__icon-btn el-icon-left"
               ></button>
-              <button type="button" @click="rightNextYear" class="el-picker-panel__icon-btn el-icon-d-arrow-right"></button>
-              <button type="button" @click="rightNextMonth" class="el-picker-panel__icon-btn el-icon-arrow-right"></button>
+              <button type="button" @click="rightNextYear" class="el-picker-panel__icon-btn el-icon-doubleright"></button>
+              <button type="button" @click="rightNextMonth" class="el-picker-panel__icon-btn el-icon-right"></button>
               <div>{{ rightLabel }}</div>
             </div>
             <date-table

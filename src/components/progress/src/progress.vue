@@ -168,10 +168,10 @@ export default {
     },
     iconClass() {
       if (this.status === 'warning') {
-        return 'el-icon-warning'
+        return 'el-icon-warning-circle'
       }
       if (this.type === 'line') {
-        return this.status === 'success' ? 'el-icon-circle-check' : 'el-icon-circle-close'
+        return this.status === 'success' ? 'el-icon-check-circle' : 'el-icon-close-circle'
       } else {
         return this.status === 'success' ? 'el-icon-check' : 'el-icon-close'
       }

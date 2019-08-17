@@ -6,15 +6,15 @@
       <div class="el-image-viewer__mask"></div>
       <!-- CLOSE -->
       <span class="el-image-viewer__btn el-image-viewer__close" @click="hide">
-        <i class="el-icon-circle-close"></i>
+        <i class="el-icon-close-circle"></i>
       </span>
       <!-- ARROW -->
       <template v-if="!isSingle">
         <span class="el-image-viewer__btn el-image-viewer__prev" :class="{ 'is-disabled': !infinite && isFirst }" @click="prev">
-          <i class="el-icon-arrow-left" />
+          <i class="el-icon-left" />
         </span>
         <span class="el-image-viewer__btn el-image-viewer__next" :class="{ 'is-disabled': !infinite && isLast }" @click="next">
-          <i class="el-icon-arrow-right" />
+          <i class="el-icon-right" />
         </span>
       </template>
       <!-- ACTIONS -->

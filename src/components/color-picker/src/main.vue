@@ -13,7 +13,7 @@
         ></span>
         <span class="el-color-picker__empty el-icon-close" v-if="!value && !showPanelColor"></span>
       </span>
-      <span class="el-color-picker__icon el-icon-arrow-down" v-show="value || showPanelColor"></span>
+      <span class="el-color-picker__icon el-icon-down" v-show="value || showPanelColor"></span>
     </div>
     <picker-dropdown
       ref="dropdown"

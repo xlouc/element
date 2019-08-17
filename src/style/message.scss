@@ -96,19 +96,19 @@
     }
   }
 
-  & .el-icon-success {
+  & .el-icon-check-circle {
     color: $--message-success-font-color;
   }
 
-  & .el-icon-error {
+  & .el-icon-close-circle {
     color: $--message-danger-font-color;
   }
 
-  & .el-icon-info {
+  & .el-icon-info-circle {
     color: $--message-info-font-color;
   }
 
-  & .el-icon-warning {
+  & .el-icon-warning-circle {
     color: $--message-warning-font-color;
   }
 }

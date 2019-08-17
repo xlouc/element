@@ -1098,7 +1098,7 @@
       label="日期"
       width="180">
       <template slot-scope="scope">
-        <i class="el-icon-time"></i>
+        <i class="el-icon-time-circle"></i>
         <span style="margin-left: 10px">{{ scope.row.date }}</span>
       </template>
     </el-table-column>

@@ -12,7 +12,7 @@
           @click.stop="throttledArrowClick(activeIndex - 1)"
           class="el-carousel__arrow el-carousel__arrow--left"
         >
-          <i class="el-icon-arrow-left"></i>
+          <i class="el-icon-left"></i>
         </button>
       </transition>
       <transition v-if="arrowDisplay" name="carousel-arrow-right">
@@ -24,7 +24,7 @@
           @click.stop="throttledArrowClick(activeIndex + 1)"
           class="el-carousel__arrow el-carousel__arrow--right"
         >
-          <i class="el-icon-arrow-right"></i>
+          <i class="el-icon-right"></i>
         </button>
       </transition>
       <slot></slot>

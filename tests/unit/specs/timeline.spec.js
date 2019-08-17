@@ -255,7 +255,7 @@ describe('Timeline', () => {
         <el-timeline>
           <el-timeline-item
             timestamp="2018-04-11"
-            icon="el-icon-more">
+            icon="el-icon-ellipsis">
             创建成功
           </el-timeline-item>
         </el-timeline>
@@ -265,6 +265,6 @@ describe('Timeline', () => {
     )
 
     const nodeElm = vm.$el.querySelector('.el-timeline-item__icon')
-    expect(nodeElm.classList.contains('el-icon-more')).to.true
+    expect(nodeElm.classList.contains('el-icon-ellipsis')).to.true
   })
 })

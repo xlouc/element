@@ -592,7 +592,7 @@ describe('CascaderPanel', () => {
     await waitImmediate()
     expect(firstOption.querySelector('i').className).to.includes('el-icon-loading')
     await wait(1000)
-    expect(firstOption.querySelector('i').className).to.includes('el-icon-arrow-right')
+    expect(firstOption.querySelector('i').className).to.includes('el-icon-right')
     expect(getMenus(el).length).to.equal(2)
     getOptions(el, 1)[0].click()
     await wait(1000)

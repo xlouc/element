@@ -3,7 +3,7 @@
 <template>
   <div class="el-page-header">
     <div class="el-page-header__left" @click="$emit('back')">
-      <i class="el-icon-back"></i>
+      <i class="el-icon-arrowleft"></i>
       <div class="el-page-header__title">
         <slot name="title">{{ title }}</slot>
       </div>

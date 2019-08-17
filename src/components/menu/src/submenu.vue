@@ -289,9 +289,7 @@ export default {
     )
 
     const submenuTitleIcon =
-      (rootMenu.mode === 'horizontal' && isFirstLevel) || (rootMenu.mode === 'vertical' && !rootMenu.collapse)
-        ? 'el-icon-arrow-down'
-        : 'el-icon-arrow-right'
+      (rootMenu.mode === 'horizontal' && isFirstLevel) || (rootMenu.mode === 'vertical' && !rootMenu.collapse) ? 'el-icon-down' : 'el-icon-right'
 
     return (
       <li

@@ -155,11 +155,18 @@ export default {
     },
 
     renderLoadingIcon(h) {
-      return <i class="el-icon-loading el-cascader-node__postfix"></i>
+      return (
+        <i class="el-cascader-node__postfix el-icon-loading anticon">
+          <svg viewBox="0 0 32 32" width="1em" height="1em" fill="currentColor">
+            <title>spinner</title>
+            <path d="M13 29c0-1.657 1.343-3 3-3s3 1.343 3 3c0 1.657-1.343 3-3 3s-3-1.343-3-3zM0 16c0-1.657 1.343-3 3-3s3 1.343 3 3c0 1.657-1.343 3-3 3s-3-1.343-3-3zM26 16c0-1.657 1.343-3 3-3s3 1.343 3 3c0 1.657-1.343 3-3 3s-3-1.343-3-3zM3.808 6.808c0-1.657 1.343-3 3-3s3 1.343 3 3c0 1.657-1.343 3-3 3s-3-1.343-3-3zM22.192 25.192c0-1.657 1.343-3 3-3s3 1.343 3 3c0 1.657-1.343 3-3 3s-3-1.343-3-3zM3.808 25.192c0-1.657 1.343-3 3-3s3 1.343 3 3c0 1.657-1.343 3-3 3s-3-1.343-3-3zM22.192 6.808c0-1.657 1.343-3 3-3s3 1.343 3 3c0 1.657-1.343 3-3 3s-3-1.343-3-3z"></path>
+          </svg>
+        </i>
+      )
     },
 
     renderExpandIcon(h) {
-      return <i class="el-icon-arrow-right el-cascader-node__postfix"></i>
+      return <i class="el-icon-right el-cascader-node__postfix"></i>
     },
 
     renderContent(h) {

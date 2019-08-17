@@ -107,7 +107,7 @@
         <span slot="title">导航二</span>
       </el-menu-item>
       <el-menu-item index="3" disabled>
-        <i class="el-icon-document"></i>
+        <i class="el-icon-file-text"></i>
         <span slot="title">导航三</span>
       </el-menu-item>
       <el-menu-item index="4">
@@ -149,7 +149,7 @@
         <span slot="title">导航二</span>
       </el-menu-item>
       <el-menu-item index="3" disabled>
-        <i class="el-icon-document"></i>
+        <i class="el-icon-file-text"></i>
         <span slot="title">导航三</span>
       </el-menu-item>
       <el-menu-item index="4">
@@ -207,7 +207,7 @@
     <span slot="title">导航二</span>
   </el-menu-item>
   <el-menu-item index="3" disabled>
-    <i class="el-icon-document"></i>
+    <i class="el-icon-file-text"></i>
     <span slot="title">导航三</span>
   </el-menu-item>
   <el-menu-item index="4">

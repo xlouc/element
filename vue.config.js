@@ -36,7 +36,7 @@ module.exports = {
     // examples/views是存放md文档的地方，也不需要eslint检查
     config.module
       .rule('eslint')
-      .exclude.add(path.resolve(__dirname, 'examples/views'))
+      .exclude.add(path.resolve(__dirname, 'examples/docs'))
       .end()
       .exclude.add(path.resolve(__dirname, 'build'))
       .end()

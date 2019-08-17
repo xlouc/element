@@ -20,14 +20,14 @@
           alt=""
         />
         <a class="el-upload-list__item-name" @click="handleClick(file)">
-          <i class="el-icon-document"></i>
+          <i class="el-icon-file-text"></i>
           {{ file.name }}
         </a>
         <label class="el-upload-list__item-status-label">
           <i
             :class="{
               'el-icon-upload-success': true,
-              'el-icon-circle-check': listType === 'text',
+              'el-icon-check-circle': listType === 'text',
               'el-icon-check': ['picture-card', 'picture'].indexOf(listType) > -1
             }"
           ></i>

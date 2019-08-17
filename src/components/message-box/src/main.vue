@@ -95,10 +95,10 @@ import Dialog from 'yak-ui/src/utils/aria-dialog'
 
 let messageBox
 let typeMap = {
-  success: 'success',
-  info: 'info',
-  warning: 'warning',
-  error: 'error'
+  success: 'check-circle',
+  info: 'info-circle',
+  warning: 'warning-circle',
+  error: 'close-circle'
 }
 
 export default {

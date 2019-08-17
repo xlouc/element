@@ -204,10 +204,10 @@ export default {
     const scrollBtn = scrollable
       ? [
           <span class={['el-tabs__nav-prev', scrollable.prev ? '' : 'is-disabled']} on-click={scrollPrev}>
-            <i class="el-icon-arrow-left"></i>
+            <i class="el-icon-left"></i>
           </span>,
           <span class={['el-tabs__nav-next', scrollable.next ? '' : 'is-disabled']} on-click={scrollNext}>
-            <i class="el-icon-arrow-right"></i>
+            <i class="el-icon-right"></i>
           </span>
         ]
       : null

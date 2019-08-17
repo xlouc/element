@@ -79,7 +79,7 @@ Timeline 可拆分成多个按照时间戳正序或倒序排列的 activity，�
           timestamp: '2018-04-12 20:46',
           size: 'large',
           type: 'primary',
-          icon: 'el-icon-more'
+          icon: 'el-icon-ellipsis'
         }, {
           content: '支持自定义颜色',
           timestamp: '2018-04-03 20:46',

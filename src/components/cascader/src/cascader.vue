@@ -24,13 +24,8 @@
       @input="handleInput"
     >
       <template slot="suffix">
-        <i v-if="clearBtnVisible" key="clear" class="el-input__icon el-icon-circle-close" @click.stop="handleClear"></i>
-        <i
-          v-else
-          key="arrow-down"
-          :class="['el-input__icon', 'el-icon-arrow-down', dropDownVisible && 'is-reverse']"
-          @click.stop="toggleDropDownVisible()"
-        ></i>
+        <i v-if="clearBtnVisible" key="clear" class="el-input__icon el-icon-close-circle" @click.stop="handleClear"></i>
+        <i v-else key="down" :class="['el-input__icon', 'el-icon-down', dropDownVisible && 'is-reverse']" @click.stop="toggleDropDownVisible()"></i>
       </template>
     </el-input>
 

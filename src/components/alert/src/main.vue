@@ -32,9 +32,9 @@
 
 <script type="text/babel">
 const TYPE_CLASSES_MAP = {
-  success: 'el-icon-success',
-  warning: 'el-icon-warning',
-  error: 'el-icon-error'
+  success: 'el-icon-check-circle',
+  warning: 'el-icon-warning-circle',
+  error: 'el-icon-close-circle'
 }
 export default {
   name: 'ElAlert',
@@ -90,7 +90,11 @@ export default {
     },
 
     iconClass() {
-      return TYPE_CLASSES_MAP[this.type] || 'el-icon-info'
+      let iconClass = TYPE_CLASSES_MAP[this.type] || 'el-icon-info-circle'
+      if (!(this.description || this.$slots.default)) {
+        iconClass = `${iconClass}-fill`
+      }
+      return iconClass
     },
 
     isBigIcon() {

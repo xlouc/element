@@ -93,7 +93,7 @@
       </template>
       <template slot="suffix">
         <i v-show="!showClose" :class="['el-select__caret', 'el-input__icon', 'el-icon-' + iconClass]"></i>
-        <i v-if="showClose" class="el-select__caret el-input__icon el-icon-circle-close" @click="handleClearClick"></i>
+        <i v-if="showClose" class="el-select__caret el-input__icon el-icon-close-circle" @click="handleClearClick"></i>
       </template>
     </el-input>
     <transition name="el-zoom-in-top" @before-enter="handleMenuEnter" @after-leave="doDestroy">
@@ -181,7 +181,7 @@ export default {
     },
 
     iconClass() {
-      return this.remote && this.filterable ? '' : this.visible ? 'arrow-up is-reverse' : 'arrow-up'
+      return this.remote && this.filterable ? '' : this.visible ? 'up is-reverse' : 'up'
     },
 
     debounce() {

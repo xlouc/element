@@ -20,7 +20,7 @@
         @click.native="addToLeft"
         :disabled="rightChecked.length === 0"
       >
-        <i class="el-icon-arrow-left"></i>
+        <i class="el-icon-left"></i>
         <span v-if="buttonTexts[0] !== undefined">{{ buttonTexts[0] }}</span>
       </el-button>
       <el-button
@@ -30,7 +30,7 @@
         :disabled="leftChecked.length === 0"
       >
         <span v-if="buttonTexts[1] !== undefined">{{ buttonTexts[1] }}</span>
-        <i class="el-icon-arrow-right"></i>
+        <i class="el-icon-right"></i>
       </el-button>
     </div>
     <transfer-panel

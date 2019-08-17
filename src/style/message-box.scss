@@ -106,19 +106,19 @@
       padding-right: 12px;
     }
 
-    &.el-icon-success {
+    &.el-icon-check-circle {
       color: $--messagebox-success-color;
     }
 
-    &.el-icon-info {
+    &.el-icon-info-circle {
       color: $--messagebox-info-color;
     }
 
-    &.el-icon-warning {
+    &.el-icon-warning-circle {
       color: $--messagebox-warning-color;
     }
 
-    &.el-icon-error {
+    &.el-icon-close-circle {
       color: $--messagebox-danger-color;
     }
   }

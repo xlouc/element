@@ -61,12 +61,12 @@ describe('DatePicker', () => {
     setTimeout(_ => {
       const $el = vm.$refs.compo.picker.$el
       const spans = $el.querySelectorAll('.el-date-picker__header-label')
-      const arrowLeftElm = $el.querySelector('.el-date-picker__prev-btn.el-icon-arrow-left')
-      const arrowRightElm = $el.querySelector('.el-date-picker__next-btn.el-icon-arrow-right')
+      const arrowLeftElm = $el.querySelector('.el-date-picker__prev-btn.el-icon-left')
+      const arrowRightElm = $el.querySelector('.el-date-picker__next-btn.el-icon-right')
 
       expect(spans[0].textContent).to.include(date.getFullYear())
       expect(spans[1].textContent).to.include(date.getMonth() + 1)
-      $el.querySelector('.el-date-picker__prev-btn.el-icon-d-arrow-left').click()
+      $el.querySelector('.el-date-picker__prev-btn.el-icon-doubleleft').click()
       let count = 20
       while (--count) {
         arrowLeftElm.click()
@@ -169,7 +169,7 @@ describe('DatePicker', () => {
     input.focus()
     setTimeout(_ => {
       const $el = vm.$refs.compo.picker.$el
-      $el.querySelector('.el-date-picker__next-btn.el-icon-arrow-right').click()
+      $el.querySelector('.el-date-picker__next-btn.el-icon-right').click()
       setTimeout(_ => {
         $el.querySelector('td.available').click()
         vm.$nextTick(_ => {
@@ -837,7 +837,7 @@ describe('DatePicker', () => {
         vm.defaultValue = defaultValue
         triggerEvent(vm.$refs.compo.$el, 'mouseenter')
         setTimeout(_ => {
-          vm.$el.querySelector('.el-icon-circle-close').click()
+          vm.$el.querySelector('.el-icon-close-circle').click()
           setTimeout(_ => {
             input.focus()
             setTimeout(() => {
@@ -1028,10 +1028,10 @@ describe('DatePicker', () => {
       vm.$refs.compo.$el.querySelector('input').focus()
       await wait()
       const $el = vm.$refs.compo.picker.$el
-      prevMonth = $el.querySelector('button.el-icon-arrow-left')
-      prevYear = $el.querySelector('button.el-icon-d-arrow-left')
-      nextMonth = $el.querySelector('button.el-icon-arrow-right')
-      nextYear = $el.querySelector('button.el-icon-d-arrow-right')
+      prevMonth = $el.querySelector('button.el-icon-left')
+      prevYear = $el.querySelector('button.el-icon-doubleleft')
+      nextMonth = $el.querySelector('button.el-icon-right')
+      nextYear = $el.querySelector('button.el-icon-doubleright')
       getYearLabel = () => $el.querySelectorAll('.el-date-picker__header-label')[0].textContent
       getMonthLabel = () => $el.querySelectorAll('.el-date-picker__header-label')[1].textContent
     }
@@ -1125,8 +1125,8 @@ describe('DatePicker', () => {
       expect(vm.picker.$el.querySelector('.el-year-table').style.display).to.empty
       expect(vm.picker.$el.querySelector('.el-month-table').style.display).to.be.equal('none')
 
-      const leftBtn = vm.picker.$el.querySelector('.el-icon-d-arrow-left')
-      const rightBtn = vm.picker.$el.querySelector('.el-icon-d-arrow-right')
+      const leftBtn = vm.picker.$el.querySelector('.el-icon-doubleleft')
+      const rightBtn = vm.picker.$el.querySelector('.el-icon-doubleright')
       let count = 20
 
       while (--count) {
@@ -1596,9 +1596,9 @@ describe('DatePicker', () => {
       vm.$refs.compo.$el.querySelector('input').focus()
       setTimeout(_ => {
         // changed month / year should not effect picked time
-        vm.$refs.compo.picker.$el.querySelector('.el-date-picker__header .el-icon-arrow-right').click()
+        vm.$refs.compo.picker.$el.querySelector('.el-date-picker__header .el-icon-right').click()
         setTimeout(_ => {
-          vm.$refs.compo.picker.$el.querySelector('.el-date-picker__header .el-icon-d-arrow-right').click()
+          vm.$refs.compo.picker.$el.querySelector('.el-date-picker__header .el-icon-doubleright').click()
           setTimeout(_ => {
             // simulate time selection
             // handleTimePick takes Date object, but it's non-time fields are ignored
@@ -1632,9 +1632,9 @@ describe('DatePicker', () => {
       vm.$refs.compo.$el.querySelector('input').focus()
       setTimeout(_ => {
         // changed month / year should not effect picked time
-        vm.$refs.compo.picker.$el.querySelector('.el-date-picker__header .el-icon-arrow-right').click()
+        vm.$refs.compo.picker.$el.querySelector('.el-date-picker__header .el-icon-right').click()
         setTimeout(_ => {
-          vm.$refs.compo.picker.$el.querySelector('.el-date-picker__header .el-icon-d-arrow-right').click()
+          vm.$refs.compo.picker.$el.querySelector('.el-date-picker__header .el-icon-doubleright').click()
           setTimeout(_ => {
             // click confirm button
             vm.$refs.compo.picker.$el.querySelector('.el-picker-panel__footer .el-button--default').click()
@@ -1738,12 +1738,12 @@ describe('DatePicker', () => {
             setTimeout(() => {
               expect(numberOfHighlightRows()).to.equal(1)
               // test: next month should not have highlight
-              pickerEl.querySelector('.el-icon-arrow-right').click()
+              pickerEl.querySelector('.el-icon-right').click()
               setTimeout(() => {
                 expect(numberOfHighlightRows()).to.equal(0)
                 // test: next year should not have highlight
-                pickerEl.querySelector('.el-icon-arrow-left').click() // go back one month
-                pickerEl.querySelector('.el-icon-d-arrow-right').click()
+                pickerEl.querySelector('.el-icon-left').click() // go back one month
+                pickerEl.querySelector('.el-icon-doubleright').click()
                 setTimeout(() => {
                   expect(numberOfHighlightRows()).to.equal(0)
                   done()
@@ -1947,8 +1947,8 @@ describe('DatePicker', () => {
 
         expect(Array.prototype.slice.call(panels)).to.length(2)
 
-        panels[1].querySelector('.el-icon-d-arrow-right').click()
-        panels[1].querySelector('.el-icon-arrow-right').click()
+        panels[1].querySelector('.el-icon-doubleright').click()
+        panels[1].querySelector('.el-icon-right').click()
 
         setTimeout(_ => {
           const left = panels[0].querySelector('.el-date-range-picker__header')
@@ -2356,8 +2356,8 @@ describe('DatePicker', () => {
     })
 
     it('prev/next month button', done => {
-      const leftBtn = vm.picker.$el.querySelector('.is-left .el-icon-arrow-left')
-      const rightBtn = vm.picker.$el.querySelector('.is-right .el-icon-arrow-right')
+      const leftBtn = vm.picker.$el.querySelector('.is-left .el-icon-left')
+      const rightBtn = vm.picker.$el.querySelector('.is-right .el-icon-right')
       const left = vm.picker.$el.querySelector('.is-left .el-date-range-picker__header')
       const right = vm.picker.$el.querySelector('.is-right .el-date-range-picker__header')
       const leftText = left.textContent.match(/\d+/g)
@@ -2383,8 +2383,8 @@ describe('DatePicker', () => {
     })
 
     it('prev/next year button', done => {
-      const leftBtn = vm.picker.$el.querySelector('.is-left .el-icon-d-arrow-left')
-      const rightBtn = vm.picker.$el.querySelector('.is-right .el-icon-d-arrow-right')
+      const leftBtn = vm.picker.$el.querySelector('.is-left .el-icon-doubleleft')
+      const rightBtn = vm.picker.$el.querySelector('.is-right .el-icon-doubleright')
       const left = vm.picker.$el.querySelector('.is-left .el-date-range-picker__header')
       const right = vm.picker.$el.querySelector('.is-right .el-date-range-picker__header')
       const leftText = left.textContent.match(/\d+/g)
@@ -2671,7 +2671,7 @@ describe('DatePicker', () => {
         const panels = vm.picker.$el.querySelectorAll('.el-date-range-picker__content')
         expect(Array.prototype.slice.call(panels)).to.length(2)
 
-        panels[1].querySelector('.el-icon-d-arrow-right').click()
+        panels[1].querySelector('.el-icon-doubleright').click()
 
         setTimeout(_ => {
           const left = panels[0].querySelector('.el-date-range-picker__header')

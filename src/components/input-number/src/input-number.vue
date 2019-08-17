@@ -19,7 +19,7 @@
       :class="{ 'is-disabled': minDisabled }"
       @keydown.enter="decrease"
     >
-      <i :class="`el-icon-${controlsAtRight ? 'arrow-down' : 'minus'}`"></i>
+      <i :class="`el-icon-${controlsAtRight ? 'down' : 'minus'}`"></i>
     </span>
     <span
       class="el-input-number__increase"
@@ -29,7 +29,7 @@
       :class="{ 'is-disabled': maxDisabled }"
       @keydown.enter="increase"
     >
-      <i :class="`el-icon-${controlsAtRight ? 'arrow-up' : 'plus'}`"></i>
+      <i :class="`el-icon-${controlsAtRight ? 'up' : 'plus'}`"></i>
     </span>
     <el-input
       ref="input"

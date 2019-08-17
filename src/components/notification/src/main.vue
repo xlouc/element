@@ -28,10 +28,10 @@
 
 <script type="text/babel">
 let typeMap = {
-  success: 'success',
-  info: 'info',
-  warning: 'warning',
-  error: 'error'
+  success: 'check-circle',
+  info: 'info-circle',
+  warning: 'warning-circle',
+  error: 'close-circle'
 }
 
 export default {

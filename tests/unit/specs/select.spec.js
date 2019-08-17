@@ -314,7 +314,7 @@ describe('Select', () => {
     vm.value = '选项1'
     select.inputHovering = true
     setTimeout(() => {
-      const iconClear = vm.$el.querySelector('.el-input__icon.el-icon-circle-close')
+      const iconClear = vm.$el.querySelector('.el-input__icon.el-icon-close-circle')
       expect(iconClear).to.exist
       iconClear.click()
       expect(vm.value).to.equal('')

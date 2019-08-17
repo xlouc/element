@@ -18,7 +18,7 @@
         @blur="focusing = false"
       >
         <slot name="title">{{ title }}</slot>
-        <i class="el-collapse-item__arrow el-icon-arrow-right" :class="{ 'is-active': isActive }"></i>
+        <i class="el-collapse-item__arrow el-icon-right" :class="{ 'is-active': isActive }"></i>
       </div>
     </div>
     <el-collapse-transition>

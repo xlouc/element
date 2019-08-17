@@ -28,14 +28,14 @@
         <div class="el-picker-panel__body">
           <div class="el-picker-panel__content el-date-range-picker__content is-left">
             <div class="el-date-range-picker__header">
-              <button type="button" @click="leftPrevYear" class="el-picker-panel__icon-btn el-icon-d-arrow-left"></button>
+              <button type="button" @click="leftPrevYear" class="el-picker-panel__icon-btn el-icon-doubleleft"></button>
               <button
                 type="button"
                 v-if="unlinkPanels"
                 @click="leftNextYear"
                 :disabled="!enableYearArrow"
                 :class="{ 'is-disabled': !enableYearArrow }"
-                class="el-picker-panel__icon-btn el-icon-d-arrow-right"
+                class="el-picker-panel__icon-btn el-icon-doubleright"
               ></button>
               <div>{{ leftLabel }}</div>
             </div>
@@ -59,9 +59,9 @@
                 @click="rightPrevYear"
                 :disabled="!enableYearArrow"
                 :class="{ 'is-disabled': !enableYearArrow }"
-                class="el-picker-panel__icon-btn el-icon-d-arrow-left"
+                class="el-picker-panel__icon-btn el-icon-doubleleft"
               ></button>
-              <button type="button" @click="rightNextYear" class="el-picker-panel__icon-btn el-icon-d-arrow-right"></button>
+              <button type="button" @click="rightNextYear" class="el-picker-panel__icon-btn el-icon-doubleright"></button>
               <div>{{ rightLabel }}</div>
             </div>
             <month-table

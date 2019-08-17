@@ -53,8 +53,12 @@
             <slot name="suffix"></slot>
             <i class="el-input__icon" v-if="suffixIcon" :class="suffixIcon"></i>
           </template>
-          <i v-if="showClear" class="el-input__icon el-icon-circle-close el-input__clear" @click="clear"></i>
-          <i v-if="showPwdVisible" class="el-input__icon el-icon-view el-input__clear" @click="handlePasswordVisible"></i>
+          <i v-if="showClear" class="el-input__icon el-icon-close-circle el-input__clear" @click="clear"></i>
+          <i
+            v-if="showPwdVisible"
+            :class="['el-input__icon el-input__clear', { 'el-icon-eye-close': !passwordVisible, 'el-icon-eye': passwordVisible }]"
+            @click="handlePasswordVisible"
+          ></i>
           <span v-if="isWordLimitVisible" class="el-input__count">
             <span class="el-input__count-inner">{{ textLength }}/{{ upperLimit }}</span>
           </span>
@@ -184,8 +188,8 @@ export default {
     validateIcon() {
       return {
         validating: 'el-icon-loading',
-        success: 'el-icon-circle-check',
-        error: 'el-icon-circle-close'
+        success: 'el-icon-check-circle',
+        error: 'el-icon-close-circle'
       }[this.validateState]
     },
     textareaStyle() {

@@ -8,6 +8,7 @@ import icon from './icon.json'
 import 'prismjs/themes/prism.css'
 import 'main/style/index.scss'
 import './demo-styles/index.scss'
+import './assets/styles/fonts/style.css'
 
 Vue.config.productionTip = false
 

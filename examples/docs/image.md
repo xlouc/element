@@ -72,7 +72,7 @@
     <span class="demonstration">自定义</span>
     <el-image>
       <div slot="error" class="image-slot">
-        <i class="el-icon-picture-outline"></i>
+        <i class="el-icon-image"></i>
       </div>
     </el-image>
   </div>
@@ -159,5 +159,3 @@
 |---------|-------------|
 | placeholder | 图片未加载的占位内容 |
 | error | 加载失败的内容 |
-
-

@@ -134,7 +134,7 @@ export default {
             class="btn-prev"
             disabled={this.$parent.disabled || this.$parent.internalCurrentPage <= 1}
             on-click={this.$parent.prev}>
-            {this.$parent.prevText ? <span>{this.$parent.prevText}</span> : <i class="el-icon el-icon-arrow-left"></i>}
+            {this.$parent.prevText ? <span>{this.$parent.prevText}</span> : <i class="el-icon el-icon-left"></i>}
           </button>
         )
       }
@@ -150,7 +150,7 @@ export default {
               this.$parent.disabled || this.$parent.internalCurrentPage === this.$parent.internalPageCount || this.$parent.internalPageCount === 0
             }
             on-click={this.$parent.next}>
-            {this.$parent.nextText ? <span>{this.$parent.nextText}</span> : <i class="el-icon el-icon-arrow-right"></i>}
+            {this.$parent.nextText ? <span>{this.$parent.nextText}</span> : <i class="el-icon el-icon-right"></i>}
           </button>
         )
       }

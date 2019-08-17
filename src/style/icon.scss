@@ -24,6 +24,24 @@
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  &.anticon {
+    color: inherit;
+    line-height: 0;
+    text-align: center;
+    text-transform: none;
+    vertical-align: -0.125em;
+    text-rendering: optimizeLegibility;
+
+    svg {
+      display: inline-block;
+      line-height: 1;
+    }
+  }
+}
+
+svg:not(:root){
+  overflow: hidden;
 }
 
 .el-icon-check-circle:before {
@@ -2426,15 +2444,28 @@
   content: "\e9d4";
 }
 
-.el-icon-loading {
-  animation: rotating 2s linear infinite;
-}
-
 .el-icon--right {
   margin-left: 5px;
 }
 .el-icon--left {
   margin-right: 5px;
+}
+
+.yak-flip-horizontal {
+  transform: scale(-1, 1);
+}
+
+.yak-flip-vertical {
+  transform: scale(1, -1);
+}
+
+
+.el-icon-loading {
+  animation: rotating 1s infinite steps(8);
+}
+
+.el-icon-pulse {
+  animation: rotating 1s 0s infinite linear;
 }
 
 @keyframes rotating {
