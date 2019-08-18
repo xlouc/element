@@ -14,7 +14,7 @@ Vue.config.productionTip = false
 
 Vue.use(Yak)
 
-Vue.component('DocAside', () => import('./components/doc-aside'))
+Vue.component('DocAside', () => import('./components/doc-aside.vue'))
 Vue.component('DemoBlock', () => import('./components/demo-block'))
 
 Vue.prototype.$icon = icon // Icon 列表页用

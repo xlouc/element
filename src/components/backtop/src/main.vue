@@ -12,7 +12,7 @@
       class="el-backtop"
     >
       <slot>
-        <el-icon name="caret-top"></el-icon>
+        <el-icon name="caret-up"></el-icon>
       </slot>
     </div>
   </transition>

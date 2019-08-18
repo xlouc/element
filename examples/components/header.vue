@@ -106,7 +106,9 @@ export default {
     padding: 0 10px;
     position: relative;
 
-    &:hover {
+    &:hover,
+    &:focus,
+    &:active {
       color: #fff;
       text-decoration: none;
     }

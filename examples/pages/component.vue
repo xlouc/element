@@ -4,7 +4,7 @@
   <el-container class="is-absolute">
     <el-aside>
       <el-scrollbar wrap-class="doc-component-scrollbar-wrap">
-        <doc-aside class="doc-aside" base="/components"></doc-aside>
+        <doc-aside class="doc-aside" base="/components" :navs="navs"></doc-aside>
       </el-scrollbar>
     </el-aside>
     <el-main>
@@ -14,8 +14,14 @@
 </template>
 
 <script>
+import navConfig from '../nav.config.json'
 export default {
-  name: 'DocComponent'
+  name: 'DocComponent',
+  computed: {
+    navs() {
+      return navConfig
+    }
+  }
 }
 </script>
 
@@ -37,7 +43,7 @@ export default {
 
 .doc-component-scrollbar-wrap {
   height: calc(100vh - 60px) !important;
-  padding-bottom: 15px;
+  padding-bottom: 17px;
 }
 
 .doc-note {
