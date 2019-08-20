@@ -7,6 +7,7 @@
       <div>
         <el-scrollbar wrap-class="doc-scrollbar-wrap" view-class="doc-container">
           <router-view />
+          <el-backtop :right="100" :bottom="100" target=".doc-scrollbar-wrap"></el-backtop>
         </el-scrollbar>
       </div>
     </el-container>
@@ -43,10 +44,12 @@ img {
 
 .doc-header {
   position: relative;
+  z-index: 35;
   background-image: url('./assets/inner_bg.png');
   background-position: 0 0;
   background-repeat: repeat-x;
-  background-color: rgba($--color-primary, 0.4) !important;
+  background-color: rgba(#263238, 0.8) !important;
+  box-shadow: 0 2px 8px rgba(#263238, 0.8);
 }
 
 .doc-scrollbar-wrap {

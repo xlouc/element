@@ -43,7 +43,7 @@
         ></el-progress>
         <span class="el-upload-list__item-actions" v-if="listType === 'picture-card'">
           <span class="el-upload-list__item-preview" v-if="handlePreview && listType === 'picture-card'" @click="handlePreview(file)">
-            <i class="el-icon-zoom-in"></i>
+            <i class="el-icon-zoomin"></i>
           </span>
           <span v-if="!disabled" class="el-upload-list__item-delete" @click="$emit('remove', file)">
             <i class="el-icon-delete"></i>

@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import Yak from 'main/index.js'
+import VueClipboard from 'vue-clipboard2'
 import icon from './icon.json'
 import 'prismjs/themes/prism.css'
 import 'main/style/index.scss'
@@ -13,6 +14,7 @@ import './assets/styles/fonts/style.css'
 Vue.config.productionTip = false
 
 Vue.use(Yak)
+Vue.use(VueClipboard)
 
 Vue.component('DocAside', () => import('./components/doc-aside.vue'))
 Vue.component('DemoBlock', () => import('./components/demo-block'))

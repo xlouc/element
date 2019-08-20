@@ -28,7 +28,7 @@ $--font-path: '~yak-ui/lib/theme-chalk/fonts'; @import
 
 ```JS
 import Vue from 'vue'
-import Element from 'element-ui'
+import Element from 'yak-ui'
 import './element-variables.scss'
 
 Vue.use(Element)

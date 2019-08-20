@@ -20,13 +20,13 @@
       <!-- ACTIONS -->
       <div class="el-image-viewer__btn el-image-viewer__actions">
         <div class="el-image-viewer__actions__inner">
-          <i class="el-icon-zoom-out" @click="handleActions('zoomOut')"></i>
-          <i class="el-icon-zoom-in" @click="handleActions('zoomIn')"></i>
+          <i class="el-icon-zoomout" @click="handleActions('zoomOut')"></i>
+          <i class="el-icon-zoomin" @click="handleActions('zoomIn')"></i>
           <i class="el-image-viewer__actions__divider"></i>
           <i :class="mode.icon" @click="toggleMode"></i>
           <i class="el-image-viewer__actions__divider"></i>
-          <i class="el-icon-refresh-left" @click="handleActions('anticlocelise')"></i>
-          <i class="el-icon-refresh-right" @click="handleActions('clocelise')"></i>
+          <i class="el-icon-undo" @click="handleActions('anticlocelise')"></i>
+          <i class="el-icon-redo" @click="handleActions('clocelise')"></i>
         </div>
       </div>
       <!-- CANVAS -->
@@ -56,11 +56,11 @@ import { rafThrottle, isFirefox } from 'yak-ui/src/utils/util'
 const Mode = {
   CONTAIN: {
     name: 'contain',
-    icon: 'el-icon-full-screen'
+    icon: 'el-icon-fullscreen'
   },
   ORIGINAL: {
     name: 'original',
-    icon: 'el-icon-c-scale-to-original'
+    icon: 'el-icon-fullscreen-exit'
   }
 }
 

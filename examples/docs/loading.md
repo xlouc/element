@@ -71,7 +71,7 @@
   <el-table
     v-loading="loading"
     element-loading-text="拼命加载中"
-    element-loading-spinner="el-icon-loading"
+    element-loading-spinner="el-icon-loading el-icon-sync"
     element-loading-background="rgba(0, 0, 0, 0.8)"
     :data="tableData"
     style="width: 100%">
@@ -172,7 +172,7 @@
 ### 服务
 Loading 还可以以服务的方式调用。引入 Loading 服务：
 ```javascript
-import { Loading } from 'element-ui';
+import { Loading } from 'yak-ui';
 ```
 在需要调用时：
 ```javascript

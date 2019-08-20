@@ -98,4 +98,8 @@
       border-left-color: $--popover-background-color;
     }
   }
+
+  &[x-out-of-boundaries] {
+    display: none;
+  }
 }

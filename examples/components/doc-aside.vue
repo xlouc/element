@@ -57,7 +57,19 @@ export default {
   width: 100%;
   box-sizing: border-box;
   transition: opacity 0.3s;
-  border-right: $--border-base;
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 1px;
+    height: 100%;
+    background: $--border-color-base;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
 
   &.is-fade {
     transition: opacity 3s;
@@ -92,8 +104,22 @@ export default {
       font-weight: bold;
       &.active {
         color: $--color-primary;
+
+        &:after {
+          position: absolute;
+          content: '';
+          z-index: 30;
+          display: block;
+          width: 2px;
+          height: 100%;
+          background: $--color-primary;
+          right: 0;
+          top: 0;
+          bottom: 0;
+        }
       }
     }
+
     .nav-item {
       a {
         display: block;
@@ -110,9 +136,6 @@ export default {
         &.active {
           color: $--color-primary;
           background-color: $--color-primary-light-9;
-        }
-        &.active {
-          border-right: 3px solid $--color-primary;
         }
       }
     }

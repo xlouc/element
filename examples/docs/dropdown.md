@@ -120,7 +120,7 @@
       <el-dropdown-menu slot="dropdown">
         <el-dropdown-item icon="el-icon-plus">黄金糕</el-dropdown-item>
         <el-dropdown-item icon="el-icon-plus-circle">狮子头</el-dropdown-item>
-        <el-dropdown-item icon="el-icon-plus-circle-outline">螺蛳粉</el-dropdown-item>
+        <el-dropdown-item icon="el-icon-plus-circle-fill">螺蛳粉</el-dropdown-item>
         <el-dropdown-item icon="el-icon-check">双皮奶</el-dropdown-item>
         <el-dropdown-item icon="el-icon-check-circle">蚵仔煎</el-dropdown-item>
       </el-dropdown-menu>

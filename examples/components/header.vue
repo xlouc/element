@@ -117,9 +117,9 @@ export default {
   .router-link-active {
     &:after {
       background: $--color-primary;
-      bottom: 0;
+      bottom: -1px;
       content: '';
-      height: 2px;
+      height: 3px;
       left: 0;
       position: absolute;
       right: 0;

@@ -175,7 +175,7 @@
           class="el-upload-list__item-preview"
           @click="handlePictureCardPreview(file)"
         >
-          <i class="el-icon-zoom-in"></i>
+          <i class="el-icon-zoomin"></i>
         </span>
         <span
           v-if="!disabled"
