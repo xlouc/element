@@ -20,7 +20,7 @@
 
 <ul class="icon-list">
   <li v-for="name in $icon" :key="name">
-    <span>
+    <span v-clipboard:copy="`el-icon-${name}`" v-clipboard:success="() => $onCopy(`复制图标: el-icon-${name}`)">
       <i :class="'el-icon-' + name"></i>
       <span class="icon-name">{{'el-icon-' + name}}</span>
     </span>

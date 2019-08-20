@@ -21,6 +21,13 @@ Vue.component('DemoBlock', () => import('./components/demo-block'))
 
 Vue.prototype.$icon = icon // Icon 列表页用
 
+Vue.prototype.$onCopy = function(message, type = 'success') {
+  this.$message.success({
+    type,
+    message
+  })
+}
+
 new Vue({
   router,
   render: h => h(App)
