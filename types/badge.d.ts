@@ -1,7 +1,7 @@
-import { ElementUIComponent } from './component'
+import { YakUIComponent } from './component'
 
 /** Badge Component */
-export declare class ElBadge extends ElementUIComponent {
+export declare class ElBadge extends YakUIComponent {
   /** Display value */
   value: string | number
 

@@ -43,7 +43,7 @@ export default {
 
 .doc-component-scrollbar-wrap {
   height: calc(100vh - 60px) !important;
-  padding-bottom: 17px;
+  padding-bottom: 15px;
 }
 
 .doc-note {

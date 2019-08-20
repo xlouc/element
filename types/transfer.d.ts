@@ -1,5 +1,5 @@
 import { CreateElement, VNode } from 'vue'
-import { ElementUIComponent } from './component'
+import { YakUIComponent } from './component'
 
 export type TransferPanelPosition = 'left' | 'right'
 
@@ -31,7 +31,7 @@ export interface TransferRenderContent {
 }
 
 /** Transfer Component */
-export declare class ElTransfer extends ElementUIComponent {
+export declare class ElTransfer extends YakUIComponent {
   /** Data source */
   data: TransferData[]
 

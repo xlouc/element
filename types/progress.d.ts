@@ -1,10 +1,10 @@
-import { ElementUIComponent } from './component'
+import { YakUIComponent } from './component'
 
 export type ProgressType = 'line' | 'circle'
 export type ProgressStatus = 'success' | 'exception'
 
 /** Progress Component */
-export declare class ElProgress extends ElementUIComponent {
+export declare class ElProgress extends YakUIComponent {
   /** Percentage, required */
   percentage: number
 

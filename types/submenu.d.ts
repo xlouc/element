@@ -1,7 +1,7 @@
-import { ElementUIComponent } from './component'
+import { YakUIComponent } from './component'
 
 /** Submenu Component */
-export declare class ElSubmenu extends ElementUIComponent {
+export declare class ElSubmenu extends YakUIComponent {
   /** Unique identification */
   index: string | null
 

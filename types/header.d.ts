@@ -1,7 +1,7 @@
-import { ElementUIComponent } from './component'
+import { YakUIComponent } from './component'
 
 /** Header Component */
-export declare class ElHeader extends ElementUIComponent {
+export declare class ElHeader extends YakUIComponent {
   /** Height of the header */
   height: string
 }

@@ -1,5 +1,5 @@
 import { VNode } from 'vue'
-import { ElementUIComponent } from './component'
+import { YakUIComponent } from './component'
 
 export type StepStatus = 'wait' | 'process' | 'finish' | 'error' | 'success'
 
@@ -17,7 +17,7 @@ export interface StepRenderSlots {
 }
 
 /** Step Component */
-export declare class ElStep extends ElementUIComponent {
+export declare class ElStep extends YakUIComponent {
   /** Step title */
   title: string
 

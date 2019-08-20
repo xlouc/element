@@ -1,7 +1,7 @@
-import { ElementUIComponent } from './component'
+import { YakUIComponent } from './component'
 
 /** Dropdown Select Option Group Component */
-export declare class ElOptionGroup extends ElementUIComponent {
+export declare class ElOptionGroup extends YakUIComponent {
   /** Name of the group */
   label: string
 

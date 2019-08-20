@@ -1,7 +1,7 @@
-import { ElementUIComponent } from './component'
+import { YakUIComponent } from './component'
 
 /** Breadcrumb Item Component */
-export declare class ElBreadcrumbItem extends ElementUIComponent {
+export declare class ElBreadcrumbItem extends YakUIComponent {
   /** Target route of the link, same as to of vue-router */
   to: string | object
 

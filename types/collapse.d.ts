@@ -1,7 +1,7 @@
-import { ElementUIComponent } from './component'
+import { YakUIComponent } from './component'
 
 /** Use Collapse to store contents. */
-export declare class ElCollapse extends ElementUIComponent {
+export declare class ElCollapse extends YakUIComponent {
   /** Whether to activate accordion mode */
   accordion: boolean
 

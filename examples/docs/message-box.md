@@ -275,7 +275,7 @@
 
 ### 全局方法
 
-如果你完整引入了 Element，它会为 Vue.prototype 添加如下全局方法：$msgbox, $alert, $confirm 和 $prompt。因此在 Vue instance 中可以采用本页面中的方式调用 `MessageBox`。调用参数为：
+如果你完整引入了 Yak，它会为 Vue.prototype 添加如下全局方法：$msgbox, $alert, $confirm 和 $prompt。因此在 Vue instance 中可以采用本页面中的方式调用 `MessageBox`。调用参数为：
 - `$msgbox(options)`
 - `$alert(message, title, options)` 或 `$alert(message, options)`
 - `$confirm(message, title, options)` 或 `$confirm(message, options)`

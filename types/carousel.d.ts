@@ -1,4 +1,4 @@
-import { ElementUIComponent } from './component'
+import { YakUIComponent } from './component'
 
 export type CarouselIndicatorTrigger = 'hover' | 'click'
 export type CarouselIndicatorPosition = 'outside' | 'none'
@@ -7,7 +7,7 @@ export type CarouselType = 'card'
 export type CarouselDirection = 'horizontal' | 'vertical'
 
 /** Loop a series of images or texts in a limited space */
-export declare class ElCarousel extends ElementUIComponent {
+export declare class ElCarousel extends YakUIComponent {
   /** Height of the carousel */
   height: number
 

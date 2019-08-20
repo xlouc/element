@@ -1,10 +1,10 @@
-import { ElementUIComponent } from './component'
+import { YakUIComponent } from './component'
 
 /** Button type */
 export type LinkType = 'primary' | 'success' | 'warning' | 'danger' | 'info' 
 
 /** Link Component */
-export declare class ElLink extends ElementUIComponent {
+export declare class ElLink extends YakUIComponent {
   /** Link type */
   type: LinkType
   

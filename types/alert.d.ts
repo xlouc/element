@@ -1,10 +1,10 @@
-import { ElementUIComponent } from './component'
+import { YakUIComponent } from './component'
 
 export type AlertType = 'success' | 'warning' | 'info' | 'error'
 export type AlertEffect = 'dark' | 'light'
 
 /** Alert Component */
-export declare class ElAlert extends ElementUIComponent {
+export declare class ElAlert extends YakUIComponent {
   /** Title */
   title: string
 

@@ -1,4 +1,4 @@
-import { ElementUIComponent } from './component'
+import { YakUIComponent } from './component'
 
 /** Responsive column props */
 export interface ResponsiveColumnProperties {
@@ -13,7 +13,7 @@ export interface ResponsiveColumnProperties {
 export type ResponsiveColumn = number | ResponsiveColumnProperties
 
 /** Colunm Layout Component */
-export declare class ElCol extends ElementUIComponent {
+export declare class ElCol extends YakUIComponent {
   /** Number of column the grid spans */
   span: number
 

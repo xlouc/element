@@ -1,4 +1,4 @@
-import { ElementUIComponent } from './component'
+import { YakUIComponent } from './component'
 
 /** Button Group Component */
-export declare class ElButtonGroup extends ElementUIComponent {}
+export declare class ElButtonGroup extends YakUIComponent {}

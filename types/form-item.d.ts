@@ -1,7 +1,7 @@
-import { ElementUIComponent, ElementUIComponentSize } from './component'
+import { YakUIComponent, YakUIComponentSize } from './component'
 
 /** FormItem Component */
-export declare class ElFormItem extends ElementUIComponent {
+export declare class ElFormItem extends YakUIComponent {
   /** A key of `model` of the enclosing `el-form` component */
   prop: string
 
@@ -27,7 +27,7 @@ export declare class ElFormItem extends ElementUIComponent {
   inlineMessage: boolean
 
   /** Controls the size of components in this form */
-  size: ElementUIComponentSize
+  size: YakUIComponentSize
 
   /** Reset current field and remove validation result */
   resetField (): void

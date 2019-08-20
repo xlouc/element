@@ -1,4 +1,4 @@
-import { ElementUIComponent, ElementUIComponentSize, ElementUIHorizontalAlignment } from './component'
+import { YakUIComponent, YakUIComponentSize, YakUIHorizontalAlignment } from './component'
 
 export type DatePickerType = 'year' | 'month' | 'date' | 'datetime' | 'week' | 'datetimerange' | 'daterange' | 'dates'
 export type FirstDayOfWeek = 1 | 2 | 3 | 4 | 5 | 6 | 7
@@ -62,7 +62,7 @@ export interface DatePickerOptions {
 }
 
 /** DatePicker Component */
-export declare class ElDatePicker extends ElementUIComponent {
+export declare class ElDatePicker extends YakUIComponent {
   /** The value of the date picker */
   value: Date | string | Date[] | string[]
 
@@ -73,7 +73,7 @@ export declare class ElDatePicker extends ElementUIComponent {
   disabled: boolean
 
   /** Size of Input */
-  size: ElementUIComponentSize
+  size: YakUIComponentSize
 
   /** Whether the input is editable */
   editable: boolean
@@ -97,7 +97,7 @@ export declare class ElDatePicker extends ElementUIComponent {
   format: string
 
   /** Alignment */
-  align: ElementUIHorizontalAlignment
+  align: YakUIHorizontalAlignment
 
   /** Custom class name for DatePicker's dropdown */
   popperClass: string

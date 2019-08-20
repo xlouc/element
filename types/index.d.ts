@@ -1,4 +1,4 @@
 export * from './element-ui'
 
-import * as ElementUI from './element-ui'
-export default ElementUI
+import * as YakUI from './element-ui'
+export default YakUI

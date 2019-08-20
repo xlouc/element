@@ -43,8 +43,17 @@ function addRoute(page) {
 export default new Router({
   routes: [
     {
+      path: '/design',
+      component: () => import('./pages/design.vue')
+    },
+    {
+      path: '/resource',
+      component: () => import('./pages/resource.vue')
+    },
+    {
       path: '/components',
       component: () => import('./pages/component.vue'),
+      redirect: '/components/installation',
       children: routes
     }
   ]

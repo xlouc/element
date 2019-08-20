@@ -50,11 +50,11 @@ img {
   background-repeat: repeat-x;
   background-color: rgba(#263238, 0.8) !important;
   box-shadow: 0 2px 8px rgba(#263238, 0.8);
+  margin-bottom: 15px;
 }
 
 .doc-scrollbar-wrap {
   height: calc(100vh - 60px) !important;
-  padding-bottom: 15px;
 }
 
 .doc-container {

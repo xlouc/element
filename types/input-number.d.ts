@@ -1,9 +1,9 @@
-import { ElementUIComponent } from './component'
+import { YakUIComponent } from './component'
 
 export type InputNumberSize = 'large' | 'small'
 
 /** InputNumber Component */
-export declare class ElInputNumber extends ElementUIComponent {
+export declare class ElInputNumber extends YakUIComponent {
   /** Binding value */
   value: number
 

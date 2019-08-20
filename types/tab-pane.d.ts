@@ -1,7 +1,7 @@
-import { ElementUIComponent } from './component'
+import { YakUIComponent } from './component'
 
 /** Tab Pane Component */
-export declare class ElTabPane extends ElementUIComponent {
+export declare class ElTabPane extends YakUIComponent {
   /** Title of the tab */
   label: string
 

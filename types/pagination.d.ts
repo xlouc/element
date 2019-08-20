@@ -1,7 +1,7 @@
-import { ElementUIComponent } from './component'
+import { YakUIComponent } from './component'
 
 /** Pagination Component */
-export declare class ElPagination extends ElementUIComponent {
+export declare class ElPagination extends YakUIComponent {
   /** Whether to use small pagination */
   small: boolean
 

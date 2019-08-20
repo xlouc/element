@@ -1,7 +1,7 @@
-import { ElementUIComponent } from './component'
+import { YakUIComponent } from './component'
 
 /** Radio Component */
-export declare class ElRadio extends ElementUIComponent {
+export declare class ElRadio extends YakUIComponent {
   /** The form input value */
   value: string
 

@@ -1,9 +1,9 @@
-import { ElementUIComponent } from './component'
+import { YakUIComponent } from './component'
 
 export type RadioGroupSize = 'large' | 'small'
 
 /** Radio Group Component */
-export declare class ElRadioGroup extends ElementUIComponent {
+export declare class ElRadioGroup extends YakUIComponent {
   /** The size of radio buttons */
   size: RadioGroupSize
 

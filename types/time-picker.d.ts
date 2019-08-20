@@ -1,4 +1,4 @@
-import { ElementUIComponent, ElementUIComponentSize, ElementUIHorizontalAlignment } from './component'
+import { YakUIComponent, YakUIComponentSize, YakUIHorizontalAlignment } from './component'
 
 export interface TimePickerOptions {
   /**
@@ -13,7 +13,7 @@ export interface TimePickerOptions {
 }
 
 /** TimePicker Component */
-export declare class ElTimePicker extends ElementUIComponent {
+export declare class ElTimePicker extends YakUIComponent {
   /** Whether DatePicker is read only */
   readonly: boolean
 
@@ -27,7 +27,7 @@ export declare class ElTimePicker extends ElementUIComponent {
   clearable: boolean
 
   /** Size of Input */
-  size: ElementUIComponentSize
+  size: YakUIComponentSize
 
   /** Placeholder */
   placeholder: string
@@ -45,7 +45,7 @@ export declare class ElTimePicker extends ElementUIComponent {
   value: string | Date
 
   /** Alignment */
-  align: ElementUIHorizontalAlignment
+  align: YakUIHorizontalAlignment
 
   /** Custom class name for TimePicker's dropdown */
   popperClass: string

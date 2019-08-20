@@ -1,7 +1,7 @@
-import { ElementUIComponent } from './component'
+import { YakUIComponent } from './component'
 
 /** Switch Component */
-export declare class ElSwitch extends ElementUIComponent {
+export declare class ElSwitch extends YakUIComponent {
   /** Whether Switch is on */
   value: boolean
 

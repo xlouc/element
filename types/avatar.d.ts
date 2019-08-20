@@ -1,7 +1,7 @@
-import { ElementUIComponent } from './component'
+import { YakUIComponent } from './component'
 
 /** Avatar Component */
-export declare class ElAvatar extends ElementUIComponent {
+export declare class ElAvatar extends YakUIComponent {
   icon: string;
 
   size: string | number;

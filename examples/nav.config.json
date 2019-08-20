@@ -1,10 +1,5 @@
 [
   {
-    "name": "更新日志",
-    "path": "/changelog"
-  },
-  {
-    "name": "开发指南",
     "children": [
       {
         "path": "/installation",
@@ -25,6 +20,10 @@
       {
         "path": "/transition",
         "name": "内置过渡动画"
+      },
+      {
+        "name": "更新日志",
+        "path": "/changelog"
       }
     ]
   },

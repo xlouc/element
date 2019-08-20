@@ -1,7 +1,7 @@
-import { ElementUIComponent } from './component'
+import { YakUIComponent } from './component'
 
 /** Carousel Item Component */
-export declare class ElCarouselItem extends ElementUIComponent {
+export declare class ElCarouselItem extends YakUIComponent {
   /** Name of the item, can be used in setActiveItem */
   name: string
 

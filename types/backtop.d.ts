@@ -1,7 +1,7 @@
-import { ElementUIComponent } from './component'
+import { YakUIComponent } from './component'
 
 /** Backtop Component */
-export declare class ElBacktop extends ElementUIComponent {
+export declare class ElBacktop extends YakUIComponent {
   /** Backtop target */
   target: string
   

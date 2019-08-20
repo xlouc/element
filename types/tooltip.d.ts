@@ -1,10 +1,10 @@
-import { ElementUIComponent } from './component'
+import { YakUIComponent } from './component'
 import { PopoverPlacement } from './popover'
 
 export type TooltipEffect = 'dark' | 'light'
 
 /** Tooltip Component */
-export declare class ElTooltip extends ElementUIComponent {
+export declare class ElTooltip extends YakUIComponent {
   /** Tooltip theme */
   effect: TooltipEffect
 

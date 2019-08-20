@@ -1,4 +1,4 @@
-import { ElementUIComponent, ElementUIComponentSize } from './component'
+import { YakUIComponent, YakUIComponentSize } from './component'
 
 /** The resizability of el-input component */
 export type Resizability = 'none' | 'both' | 'horizontal' | 'vertical'
@@ -14,7 +14,7 @@ export interface AutoSize {
 }
 
 /** Input Component */
-export declare class ElInput extends ElementUIComponent {
+export declare class ElInput extends YakUIComponent {
   /** Type of input */
   type: InputType
 
@@ -34,7 +34,7 @@ export declare class ElInput extends ElementUIComponent {
   disabled: boolean
 
   /** Size of Input, works when type is not 'textarea' */
-  size: ElementUIComponentSize
+  size: YakUIComponentSize
 
   /** Prefix icon class */
   prefixIcon: string

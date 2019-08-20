@@ -1,6 +1,6 @@
-import { ElementUIComponent } from './component'
+import { YakUIComponent } from './component'
 
 /** Timeline Component */
-export declare class ElTimeline extends ElementUIComponent {
+export declare class ElTimeline extends YakUIComponent {
   reverse: boolean
 }

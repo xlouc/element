@@ -1,5 +1,5 @@
 import { VNode } from 'vue';
-import { ElementUIComponent, ElementUIComponentSize } from './component'
+import { YakUIComponent, YakUIComponentSize } from './component'
 import { CascaderOption, CascaderProps, CascaderNode } from './cascader-panel';
 
 export type CascaderOption = CascaderOption
@@ -19,7 +19,7 @@ export interface CascaderSlots {
 }
 
 /** Cascader Component */
-export declare class ElCascader<V = any, D = CascaderOption> extends ElementUIComponent {
+export declare class ElCascader<V = any, D = CascaderOption> extends YakUIComponent {
   /** Data of the options */
   options: CascaderOption[]
 
@@ -30,7 +30,7 @@ export declare class ElCascader<V = any, D = CascaderOption> extends ElementUICo
   value: V | V[]
 
   /** Size of Input */
-  size: ElementUIComponentSize
+  size: YakUIComponentSize
 
   /** Input placeholder */
   placeholder: string

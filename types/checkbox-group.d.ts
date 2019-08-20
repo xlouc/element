@@ -1,9 +1,9 @@
-import { ElementUIComponent, ElementUIComponentSize } from './component'
+import { YakUIComponent, YakUIComponentSize } from './component'
 
 /** Checkbox Group Component */
-export declare class ElCheckboxGroup extends ElementUIComponent {
+export declare class ElCheckboxGroup extends YakUIComponent {
   /** Size of checkbox buttons or bordered checkboxes */
-  size: ElementUIComponentSize
+  size: YakUIComponentSize
 
   /** Whether the nesting checkboxes are disabled */
   disabled: boolean
