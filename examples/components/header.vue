@@ -22,7 +22,7 @@
             <div class="doc-header-nav--right">
               <ul class="doc-nav">
                 <li class="doc-nav-item">
-                  <router-link to="/design">指 南</router-link>
+                  <router-link to="/guide">指 南</router-link>
                 </li>
                 <li class="doc-nav-item">
                   <router-link to="/components">组 件</router-link>

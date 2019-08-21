@@ -29,6 +29,7 @@ export default {
 @import 'main/style/common/var.scss';
 
 .el-container.is-absolute {
+  min-height: 100%;
   & > .el-aside {
     position: absolute;
   }

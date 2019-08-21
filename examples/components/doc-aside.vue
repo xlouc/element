@@ -57,6 +57,7 @@ export default {
   box-sizing: border-box;
   transition: opacity 0.3s;
   position: relative;
+  min-height: 100%;
 
   &::after {
     position: absolute;

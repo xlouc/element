@@ -1,7 +1,7 @@
 ## 安装
 
 :::danger 关于Yak
-Yak, 一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌面端组件库。他是从 [Element](https://github.com/ElemeFE/element) 发展而来，不过我们已经 Fork 并且命名为 Yak。
+Yak, 一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌面端组件库。他是从 [Element](https://github.com/ElemeFE/element) 发展而来，不过我们已经 Fork 并且命名为 Yak。对于我们Fork的原因可以看[这里](#/guide/about)。
 :::
 
 ### npm 安装

@@ -55,6 +55,9 @@ img {
 
 .doc-scrollbar-wrap {
   height: calc(100vh - 60px) !important;
+  .el-scrollbar__view {
+    min-height: 100%;
+  }
 }
 
 .doc-container {

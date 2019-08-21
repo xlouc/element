@@ -43,8 +43,35 @@ function addRoute(page) {
 export default new Router({
   routes: [
     {
-      path: '/design',
-      component: () => import('./pages/design.vue')
+      path: '/guide',
+      component: () => import('./pages/guide.vue'),
+      redirect: '/guide/about',
+      children: [
+        {
+          path: 'design',
+          meta: {
+            title: '',
+            description: ''
+          },
+          component: () => import('./pages/guide.design.vue')
+        },
+        {
+          path: 'nav',
+          meta: {
+            title: '',
+            description: ''
+          },
+          component: () => import('./pages/guide.nav.vue')
+        },
+        {
+          path: 'about',
+          meta: {
+            title: '',
+            description: ''
+          },
+          component: () => import('./pages/guide.about.vue')
+        }
+      ]
     },
     {
       path: '/resource',
