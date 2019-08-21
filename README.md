@@ -57,4 +57,4 @@ Vue.component(Button.name, Button);
 
 ## Changelog
 
-每个版本的详细更改记录在[发行说明](https://git.paascloud.org/yakcode/yak-ui/releases).
+每个版本的详细更改记录在[发行说明](https://github.com/yakcodo/yak/releases).
