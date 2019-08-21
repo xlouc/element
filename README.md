@@ -18,7 +18,7 @@
 
 ## 关于 yak-ui
 
-Yak, 一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌面端组件库。他是从 [Element](https://github.com/ElemeFE/element) 发展而来，不过我们已经 Fork 并且命名为 Yak。对于我们 Fork 的原因可以看[这里](https://github.com/yakcodo/yak/blob/master/about.md)。
+Yak, 一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌面端组件库。他是从 [Element](https://github.com/ElemeFE/element) 发展而来，不过我们已经 Fork 并且命名为 Yak。对于我们 Fork 的原因可以看[这里](https://github.com/yakcodo/yak/wiki/about)。
 
 ## 安装
 
