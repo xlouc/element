@@ -1,12 +1,14 @@
 @import "mixins/mixins";
 @import "mixins/utils";
-@import 'mixins/button';
+@import "mixins/button";
 @import "common/var";
 
 @include b(radio) {
   color: $--radio-font-color;
   font-weight: $--radio-font-weight;
-  line-height: 1;
+  font-variant: tabular-nums;
+  font-feature-settings: "tnum";
+  line-height: unset;
   position: relative;
   cursor: pointer;
   display: inline-block;
@@ -14,6 +16,7 @@
   outline: none;
   font-size: $--font-size-base;
   margin-right: 30px;
+  box-sizing: border-box;
   @include utils-user-select(none);
 
   @include when(bordered) {
@@ -48,6 +51,10 @@
       .el-radio__inner {
         height: $--radio-bordered-medium-input-height;
         width: $--radio-bordered-medium-input-width;
+        &::after {
+          height: $--radio-bordered-medium-input-height / 2;
+          width: $--radio-bordered-medium-input-width / 2;
+        }
       }
     }
   }
@@ -62,6 +69,11 @@
       .el-radio__inner {
         height: $--radio-bordered-small-input-height;
         width: $--radio-bordered-small-input-width;
+
+        &::after {
+          height: $--radio-bordered-small-input-height / 2;
+          width: $--radio-bordered-small-input-width / 2;
+        }
       }
     }
   }
@@ -76,6 +88,11 @@
       .el-radio__inner {
         height: $--radio-bordered-mini-input-height;
         width: $--radio-bordered-mini-input-width;
+
+        &::after {
+          height: $--radio-bordered-mini-input-height / 2;
+          width: $--radio-bordered-mini-input-width / 2;
+        }
       }
     }
   }
@@ -127,15 +144,12 @@
     @include when(checked) {
       .el-radio__inner {
         border-color: $--radio-checked-input-border-color;
-        background: $--radio-checked-icon-color;
+        // background: $--radio-checked-icon-color;
 
         &::after {
           transform: translate(-50%, -50%) scale(1);
+          opacity: 1;
         }
-      }
-
-      & + .el-radio__label {
-        color: $--radio-checked-font-color;
       }
     }
 
@@ -161,16 +175,17 @@
     }
 
     &::after {
-      width: 4px;
-      height: 4px;
-      border-radius: $--radio-input-border-radius;
-      background-color: $--color-white;
+      width: 8px;
+      height: 8px;
+      opacity: 0;
       content: "";
+      border-radius: $--radio-input-border-radius;
+      background-color: $--radio-checked-icon-color;
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%) scale(0);
-      transition: transform .15s ease-in;
+      transition: transform 0.15s ease-in;
     }
   }
 
@@ -186,7 +201,8 @@
     margin: 0;
   }
 
-  &:focus:not(.is-focus):not(:active):not(.is-disabled) { /*获得焦点时 样式提醒*/
+  &:focus:not(.is-focus):not(:active):not(.is-disabled) {
+    /*获得焦点时 样式提醒*/
     .el-radio__inner {
       box-shadow: 0 0 2px 2px $--radio-input-border-color-hover;
     }

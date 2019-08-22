@@ -2,8 +2,8 @@
 
 <template>
   <label
-    class="el-radio"
     :class="[
+      'el-radio',
       border && radioSize ? 'el-radio--' + radioSize : '',
       { 'is-disabled': isDisabled },
       { 'is-focus': focus },
