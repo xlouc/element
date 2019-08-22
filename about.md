@@ -1,5 +1,6 @@
-## 关于Yak
-Yak, 一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌面端组件库。他是从 [Element](https://github.com/ElemeFE/element) 发展而来，不过我们已经 Fork 并且命名为 Yak。对于我们Fork的原因如下：
+## 关于 Yak
+
+Yak, 一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌面端组件库。他是从 [Element](https://github.com/ElemeFE/element) 发展而来，不过我们已经 Fork 并且命名为 Yak。对于我们 Fork 的原因如下：
 
 :::warning
 因为不太满意 Element 官方提供组件，并且有些组件用在我们日常项目中有过度封装，所以我们对组件部分功能进行了删减和拆分，并且也添加了一些我们自己日常项目中用到组件。
@@ -7,7 +8,7 @@ Yak, 一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌
 
 ### 优化组件
 
-- [ ] 优化整个UI色彩体系，整体向风格偏向[Material](https://material.io/guidelines/style/color.html#color-color-tool)
+- [ ] 优化整个 UI 色彩体系，整体向风格偏向[Material](https://material.io/guidelines/style/color.html#color-color-tool)
 - [ ] 优化`Drawer 抽屉`组件
 - [ ] 优化`Timeline 时间线`组件
 - [ ] 优化`NavMenu 导航菜单`组件
@@ -21,6 +22,7 @@ Yak, 一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌
 - [ ] 优化`PageHeader 页头`组件
 - [ ] 优化`Progress 进度条`组件
 - [ ] 优化`Form 表单`组件
+- [x] 升级Vue Cli 3版本
 
 ### 新增组件
 

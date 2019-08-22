@@ -5,7 +5,8 @@ const { stripScript, stripTemplate, genInlineComponentText } = require('./util')
 
 const mdPluginToken = require('./md-plugin-fence'),
   mdPluginContainers = require('./md-plugin-containers'),
-  mdPluginTable = require('./md-plugin-table')
+  mdPluginTable = require('./md-plugin-table'),
+  checkbox = require('markdown-it-checkbox')
 
 const highlight = require('./highlight')
 
@@ -20,6 +21,7 @@ const md = markdownIt(opts)
   .use(mdPluginToken)
   .use(mdPluginContainers)
   .use(mdPluginTable)
+  .use(checkbox)
 
 md.$data = {}
 

@@ -43,6 +43,10 @@ function addRoute(page) {
 export default new Router({
   routes: [
     {
+      path: '/',
+      redirect: '/guide'
+    },
+    {
       path: '/guide',
       component: () => import('./pages/guide.vue'),
       redirect: '/guide/about',

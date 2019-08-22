@@ -1,7 +1,7 @@
 <!-- @format -->
 
 <template>
-  <div>
+  <div class="doc-guide-about">
     <doc-about></doc-about>
   </div>
 </template>
@@ -13,4 +13,9 @@ export default {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.doc-guide-about {
+  input[type='checkbox'] {
+  }
+}
+</style>
