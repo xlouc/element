@@ -1,0 +1,1390 @@
+{
+  "quick": {
+    "red-50": "#FFEBEE",
+    "red-100": "#FFCDD2",
+    "red-200": "#EF9A9A",
+    "red-300": "#E57373",
+    "red-400": "#EF5350",
+    "red-500": "#F44336",
+    "red-600": "#E53935",
+    "red-700": "#D32F2F",
+    "red-800": "#C62828",
+    "red-900": "#B71C1C",
+    "red-a100": "#FF8A80",
+    "red-a200": "#FF5252",
+    "red-a400": "#FF1744",
+    "red-a700": "#D50000",
+    "pink-50": "#FCE4EC",
+    "pink-100": "#F8BBD0",
+    "pink-200": "#F48FB1",
+    "pink-300": "#F06292",
+    "pink-400": "#EC407A",
+    "pink-500": "#E91E63",
+    "pink-600": "#D81B60",
+    "pink-700": "#C2185B",
+    "pink-800": "#AD1457",
+    "pink-900": "#880E4F",
+    "pink-a100": "#FF80AB",
+    "pink-a200": "#FF4081",
+    "pink-a400": "#F50057",
+    "pink-a700": "#C51162",
+    "purple-50": "#F3E5F5",
+    "purple-100": "#E1BEE7",
+    "purple-200": "#CE93D8",
+    "purple-300": "#BA68C8",
+    "purple-400": "#AB47BC",
+    "purple-500": "#9C27B0",
+    "purple-600": "#8E24AA",
+    "purple-700": "#7B1FA2",
+    "purple-800": "#6A1B9A",
+    "purple-900": "#4A148C",
+    "purple-a100": "#EA80FC",
+    "purple-a200": "#E040FB",
+    "purple-a400": "#D500F9",
+    "purple-a700": "#AA00FF",
+    "deep-purple-50": "#EDE7F6",
+    "deep-purple-100": "#D1C4E9",
+    "deep-purple-200": "#B39DDB",
+    "deep-purple-300": "#9575CD",
+    "deep-purple-400": "#7E57C2",
+    "deep-purple-500": "#673AB7",
+    "deep-purple-600": "#5E35B1",
+    "deep-purple-700": "#512DA8",
+    "deep-purple-800": "#4527A0",
+    "deep-purple-900": "#311B92",
+    "deep-purple-a100": "#B388FF",
+    "deep-purple-a200": "#7C4DFF",
+    "deep-purple-a400": "#651FFF",
+    "deep-purple-a700": "#6200EA",
+    "indigo-50": "#E8EAF6",
+    "indigo-100": "#C5CAE9",
+    "indigo-200": "#9FA8DA",
+    "indigo-300": "#7986CB",
+    "indigo-400": "#5C6BC0",
+    "indigo-500": "#3F51B5",
+    "indigo-600": "#3949AB",
+    "indigo-700": "#303F9F",
+    "indigo-800": "#283593",
+    "indigo-900": "#1A237E",
+    "indigo-a100": "#8C9EFF",
+    "indigo-a200": "#536DFE",
+    "indigo-a400": "#3D5AFE",
+    "indigo-a700": "#304FFE",
+    "blue-50": "#E3F2FD",
+    "blue-100": "#BBDEFB",
+    "blue-200": "#90CAF9",
+    "blue-300": "#64B5F6",
+    "blue-400": "#42A5F5",
+    "blue-500": "#2196F3",
+    "blue-600": "#1E88E5",
+    "blue-700": "#1976D2",
+    "blue-800": "#1565C0",
+    "blue-900": "#0D47A1",
+    "blue-a100": "#82B1FF",
+    "blue-a200": "#448AFF",
+    "blue-a400": "#2979FF",
+    "blue-a700": "#2962FF",
+    "light-blue-50": "#E1F5FE",
+    "light-blue-100": "#B3E5FC",
+    "light-blue-200": "#81D4FA",
+    "light-blue-300": "#4FC3F7",
+    "light-blue-400": "#29B6F6",
+    "light-blue-500": "#03A9F4",
+    "light-blue-600": "#039BE5",
+    "light-blue-700": "#0288D1",
+    "light-blue-800": "#0277BD",
+    "light-blue-900": "#01579B",
+    "light-blue-a100": "#80D8FF",
+    "light-blue-a200": "#40C4FF",
+    "light-blue-a400": "#00B0FF",
+    "light-blue-a700": "#0091EA",
+    "cyan-50": "#E0F7FA",
+    "cyan-100": "#B2EBF2",
+    "cyan-200": "#80DEEA",
+    "cyan-300": "#4DD0E1",
+    "cyan-400": "#26C6DA",
+    "cyan-500": "#00BCD4",
+    "cyan-600": "#00ACC1",
+    "cyan-700": "#0097A7",
+    "cyan-800": "#00838F",
+    "cyan-900": "#006064",
+    "cyan-a100": "#84FFFF",
+    "cyan-a200": "#18FFFF",
+    "cyan-a400": "#00E5FF",
+    "cyan-a700": "#00B8D4",
+    "teal-50": "#E0F2F1",
+    "teal-100": "#B2DFDB",
+    "teal-200": "#80CBC4",
+    "teal-300": "#4DB6AC",
+    "teal-400": "#26A69A",
+    "teal-500": "#009688",
+    "teal-600": "#00897B",
+    "teal-700": "#00796B",
+    "teal-800": "#00695C",
+    "teal-900": "#004D40",
+    "teal-a100": "#A7FFEB",
+    "teal-a200": "#64FFDA",
+    "teal-a400": "#1DE9B6",
+    "teal-a700": "#00BFA5",
+    "green-50": "#E8F5E9",
+    "green-100": "#C8E6C9",
+    "green-200": "#A5D6A7",
+    "green-300": "#81C784",
+    "green-400": "#66BB6A",
+    "green-500": "#4CAF50",
+    "green-600": "#43A047",
+    "green-700": "#388E3C",
+    "green-800": "#2E7D32",
+    "green-900": "#1B5E20",
+    "green-a100": "#B9F6CA",
+    "green-a200": "#69F0AE",
+    "green-a400": "#00E676",
+    "green-a700": "#00C853",
+    "light-green-50": "#F1F8E9",
+    "light-green-100": "#DCEDC8",
+    "light-green-200": "#C5E1A5",
+    "light-green-300": "#AED581",
+    "light-green-400": "#9CCC65",
+    "light-green-500": "#8BC34A",
+    "light-green-600": "#7CB342",
+    "light-green-700": "#689F38",
+    "light-green-800": "#558B2F",
+    "light-green-900": "#33691E",
+    "light-green-a100": "#CCFF90",
+    "light-green-a200": "#B2FF59",
+    "light-green-a400": "#76FF03",
+    "light-green-a700": "#64DD17",
+    "lime-50": "#F9FBE7",
+    "lime-100": "#F0F4C3",
+    "lime-200": "#E6EE9C",
+    "lime-300": "#DCE775",
+    "lime-400": "#D4E157",
+    "lime-500": "#CDDC39",
+    "lime-600": "#C0CA33",
+    "lime-700": "#AFB42B",
+    "lime-800": "#9E9D24",
+    "lime-900": "#827717",
+    "lime-a100": "#F4FF81",
+    "lime-a200": "#EEFF41",
+    "lime-a400": "#C6FF00",
+    "lime-a700": "#AEEA00",
+    "yellow-50": "#FFFDE7",
+    "yellow-100": "#FFF9C4",
+    "yellow-200": "#FFF59D",
+    "yellow-300": "#FFF176",
+    "yellow-400": "#FFEE58",
+    "yellow-500": "#FFEB3B",
+    "yellow-600": "#FDD835",
+    "yellow-700": "#FBC02D",
+    "yellow-800": "#F9A825",
+    "yellow-900": "#F57F17",
+    "yellow-a100": "#FFFF8D",
+    "yellow-a200": "#FFFF00",
+    "yellow-a400": "#FFEA00",
+    "yellow-a700": "#FFD600",
+    "amber-50": "#FFF8E1",
+    "amber-100": "#FFECB3",
+    "amber-200": "#FFE082",
+    "amber-300": "#FFD54F",
+    "amber-400": "#FFCA28",
+    "amber-500": "#FFC107",
+    "amber-600": "#FFB300",
+    "amber-700": "#FFA000",
+    "amber-800": "#FF8F00",
+    "amber-900": "#FF6F00",
+    "amber-a100": "#FFE57F",
+    "amber-a200": "#FFD740",
+    "amber-a400": "#FFC400",
+    "amber-a700": "#FFAB00",
+    "orange-50": "#FFF3E0",
+    "orange-100": "#FFE0B2",
+    "orange-200": "#FFCC80",
+    "orange-300": "#FFB74D",
+    "orange-400": "#FFA726",
+    "orange-500": "#FF9800",
+    "orange-600": "#FB8C00",
+    "orange-700": "#F57C00",
+    "orange-800": "#EF6C00",
+    "orange-900": "#E65100",
+    "orange-a100": "#FFD180",
+    "orange-a200": "#FFAB40",
+    "orange-a400": "#FF9100",
+    "orange-a700": "#FF6D00",
+    "deep-orange-50": "#FBE9E7",
+    "deep-orange-100": "#FFCCBC",
+    "deep-orange-200": "#FFAB91",
+    "deep-orange-300": "#FF8A65",
+    "deep-orange-400": "#FF7043",
+    "deep-orange-500": "#FF5722",
+    "deep-orange-600": "#F4511E",
+    "deep-orange-700": "#E64A19",
+    "deep-orange-800": "#D84315",
+    "deep-orange-900": "#BF360C",
+    "deep-orange-a100": "#FF9E80",
+    "deep-orange-a200": "#FF6E40",
+    "deep-orange-a400": "#FF3D00",
+    "deep-orange-a700": "#DD2C00",
+    "brown-50": "#EFEBE9",
+    "brown-100": "#D7CCC8",
+    "brown-200": "#BCAAA4",
+    "brown-300": "#A1887F",
+    "brown-400": "#8D6E63",
+    "brown-500": "#795548",
+    "brown-600": "#6D4C41",
+    "brown-700": "#5D4037",
+    "brown-800": "#4E342E",
+    "brown-900": "#3E2723",
+    "grey-50": "#FAFAFA",
+    "grey-100": "#F5F5F5",
+    "grey-200": "#EEEEEE",
+    "grey-300": "#E0E0E0",
+    "grey-400": "#BDBDBD",
+    "grey-500": "#9E9E9E",
+    "grey-600": "#757575",
+    "grey-700": "#616161",
+    "grey-800": "#424242",
+    "grey-900": "#212121",
+    "blue-grey-50": "#ECEFF1",
+    "blue-grey-100": "#CFD8DC",
+    "blue-grey-200": "#B0BEC5",
+    "blue-grey-300": "#90A4AE",
+    "blue-grey-400": "#78909C",
+    "blue-grey-500": "#607D8B",
+    "blue-grey-600": "#546E7A",
+    "blue-grey-700": "#455A64",
+    "blue-grey-800": "#37474F",
+    "blue-grey-900": "#263238"
+  },
+  "colors": [
+    {
+      "label": "Red",
+      "name": "red",
+      "children": [
+        {
+          "name": "red-50",
+          "value": "#FFEBEE"
+        },
+        {
+          "name": "red-100",
+          "value": "#FFCDD2"
+        },
+        {
+          "name": "red-200",
+          "value": "#EF9A9A"
+        },
+        {
+          "name": "red-300",
+          "value": "#E57373"
+        },
+        {
+          "name": "red-400",
+          "value": "#EF5350"
+        },
+        {
+          "name": "red-500",
+          "value": "#F44336"
+        },
+        {
+          "name": "red-600",
+          "value": "#E53935"
+        },
+        {
+          "name": "red-700",
+          "value": "#D32F2F"
+        },
+        {
+          "name": "red-800",
+          "value": "#C62828"
+        },
+        {
+          "name": "red-900",
+          "value": "#B71C1C"
+        },
+        {
+          "name": "red-a100",
+          "value": "#FF8A80"
+        },
+        {
+          "name": "red-a200",
+          "value": "#FF5252"
+        },
+        {
+          "name": "red-a400",
+          "value": "#FF1744"
+        },
+        {
+          "name": "red-a700",
+          "value": "#D50000"
+        }
+      ]
+    },
+    {
+      "label": "Pink",
+      "name": "pink",
+      "children": [
+        {
+          "name": "pink-50",
+          "value": "#FCE4EC"
+        },
+        {
+          "name": "pink-100",
+          "value": "#F8BBD0"
+        },
+        {
+          "name": "pink-200",
+          "value": "#F48FB1"
+        },
+        {
+          "name": "pink-300",
+          "value": "#F06292"
+        },
+        {
+          "name": "pink-400",
+          "value": "#EC407A"
+        },
+        {
+          "name": "pink-500",
+          "value": "#E91E63"
+        },
+        {
+          "name": "pink-600",
+          "value": "#D81B60"
+        },
+        {
+          "name": "pink-700",
+          "value": "#C2185B"
+        },
+        {
+          "name": "pink-800",
+          "value": "#AD1457"
+        },
+        {
+          "name": "pink-900",
+          "value": "#880E4F"
+        },
+        {
+          "name": "pink-a100",
+          "value": "#FF80AB"
+        },
+        {
+          "name": "pink-a200",
+          "value": "#FF4081"
+        },
+        {
+          "name": "pink-a400",
+          "value": "#F50057"
+        },
+        {
+          "name": "pink-a700",
+          "value": "#C51162"
+        }
+      ]
+    },
+    {
+      "label": "Purple",
+      "name": "purple",
+      "children": [
+        {
+          "name": "purple-50",
+          "value": "#F3E5F5"
+        },
+        {
+          "name": "purple-100",
+          "value": "#E1BEE7"
+        },
+        {
+          "name": "purple-200",
+          "value": "#CE93D8"
+        },
+        {
+          "name": "purple-300",
+          "value": "#BA68C8"
+        },
+        {
+          "name": "purple-400",
+          "value": "#AB47BC"
+        },
+        {
+          "name": "purple-500",
+          "value": "#9C27B0"
+        },
+        {
+          "name": "purple-600",
+          "value": "#8E24AA"
+        },
+        {
+          "name": "purple-700",
+          "value": "#7B1FA2"
+        },
+        {
+          "name": "purple-800",
+          "value": "#6A1B9A"
+        },
+        {
+          "name": "purple-900",
+          "value": "#4A148C"
+        },
+        {
+          "name": "purple-a100",
+          "value": "#EA80FC"
+        },
+        {
+          "name": "purple-a200",
+          "value": "#E040FB"
+        },
+        {
+          "name": "purple-a400",
+          "value": "#D500F9"
+        },
+        {
+          "name": "purple-a700",
+          "value": "#AA00FF"
+        }
+      ]
+    },
+    {
+      "label": "Deep Purple",
+      "name": "deep-purple",
+      "children": [
+        {
+          "name": "deep-purple-50",
+          "value": "#EDE7F6"
+        },
+        {
+          "name": "deep-purple-100",
+          "value": "#D1C4E9"
+        },
+        {
+          "name": "deep-purple-200",
+          "value": "#B39DDB"
+        },
+        {
+          "name": "deep-purple-300",
+          "value": "#9575CD"
+        },
+        {
+          "name": "deep-purple-400",
+          "value": "#7E57C2"
+        },
+        {
+          "name": "deep-purple-500",
+          "value": "#673AB7"
+        },
+        {
+          "name": "deep-purple-600",
+          "value": "#5E35B1"
+        },
+        {
+          "name": "deep-purple-700",
+          "value": "#512DA8"
+        },
+        {
+          "name": "deep-purple-800",
+          "value": "#4527A0"
+        },
+        {
+          "name": "deep-purple-900",
+          "value": "#311B92"
+        },
+        {
+          "name": "deep-purple-a100",
+          "value": "#B388FF"
+        },
+        {
+          "name": "deep-purple-a200",
+          "value": "#7C4DFF"
+        },
+        {
+          "name": "deep-purple-a400",
+          "value": "#651FFF"
+        },
+        {
+          "name": "deep-purple-a700",
+          "value": "#6200EA"
+        }
+      ]
+    },
+    {
+      "label": "Indigo",
+      "name": "indigo",
+      "children": [
+        {
+          "name": "indigo-50",
+          "value": "#E8EAF6"
+        },
+        {
+          "name": "indigo-100",
+          "value": "#C5CAE9"
+        },
+        {
+          "name": "indigo-200",
+          "value": "#9FA8DA"
+        },
+        {
+          "name": "indigo-300",
+          "value": "#7986CB"
+        },
+        {
+          "name": "indigo-400",
+          "value": "#5C6BC0"
+        },
+        {
+          "name": "indigo-500",
+          "value": "#3F51B5"
+        },
+        {
+          "name": "indigo-600",
+          "value": "#3949AB"
+        },
+        {
+          "name": "indigo-700",
+          "value": "#303F9F"
+        },
+        {
+          "name": "indigo-800",
+          "value": "#283593"
+        },
+        {
+          "name": "indigo-900",
+          "value": "#1A237E"
+        },
+        {
+          "name": "indigo-a100",
+          "value": "#8C9EFF"
+        },
+        {
+          "name": "indigo-a200",
+          "value": "#536DFE"
+        },
+        {
+          "name": "indigo-a400",
+          "value": "#3D5AFE"
+        },
+        {
+          "name": "indigo-a700",
+          "value": "#304FFE"
+        }
+      ]
+    },
+    {
+      "label": "Blue",
+      "name": "blue",
+      "children": [
+        {
+          "name": "blue-50",
+          "value": "#E3F2FD"
+        },
+        {
+          "name": "blue-100",
+          "value": "#BBDEFB"
+        },
+        {
+          "name": "blue-200",
+          "value": "#90CAF9"
+        },
+        {
+          "name": "blue-300",
+          "value": "#64B5F6"
+        },
+        {
+          "name": "blue-400",
+          "value": "#42A5F5"
+        },
+        {
+          "name": "blue-500",
+          "value": "#2196F3"
+        },
+        {
+          "name": "blue-600",
+          "value": "#1E88E5"
+        },
+        {
+          "name": "blue-700",
+          "value": "#1976D2"
+        },
+        {
+          "name": "blue-800",
+          "value": "#1565C0"
+        },
+        {
+          "name": "blue-900",
+          "value": "#0D47A1"
+        },
+        {
+          "name": "blue-a100",
+          "value": "#82B1FF"
+        },
+        {
+          "name": "blue-a200",
+          "value": "#448AFF"
+        },
+        {
+          "name": "blue-a400",
+          "value": "#2979FF"
+        },
+        {
+          "name": "blue-a700",
+          "value": "#2962FF"
+        }
+      ]
+    },
+    {
+      "label": "Light Blue",
+      "name": "light-blue",
+      "children": [
+        {
+          "name": "light-blue-50",
+          "value": "#E1F5FE"
+        },
+        {
+          "name": "light-blue-100",
+          "value": "#B3E5FC"
+        },
+        {
+          "name": "light-blue-200",
+          "value": "#81D4FA"
+        },
+        {
+          "name": "light-blue-300",
+          "value": "#4FC3F7"
+        },
+        {
+          "name": "light-blue-400",
+          "value": "#29B6F6"
+        },
+        {
+          "name": "light-blue-500",
+          "value": "#03A9F4"
+        },
+        {
+          "name": "light-blue-600",
+          "value": "#039BE5"
+        },
+        {
+          "name": "light-blue-700",
+          "value": "#0288D1"
+        },
+        {
+          "name": "light-blue-800",
+          "value": "#0277BD"
+        },
+        {
+          "name": "light-blue-900",
+          "value": "#01579B"
+        },
+        {
+          "name": "light-blue-a100",
+          "value": "#80D8FF"
+        },
+        {
+          "name": "light-blue-a200",
+          "value": "#40C4FF"
+        },
+        {
+          "name": "light-blue-a400",
+          "value": "#00B0FF"
+        },
+        {
+          "name": "light-blue-a700",
+          "value": "#0091EA"
+        }
+      ]
+    },
+    {
+      "label": "Cyan",
+      "name": "cyan",
+      "children": [
+        {
+          "name": "cyan-50",
+          "value": "#E0F7FA"
+        },
+        {
+          "name": "cyan-100",
+          "value": "#B2EBF2"
+        },
+        {
+          "name": "cyan-200",
+          "value": "#80DEEA"
+        },
+        {
+          "name": "cyan-300",
+          "value": "#4DD0E1"
+        },
+        {
+          "name": "cyan-400",
+          "value": "#26C6DA"
+        },
+        {
+          "name": "cyan-500",
+          "value": "#00BCD4"
+        },
+        {
+          "name": "cyan-600",
+          "value": "#00ACC1"
+        },
+        {
+          "name": "cyan-700",
+          "value": "#0097A7"
+        },
+        {
+          "name": "cyan-800",
+          "value": "#00838F"
+        },
+        {
+          "name": "cyan-900",
+          "value": "#006064"
+        },
+        {
+          "name": "cyan-a100",
+          "value": "#84FFFF"
+        },
+        {
+          "name": "cyan-a200",
+          "value": "#18FFFF"
+        },
+        {
+          "name": "cyan-a400",
+          "value": "#00E5FF"
+        },
+        {
+          "name": "cyan-a700",
+          "value": "#00B8D4"
+        }
+      ]
+    },
+    {
+      "label": "Teal",
+      "name": "teal",
+      "children": [
+        {
+          "name": "teal-50",
+          "value": "#E0F2F1"
+        },
+        {
+          "name": "teal-100",
+          "value": "#B2DFDB"
+        },
+        {
+          "name": "teal-200",
+          "value": "#80CBC4"
+        },
+        {
+          "name": "teal-300",
+          "value": "#4DB6AC"
+        },
+        {
+          "name": "teal-400",
+          "value": "#26A69A"
+        },
+        {
+          "name": "teal-500",
+          "value": "#009688"
+        },
+        {
+          "name": "teal-600",
+          "value": "#00897B"
+        },
+        {
+          "name": "teal-700",
+          "value": "#00796B"
+        },
+        {
+          "name": "teal-800",
+          "value": "#00695C"
+        },
+        {
+          "name": "teal-900",
+          "value": "#004D40"
+        },
+        {
+          "name": "teal-a100",
+          "value": "#A7FFEB"
+        },
+        {
+          "name": "teal-a200",
+          "value": "#64FFDA"
+        },
+        {
+          "name": "teal-a400",
+          "value": "#1DE9B6"
+        },
+        {
+          "name": "teal-a700",
+          "value": "#00BFA5"
+        }
+      ]
+    },
+    {
+      "label": "Green",
+      "name": "green",
+      "children": [
+        {
+          "name": "green-50",
+          "value": "#E8F5E9"
+        },
+        {
+          "name": "green-100",
+          "value": "#C8E6C9"
+        },
+        {
+          "name": "green-200",
+          "value": "#A5D6A7"
+        },
+        {
+          "name": "green-300",
+          "value": "#81C784"
+        },
+        {
+          "name": "green-400",
+          "value": "#66BB6A"
+        },
+        {
+          "name": "green-500",
+          "value": "#4CAF50"
+        },
+        {
+          "name": "green-600",
+          "value": "#43A047"
+        },
+        {
+          "name": "green-700",
+          "value": "#388E3C"
+        },
+        {
+          "name": "green-800",
+          "value": "#2E7D32"
+        },
+        {
+          "name": "green-900",
+          "value": "#1B5E20"
+        },
+        {
+          "name": "green-a100",
+          "value": "#B9F6CA"
+        },
+        {
+          "name": "green-a200",
+          "value": "#69F0AE"
+        },
+        {
+          "name": "green-a400",
+          "value": "#00E676"
+        },
+        {
+          "name": "green-a700",
+          "value": "#00C853"
+        }
+      ]
+    },
+    {
+      "label": "Light Green",
+      "name": "light-green",
+      "children": [
+        {
+          "name": "light-green-50",
+          "value": "#F1F8E9"
+        },
+        {
+          "name": "light-green-100",
+          "value": "#DCEDC8"
+        },
+        {
+          "name": "light-green-200",
+          "value": "#C5E1A5"
+        },
+        {
+          "name": "light-green-300",
+          "value": "#AED581"
+        },
+        {
+          "name": "light-green-400",
+          "value": "#9CCC65"
+        },
+        {
+          "name": "light-green-500",
+          "value": "#8BC34A"
+        },
+        {
+          "name": "light-green-600",
+          "value": "#7CB342"
+        },
+        {
+          "name": "light-green-700",
+          "value": "#689F38"
+        },
+        {
+          "name": "light-green-800",
+          "value": "#558B2F"
+        },
+        {
+          "name": "light-green-900",
+          "value": "#33691E"
+        },
+        {
+          "name": "light-green-a100",
+          "value": "#CCFF90"
+        },
+        {
+          "name": "light-green-a200",
+          "value": "#B2FF59"
+        },
+        {
+          "name": "light-green-a400",
+          "value": "#76FF03"
+        },
+        {
+          "name": "light-green-a700",
+          "value": "#64DD17"
+        }
+      ]
+    },
+    {
+      "label": "Lime",
+      "name": "lime",
+      "children": [
+        {
+          "name": "lime-50",
+          "value": "#F9FBE7"
+        },
+        {
+          "name": "lime-100",
+          "value": "#F0F4C3"
+        },
+        {
+          "name": "lime-200",
+          "value": "#E6EE9C"
+        },
+        {
+          "name": "lime-300",
+          "value": "#DCE775"
+        },
+        {
+          "name": "lime-400",
+          "value": "#D4E157"
+        },
+        {
+          "name": "lime-500",
+          "value": "#CDDC39"
+        },
+        {
+          "name": "lime-600",
+          "value": "#C0CA33"
+        },
+        {
+          "name": "lime-700",
+          "value": "#AFB42B"
+        },
+        {
+          "name": "lime-800",
+          "value": "#9E9D24"
+        },
+        {
+          "name": "lime-900",
+          "value": "#827717"
+        },
+        {
+          "name": "lime-a100",
+          "value": "#F4FF81"
+        },
+        {
+          "name": "lime-a200",
+          "value": "#EEFF41"
+        },
+        {
+          "name": "lime-a400",
+          "value": "#C6FF00"
+        },
+        {
+          "name": "lime-a700",
+          "value": "#AEEA00"
+        }
+      ]
+    },
+    {
+      "label": "Yellow",
+      "name": "yellow",
+      "children": [
+        {
+          "name": "yellow-50",
+          "value": "#FFFDE7"
+        },
+        {
+          "name": "yellow-100",
+          "value": "#FFF9C4"
+        },
+        {
+          "name": "yellow-200",
+          "value": "#FFF59D"
+        },
+        {
+          "name": "yellow-300",
+          "value": "#FFF176"
+        },
+        {
+          "name": "yellow-400",
+          "value": "#FFEE58"
+        },
+        {
+          "name": "yellow-500",
+          "value": "#FFEB3B"
+        },
+        {
+          "name": "yellow-600",
+          "value": "#FDD835"
+        },
+        {
+          "name": "yellow-700",
+          "value": "#FBC02D"
+        },
+        {
+          "name": "yellow-800",
+          "value": "#F9A825"
+        },
+        {
+          "name": "yellow-900",
+          "value": "#F57F17"
+        },
+        {
+          "name": "yellow-a100",
+          "value": "#FFFF8D"
+        },
+        {
+          "name": "yellow-a200",
+          "value": "#FFFF00"
+        },
+        {
+          "name": "yellow-a400",
+          "value": "#FFEA00"
+        },
+        {
+          "name": "yellow-a700",
+          "value": "#FFD600"
+        }
+      ]
+    },
+    {
+      "label": "Amber",
+      "name": "amber",
+      "children": [
+        {
+          "name": "amber-50",
+          "value": "#FFF8E1"
+        },
+        {
+          "name": "amber-100",
+          "value": "#FFECB3"
+        },
+        {
+          "name": "amber-200",
+          "value": "#FFE082"
+        },
+        {
+          "name": "amber-300",
+          "value": "#FFD54F"
+        },
+        {
+          "name": "amber-400",
+          "value": "#FFCA28"
+        },
+        {
+          "name": "amber-500",
+          "value": "#FFC107"
+        },
+        {
+          "name": "amber-600",
+          "value": "#FFB300"
+        },
+        {
+          "name": "amber-700",
+          "value": "#FFA000"
+        },
+        {
+          "name": "amber-800",
+          "value": "#FF8F00"
+        },
+        {
+          "name": "amber-900",
+          "value": "#FF6F00"
+        },
+        {
+          "name": "amber-a100",
+          "value": "#FFE57F"
+        },
+        {
+          "name": "amber-a200",
+          "value": "#FFD740"
+        },
+        {
+          "name": "amber-a400",
+          "value": "#FFC400"
+        },
+        {
+          "name": "amber-a700",
+          "value": "#FFAB00"
+        }
+      ]
+    },
+    {
+      "label": "Orange",
+      "name": "orange",
+      "children": [
+        {
+          "name": "orange-50",
+          "value": "#FFF3E0"
+        },
+        {
+          "name": "orange-100",
+          "value": "#FFE0B2"
+        },
+        {
+          "name": "orange-200",
+          "value": "#FFCC80"
+        },
+        {
+          "name": "orange-300",
+          "value": "#FFB74D"
+        },
+        {
+          "name": "orange-400",
+          "value": "#FFA726"
+        },
+        {
+          "name": "orange-500",
+          "value": "#FF9800"
+        },
+        {
+          "name": "orange-600",
+          "value": "#FB8C00"
+        },
+        {
+          "name": "orange-700",
+          "value": "#F57C00"
+        },
+        {
+          "name": "orange-800",
+          "value": "#EF6C00"
+        },
+        {
+          "name": "orange-900",
+          "value": "#E65100"
+        },
+        {
+          "name": "orange-a100",
+          "value": "#FFD180"
+        },
+        {
+          "name": "orange-a200",
+          "value": "#FFAB40"
+        },
+        {
+          "name": "orange-a400",
+          "value": "#FF9100"
+        },
+        {
+          "name": "orange-a700",
+          "value": "#FF6D00"
+        }
+      ]
+    },
+    {
+      "label": "Deep Orange",
+      "name": "deep-orange",
+      "children": [
+        {
+          "name": "deep-orange-50",
+          "value": "#FBE9E7"
+        },
+        {
+          "name": "deep-orange-100",
+          "value": "#FFCCBC"
+        },
+        {
+          "name": "deep-orange-200",
+          "value": "#FFAB91"
+        },
+        {
+          "name": "deep-orange-300",
+          "value": "#FF8A65"
+        },
+        {
+          "name": "deep-orange-400",
+          "value": "#FF7043"
+        },
+        {
+          "name": "deep-orange-500",
+          "value": "#FF5722"
+        },
+        {
+          "name": "deep-orange-600",
+          "value": "#F4511E"
+        },
+        {
+          "name": "deep-orange-700",
+          "value": "#E64A19"
+        },
+        {
+          "name": "deep-orange-800",
+          "value": "#D84315"
+        },
+        {
+          "name": "deep-orange-900",
+          "value": "#BF360C"
+        },
+        {
+          "name": "deep-orange-a100",
+          "value": "#FF9E80"
+        },
+        {
+          "name": "deep-orange-a200",
+          "value": "#FF6E40"
+        },
+        {
+          "name": "deep-orange-a400",
+          "value": "#FF3D00"
+        },
+        {
+          "name": "deep-orange-a700",
+          "value": "#DD2C00"
+        }
+      ]
+    },
+    {
+      "label": "Brown",
+      "name": "brown",
+      "children": [
+        {
+          "name": "brown-50",
+          "value": "#EFEBE9"
+        },
+        {
+          "name": "brown-100",
+          "value": "#D7CCC8"
+        },
+        {
+          "name": "brown-200",
+          "value": "#BCAAA4"
+        },
+        {
+          "name": "brown-300",
+          "value": "#A1887F"
+        },
+        {
+          "name": "brown-400",
+          "value": "#8D6E63"
+        },
+        {
+          "name": "brown-500",
+          "value": "#795548"
+        },
+        {
+          "name": "brown-600",
+          "value": "#6D4C41"
+        },
+        {
+          "name": "brown-700",
+          "value": "#5D4037"
+        },
+        {
+          "name": "brown-800",
+          "value": "#4E342E"
+        },
+        {
+          "name": "brown-900",
+          "value": "#3E2723"
+        }
+      ]
+    },
+    {
+      "label": "Grey",
+      "name": "grey",
+      "children": [
+        {
+          "name": "grey-50",
+          "value": "#FAFAFA"
+        },
+        {
+          "name": "grey-100",
+          "value": "#F5F5F5"
+        },
+        {
+          "name": "grey-200",
+          "value": "#EEEEEE"
+        },
+        {
+          "name": "grey-300",
+          "value": "#E0E0E0"
+        },
+        {
+          "name": "grey-400",
+          "value": "#BDBDBD"
+        },
+        {
+          "name": "grey-500",
+          "value": "#9E9E9E"
+        },
+        {
+          "name": "grey-600",
+          "value": "#757575"
+        },
+        {
+          "name": "grey-700",
+          "value": "#616161"
+        },
+        {
+          "name": "grey-800",
+          "value": "#424242"
+        },
+        {
+          "name": "grey-900",
+          "value": "#212121"
+        }
+      ]
+    },
+    {
+      "label": "Blue Grey",
+      "name": "blue-grey",
+      "children": [
+        {
+          "name": "blue-grey-50",
+          "value": "#ECEFF1"
+        },
+        {
+          "name": "blue-grey-100",
+          "value": "#CFD8DC"
+        },
+        {
+          "name": "blue-grey-200",
+          "value": "#B0BEC5"
+        },
+        {
+          "name": "blue-grey-300",
+          "value": "#90A4AE"
+        },
+        {
+          "name": "blue-grey-400",
+          "value": "#78909C"
+        },
+        {
+          "name": "blue-grey-500",
+          "value": "#607D8B"
+        },
+        {
+          "name": "blue-grey-600",
+          "value": "#546E7A"
+        },
+        {
+          "name": "blue-grey-700",
+          "value": "#455A64"
+        },
+        {
+          "name": "blue-grey-800",
+          "value": "#37474F"
+        },
+        {
+          "name": "blue-grey-900",
+          "value": "#263238"
+        }
+      ]
+    }
+  ]
+}

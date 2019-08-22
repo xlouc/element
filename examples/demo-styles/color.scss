@@ -70,3 +70,77 @@
 .demo-color-box-lite {
   color: #303133;
 }
+
+
+.color-palettes {
+  margin: 0 1%;
+  padding: 0;
+}
+
+.color-palette {
+  display: inline-block;
+  width: 31%;
+  margin: 45px 1%;
+}
+
+.color-title {
+  margin: 0 0 24px;
+  color: #5c6b77;
+  font-weight: 500;
+  font-size: 22px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.color-description {
+  display: block;
+  color: #777;
+  font-weight: lighter;
+  font-size: 14px;
+}
+
+.main-color {
+  text-align: left;
+  &:hover {
+    .main-color-value {
+      left: 0;
+      opacity: 0.7;
+    }
+  }
+}
+
+.main-color-item {
+  position: relative;
+  height: 44px;
+  margin-right: 4px;
+  padding: 0 12px;
+  font-size: 14px;
+  font-family: Consolas, sans-serif;
+  line-height: 44px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:first-child {
+    border-radius: 4px 4px 0 0;
+  }
+
+  &:hover {
+    margin-right: -8px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .main-color-text {
+    float: left;
+    transition: all 0.3s;
+  }
+
+  .main-color-value {
+    position: relative;
+    left: 3px;
+    float: right;
+    transform: scale(0.85);
+    transform-origin: 100% 50%;
+    opacity: 0;
+    transition: all 0.3s;
+  }
+}

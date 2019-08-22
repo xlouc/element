@@ -1,6 +1,7 @@
 <script>
   import bus from '../bus';
-  import { tintColor } from '../color.js';
+  import swatches from '../colors.json';
+  import { tintColor, singleContrast } from '../color.js';
   import { ACTION_USER_CONFIG_UPDATE } from '../constant.js';
   const varMap = {
     'primary': '$--color-primary',
@@ -20,11 +21,11 @@
     'borderExtraLight': '$--border-color-extra-light'
   };
   const original = {
-    primary: '#409EFF',
-    success: '#67C23A',
-    warning: '#E6A23C',
-    danger: '#F56C6C',
-    info: '#909399',
+    primary: swatches.quick['blue-500'],
+    success: swatches.quick['green-500'],
+    warning: swatches.quick['orange-500'],
+    danger: swatches.quick['red-500'],
+    info: swatches.quick['grey-500'],
     white: '#FFFFFF',
     black: '#000000',
     textPrimary: '#303133',
@@ -47,11 +48,29 @@
       tintColor(color, tint) {
         return tintColor(color, tint);
       },
+
       setGlobal() {
         if (window.userThemeConfig) {
           this.global = window.userThemeConfig.global;
         }
       }
+    },
+    computed:{
+      colors() {
+        return swatches.colors
+      },
+      textColorMap() {
+        let textColorMap = {}
+        Object.keys(swatches.quick).forEach(function(key){
+          let color = singleContrast(swatches.quick[key])
+          if(color.ratio < 3){
+            textColorMap[key] = '#000'
+          }else{
+            textColorMap[key] = '#fff'
+          }
+        })
+        return textColorMap
+      },
     },
     data() {
       return {
@@ -101,7 +120,7 @@ Yak 主要品牌颜色是鲜艳、友好的蓝色。
 <el-row :gutter="12">
   <el-col :span="10" :xs="{span: 12}">
     <div class="demo-color-box" :style="{ background: primary }">Brand Color
-      <div class="value">#409EFF</div>
+      <div class="value">{{primary}}</div>
       <div class="bg-color-sub" :style="{ background: tintColor(primary, 0.9) }">
         <div
           class="bg-blue-sub-item"
@@ -122,7 +141,7 @@ Yak 主要品牌颜色是鲜艳、友好的蓝色。
   <el-col :span="6" :xs="{span: 12}">
     <div class="demo-color-box"
     :style="{ background: success }"
-    >Success<div class="value">#67C23A</div>
+    >Success<div class="value">{{success}}</div>
       <div 
         class="bg-color-sub"
       >
@@ -139,7 +158,7 @@ Yak 主要品牌颜色是鲜艳、友好的蓝色。
   <el-col :span="6" :xs="{span: 12}">
     <div class="demo-color-box"
     :style="{ background: warning }"
-    >Warning<div class="value">#E6A23C</div>
+    >Warning<div class="value">{{warning}}</div>
       <div 
           class="bg-color-sub"
         >
@@ -156,7 +175,7 @@ Yak 主要品牌颜色是鲜艳、友好的蓝色。
   <el-col :span="6" :xs="{span: 12}">
     <div class="demo-color-box"
     :style="{ background: danger }"
-    >Danger<div class="value">#F56C6C</div>
+    >Danger<div class="value">{{danger}}</div>
       <div 
           class="bg-color-sub"
         >
@@ -173,7 +192,7 @@ Yak 主要品牌颜色是鲜艳、友好的蓝色。
   <el-col :span="6" :xs="{span: 12}">
     <div class="demo-color-box"
     :style="{ background: info }"
-    >Info<div class="value">#909399</div>
+    >Info<div class="value">{{info}}</div>
       <div 
           class="bg-color-sub"
         >
@@ -242,3 +261,23 @@ Yak 主要品牌颜色是鲜艳、友好的蓝色。
     </div>
   </el-col>
 </el-row>
+
+## 基础色板
+
+Yak 的基础色板共计 254 个颜色，包含 19 个主色以及衍生色。这些颜色基本可以满足中后台设计中对于颜色的需求。
+
+<div class="color-palettes">
+  <div class="color-palette" v-for="color in colors" :key="color.name">
+    <div class="color-title">{{color.label}}</div>
+    <div class="main-color">
+      <div class="main-color-item" v-for="({name, value}, index) in color.children"
+        :key="name"
+        v-clipboard:copy="value"
+        v-clipboard:success="() => $onCopy(`${name} copied: ${value}`)"
+        :style="{background: value, color: textColorMap[name]}">
+        <span class="main-color-text">{{name}}</span>
+        <span class="main-color-value">{{value}}</span>
+      </div>
+    </div>
+  </div>
+</div>
