@@ -8,7 +8,7 @@ Yak, 一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌
 
 ### 优化组件
 
-- [ ] 优化整个 UI 色彩体系，整体向风格偏向[Material](https://material.io/guidelines/style/color.html#color-color-tool)
+- [x] 优化整个 UI 色彩体系，整体向风格偏向[Material](https://material.io/guidelines/style/color.html#color-color-tool)
 - [ ] 优化`Drawer 抽屉`组件
 - [ ] 优化`Timeline 时间线`组件
 - [ ] 优化`NavMenu 导航菜单`组件
