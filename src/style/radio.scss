@@ -175,8 +175,8 @@
     }
 
     &::after {
-      width: 8px;
-      height: 8px;
+      width: $--radio-input-width / 2;
+      height: $--radio-input-height / 2;
       opacity: 0;
       content: "";
       border-radius: $--radio-input-border-radius;
