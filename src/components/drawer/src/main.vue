@@ -9,7 +9,7 @@
           aria-labelledby="el-drawer__title"
           class="el-drawer"
           :class="[direction, customClass]"
-          :style="isHorizontal ? `width: ${size}` : `height: ${size}`"
+          :style="drawerStyle"
           ref="drawer"
           role="presentation"
         >
@@ -38,6 +38,18 @@ import emitter from 'yak-ui/src/mixins/emitter'
 export default {
   name: 'ElDrawer',
   mixins: [Popup, emitter, Migrating],
+
+  inject: {
+    parentDrawer: {
+      default: () => null
+    }
+  },
+  provide() {
+    return {
+      parentDrawer: this
+    }
+  },
+
   props: {
     appendToBody: {
       type: Boolean,
@@ -85,16 +97,37 @@ export default {
       default: true
     }
   },
+
   computed: {
     isHorizontal() {
       return this.direction === 'rtl' || this.direction === 'ltr'
+    },
+    drawerStyle() {
+      const { isHorizontal, isPush, size, direction } = this
+      let drawerStyle = {}
+      if (isHorizontal) {
+        drawerStyle['width'] = size
+      } else {
+        drawerStyle['height'] = size
+      }
+      if (isPush) {
+        if (direction === 'rtl' || direction === 'ltr') {
+          drawerStyle.transform = `translateX(${direction === 'ltr' ? 180 : -180}px)`
+        } else {
+          drawerStyle.transform = `translateY(${direction === 'ttb' ? 180 : -180}px)`
+        }
+      }
+      return drawerStyle
     }
   },
+
   data() {
     return {
-      closed: false
+      closed: false,
+      isPush: false
     }
   },
+
   watch: {
     visible(val) {
       if (val) {
@@ -108,7 +141,16 @@ export default {
       }
     }
   },
+
   methods: {
+    push() {
+      this.isPush = true
+    },
+
+    pull() {
+      this.isPush = false
+    },
+
     afterEnter() {
       this.$emit('opened')
     },
@@ -138,12 +180,27 @@ export default {
       }
     }
   },
+
   mounted() {
     if (this.visible) {
       this.rendered = true
       this.open()
     }
   },
+
+  updated() {
+    this.$nextTick(() => {
+      if (this.preVisible !== this.visible && this.parentDrawer) {
+        if (this.visible) {
+          this.parentDrawer.push()
+        } else {
+          this.parentDrawer.pull()
+        }
+      }
+      this.preVisible = this.visible
+    })
+  },
+
   destroyed() {
     // if appendToBody is true, remove DOM node after destroy
     if (this.appendToBody && this.$el && this.$el.parentNode) {

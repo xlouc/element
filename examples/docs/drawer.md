@@ -167,8 +167,7 @@ export default {
 
 <el-drawer
   title="我是外面的 Drawer"
-  :visible.sync="drawer"
-  size="50%">
+  :visible.sync="drawer">
   <div>
    <el-button @click="innerDrawer = true">打开里面的!</el-button>
    <el-drawer
