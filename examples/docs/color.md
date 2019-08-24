@@ -1,7 +1,7 @@
 <script>
   import bus from '../bus';
   import swatches from '../colors.json';
-  import { tintColor, singleContrast } from '../color.js';
+  import { tintColor, singleContrast } from 'main/utils/color.js';
   import { ACTION_USER_CONFIG_UPDATE } from '../constant.js';
   const varMap = {
     'primary': '$--color-primary',

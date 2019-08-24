@@ -4,7 +4,7 @@
 
 ### 基础用法
 
-:::demo 由`type`属性来选择tag的类型，也可以通过`color`属性来自定义背景色。
+:::demo 由`type`属性来选择tag的类型，也可以通过`color`属性来自定义主题色。
 
 ```html
 <el-tag>标签一</el-tag>
@@ -12,6 +12,9 @@
 <el-tag type="info">标签三</el-tag>
 <el-tag type="warning">标签四</el-tag>
 <el-tag type="danger">标签五</el-tag>
+<el-tag color="#9C27B0">标签六</el-tag>
+<el-tag color="#E91E63">标签七</el-tag>
+<el-tag color="#607D8B">标签八</el-tag>
 ```
 :::
 
@@ -150,7 +153,7 @@ Tag 组件提供了三个不同的主题：`dark`、`light` 和 `plain`
   <el-tag
     v-for="item in items"
     :key="item.label"
-    :type="item.type"
+    v-bind="item"
     effect="dark">
     {{ item.label }}
   </el-tag>
@@ -160,7 +163,7 @@ Tag 组件提供了三个不同的主题：`dark`、`light` 和 `plain`
   <el-tag
     v-for="item in items"
     :key="item.label"
-    :type="item.type"
+    v-bind="item"
     effect="plain">
     {{ item.label }}
   </el-tag>
@@ -175,7 +178,10 @@ Tag 组件提供了三个不同的主题：`dark`、`light` 和 `plain`
           { type: 'success', label: '标签二' },
           { type: 'info', label: '标签三' },
           { type: 'danger', label: '标签四' },
-          { type: 'warning', label: '标签五' }
+          { type: 'warning', label: '标签五' },
+          { color: '#9C27B0', label: '标签六' },
+          { color: '#E91E63', label: '标签七' },
+          { color: '#607D8B', label: '标签八' },
         ]
       }
     }
@@ -191,7 +197,7 @@ Tag 组件提供了三个不同的主题：`dark`、`light` 和 `plain`
 | closable | 是否可关闭 | boolean | — | false |
 | disable-transitions | 是否禁用渐变动画 | boolean | — | false |
 | hit | 是否有边框描边 | boolean | — | false |
-| color | 背景色 | string | — | — |
+| color | 主题色 | string | — | — |
 | size | 尺寸 | string | medium / small / mini | — |
 | effect | 主题 | string | dark / light / plain | light |
 
