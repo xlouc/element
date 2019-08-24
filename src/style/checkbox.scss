@@ -157,11 +157,8 @@
           transform: rotate(45deg) scale(1) translate(-50%, -50%);
         }
       }
-
-      & + .el-checkbox__label {
-        color: $--checkbox-checked-font-color;
-      }
     }
+    
     @include when(focus) { /*focus时 视觉上区分*/
       .el-checkbox__inner {
         border-color: $--checkbox-input-border-color-hover;

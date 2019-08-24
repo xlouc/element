@@ -59,9 +59,9 @@
     background: transparent;
     font-size: $--message-close-size;
     cursor: pointer;
-
+    
     .el-message-box__close {
-      color: $--color-info;
+      color: $--color-text-secondary;
     }
 
     &:focus, &:hover {

@@ -37,7 +37,7 @@ $--color-warning: $orange-500 !default;
 /// color|1|Functional Color|1
 $--color-danger:  $red-500 !default;
 /// color|1|Functional Color|1
-$--color-info: $grey-500 !default;
+$--color-info: $cyan-500 !default;
 
 $--color-success-light: mix($--color-white, $--color-success, 80%) !default;
 $--color-warning-light: mix($--color-white, $--color-warning, 80%) !default;
@@ -48,6 +48,7 @@ $--color-success-lighter: mix($--color-white, $--color-success, 90%) !default;
 $--color-warning-lighter: mix($--color-white, $--color-warning, 90%) !default;
 $--color-danger-lighter: mix($--color-white, $--color-danger, 90%) !default;
 $--color-info-lighter: mix($--color-white, $--color-info, 90%) !default;
+
 /// color|1|Font Color|2
 $--color-text-primary: #303133 !default;
 /// color|1|Font Color|2
@@ -56,6 +57,7 @@ $--color-text-regular: #606266 !default;
 $--color-text-secondary: #909399 !default;
 /// color|1|Font Color|2
 $--color-text-placeholder: #C0C4CC !default;
+
 /// color|1|Border Color|3
 $--border-color-base: #DCDFE6 !default;
 /// color|1|Border Color|3
@@ -298,7 +300,7 @@ $--select-option-hover-background: $--background-color-base !default;
 $--select-option-selected-font-color: $--color-primary !default;
 $--select-option-selected-hover: $--background-color-base !default;
 
-$--select-group-color: $--color-info !default;
+$--select-group-color: $--color-text-placeholder !default;
 $--select-group-height: 30px !default;
 $--select-group-font-size: 12px !default;
 
