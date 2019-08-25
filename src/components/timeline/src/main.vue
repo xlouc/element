@@ -8,6 +8,10 @@ export default {
     reverse: {
       type: Boolean,
       default: false
+    },
+    pending: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -21,7 +25,8 @@ export default {
     const reverse = this.reverse
     const classes = {
       'el-timeline': true,
-      'is-reverse': reverse
+      'is-reverse': reverse,
+      'is-pending': this.pending
     }
     let slots = this.$slots.default || []
     if (reverse) {

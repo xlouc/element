@@ -11,4 +11,14 @@
       display: none;
     }
   }
+
+  @include when(pending) {
+    .el-timeline-item:nth-last-child(2) {
+      padding-bottom: 48px;
+      
+      .el-timeline-item__tail {
+        border-left-style: dotted;
+      }
+    }
+  }
 }

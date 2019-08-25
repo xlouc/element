@@ -56,8 +56,9 @@ Timeline 可拆分成多个按照时间戳正序或倒序排列的 activity，�
 :::demo
 ```html
 <div class="block">
-  <el-timeline>
+  <el-timeline pending>
     <el-timeline-item
+      size="large"
       v-for="(activity, index) in activities"
       :key="index"
       :icon="activity.icon"
@@ -67,6 +68,7 @@ Timeline 可拆分成多个按照时间戳正序或倒序排列的 activity，�
       :timestamp="activity.timestamp">
       {{activity.content}}
     </el-timeline-item>
+    <el-timeline-item><el-link type="primary">查看更多</el-link></el-timeline-item>
   </el-timeline>
 </div>
 
@@ -107,7 +109,7 @@ Timeline 可拆分成多个按照时间戳正序或倒序排列的 activity，�
 ```html
 <div class="block">
   <el-timeline>
-    <el-timeline-item timestamp="2018/4/12" placement="top">
+    <el-timeline-item timestamp="2018/4/12" placement="top" :size="18">
       <el-card>
         <h4>更新 Github 模板</h4>
         <p>王小虎 提交于 2018/4/12 20:46</p>
@@ -134,16 +136,16 @@ Timeline 可拆分成多个按照时间戳正序或倒序排列的 activity，�
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
 | reverse | 指定节点排序方向，默认为正序 | boolean | — | false |
+| pending | 指定是否最后一个节点为幽灵节点	 | boolean | — | false |
 
 ### Timeline-item Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
 | timestamp     | 时间戳 | string  | - | — |
-| hide-timestamp  | 是否隐藏时间戳 | boolean | — | false |
 | placement | 时间戳位置 | string | top / bottom | bottom |
 | type | 节点类型 | string | primary / success / warning / danger / info | - |
 | color | 节点颜色 | string | hsl / hsv / hex / rgb | - |
-| size | 节点尺寸 | string | normal / large | normal |
+| size | 节点尺寸 | string / number | normal / large | normal |
 | icon | 节点图标 | string | — | - |
 
 ### Timeline-Item Slot
