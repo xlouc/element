@@ -1,6 +1,7 @@
 <!-- @format -->
 
 <script type="text/jsx">
+import tinycolor from 'tinycolor2'
 import emitter from 'yak-ui/src/mixins/emitter';
 import Migrating from 'yak-ui/src/mixins/migrating';
 import Menubar from 'yak-ui/src/utils/menu/aria-menubar';
@@ -117,8 +118,7 @@ export default {
     },
     collapse: Boolean,
     backgroundColor: String,
-    textColor: String,
-    activeTextColor: String,
+    activeColor: String,
     collapseTransition: {
       type: Boolean,
       default: true
@@ -138,6 +138,29 @@ export default {
     },
     isMenuPopup() {
       return this.mode === 'horizontal' || (this.mode === 'vertical' && this.collapse);
+    },
+    colorMaps(){
+      if(!this.backgroundColor || !this.activeColor) return undefined
+      // 判断背景亮度是偏暗
+      let colorMaps = { backgroundColor: this.backgroundColor }
+
+      if (tinycolor(this.backgroundColor).isLight()) {
+        colorMaps.activeColor = this.activeColor
+        colorMaps.activeBackgroundColor = tinycolor.mix(this.activeColor, '#fff', 95).toString()
+      } else {
+        colorMaps.activeColor = tinycolor.mix(this.activeColor, '#fff', 95).toString()
+        colorMaps.activeBackgroundColor = this.activeColor
+      }
+
+      let ratio = tinycolor.readability(this.backgroundColor, '#fff')
+
+      if (ratio < 2.5) {
+        colorMaps.textColor = 'rgba(0, 0, 0, 0.65)'
+      } else {
+        colorMaps.textColor = 'rgba(255, 255, 255, 0.65)'
+      }
+
+      return colorMaps
     }
   },
   watch: {

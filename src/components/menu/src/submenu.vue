@@ -100,17 +100,8 @@ export default {
 
       return isActive
     },
-    hoverBackground() {
-      return this.rootMenu.hoverBackground
-    },
-    backgroundColor() {
-      return this.rootMenu.backgroundColor || ''
-    },
-    activeTextColor() {
-      return this.rootMenu.activeTextColor || ''
-    },
-    textColor() {
-      return this.rootMenu.textColor || ''
+    colorMaps() {
+      return this.rootMenu.colorMaps
     },
     mode() {
       return this.rootMenu.mode
@@ -119,15 +110,20 @@ export default {
       return this.rootMenu.isMenuPopup
     },
     titleStyle() {
-      if (this.mode !== 'horizontal') {
-        return {
-          color: this.textColor
+      if (!this.colorMaps) return
+      let itemStyle = {}
+      if (this.active) {
+        if (this.mode === 'horizontal' && this.isFirstLevel) {
+          itemStyle.color = this.colorMaps.activeBackgroundColor
+          itemStyle['border-bottom-color'] = this.colorMaps.activeBackgroundColor
+        } else {
+          itemStyle.color = this.colorMaps.activeColor
         }
+      } else {
+        itemStyle.color = this.colorMaps.textColor
       }
-      return {
-        borderBottomColor: this.active ? (this.rootMenu.activeTextColor ? this.activeTextColor : '') : 'transparent',
-        color: this.active ? this.activeTextColor : this.textColor
-      }
+      itemStyle.backgroundColor = this.colorMaps.backgroundColor
+      return itemStyle
     },
     isFirstLevel() {
       let isFirstLevel = true
@@ -206,14 +202,26 @@ export default {
       }
     },
     handleTitleMouseenter() {
-      if (this.mode === 'horizontal' && !this.rootMenu.backgroundColor) return
+      if (!this.colorMaps || this.active || this.disabled) return
       const title = this.$refs['submenu-title']
-      title && (title.style.backgroundColor = this.rootMenu.hoverBackground)
+      if (!title) return
+      if (this.mode === 'horizontal' && this.isFirstLevel) {
+        title.style.color = this.colorMaps.activeBackgroundColor
+        title.style['border-bottom-color'] = this.colorMaps.activeBackgroundColor
+      } else {
+        title.style.color = this.colorMaps.activeColor
+      }
     },
     handleTitleMouseleave() {
-      if (this.mode === 'horizontal' && !this.rootMenu.backgroundColor) return
+      if (!this.colorMaps || this.active || this.disabled) return
       const title = this.$refs['submenu-title']
-      title && (title.style.backgroundColor = this.rootMenu.backgroundColor || '')
+      if (!title) return
+      if (this.mode === 'horizontal') {
+        title.style.color = this.colorMaps.textColor
+        title.style['border-bottom-color'] = ''
+      } else {
+        title.style.color = this.colorMaps.textColor
+      }
     },
     updatePlacement() {
       this.currentPlacement = this.mode === 'horizontal' && this.isFirstLevel ? 'bottom-start' : 'right-start'
@@ -250,8 +258,8 @@ export default {
       opened,
       paddingStyle,
       titleStyle,
-      backgroundColor,
       rootMenu,
+      colorMaps,
       currentPlacement,
       menuTransitionName,
       mode,
@@ -273,7 +281,7 @@ export default {
           <ul
             role="menu"
             class={['el-menu el-menu--popup', `el-menu--popup-${currentPlacement}`]}
-            style={{ backgroundColor: rootMenu.backgroundColor || '' }}>
+            style={{ backgroundColor: colorMaps ? colorMaps.backgroundColor : '' }}>
             {$slots.default}
           </ul>
         </div>
@@ -282,7 +290,7 @@ export default {
 
     const inlineMenu = (
       <el-collapse-transition>
-        <ul role="menu" class="el-menu el-menu--inline" v-show={opened} style={{ backgroundColor: rootMenu.backgroundColor || '' }}>
+        <ul role="menu" class="el-menu el-menu--inline" v-show={opened} style={{ backgroundColor: colorMaps ? colorMaps.backgroundColor : '' }}>
           {$slots.default}
         </ul>
       </el-collapse-transition>
@@ -311,7 +319,7 @@ export default {
           on-click={this.handleClick}
           on-mouseenter={this.handleTitleMouseenter}
           on-mouseleave={this.handleTitleMouseleave}
-          style={[paddingStyle, titleStyle, { backgroundColor }]}>
+          style={[paddingStyle, titleStyle]}>
           {$slots.title}
           <i class={['el-submenu__icon-arrow', submenuTitleIcon]}></i>
         </div>

@@ -8,8 +8,9 @@
     "comments": true,
     "strings": true
   },
-  // prettier 插件配置
-  "prettier.eslintIntegration": true,
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
   // eslint 插件配置
   "eslint.enable": true,
   "eslint.run": "onType",

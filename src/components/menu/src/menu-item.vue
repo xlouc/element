@@ -5,7 +5,7 @@
     class="el-menu-item"
     role="menuitem"
     tabindex="-1"
-    :style="[paddingStyle, itemStyle, { backgroundColor }]"
+    :style="[paddingStyle, itemStyle]"
     :class="{
       'is-active': active,
       'is-disabled': disabled
@@ -54,29 +54,28 @@ export default {
     active() {
       return this.index === this.rootMenu.activeIndex
     },
-    hoverBackground() {
-      return this.rootMenu.hoverBackground
-    },
-    backgroundColor() {
-      return this.rootMenu.backgroundColor || ''
-    },
-    activeTextColor() {
-      return this.rootMenu.activeTextColor || ''
-    },
-    textColor() {
-      return this.rootMenu.textColor || ''
+    colorMaps() {
+      return this.rootMenu.colorMaps
     },
     mode() {
       return this.rootMenu.mode
     },
     itemStyle() {
-      const style = {
-        color: this.active ? this.activeTextColor : this.textColor
+      if (!this.colorMaps) return
+      let itemStyle = {}
+      if (this.active) {
+        if (this.mode === 'horizontal' && !this.isNested) {
+          itemStyle.color = this.colorMaps.activeBackgroundColor
+          itemStyle['border-bottom-color'] = this.colorMaps.activeBackgroundColor
+        } else {
+          itemStyle.color = this.colorMaps.activeColor
+          itemStyle.backgroundColor = this.colorMaps.activeBackgroundColor
+        }
+      } else {
+        itemStyle.color = this.colorMaps.textColor
+        itemStyle.backgroundColor = this.colorMaps.backgroundColor
       }
-      if (this.mode === 'horizontal' && !this.isNested) {
-        style.borderBottomColor = this.active ? (this.rootMenu.activeTextColor ? this.activeTextColor : '') : 'transparent'
-      }
-      return style
+      return itemStyle
     },
     isNested() {
       return this.parentMenu !== this.rootMenu
@@ -84,12 +83,22 @@ export default {
   },
   methods: {
     onMouseEnter() {
-      if (this.mode === 'horizontal' && !this.rootMenu.backgroundColor) return
-      this.$el.style.backgroundColor = this.hoverBackground
+      if (!this.colorMaps || this.active || this.disabled) return
+      if (this.mode === 'horizontal' && !this.isNested) {
+        this.$el.style.color = this.colorMaps.activeBackgroundColor
+        this.$el.style['border-bottom-color'] = this.colorMaps.activeBackgroundColor
+      } else {
+        this.$el.style.color = this.colorMaps.activeColor
+      }
     },
     onMouseLeave() {
-      if (this.mode === 'horizontal' && !this.rootMenu.backgroundColor) return
-      this.$el.style.backgroundColor = this.backgroundColor
+      if (!this.colorMaps || this.active || this.disabled) return
+      if (this.mode === 'horizontal' && !this.isNested) {
+        this.$el.style.color = this.colorMaps.textColor
+        this.$el.style['border-bottom-color'] = ''
+      } else {
+        this.$el.style.color = this.colorMaps.textColor
+      }
     },
     handleClick() {
       if (!this.disabled) {

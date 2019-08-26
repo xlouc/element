@@ -1,7 +1,7 @@
 <!-- @format -->
 
 <script>
-import { tintColor } from 'yak-ui/src/utils/color'
+import tinycolor from 'tinycolor2'
 export default {
   name: 'ElTag',
   props: {
@@ -38,17 +38,17 @@ export default {
     tagStyle() {
       const { effect } = this
       if (!this.color) return
-      let backgroundColor = tintColor(this.color, 0.9)
+      let backgroundColor = tinycolor.mix(this.color, '#fff', 90)
       let color = this.color
-      let borderColor = tintColor(this.color, 0.8)
+      let borderColor = tinycolor.mix(this.color, '#fff', 80)
       if (effect === 'dark') {
         backgroundColor = this.color
-        color = tintColor(this.color, 1)
+        color = tinycolor.mix(this.color, '$fff', 100)
         borderColor = this.color
       } else if (effect === 'plain') {
-        backgroundColor = tintColor(this.color, 1)
+        backgroundColor = tinycolor.mix(this.color, '#fff', 100)
         color = this.color
-        borderColor = tintColor(this.color, 0.4)
+        borderColor = tinycolor.mix(this.color, '#fff', 40)
       }
       return { backgroundColor, color, borderColor }
     }

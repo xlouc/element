@@ -1,7 +1,7 @@
 <script>
   import bus from '../bus';
   import swatches from '../colors.json';
-  import { tintColor, singleContrast } from 'main/utils/color.js';
+  import tinycolor from 'tinycolor2';
   import { ACTION_USER_CONFIG_UPDATE } from '../constant.js';
   const varMap = {
     'primary': '$--color-primary',
@@ -37,6 +37,7 @@
     borderLighter: '#EBEEF5',
     borderExtraLight: '#F2F6FC'
   }
+
   export default {
     created() {
       bus.$on(ACTION_USER_CONFIG_UPDATE, this.setGlobal);
@@ -45,8 +46,8 @@
       this.setGlobal();
     },
     methods: {
-      tintColor(color, tint) {
-        return tintColor(color, tint);
+      lighten(color, tint) {
+        return tinycolor.mix(color, '#fff', tint);
       },
 
       setGlobal() {
@@ -62,8 +63,8 @@
       textColorMap() {
         let textColorMap = {}
         Object.keys(swatches.quick).forEach(function(key){
-          let color = singleContrast(swatches.quick[key])
-          if(color.ratio < 3){
+          let ratio = tinycolor.readability(swatches.quick[key], '#fff')
+          if(ratio < 3){
             textColorMap[key] = '#000'
           }else{
             textColorMap[key] = '#fff'
@@ -121,12 +122,12 @@ Yak 主要品牌颜色是鲜艳、友好的蓝色。
   <el-col :span="10" :xs="{span: 12}">
     <div class="demo-color-box" :style="{ background: primary }">Brand Color
       <div class="value">{{primary}}</div>
-      <div class="bg-color-sub" :style="{ background: tintColor(primary, 0.9) }">
+      <div class="bg-color-sub" :style="{ background: lighten(primary, 90) }">
         <div
           class="bg-blue-sub-item"
           v-for="(item, key) in Array(8)"
           :key="key"
-          :style="{ background: tintColor(primary, (key + 1) / 10) }"
+          :style="{ background: lighten(primary, (key + 1) * 10) }"
         ></div>
       </div>
     </div>
@@ -149,7 +150,7 @@ Yak 主要品牌颜色是鲜艳、友好的蓝色。
           class="bg-success-sub-item" 
           v-for="(item, key) in Array(2)"
           :key="key"
-          :style="{ background: tintColor(success, (key + 8) / 10) }"
+          :style="{ background: lighten(success, (key + 8) * 10) }"
             >
         </div>
       </div>
@@ -166,7 +167,7 @@ Yak 主要品牌颜色是鲜艳、友好的蓝色。
           class="bg-success-sub-item" 
           v-for="(item, key) in Array(2)"
           :key="key"
-          :style="{ background: tintColor(warning, (key + 8) / 10) }"
+          :style="{ background: lighten(warning, (key + 8) * 10) }"
             >
         </div>
       </div>
@@ -183,7 +184,7 @@ Yak 主要品牌颜色是鲜艳、友好的蓝色。
           class="bg-success-sub-item" 
           v-for="(item, key) in Array(2)"
           :key="key"
-          :style="{ background: tintColor(danger, (key + 8) / 10) }"
+          :style="{ background: lighten(danger, (key + 8) * 10) }"
             >
         </div>
       </div>
@@ -200,7 +201,7 @@ Yak 主要品牌颜色是鲜艳、友好的蓝色。
           class="bg-success-sub-item" 
           v-for="(item, key) in Array(2)"
           :key="key"
-          :style="{ background: tintColor(info, (key + 8) / 10) }"
+          :style="{ background: lighten(info, (key + 8) * 10) }"
             >
         </div>
       </div>

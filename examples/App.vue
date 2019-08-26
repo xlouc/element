@@ -80,6 +80,10 @@ img {
     font-size: 13px;
     line-height: 20px;
   }
+
+  s code:not([class^='language-']) {
+    text-decoration: line-through;
+  }
 }
 
 @media (min-width: 768px) {
