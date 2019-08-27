@@ -9,13 +9,13 @@
 <script>
 import DocAbout from '../../about.md'
 export default {
-  components: { DocAbout }
-}
-</script>
-
-<style lang="scss">
-.doc-guide-about {
-  input[type='checkbox'] {
+  components: { DocAbout },
+  mounted() {
+    this.$nextTick(function() {
+      this.$el.querySelectorAll('input[type="checkbox"]').forEach(function(dom) {
+        dom.setAttribute('disabled', 'disabled')
+      })
+    })
   }
 }
-</style>
+</script>

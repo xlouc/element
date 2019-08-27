@@ -12,7 +12,7 @@ Yak, 一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌
 - [x] ~~更换图标库为[Ant Design 图标库](https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.29)~~
 - [x] ~~优化`Drawer 抽屉`组件~~
 - [x] ~~优化`Timeline 时间线`组件~~
-- [ ] 优化`NavMenu 导航菜单`组件
+- [x] ~~优化`NavMenu 导航菜单`组件~~
 - [x] ~~优化`Dialog 对话框`组件，弹出动画~~
 - [ ] 优化`Calendar 日历`组件
 - [ ] 优化`Steps 步骤条`组件
