@@ -19,6 +19,7 @@ export default {
         class={{
           'el-menu--horizontal': this.mode === 'horizontal',
           'el-menu--collapse': this.collapse,
+          'is-dark': this.isDark,
           "el-menu": true
         }}
       >
@@ -124,6 +125,7 @@ export default {
       default: true
     }
   },
+
   data() {
     return {
       activeIndex: this.defaultActive,
@@ -132,13 +134,21 @@ export default {
       submenus: {}
     };
   },
+
   computed: {
     hoverBackground() {
       return this.backgroundColor ? this.mixColor(this.backgroundColor, 0.2) : '';
     },
+
     isMenuPopup() {
       return this.mode === 'horizontal' || (this.mode === 'vertical' && this.collapse);
     },
+
+    isDark(){
+      if(!this.backgroundColor || !this.activeColor) return undefined
+      return tinycolor(this.backgroundColor).isDark()
+    },
+
     colorMaps(){
       if(!this.backgroundColor || !this.activeColor) return undefined
       // 判断背景亮度是偏暗

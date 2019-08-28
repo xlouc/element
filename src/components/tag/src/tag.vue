@@ -43,7 +43,7 @@ export default {
       let borderColor = tinycolor.mix(this.color, '#fff', 80)
       if (effect === 'dark') {
         backgroundColor = this.color
-        color = tinycolor.mix(this.color, '$fff', 100)
+        color = tinycolor.mix(this.color, '#fff', 100)
         borderColor = this.color
       } else if (effect === 'plain') {
         backgroundColor = tinycolor.mix(this.color, '#fff', 100)

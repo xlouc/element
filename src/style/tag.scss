@@ -10,14 +10,6 @@
     border-color: $--tag-primary-color;
   }
 
-  .el-tag__close {
-    color: mix($--tag-primary-color, $--color-white, $fontColorWeight);
-    &:hover {
-      color: $--color-white;
-      background-color: mix($--tag-primary-color, $--color-white, $hoverColorWeight);
-    }
-  }
-
   &.el-tag--info {
     background-color: mix($--tag-info-color, $--color-white, $backgroundColorWeight);
     border-color: mix($--tag-info-color, $--color-white, $borderColorWeight);
@@ -27,13 +19,6 @@
       border-color: $--tag-info-color;
     }
 
-    .el-tag__close {
-      color: mix($--tag-info-color, $--color-white, $fontColorWeight);
-      &:hover {
-        color: $--color-white;
-        background-color: mix($--tag-info-color, $--color-white, $hoverColorWeight);
-      }
-    }
   }
 
   &.el-tag--success {
@@ -45,13 +30,6 @@
       border-color: $--tag-success-color;
     }
 
-    .el-tag__close {
-      color: mix($--tag-success-color, $--color-white, $fontColorWeight);
-      &:hover {
-        color: $--color-white;
-        background-color: mix($--tag-success-color, $--color-white, $hoverColorWeight);
-      }
-    }
   }
 
   &.el-tag--warning {
@@ -63,13 +41,6 @@
       border-color: $--tag-warning-color;
     }
 
-    .el-tag__close {
-      color: mix($--tag-warning-color, $--color-white, $fontColorWeight);
-      &:hover {
-        color: $--color-white;
-        background-color: mix($--tag-warning-color, $--color-white, $hoverColorWeight);
-      }
-    }
   }
 
   &.el-tag--danger {
@@ -81,13 +52,6 @@
       border-color: $--tag-danger-color;
     }
 
-    .el-tag__close {
-      color: mix($--tag-danger-color, $--color-white, $fontColorWeight);
-      &:hover {
-        color: $--color-white;
-        background-color: mix($--tag-danger-color, $--color-white, $hoverColorWeight);
-      }
-    }
   }
 }
 
@@ -117,10 +81,16 @@
     vertical-align: middle;
     top: -1px;
     right: -5px;
+    opacity: 0.5;
+    color: inherit;
 
     &::before {
       display: block;
     }
+
+    &:hover {
+      opacity: 1;
+      }
   }
 
   @include m(dark) {

@@ -28,6 +28,7 @@
     </template>
   </li>
 </template>
+
 <script>
 import Menu from './menu-mixin'
 import ElTooltip from 'yak-ui/components/tooltip'
@@ -50,16 +51,20 @@ export default {
     route: [String, Object],
     disabled: Boolean
   },
+
   computed: {
     active() {
       return this.index === this.rootMenu.activeIndex
     },
+
     colorMaps() {
       return this.rootMenu.colorMaps
     },
+
     mode() {
       return this.rootMenu.mode
     },
+
     itemStyle() {
       if (!this.colorMaps) return
       let itemStyle = {}
@@ -81,6 +86,7 @@ export default {
       return this.parentMenu !== this.rootMenu
     }
   },
+
   methods: {
     onMouseEnter() {
       if (!this.colorMaps || this.active || this.disabled) return
@@ -91,6 +97,7 @@ export default {
         this.$el.style.color = this.colorMaps.activeColor
       }
     },
+
     onMouseLeave() {
       if (!this.colorMaps || this.active || this.disabled) return
       if (this.mode === 'horizontal' && !this.isNested) {
@@ -100,6 +107,7 @@ export default {
         this.$el.style.color = this.colorMaps.textColor
       }
     },
+
     handleClick() {
       if (!this.disabled) {
         this.dispatch('ElMenu', 'item-click', this)
@@ -107,10 +115,12 @@ export default {
       }
     }
   },
+
   mounted() {
     this.parentMenu.addItem(this)
     this.rootMenu.addItem(this)
   },
+
   beforeDestroy() {
     this.parentMenu.removeItem(this)
     this.rootMenu.removeItem(this)

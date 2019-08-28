@@ -13,15 +13,24 @@
   opacity: 1;
   display: flex;
   align-items: center;
-  transition: opacity .2s;
+  transition: opacity 0.2s;
 
   @include when(light) {
     .el-alert__closebtn {
-      color: $--color-text-placeholder;
+      color: $--color-text-primary;
     }
   }
 
   @include when(dark) {
+    .el-alert__title {
+      color: $--color-white;
+    }
+
+    & .el-alert__description {
+      color: $--color-white;
+      opacity: 0.85;
+    }
+
     .el-alert__closebtn {
       color: $--color-white;
     }
@@ -38,10 +47,6 @@
     &.is-light {
       background-color: $--alert-success-color;
       color: $--color-success;
-
-      .el-alert__description {
-        color: $--color-success;
-      }
     }
 
     &.is-dark {
@@ -60,20 +65,12 @@
       background-color: $--color-info;
       color: $--color-white;
     }
-
-    .el-alert__description {
-      color: $--color-info;
-    }
   }
 
   @include m(warning) {
     &.is-light {
       background-color: $--alert-warning-color;
       color: $--color-warning;
-
-      .el-alert__description {
-        color: $--color-warning;
-      }
     }
 
     &.is-dark {
@@ -86,10 +83,6 @@
     &.is-light {
       background-color: $--alert-danger-color;
       color: $--color-danger;
-
-      .el-alert__description {
-        color: $--color-danger;
-      }
     }
 
     &.is-dark {
@@ -115,6 +108,8 @@
   @include e(title) {
     font-size: $--alert-title-font-size;
     line-height: 18px;
+    color: $--color-text-primary;
+
     @include when(bold) {
       font-weight: bold;
     }
@@ -122,16 +117,21 @@
 
   & .el-alert__description {
     font-size: $--alert-description-font-size;
+    color: $--color-text-regular;
     margin: 5px 0 0 0;
   }
 
   @include e(closebtn) {
     font-size: $--alert-close-font-size;
-    opacity: 1;
+    opacity: 0.5;
     position: absolute;
     top: 12px;
     right: 15px;
     cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+    }
 
     @include when(customed) {
       font-style: normal;

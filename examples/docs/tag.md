@@ -30,6 +30,9 @@
   :type="tag.type">
   {{tag.name}}
 </el-tag>
+<el-tag color="#9C27B0" closable>标签六</el-tag>
+<el-tag color="#E91E63" closable>标签七</el-tag>
+<el-tag color="#607D8B" closable>标签八</el-tag>
 
 <script>
   export default {
