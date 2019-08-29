@@ -48,8 +48,8 @@ img {
   background-image: url('./assets/inner_bg.png');
   background-position: 0 0;
   background-repeat: repeat-x;
-  background-color: rgba(#263238, 0.8) !important;
-  box-shadow: 0 2px 8px rgba(#263238, 0.8);
+  background-color: rgba(#607d8b, 0.8) !important;
+  box-shadow: 0 2px 8px rgba(#607d8b, 0.8);
   margin-bottom: 15px;
 }
 
