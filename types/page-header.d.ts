@@ -1,10 +1,13 @@
-import { YakUIComponent } from './component'
+import { YakUIComponent } from "./component";
 
 /** PageHeader Component */
 export declare class ElPageHeader extends YakUIComponent {
   /** title */
-  title: String
+  title: String;
 
   /** content */
-  content: String
+  subTitle: String;
+
+  /** content */
+  backIcon: String | Boolean;
 }

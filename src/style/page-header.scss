@@ -2,40 +2,105 @@
 @import "common/var";
 
 @include b(page-header) {
-  display: flex;
-  line-height: 24px;
+  box-sizing: border-box;
+  color: $--color-text-regular;
+  font-size: $--font-size-base;
+  font-variant: tabular-nums;
+  line-height: 1.5;
+  list-style: none;
+  font-feature-settings: "tnum";
+  position: relative;
+  padding: 16px 24px;
+  margin: 0;
+  background: #fff;
 
-  @include e(left) {
-    display: flex;
-    cursor: pointer;
-    margin-right: 40px;
-    position: relative;
+  @include when(footer) {
+    padding-bottom: 0;
+  }
 
-    &::after {
-      content: "";
+  @include e(back) {
+    display: inline-block;
+    padding: 4px 0;
+    font-size: $--font-size-medium;
+    line-height: 100%;
+
+    .el-back-button {
+      display: inline-block;
+      text-decoration: none;
+      outline: none;
+      transition: color 0.3s;
+      color: $--color-text-regular;
+      cursor: pointer;
+      touch-action: manipulation;
+      line-height: inherit;
+
+      &:hover {
+        color: $--color-primary;
+      }
+    }
+
+    .el-divider--vertical {
+      height: 14px;
+      margin: 0 12px;
+    }
+  }
+
+  .el-breadcrumb + &__heading {
+    margin-top: 12px;
+  }
+
+  @include e(heading) {
+    display: inline-block;
+
+    @include m(title) {
+      display: inline-block;
+      padding-right: 12px;
+      color: $--color-text-primary;
+      font-weight: bold;
+      font-size: $--font-size-medium;
+      line-height: 1.4;
+    }
+
+    @include m(sub-title) {
+      display: inline-block;
+      padding-right: 12px;
+      color: $--color-text-secondary;
+      font-size: $--font-size-base;
+      line-height: 1.8;
+    }
+
+    @include m(tags) {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    @include m(extra) {
       position: absolute;
-      width: 1px;
-      height: 16px;
-      right: -20px;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: $--border-color-base;
-    }
-
-    .el-icon-arrowleft {
-      font-size: 18px;
-      margin-right: 6px;
-      align-self: center;
-    }
-
-    @include e(title) {
-      font-size: 14px;
-      font-weight: 500;
+      top: 16px;
+      right: 24px;
+      > * {
+        margin-left: 8px;
+      }
+      > *:first-child {
+        margin-left: 0;
+      }
     }
   }
 
   @include e(content) {
-    font-size: 18px;
-    color: $--color-text-primary;
+    padding-top: 12px;
+  }
+
+  @include e(footer) {
+    margin: 0 -8px;
+    padding-top: 24px;
+
+    .el-tabs__header {
+      margin-bottom: 0px;
+    }
+
+    .el-tabs__nav-wrap::after {
+      height: 1px;
+    }
   }
 }
