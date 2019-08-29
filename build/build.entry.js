@@ -125,3 +125,23 @@ var template = render(MAIN_TEMPLATE, {
 fileSave(path.resolve(__dirname, '../src/index.js'))
   .write(template, 'utf8')
   .end('')
+
+// 生成assets索引
+var assets = fs.readdirSync(path.resolve(__dirname, '../examples/assets/images/'))
+let imgs = {}
+assets.forEach((key, index) => {
+  var data = fs.statSync(path.resolve(__dirname, `../examples/assets/images/${key}`))
+  if (data.isFile()) {
+    if (key === '.DS_Store') return
+    imgs[`'${key.substr(0, key.lastIndexOf('.'))}': assets_${index}`] = `import assets_${index} from './assets/images/${key}'`
+  }
+})
+
+fileSave(path.resolve(__dirname, '../examples/assets.js'))
+  .write('/** @format */\n', 'utf8')
+  .write("import Vue from 'vue'\n", 'utf8')
+  .write(Object.values(imgs).join('\n'), 'utf8')
+  .write('\n\n', 'utf8')
+  .write('Vue.prototype.$assets = {\n ', 'utf8')
+  .write(Object.keys(imgs).join(',\n '), 'utf8')
+  .end('}\n')
