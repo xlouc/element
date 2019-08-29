@@ -20,6 +20,7 @@
     'borderLighter': '$--border-color-lighter',
     'borderExtraLight': '$--border-color-extra-light'
   };
+  
   const original = {
     primary: swatches.quick['blue-500'],
     success: swatches.quick['green-500'],
@@ -28,10 +29,10 @@
     info: swatches.quick['grey-500'],
     white: '#FFFFFF',
     black: '#000000',
-    textPrimary: '#303133',
-    textRegular: '#606266',
-    textSecondary: '#909399',
-    textPlaceholder: '#C0C4CC',
+    textPrimary: 'rgba(0, 0, 0, 0.85)',
+    textRegular: 'rgba(0, 0, 0, 0.65)',
+    textSecondary: 'rgba(0, 0, 0, 0.45)',
+    textPlaceholder: 'rgba(0, 0, 0, 0.25)',
     borderBase: '#DCDFE6',
     borderLight: '#E4E7ED',
     borderLighter: '#EBEEF5',
