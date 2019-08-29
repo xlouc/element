@@ -18,7 +18,7 @@
           <el-avatar :size="size" :src="circleUrl"></el-avatar>
         </div>
       </div>
-    </el-col>  
+    </el-col>
     <el-col :span="12">
       <div class="sub-title">square</div>
       <div class="demo-basic--circle">
@@ -34,8 +34,8 @@
   export default {
     data () {
       return {
-        circleUrl: "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
-        squareUrl: "https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png",
+        circleUrl: this.$assets['avatar'],
+        squareUrl: this.$assets['avatar'],
         sizeList: ["large", "medium", "small"]
       }
     }
@@ -57,7 +57,7 @@
       <el-avatar icon="el-icon-user"></el-avatar>
     </div>
     <div>
-      <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+      <el-avatar :src="$assets['avatar']"></el-avatar>
     </div>
     <div>
       <el-avatar> user </el-avatar>
@@ -76,7 +76,7 @@
 <template>
   <div class="demo-type">
     <el-avatar :size="60" src="https://empty" @error="errorHandler">
-      <img src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"/>
+      <img :src="$assets['img-error']"/>
     </el-avatar>
   </div>
 </template>
@@ -112,7 +112,7 @@
     data() {
       return {
         fits: ['fill', 'contain', 'cover', 'none', 'scale-down'],
-        url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+        url: this.$assets["item-square"]
       }
     }
   }

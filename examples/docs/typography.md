@@ -66,12 +66,12 @@
 
 ### 字体
 <div class="demo-term-box">
-<img src="../assets/images/term-pingfang.png" alt="">
-<img src="../assets/images/term-hiragino.png" alt="">
-<img src="../assets/images/term-microsoft.png" alt="">
-<img src="../assets/images/term-sf.png" alt="">
-<img src="../assets/images/term-helvetica.png" alt="">
-<img src="../assets/images/term-arial.png" alt="">
+<img :src="$assets['term-pingfang']" alt="">
+<img :src="$assets['term-hiragino']" alt="">
+<img :src="$assets['term-microsoft']" alt="">
+<img :src="$assets['term-sf']" alt="">
+<img :src="$assets['term-helvetica']" alt="">
+<img :src="$assets['term-arial']" alt="">
 </div>
 
 ### 字号
@@ -132,7 +132,7 @@
 ### 行高
 
 <div>
-<img class="lineH-left" src="~examples/assets/images/typography.png" />
+<img class="lineH-left" :src="$assets['typography']" />
 <ul class="lineH-right">
 <li>line-height:1 <span>无行高</span></li>
 <li>line-height:1.3 <span>紧凑</span></li>
