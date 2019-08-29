@@ -1,0 +1,161 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(descriptions) {
+  @include e(title) {
+    margin-bottom: 20px;
+    color: $--color-text-primary;
+    font-weight: bold;
+    font-size: $--font-size-medium;
+    line-height: 1.5;
+  }
+
+  @include e(view) {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 4px;
+    table {
+      width: 100%;
+      table-layout: fixed;
+      border-collapse: collapse;
+    }
+  }
+
+  @include e(item) {
+    padding-bottom: 0;
+    > span {
+      display: inline-block;
+    }
+  }
+
+  @include e(item-label) {
+    color: $--color-text-primary;
+    font-weight: normal;
+    font-size: $--font-size-base;
+    line-height: 1.5;
+    white-space: nowrap;
+
+    &::after {
+      position: relative;
+      top: -0.5px;
+      margin: 0 8px 0 2px;
+      content: " ";
+    }
+
+    @include when(colon) {
+      &::after {
+        content: ":";
+      }
+    }
+
+    @include when(no-label) {
+      &::after {
+        margin: 0;
+        content: "";
+      }
+    }
+  }
+
+  @include e(item-content) {
+    display: table-cell;
+    color: $--color-text-regular;
+    font-size: $--font-size-base;
+    line-height: 1.5;
+  }
+
+  @include e(hide) {
+    display: none;
+  }
+
+  &-row {
+    > th,
+    > td {
+      padding-bottom: 16px;
+      text-align: inherit;
+    }
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  @include m(bordered) {
+    .el-descriptions__view {
+      border: 1px solid $--border-color-light;
+      > table {
+        table-layout: auto;
+      }
+    }
+
+    .el-descriptions__item-label,
+    .el-descriptions__item-content {
+      padding: 16px 24px;
+      border-right: 1px solid $--border-color-light;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+
+    .el-descriptions__item-label {
+      background-color: $--background-color-base;
+      &::after {
+        display: none;
+      }
+    }
+
+    .el-descriptions-row {
+      border-bottom: 1px solid $--border-color-light;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  @include m(medium) {
+    &.el-descriptions--bordered {
+      .el-descriptions__item-label,
+      .el-descriptions__item-content {
+        padding: 12px 24px;
+      }
+    }
+
+    .el-descriptions-row {
+      > th,
+      > td {
+        padding-bottom: 12px;
+      }
+    }
+  }
+
+  @include m(small) {
+    &.el-descriptions--bordered {
+      .el-descriptions__item-label,
+      .el-descriptions__item-content {
+        padding: 8px 16px;
+      }
+    }
+
+    .el-descriptions-row {
+      > th,
+      > td {
+        padding-bottom: 8px;
+      }
+    }
+  }
+
+  @include m(mini) {
+    &.el-descriptions--bordered {
+      .el-descriptions__item-label,
+      .el-descriptions__item-content {
+        padding: 4px 16px;
+      }
+    }
+
+    .el-descriptions-row {
+      > th,
+      > td {
+        padding-bottom: 4px;
+      }
+    }
+  }
+}

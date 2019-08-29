@@ -162,6 +162,10 @@
           {
             "path": "/avatar",
             "title": "Avatar 头像"
+          },
+          {
+            "path": "/descriptions",
+            "title": "Descriptions 描述列表"
           }
         ]
       },

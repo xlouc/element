@@ -24,6 +24,8 @@
   "color-picker": "../src/components/color-picker/index.js",
   "container": "../src/components/container/index.js",
   "date-picker": "../src/components/date-picker/index.js",
+  "descriptions": "../src/components/descriptions/index.js",
+  "descriptions-item": "../src/components/descriptions-item/index.js",
   "dialog": "../src/components/dialog/index.js",
   "divider": "../src/components/divider/index.js",
   "drawer": "../src/components/drawer/index.js",

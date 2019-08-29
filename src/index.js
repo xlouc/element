@@ -27,6 +27,8 @@ import CollapseItem from './components/collapse-item/index.js'
 import ColorPicker from './components/color-picker/index.js'
 import Container from './components/container/index.js'
 import DatePicker from './components/date-picker/index.js'
+import Descriptions from './components/descriptions/index.js'
+import DescriptionsItem from './components/descriptions-item/index.js'
 import Dialog from './components/dialog/index.js'
 import Divider from './components/divider/index.js'
 import Drawer from './components/drawer/index.js'
@@ -112,6 +114,8 @@ const components = [
   ColorPicker,
   Container,
   DatePicker,
+  Descriptions,
+  DescriptionsItem,
   Dialog,
   Divider,
   Drawer,
@@ -229,6 +233,8 @@ export default {
   ColorPicker,
   Container,
   DatePicker,
+  Descriptions,
+  DescriptionsItem,
   Dialog,
   Divider,
   Drawer,
