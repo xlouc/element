@@ -1,0 +1,32 @@
+@import "mixins/mixins";
+@import "common/var";
+
+@include b(empty) {
+  margin: 32px 0;
+  font-size: $--font-size-base;
+  line-height: 22px;
+  text-align: center;
+  color: $--color-text-placeholder;
+
+  @include e(image) {
+    height: 100%;
+    margin-bottom: 8px;
+
+    img {
+      height: 100%;
+    }
+
+    svg {
+      height: 100%;
+      margin: auto;
+    }
+  }
+
+  @include e(description) {
+    margin: 0;
+  }
+
+  @include e(footer) {
+    margin-top: 16px;
+  }
+}

@@ -112,6 +112,9 @@ export default {
     },
     pageHeader: {
       title: 'Back' // to be translated
+    },
+    empty: {
+      noData: 'Sense Dades'
     }
   }
 }

@@ -113,6 +113,9 @@ export default {
     },
     pageHeader: {
       title: 'Back' // to be translated
+    },
+    empty: {
+      noData: 'Không tìm thấy dữ liệu'
     }
   }
 }

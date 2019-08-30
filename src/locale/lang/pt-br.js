@@ -113,6 +113,9 @@ export default {
     },
     pageHeader: {
       title: 'Voltar'
+    },
+    empty: {
+      noData: 'Sem dados'
     }
   }
 }

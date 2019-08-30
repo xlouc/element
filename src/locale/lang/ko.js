@@ -113,6 +113,9 @@ export default {
     },
     pageHeader: {
       title: 'Back' // to be translated
+    },
+    empty: {
+      noData: '데이터 없음'
     }
   }
 }

@@ -35,6 +35,7 @@ import Drawer from './components/drawer/index.js'
 import Dropdown from './components/dropdown/index.js'
 import DropdownItem from './components/dropdown-item/index.js'
 import DropdownMenu from './components/dropdown-menu/index.js'
+import Empty from './components/empty/index.js'
 import Footer from './components/footer/index.js'
 import Form from './components/form/index.js'
 import FormItem from './components/form-item/index.js'
@@ -122,6 +123,7 @@ const components = [
   Dropdown,
   DropdownItem,
   DropdownMenu,
+  Empty,
   Footer,
   Form,
   FormItem,
@@ -241,6 +243,7 @@ export default {
   Dropdown,
   DropdownItem,
   DropdownMenu,
+  Empty,
   Footer,
   Form,
   FormItem,

@@ -113,6 +113,9 @@ export default {
     },
     pageHeader: {
       title: '返回'
+    },
+    empty: {
+      noData: '無資料'
     }
   }
 }

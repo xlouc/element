@@ -14,11 +14,8 @@ export declare class ElMenu extends YakUIComponent {
   /** Background color of Menu (hex format) */
   backgroundColor: string
 
-  /** Text color of Menu (hex format) */
-  textColor: string
-
-  /** Text color of currently active menu item (hex format) */
-  activeTextColor: string
+  /** Active color of currently active menu item (hex format) */
+  activeColor: string
 
   /** Index of currently active menu */
   defaultActive: string

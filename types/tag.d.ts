@@ -17,7 +17,7 @@ export declare class ElTag extends YakUIComponent {
   /** Whether Tag has a highlighted border */
   hit: boolean
 
-  /** Background color of the tag */
+  /** Color of the tag */
   color: string
 
   /** Tag size */

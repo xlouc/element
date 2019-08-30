@@ -1,6 +1,7 @@
-import { YakUIComponent } from './component'
+import { YakUIComponent } from "./component";
 
 /** Timeline Component */
 export declare class ElTimeline extends YakUIComponent {
-  reverse: boolean
+  reverse: boolean;
+  pending: boolean;
 }

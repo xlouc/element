@@ -79,6 +79,9 @@ import { ElInfiniteScroll } from './infinite-scroll'
 import { ElPageHeader } from './page-header'
 import { ElAvatar } from './avatar'
 import { ElDrawer } from './drawer'
+import { ElEmpty } from "./empty";
+import { ElDescriptions } from "./descriptions";
+import { ElDescriptionsItem } from "./descriptions-item";
 
 export interface InstallationOptions {
   locale: any,
@@ -340,3 +343,12 @@ export class Avatar extends ElAvatar {}
 
 /** Drawer Component */
 export class Drawer extends ElDrawer {}
+
+/** Empty Component */
+export class Empty extends ElEmpty {}
+
+/** Descriptions Component */
+export class Descriptions extends ElDescriptions {}
+
+/** DescriptionsItem Component */
+export class DescriptionsItem extends ElDescriptionsItem {}

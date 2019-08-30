@@ -113,6 +113,9 @@ export default {
     },
     pageHeader: {
       title: 'ย้อนกลับ'
+    },
+    empty: {
+      noData: 'ไม่พบข้อมูล'
     }
   }
 }

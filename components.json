@@ -32,6 +32,7 @@
   "dropdown": "../src/components/dropdown/index.js",
   "dropdown-item": "../src/components/dropdown-item/index.js",
   "dropdown-menu": "../src/components/dropdown-menu/index.js",
+  "empty": "../src/components/empty/index.js",
   "footer": "../src/components/footer/index.js",
   "form": "../src/components/form/index.js",
   "form-item": "../src/components/form-item/index.js",

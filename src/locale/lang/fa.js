@@ -113,6 +113,9 @@ export default {
     },
     pageHeader: {
       title: 'بازگشت'
+    },
+    empty: {
+      noData: 'اطلاعاتی وجود ندارد'
     }
   }
 }
