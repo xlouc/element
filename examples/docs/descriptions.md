@@ -180,7 +180,7 @@ span DescriptionsItem 的数量。 span={2} 会占用两个 DescriptionsItem 的
 | -------- | ----------------------------------------------------------------------------------------------- | ------- | --------------------- | ---------- |
 | title    | 描述列表的标题，显示在最顶部                                                                    | string  | —                     | —          |
 | bordered | 是否展示边框                                                                                    | boolean | —                     | `false`    |
-| column   | 一行的 `DescriptionItems` 数量，可以写成像素值或支持响应式的对象写法 `{ xs: 8, sm: 16, md: 24}` | number  | —                     | 3          |
+| column   | 一行的 `DescriptionItems` 数量，可以写成像素值或支持响应式的对象写法 `{ xs: 8, sm: 16, md: 24}` | number / object  | —                     | 3          |
 | size     | 设置列表的大小。可以设置为 medium 、small、mini, 或不填（只有设置 bordered={true} 生效）        | string  | medium / small / mini | —          |
 | layout   | 描述布局                                                                                        | string  | horizontal / vertical | horizontal |
 | colon    | 配置 `DescriptionsItem` 的 colon 的默认值                                                       | boolean | —                     | `true`     |
