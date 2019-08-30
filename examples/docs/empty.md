@@ -26,9 +26,9 @@
 ```html
 <el-empty :image="$assets['plant-1']" imageStyle="height: 60px;">
   <template v-slot:description>
-    <span> Customize <a href="#API">Description</a> </span>
+    <span> 自定义 <a href="#/components/descriptions">描述</a> </span>
   </template>
-  <el-button type="primary" size="small">Create Now</el-button>
+  <el-button type="primary" size="small">创建</el-button>
 </el-empty>
 ```
 
