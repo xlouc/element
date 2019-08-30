@@ -152,7 +152,7 @@
 
 ```html
 <template>
-  <el-descriptions title="自定义尺寸" bordered :column="2" layout="vertical">
+  <el-descriptions title="工商注册" bordered :column="2" layout="vertical">
     <el-descriptions-item label="注册资本">417万(元)</el-descriptions-item>
     <el-descriptions-item label="法定代表人">王磊</el-descriptions-item>
     <el-descriptions-item label="经营状态">开业</el-descriptions-item>

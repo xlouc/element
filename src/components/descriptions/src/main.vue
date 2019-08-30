@@ -2,8 +2,17 @@
 
 <script>
 import { cloneVNode } from 'yak-ui/src/utils/vdom'
-import ResponsiveObserve, { defaultColumnMap, responsiveArray } from 'yak-ui/src/utils/responsive-observe'
+import ResponsiveObserve, { responsiveArray } from 'yak-ui/src/utils/responsive-observe'
 import Col from './col'
+
+const defaultColumnMap = {
+  xxl: 3,
+  xl: 3,
+  lg: 3,
+  md: 3,
+  sm: 2,
+  xs: 1
+}
 
 export default {
   name: 'ElDescriptions',
