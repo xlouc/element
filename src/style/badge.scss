@@ -54,4 +54,66 @@
       }
     }
   }
+
+  @include m(status) {
+    line-height: inherit;
+    vertical-align: baseline;
+  }
+
+  @include e(status-dot) {
+    position: relative;
+    top: -1px;
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    vertical-align: middle;
+    border-radius: 50%;
+    background-color: $--border-color-base;
+
+    @each $type in (primary, success, warning, info, danger) {
+      @include when($type) {
+        @if $type == primary {
+          background-color: $--color-primary;
+        } @else if $type == success {
+          background-color: $--color-success;
+        } @else if $type == warning {
+          background-color: $--color-warning;
+        } @else if $type == info {
+          background-color: $--color-info;
+        } @else {
+          background-color: $--color-danger;
+        }
+      }
+    }
+
+    &.is-primary::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 1px solid $--color-primary;
+      border-radius: 50%;
+      animation: yakStatusProcessing 1.2s infinite ease-in-out;
+      content: "";
+    }
+  }
+
+  @include e(status-text) {
+    margin-left: 8px;
+    color: $--color-text-regular;
+    font-size: 14px;
+  }
+}
+
+
+@keyframes yakStatusProcessing {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
 }

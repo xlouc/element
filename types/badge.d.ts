@@ -1,16 +1,22 @@
-import { YakUIComponent } from './component'
+import { YakUIComponent } from "./component";
 
 /** Badge Component */
 export declare class ElBadge extends YakUIComponent {
   /** Display value */
-  value: string | number
+  value: string | number;
 
   /** Maximum value, shows '{max}+' when exceeded. Only works if `value` is a number */
-  max: number
+  max: number;
 
   /** If a little dot is displayed */
-  isDot: boolean
+  isDot: boolean;
 
   /** Hidden badge */
-  hidden: boolean
+  hidden: boolean;
+
+  /** Status badge */
+  status: boolean;
+
+  /** Color badge */
+  color: string;
 }
