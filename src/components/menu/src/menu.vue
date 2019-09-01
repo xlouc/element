@@ -136,10 +136,6 @@ export default {
   },
 
   computed: {
-    hoverBackground() {
-      return this.backgroundColor ? this.mixColor(this.backgroundColor, 0.2) : '';
-    },
-
     isMenuPopup() {
       return this.mode === 'horizontal' || (this.mode === 'vertical' && this.collapse);
     },
@@ -166,8 +162,10 @@ export default {
 
       if (ratio < 2.5) {
         colorMaps.textColor = 'rgba(0, 0, 0, 0.65)'
+        colorMaps.groupColor = 'rgba(0, 0, 0, 0.45)'
       } else {
         colorMaps.textColor = 'rgba(255, 255, 255, 0.65)'
+        colorMaps.groupColor = 'rgba(255, 255, 255, 0.45)'
       }
 
       return colorMaps

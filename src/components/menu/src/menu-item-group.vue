@@ -2,7 +2,7 @@
 
 <template>
   <li class="el-menu-item-group">
-    <div class="el-menu-item-group__title" :style="{ paddingLeft: levelPadding + 'px' }">
+    <div class="el-menu-item-group__title" :style="titleStyle">
       <template v-if="!$slots.title">
         {{ title }}
       </template>
@@ -42,6 +42,13 @@ export default {
         parent = parent.$parent
       }
       return padding
+    },
+    titleStyle() {
+      let titleStyle = { paddingLeft: this.levelPadding + 'px' }
+      if (this.rootMenu.colorMaps) {
+        titleStyle.color = this.rootMenu.colorMaps.groupColor
+      }
+      return titleStyle
     }
   }
 }
