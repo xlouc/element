@@ -8,9 +8,6 @@
     "comments": true,
     "strings": true
   },
-  "[javascript]": {
-    "editor.formatOnSave": true
-  },
   "eslint.autoFixOnSave": true,
   // vetur 格式化配置
   "vetur.format.defaultFormatter.html": "prettier",

@@ -1,0 +1,126 @@
+@import "mixins/mixins";
+@import "common/var";
+@import "row";
+
+@include b(list) {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: $--color-text-primary;
+  font-size: $--font-size-base;
+  font-variant: tabular-nums;
+  line-height: 1.5;
+  list-style: none;
+  font-feature-settings: "tnum";
+  position: relative;
+
+  &:not(.el-list--vertical) {
+    .el-list-item.is-no-flex .el-list-item__action {
+      float: right;
+    }
+  }
+
+  @include m(split) {
+    .el-list-item {
+      border-bottom: $--border-width-base $--border-style-base
+        $--border-color-light;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  @include m(bordered) {
+    border: $--border-base;
+    border-radius: 4px;
+
+    .el-list-item {
+      padding-right: 24px;
+      padding-left: 24px;
+      border-bottom: $--border-width-base $--border-style-base
+        $--border-color-light;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  @include e(header) {
+    padding: 16px 24px;
+    border-bottom: $--border-width-base $--border-style-base
+      $--border-color-light;
+  }
+
+  @include e(footer) {
+    padding: 16px 24px;
+    border-top: $--border-width-base $--border-style-base $--border-color-light;
+  }
+
+  @include e(items) {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  @include m(vertical) {
+    .el-list-item {
+      align-items: initial;
+    }
+
+    .el-list-item__main {
+      display: block;
+      flex: 1;
+    }
+
+    .el-list-item__extra {
+      margin-left: 40px;
+    }
+
+    .el-list-item__meta {
+      margin-bottom: 16px;
+    }
+
+    .el-list-item__meta--title {
+      margin-bottom: 12px;
+      color: $--color-text-primary;
+      font-size: $--font-size-medium;
+      line-height: 24px;
+    }
+
+    .el-list-item__action {
+      margin-top: 16px;
+      margin-left: auto;
+
+      > * {
+        padding: 0 16px;
+        &:first-child {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+
+  @include m(medium) {
+    .el-list__header,
+    .el-list__footer,
+    .el-list-item {
+      padding: 12px 24px;
+    }
+  }
+
+  @include m(small) {
+    .el-list__header,
+    .el-list__footer,
+    .el-list-item {
+      padding: 8px 16px;
+    }
+  }
+
+  @include m(mini) {
+    .el-list__header,
+    .el-list__footer,
+    .el-list-item {
+      padding: 8px 12px;
+    }
+  }
+}

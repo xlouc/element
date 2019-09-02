@@ -46,6 +46,8 @@ import InfiniteScroll from './components/infinite-scroll/index.js'
 import Input from './components/input/index.js'
 import InputNumber from './components/input-number/index.js'
 import Link from './components/link/index.js'
+import List from './components/list/index.js'
+import ListItem from './components/list-item/index.js'
 import Loading from './components/loading/index.js'
 import Main from './components/main/index.js'
 import Menu from './components/menu/index.js'
@@ -134,6 +136,8 @@ const components = [
   Input,
   InputNumber,
   Link,
+  List,
+  ListItem,
   Main,
   Menu,
   MenuItem,
@@ -254,6 +258,8 @@ export default {
   Input,
   InputNumber,
   Link,
+  List,
+  ListItem,
   Main,
   Menu,
   MenuItem,

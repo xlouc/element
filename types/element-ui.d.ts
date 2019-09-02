@@ -82,6 +82,8 @@ import { ElDrawer } from './drawer'
 import { ElEmpty } from "./empty";
 import { ElDescriptions } from "./descriptions";
 import { ElDescriptionsItem } from "./descriptions-item";
+import { ElList } from "./list";
+import { ElListItem } from "./list-item";
 
 export interface InstallationOptions {
   locale: any,
@@ -352,3 +354,9 @@ export class Descriptions extends ElDescriptions {}
 
 /** DescriptionsItem Component */
 export class DescriptionsItem extends ElDescriptionsItem {}
+
+/** List Component */
+export class List extends ElList{}
+
+/** List Component */
+export class ListItem extends ElListItem{}

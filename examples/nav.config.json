@@ -170,6 +170,10 @@
           {
             "path": "/empty",
             "title": "Empty 空状态"
+          },
+          {
+            "path": "/list",
+            "title": "List 列表"
           }
         ]
       },

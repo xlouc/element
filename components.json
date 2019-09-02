@@ -43,6 +43,8 @@
   "input": "../src/components/input/index.js",
   "input-number": "../src/components/input-number/index.js",
   "link": "../src/components/link/index.js",
+  "list": "../src/components/list/index.js",
+  "list-item": "../src/components/list-item/index.js",
   "loading": "../src/components/loading/index.js",
   "main": "../src/components/main/index.js",
   "menu": "../src/components/menu/index.js",
