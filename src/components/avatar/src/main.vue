@@ -40,7 +40,7 @@ export default {
 
   computed: {
     avatarClass() {
-      const { size, icon, shape } = this
+      const { size, icon, shape, src } = this
       let classList = ['el-avatar']
 
       if (size && typeof size === 'string') {
@@ -53,6 +53,10 @@ export default {
 
       if (shape) {
         classList.push(`el-avatar--${shape}`)
+      }
+
+      if (src) {
+        classList.push(`is-image`)
       }
 
       return classList.join(' ')

@@ -30,7 +30,7 @@ export default {
     },
     underline: {
       type: Boolean,
-      default: true
+      default: false
     },
     disabled: Boolean,
     href: String,

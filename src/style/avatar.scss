@@ -19,6 +19,10 @@
     vertical-align: middle;
   }
 
+  @include when(image) {
+    background: transparent;
+  }
+
   @include m(circle) {
     border-radius: 50%;
   }
