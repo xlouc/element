@@ -66,6 +66,7 @@
   "row": "../src/components/row/index.js",
   "scrollbar": "../src/components/scrollbar/index.js",
   "select": "../src/components/select/index.js",
+  "skeleton": "../src/components/skeleton/index.js",
   "slider": "../src/components/slider/index.js",
   "spinner": "../src/components/spinner/index.js",
   "step": "../src/components/step/index.js",

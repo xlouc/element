@@ -84,6 +84,7 @@ import { ElDescriptions } from "./descriptions";
 import { ElDescriptionsItem } from "./descriptions-item";
 import { ElList } from "./list";
 import { ElListItem } from "./list-item";
+import { ElSkeleton } from "./skeleton";
 
 export interface InstallationOptions {
   locale: any,
@@ -360,3 +361,6 @@ export class List extends ElList{}
 
 /** List Component */
 export class ListItem extends ElListItem{}
+
+/** Skeleton Component */
+export class Skeleton extends ElSkeleton {}

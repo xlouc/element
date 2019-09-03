@@ -69,6 +69,7 @@ import Rate from './components/rate/index.js'
 import Row from './components/row/index.js'
 import Scrollbar from './components/scrollbar/index.js'
 import Select from './components/select/index.js'
+import Skeleton from './components/skeleton/index.js'
 import Slider from './components/slider/index.js'
 import Spinner from './components/spinner/index.js'
 import Step from './components/step/index.js'
@@ -155,6 +156,7 @@ const components = [
   Row,
   Scrollbar,
   Select,
+  Skeleton,
   Slider,
   Spinner,
   Step,
@@ -280,6 +282,7 @@ export default {
   Row,
   Scrollbar,
   Select,
+  Skeleton,
   Slider,
   Spinner,
   Step,

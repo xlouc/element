@@ -2,6 +2,9 @@
   "editor.tabSize": 2,
   "editor.formatOnSave": false, //关闭编辑器保存自动格式化
   "eslint.autoFixOnSave": true,
+  "eslint.options": {
+    "extensions": [".js", ".vue"]
+  },
   // 添加 vue 支持
   "eslint.validate": [
     "javascript",
