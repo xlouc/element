@@ -61,10 +61,8 @@ img {
 }
 
 .doc-container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .element-doc {
@@ -83,30 +81,6 @@ img {
 
   s code:not([class^='language-']) {
     text-decoration: line-through;
-  }
-}
-
-@media (min-width: 768px) {
-  .doc-container {
-    width: 750px;
-  }
-}
-
-@media (min-width: 992px) {
-  .doc-container {
-    width: 970px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .doc-container {
-    width: 1170px;
-  }
-}
-
-@media (min-width: 1920px) {
-  .doc-container {
-    width: 1270px;
   }
 }
 

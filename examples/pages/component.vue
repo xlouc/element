@@ -2,7 +2,7 @@
 
 <template>
   <el-container class="is-absolute">
-    <el-aside>
+    <el-aside width="256px">
       <el-scrollbar wrap-class="doc-component-scrollbar-wrap">
         <doc-aside class="doc-aside" base="/components" :navs="navs"></doc-aside>
       </el-scrollbar>
@@ -34,7 +34,7 @@ export default {
     position: absolute;
   }
   & > .el-main {
-    margin-left: 300px;
+    margin-left: 256px;
   }
 }
 
