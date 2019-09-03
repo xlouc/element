@@ -17,10 +17,10 @@ Yak, 一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌
 - [x] ~~优化`Badge 标记`组件~~
 - [x] ~~优化`PageHeader 页头`组件~~
 - [x] ~~优化`Tag 标签`组件~~
+- [x] ~~优化`Message 消息提示`组件~~
 - [ ] 优化`Calendar 日历`组件
 - [ ] 优化`Steps 步骤条`组件
-- [ ] 优化`Message 消息提示`组件
-- [ ] 优化`Pagination 分页`组件`background`模式
+- [x] ~~优化`Pagination 分页`组件`background`模式~~
 - [ ] 优化`Table 表格`组件
 - [ ] 优化`Progress 进度条`组件
 - [ ] 优化`Form 表单`组件

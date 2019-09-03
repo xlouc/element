@@ -194,10 +194,13 @@
     .btn-next,
     .el-pager li {
       margin: 0 5px;
-      background-color: $--color-info-lighter;
+      border: $--border-base;
       color: $--color-text-regular;
-      min-width: 30px;
-      border-radius: 2px;
+      min-width: 32px;
+      height: 32px;
+      line-height: 32px;
+      border-radius: 4px;
+      transition: all .3s;
 
       &.disabled {
         color: $--color-text-placeholder;
@@ -214,12 +217,13 @@
 
     .el-pager li:not(.disabled) {
       &:hover {
+        border-color: $--pagination-hover-color;
         color: $--pagination-hover-color;
       }
 
       &.active {
-        background-color: $--color-primary;
-        color: $--color-white;
+        border-color: $--pagination-hover-color;
+        color: $--pagination-hover-color;
       }
     }
 
@@ -227,6 +231,8 @@
       .btn-prev,
       .btn-next,
       .el-pager li {
+        height: 28px;
+        line-height: 28px;
         margin: 0 3px;
         min-width: 22px;
       }
