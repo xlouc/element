@@ -10,7 +10,14 @@
       @mouseleave="startTimer"
       role="alert"
     >
-      <i :class="iconClass" v-if="iconClass"></i>
+      <i v-if="isLoading" class="el-message__icon el-icon-pulse anticon">
+        <svg viewBox="0 0 1024 1024" focusable="false" width="1em" height="1em" fill="currentColor">
+          <path
+            d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 0 0-94.3-139.9 437.71 437.71 0 0 0-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"
+          ></path>
+        </svg>
+      </i>
+      <i :class="iconClass" v-else-if="iconClass"></i>
       <i :class="typeClass" v-else></i>
       <slot>
         <p v-if="!dangerouslyUseHTMLString" class="el-message__content">
@@ -25,10 +32,10 @@
 
 <script type="text/babel">
 const typeMap = {
-  success: 'check-circle',
-  info: 'info-circle',
-  warning: 'warning-circle',
-  error: 'close-circle'
+  success: 'check-circle-fill',
+  info: 'info-circle-fill',
+  warning: 'warning-circle-fill',
+  error: 'close-circle-fill'
 }
 
 export default {
@@ -53,6 +60,9 @@ export default {
   computed: {
     typeClass() {
       return this.type && !this.iconClass ? `el-message__icon el-icon-${typeMap[this.type]}` : ''
+    },
+    isLoading() {
+      return this.type === 'loading'
     },
     positionStyle() {
       return {

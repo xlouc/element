@@ -45,12 +45,15 @@ const Message = function(options) {
   return instance
 }
 
-;['success', 'warning', 'info', 'error'].forEach(type => {
+;['success', 'warning', 'info', 'error', 'loading'].forEach(type => {
   Message[type] = options => {
     if (typeof options === 'string') {
       options = {
         message: options
       }
+    }
+    if (type === 'loading') {
+      options.duration = 0
     }
     options.type = type
     return Message(options)

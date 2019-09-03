@@ -130,6 +130,31 @@
 ```
 :::
 
+### 加载中
+进行全局 loading，异步自行移除。
+
+:::demo
+
+```html
+<template>
+  <el-button :plain="true" @click="openCenter">Display a loading indicator</el-button>
+</template>
+
+<script>
+  export default {
+    methods: {
+      openCenter() {
+        let instance = this.$message.loading('Action in progress..');
+        setTimeout(function(){
+          instance.close()
+        }, 3000)
+      }
+    }
+  }
+</script>
+```
+:::
+
 ### 文字居中
 使用 `center` 属性让文字水平居中。
 
@@ -202,7 +227,7 @@ import { Message } from 'yak-ui';
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
 | message | 消息文字 | string / VNode | — | — |
-| type | 主题 | string | success/warning/info/error | info |
+| type | 主题 | string | success/warning/info/error/loading | info |
 | iconClass | 自定义图标的类名，会覆盖 `type` | string | — | — |
 | dangerouslyUseHTMLString | 是否将 message 属性作为 HTML 片段处理 | boolean | — | false |
 | customClass | 自定义类名 | string | — | — |

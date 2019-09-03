@@ -1,6 +1,6 @@
 import Vue, {VNode} from 'vue'
 
-export type MessageType = 'success' | 'warning' | 'info' | 'error'
+export type MessageType = "success" | "warning" | "info" | "error" | "loading";
 
 /** Message Component */
 export declare class ElMessageComponent extends Vue {

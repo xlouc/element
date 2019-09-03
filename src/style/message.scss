@@ -12,12 +12,13 @@
   left: 50%;
   top: 20px;
   transform: translateX(-50%);
-  background-color: $--message-background-color;
+  background-color: $--color-white;
   transition: opacity 0.3s, transform .4s, top 0.4s;
   overflow: hidden;
   padding: $--message-padding;
   display: flex;
   align-items: center;
+  box-shadow: $--message-shadow;
 
   @include when(center) {
     justify-content: center;
@@ -35,34 +36,34 @@
 
   @include m(info) {
     .el-message__content {
-      color: $--message-info-font-color;
+      // color: $--message-info-font-color;
     }
   }
 
   @include m(success) {
-    background-color: $--color-success-lighter;
-    border-color: $--color-success-light;
+    // background-color: $--color-success-lighter;
+    // border-color: $--color-success-light;
 
     .el-message__content {
-      color: $--message-success-font-color;
+      // color: $--message-success-font-color;
     }
   }
 
   @include m(warning) {
-    background-color: $--color-warning-lighter;
-    border-color: $--color-warning-light;
+    // background-color: $--color-warning-lighter;
+    // border-color: $--color-warning-light;
 
     .el-message__content {
-      color: $--message-warning-font-color;
+      // color: $--message-warning-font-color;
     }
   }
 
   @include m(error) {
-    background-color: $--color-danger-lighter;
-    border-color: $--color-danger-light;
+    // background-color: $--color-danger-lighter;
+    // border-color: $--color-danger-light;
 
     .el-message__content {
-      color: $--message-danger-font-color;
+      // color: $--message-danger-font-color;
     }
   }
 
@@ -96,19 +97,23 @@
     }
   }
 
-  & .el-icon-check-circle {
+  & .el-icon-pulse {
+    color: $--message-progress-font-color;
+  }
+
+  & .el-icon-check-circle-fill {
     color: $--message-success-font-color;
   }
 
-  & .el-icon-close-circle {
+  & .el-icon-close-circle-fill {
     color: $--message-danger-font-color;
   }
 
-  & .el-icon-info-circle {
+  & .el-icon-info-circle-fill {
     color: $--message-info-font-color;
   }
 
-  & .el-icon-warning-circle {
+  & .el-icon-warning-circle-fill {
     color: $--message-warning-font-color;
   }
 }
