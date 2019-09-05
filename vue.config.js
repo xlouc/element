@@ -1,5 +1,14 @@
 /** @format */
-const path = require('path')
+var path = require('path')
+var fs = require('fs')
+
+var utilsList = fs.readdirSync(path.resolve(__dirname, './src/utils'))
+var mixinsList = fs.readdirSync(path.resolve(__dirname, './src/mixins'))
+var transitionList = fs.readdirSync(path.resolve(__dirname, './src/transitions'))
+
+var Components = require('./components.json')
+
+const isComponent = process.env.BUILD_ENV === 'component'
 
 // vue.config.js
 module.exports = {
@@ -18,7 +27,8 @@ module.exports = {
 
   configureWebpack: {
     output: {
-      libraryExport: 'default'
+      libraryExport: 'default',
+      library: 'YAK'
     }
   },
 
@@ -31,6 +41,33 @@ module.exports = {
       .set('examples', path.resolve(__dirname, './examples'))
       .set('yak-ui/components', path.resolve(__dirname, './src/components'))
       .set('yak-ui', path.resolve(__dirname, './'))
+
+    if (isComponent) {
+      var externals = {}
+
+      externals['yak-ui/src/locale'] = 'yak-ui/lib/locale'
+      Object.keys(Components).forEach(function(key) {
+        externals[`yak-ui/components/${key}`] = `yak-ui/lib/${key}`
+      })
+
+      utilsList.forEach(function(file) {
+        file = path.basename(file, '.js')
+        externals[`yak-ui/src/utils/${file}`] = `yak-ui/lib/utils/${file}`
+      })
+
+      mixinsList.forEach(function(file) {
+        file = path.basename(file, '.js')
+        externals[`yak-ui/src/mixins/${file}`] = `yak-ui/lib/mixins/${file}`
+      })
+
+      transitionList.forEach(function(file) {
+        file = path.basename(file, '.js')
+        externals[`yak-ui/src/transitions/${file}`] = `yak-ui/lib/transitions/${file}`
+      })
+
+      config.externals(externals)
+      return
+    }
 
     // lib目录是组件库最终打包好存放的地方，不需要eslint检查
     // examples/views是存放md文档的地方，也不需要eslint检查

@@ -31,7 +31,7 @@ Yak, 一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌
 - [x] ~~新增`List 列表`组件~~
 - [x] ~~新增`Empty 空状态`组件, 并且修改所有空数据内容~~
 - [ ] 新增`Result 结果`组件
-- [ ] 新增`Skeleton 骨架屏`组件
+- [x] ~~新增`Skeleton 骨架屏`组件~~
 - [ ] 新增`ConfigProvider 全局化配置`组件, 并且修改所有组件公共数据从`ConfigProvider`中取
 - [ ] 新增`Comment 评论`组件
 - [x] ~~新增`Descriptions 描述列表`组件~~

@@ -83,7 +83,7 @@ componentsList.forEach(function(key) {
 
 var components = {}
 dirs.forEach(function(componentname) {
-  components[componentname] = `../src/components/${componentname}/index.js`
+  components[componentname] = `./src/components/${componentname}/index.js`
 })
 
 fileSave(path.resolve(__dirname, '../components.json'))
