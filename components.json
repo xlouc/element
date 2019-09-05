@@ -63,6 +63,7 @@
   "radio-button": "./src/components/radio-button/index.js",
   "radio-group": "./src/components/radio-group/index.js",
   "rate": "./src/components/rate/index.js",
+  "result": "./src/components/result/index.js",
   "row": "./src/components/row/index.js",
   "scrollbar": "./src/components/scrollbar/index.js",
   "select": "./src/components/select/index.js",

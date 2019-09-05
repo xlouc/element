@@ -66,6 +66,7 @@ import Radio from './components/radio/index.js'
 import RadioButton from './components/radio-button/index.js'
 import RadioGroup from './components/radio-group/index.js'
 import Rate from './components/rate/index.js'
+import Result from './components/result/index.js'
 import Row from './components/row/index.js'
 import Scrollbar from './components/scrollbar/index.js'
 import Select from './components/select/index.js'
@@ -153,6 +154,7 @@ const components = [
   RadioButton,
   RadioGroup,
   Rate,
+  Result,
   Row,
   Scrollbar,
   Select,
@@ -279,6 +281,7 @@ export default {
   RadioButton,
   RadioGroup,
   Rate,
+  Result,
   Row,
   Scrollbar,
   Select,
