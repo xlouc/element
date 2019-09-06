@@ -22,9 +22,13 @@
       margin-right: 10px;
       vertical-align: top;
     }
+
     & .el-form-item__label {
       float: none;
       display: inline-block;
+      &::after {
+        content: none;
+      }
     }
     & .el-form-item__content {
       display: inline-block;
@@ -97,10 +101,16 @@
     vertical-align: middle;
     float: left;
     font-size: $--form-label-font-size;
-    color: $--color-text-regular;
+    color: $--color-text-primary;
     line-height: 40px;
     padding: 0 12px 0 0;
     box-sizing: border-box;
+    &::after {
+      content: ":";
+      position: relative;
+      top: -0.5px;
+      margin: 0 8px 0 2px;
+    }
   }
   @include e(content) {
     line-height: 40px;
@@ -131,10 +141,10 @@
   }
 
   @include when(required) {
-    @include pseudo('not(.is-no-asterisk)') {
+    @include pseudo("not(.is-no-asterisk)") {
       & > .el-form-item__label:before,
       & .el-form-item__label-wrap > .el-form-item__label:before {
-        content: '*';
+        content: "*";
         color: $--color-danger;
         margin-right: 4px;
       }
@@ -144,7 +154,8 @@
   @include when(error) {
     & .el-input__inner,
     & .el-textarea__inner {
-      &, &:focus {
+      &,
+      &:focus {
         border-color: $--color-danger;
       }
     }
