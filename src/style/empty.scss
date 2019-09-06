@@ -2,11 +2,10 @@
 @import "common/var";
 
 @include b(empty) {
-  margin: 32px 0;
+  margin: 0 8px;
   font-size: $--font-size-base;
   line-height: 22px;
   text-align: center;
-  color: $--color-text-placeholder;
 
   @include e(image) {
     height: 100%;
@@ -28,5 +27,14 @@
 
   @include e(footer) {
     margin-top: 16px;
+  }
+
+  @include m(normal) {
+    margin: 32px 0;
+    color: $--color-text-placeholder;
+
+    .el-empty__image {
+      height: 40px;
+    }
   }
 }

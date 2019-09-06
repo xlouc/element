@@ -34,6 +34,13 @@
         }"
       ></table-header>
     </div>
+
+    <div v-if="!data || data.length === 0" class="el-table__empty-block is-absolute">
+      <span class="el-table__empty-text">
+        <slot name="empty"><el-empty :description="emptyText || t('el.table.emptyText')"></el-empty></slot>
+      </span>
+    </div>
+
     <div
       class="el-table__body-wrapper"
       ref="bodyWrapper"
@@ -59,9 +66,9 @@
           width: bodyWidth
         }"
       >
-        <span class="el-table__empty-text">
+        <!-- <span class="el-table__empty-text">
           <slot name="empty">{{ emptyText || t('el.table.emptyText') }}</slot>
-        </span>
+        </span> -->
       </div>
       <div v-if="$slots.append" class="el-table__append-wrapper" ref="appendWrapper">
         <slot name="append"></slot>
@@ -220,6 +227,7 @@
 <script type="text/babel">
 import { debounce, throttle } from 'throttle-debounce'
 import { addResizeListener, removeResizeListener } from 'yak-ui/src/utils/resize-event'
+import ElEmpty from 'yak-ui/components/empty'
 import Mousewheel from 'yak-ui/src/directives/mousewheel'
 import Locale from 'yak-ui/src/mixins/locale'
 import Migrating from 'yak-ui/src/mixins/migrating'
@@ -339,6 +347,7 @@ export default {
   },
 
   components: {
+    ElEmpty,
     TableHeader,
     TableFooter,
     TableBody

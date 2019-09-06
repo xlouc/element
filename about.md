@@ -21,7 +21,7 @@ Yak, 一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌
 - [ ] 优化`Calendar 日历`组件
 - [ ] 优化`Steps 步骤条`组件
 - [x] ~~优化`Pagination 分页`组件`background`模式~~
-- [ ] 优化`Table 表格`组件
+- [x] ~~优化`Table 表格`组件~~
 - [ ] 优化`Progress 进度条`组件
 - [ ] 优化`Form 表单`组件
 - [x] ~~升级Vue Cli 3版本~~

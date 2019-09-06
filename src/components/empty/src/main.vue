@@ -1,7 +1,7 @@
 <!-- @format -->
 
 <template>
-  <div class="el-empty">
+  <div :class="['el-empty', { 'el-empty--normal': !Boolean(image) }]">
     <div class="el-empty__image">
       <template v-if="!image">
         <svg width="64" height="41" viewBox="0 0 64 41" xmlns="http://www.w3.org/2000/svg">
