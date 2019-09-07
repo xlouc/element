@@ -23,6 +23,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '~nprogress/nprogress.css';
 @import 'main/style/reset.scss';
 @import 'main/style/common/var.scss';
 
@@ -40,6 +41,11 @@ img {
 :after,
 :before {
   box-sizing: border-box;
+}
+
+#nprogress .spinner {
+  top: 85px;
+  right: 35px;
 }
 
 .doc-header {

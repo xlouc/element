@@ -26,14 +26,13 @@
     & .el-form-item__label {
       float: none;
       display: inline-block;
-      &::after {
-        content: none;
-      }
     }
+
     & .el-form-item__content {
       display: inline-block;
       vertical-align: top;
     }
+
     &.el-form--label-top .el-form-item__content {
       display: block;
     }
