@@ -105,32 +105,32 @@ git
   .then(git => {
     return git.push(remote, branch)
   })
-  .then(function() {
-    return git.add('-A')
-  })
-  .then(function() {
-    return git.commit(`chore(release): build ${version}`)
-  })
-  .then(function() {
-    return git.push('--follow-tags', remote, `master`)
-  })
-  .then(function() {
-    return git.checkout(remote, 'develop')
-  })
-  .then(function() {
-    return git.rebase('master')
-  })
-  .then(function() {
-    return git.push(remote, 'develop')
-  })
-  .then(function() {
-    let args = ['publish']
-    if (version.indexOf('beta') >= 0) {
-      args.push('--tag')
-      args.push('beta')
-    }
-    // return Git.spawn(process.platform === 'win32' ? 'npm.cmd' : 'npm', args, process.cwd(), true)
-  })
+  // .then(function() {
+  //   return git.add('-A')
+  // })
+  // .then(function() {
+  //   return git.commit(`chore(release): build ${version}`)
+  // })
+  // .then(function() {
+  //   return git.push('--follow-tags', remote, `master`)
+  // })
+  // .then(function() {
+  //   return git.checkout(remote, 'develop')
+  // })
+  // .then(function() {
+  //   return git.rebase('master')
+  // })
+  // .then(function() {
+  //   return git.push(remote, 'develop')
+  // })
+  // .then(function() {
+  //   let args = ['publish']
+  //   if (version.indexOf('beta') >= 0) {
+  //     args.push('--tag')
+  //     args.push('beta')
+  //   }
+  //   return Git.spawn(process.platform === 'win32' ? 'npm.cmd' : 'npm', args, process.cwd(), true)
+  // })
   .then(
     function() {},
     function() {
