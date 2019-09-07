@@ -1,5 +1,6 @@
 /** @format */
 
+import NProgress from 'nprogress'
 import Vue from 'vue'
 import Router from 'vue-router'
 import navs from './nav.config'
@@ -40,7 +41,7 @@ function addRoute(page) {
   routes.push(child)
 }
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -89,3 +90,24 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  NProgress.start()
+  NProgress.inc()
+  setTimeout(() => {
+    next()
+  }, 100)
+})
+
+router.afterEach(route => {
+  if (route.meta && route.meta.title) {
+    document.title = `${route.meta.title} - Yak UI - Vue 2.0 的桌面端组件库`
+  }
+  Vue.nextTick(() => {
+    setTimeout(() => {
+      NProgress.done()
+    }, 100)
+  })
+})
+
+export default router

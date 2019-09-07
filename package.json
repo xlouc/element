@@ -9,6 +9,8 @@
     "build:entry": "node build/build.entry.js && node build/build.color.js",
     "build:component": "node build/build.component.js",
     "lint": "vue-cli-service lint",
+    "release": "node build/release.js",
+    "commit": "git-cz",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
@@ -34,6 +36,7 @@
     "babel-jest": "^23.6.0",
     "core-js": "^2.6.5",
     "cross-env": "^5.2.1",
+    "cz-conventional-changelog": "^3.0.2",
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-vue": "^5.0.0",
@@ -48,18 +51,42 @@
     "markdown-it": "^9.0.1",
     "markdown-it-checkbox": "^1.1.0",
     "markdown-it-container": "^2.0.0",
+    "nprogress": "^0.2.0",
     "prettier": "^1.18.2",
     "prismjs": "^1.17.1",
     "progress": "^2.0.3",
     "sass": "^1.18.0",
     "sass-loader": "^7.1.0",
     "sinon": "^7.4.1",
+    "standard-version": "^7.0.0",
     "vue": "^2.6.10",
     "vue-clipboard2": "^0.3.0",
     "vue-router": "^3.1.2",
     "vue-template-compiler": "^2.6.10",
     "webpack-dev-server": "^3.7.2"
   },
+  "peerDependencies": {
+    "vue": "^2.6.10"
+  },
+  "main": "lib/yak.common.js",
+  "unpkg": "lib/yak.umd.js",
+  "style": "lib/theme-chalk/index.css",
+  "typings": "types/index.d.ts",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yakcodo/yak/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:yakcodo/yak.git"
+  },
+  "homepage": "https://github.com/yakcodo/yak",
+  "files": [
+    "lib",
+    "src",
+    "tests",
+    "types"
+  ],
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
@@ -68,5 +95,10 @@
       "vue-cli-service lint",
       "git add"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
