@@ -224,6 +224,10 @@ Git.prototype.pull = function() {
   return this.logByExec('pull')
 }
 
+Git.prototype.setRemoteUrl = function(remote, url) {
+  return this.exec('remote', 'add', remote, url)
+}
+
 /**
  * Get the URL for a remote.
  * @param {string} remote Remote alias.

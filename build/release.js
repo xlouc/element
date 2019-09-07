@@ -86,28 +86,26 @@ git
   })
   .then(function() {
     // 上传编译后的内容至 gh-pages
-    fs.removeSync(getCacheDir())
-    console.info('Cloning %s into %s', repo, getCacheDir())
-    return Git.clone(repo, getCacheDir(), '-b', branch)
+    console.info('Init %s into %s', repo, getDistDir())
+    return new Git(getDistDir(), 'git').init()
   })
   .then(function(git) {
-    var dirs = fs.readdirSync(getCacheDir())
-    dirs.forEach(function(name) {
-      if (name === '.git') return
-      fs.removeSync(path.resolve(getCacheDir(), name))
-    })
-    console.info('Copying files gh-pages')
-    fs.copySync(getDistDir(), getCacheDir())
+    console.info('Push dist files into gh-pages')
     return git.add('.')
   })
   .then(git => {
     return git.commit(`deploy: [release] v${version}`)
   })
   .then(git => {
+    return git.setRemoteUrl(remote, repo)
+  })
+  .then(git => {
+    return git.checkout(remote, branch)
+  })
+  .then(git => {
     return git.push(remote, branch)
   })
   .then(function() {
-    fs.removeSync(getCacheDir())
     return git.add('-A')
   })
   .then(function() {
@@ -131,7 +129,7 @@ git
       args.push('--tag')
       args.push('beta')
     }
-    return Git.spawn(process.platform === 'win32' ? 'npm.cmd' : 'npm', args, process.cwd(), true)
+    // return Git.spawn(process.platform === 'win32' ? 'npm.cmd' : 'npm', args, process.cwd(), true)
   })
   .then(
     function() {},
