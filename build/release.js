@@ -1,8 +1,6 @@
 /** @format */
 
 /* eslint-disable no-unused-vars */
-const standardVersion = require('standard-version')
-// const replace = require('replace')
 const os = require('os')
 const fs = require('fs-extra')
 const path = require('path')
@@ -34,15 +32,16 @@ git
   .getRemoteUrl(remote)
   .then(function(_repo) {
     repo = _repo
-    return git.checkout(remote, 'master')
+    return repo
+    // return git.checkout(remote, 'master')
   })
-  .then(function() {
-    return git.pull()
-  })
-  .then(function() {
-    console.info('git merge develop')
-    return git.merge('develop')
-  })
+  // .then(function() {
+  //   return git.pull()
+  // })
+  // .then(function() {
+  //   console.info('git merge develop')
+  //   return git.merge('develop')
+  // })
   .then(function() {
     if (!fs.existsSync(packagePath)) {
       return Promise.reject(new Error(packagePath + "doesn't exist"))
@@ -65,45 +64,40 @@ git
   .then(function({ version }) {
     return version.split(':')[1].trim()
   })
-  .then(function(newVersion) {
-    version = newVersion
-    const name = require(packagePath).name
-    console.info(`Releasing ${name} v${version} ...`)
-    return standardVersion({
-      releaseAs: version,
-      preset: 'angular'
-    })
-  })
-  .then(function() {
-    // console.info(`Replace "commits" to "commit" by "CHANGELOG.md" ...`)
-    // replace({
-    //   regex: 'commits',
-    //   replacement: 'commit',
-    //   paths: [path.resolve(process.cwd(), 'CHANGELOG.md')]
-    // })
-    console.info('Start build project ...')
-    return Git.spawn(process.platform === 'win32' ? 'npm.cmd' : 'npm', ['run', 'build'], process.cwd(), true)
-  })
+  // .then(function(newVersion) {
+  //   version = newVersion
+  //   const name = require(packagePath).name
+  //   console.info(`Releasing  ${name} v${version} ...`)
+  //   return Git.spawn(process.platform === 'win32' ? 'npm.cmd' : 'npm', ['version', version, '--message', `[release] ${version}`], process.cwd(), true)
+  // })
+  // .then(function() {
+  //   return Git.spawn(
+  //     process.platform === 'win32' ? 'npx.cmd' : 'npx',
+  //     ['conventional-changelog', '-p', 'angular', '-i', 'CHANGELOG.md', '-s'],
+  //     process.cwd(),
+  //     true
+  //   )
+  // })
+  // .then(function() {
+  //   console.info('Start build project ...')
+  //   return Git.spawn(process.platform === 'win32' ? 'npm.cmd' : 'npm', ['run', 'build'], process.cwd(), true)
+  // })
   .then(function() {
     // 上传编译后的内容至 gh-pages
     console.info('Init %s into %s', repo, getDistDir())
-    return new Git(getDistDir(), 'git').init()
+    return new Git(getDistDir(), 'git')
   })
   .then(function(git) {
-    console.info('Push dist files into gh-pages')
-    return git.add('.')
+    return git.init()
   })
-  .then(git => {
-    return git.commit(`deploy: [release] v${version}`)
+  .then(function(git) {
+    return git.add('-A')
   })
-  .then(git => {
-    return git.setRemoteUrl(remote, repo)
+  .then(function(git) {
+    return git.commit(`"deploy: [release] v${version}"`)
   })
-  .then(git => {
-    return git.checkout(remote, branch)
-  })
-  .then(git => {
-    return git.push(remote, branch)
+  .then(function(git) {
+    return git.push('-f', repo, `master:${branch}`)
   })
   // .then(function() {
   //   return git.add('-A')
