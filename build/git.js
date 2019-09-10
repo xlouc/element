@@ -58,9 +58,6 @@ function spawn(exe, args, cwd, stdio = false) {
         buffer.push(chunk.toString())
       })
     }
-    child.on('exit', (code, signal) => {
-      console.log('exit code', code, signal)
-    })
     child.on('close', code => {
       const output = buffer.join('')
       if (code) {

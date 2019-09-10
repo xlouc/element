@@ -64,67 +64,67 @@ git
   .then(function({ version }) {
     return version.split(':')[1].trim()
   })
-  // .then(function(newVersion) {
-  //   version = newVersion
-  //   const name = require(packagePath).name
-  //   console.info(`Releasing  ${name} v${version} ...`)
-  //   return Git.spawn(process.platform === 'win32' ? 'npm.cmd' : 'npm', ['version', version, '--message', `[release] ${version}`], process.cwd(), true)
-  // })
-  // .then(function() {
-  //   return Git.spawn(
-  //     process.platform === 'win32' ? 'npx.cmd' : 'npx',
-  //     ['conventional-changelog', '-p', 'angular', '-i', 'CHANGELOG.md', '-s'],
-  //     process.cwd(),
-  //     true
-  //   )
-  // })
-  // .then(function() {
-  //   console.info('Start build project ...')
-  //   return Git.spawn(process.platform === 'win32' ? 'npm.cmd' : 'npm', ['run', 'build'], process.cwd(), true)
-  // })
+  .then(function(newVersion) {
+    version = newVersion
+    const name = require(packagePath).name
+    console.info(`Releasing  ${name} v${version} ...`)
+    return Git.spawn(process.platform === 'win32' ? 'npm.cmd' : 'npm', ['version', version, '--message', `[release] ${version}`], process.cwd(), true)
+  })
+  .then(function() {
+    return Git.spawn(
+      process.platform === 'win32' ? 'npx.cmd' : 'npx',
+      ['conventional-changelog', '-p', 'angular', '-i', 'CHANGELOG.md', '-s'],
+      process.cwd(),
+      true
+    )
+  })
+  .then(function() {
+    console.info('Start build project ...')
+    return Git.spawn(process.platform === 'win32' ? 'npm.cmd' : 'npm', ['run', 'build'], process.cwd(), true)
+  })
   .then(function() {
     // 上传编译后的内容至 gh-pages
     console.info('Init %s into %s', repo, getDistDir())
     return new Git(getDistDir(), 'git')
   })
-  .then(function(git) {
-    return git.init()
+  .then(function(distGit) {
+    return distGit.init()
   })
-  .then(function(git) {
+  .then(function(distGit) {
+    return distGit.add('-A')
+  })
+  .then(function(distGit) {
+    return distGit.commit(`"deploy: [release] v${version}"`)
+  })
+  .then(function(distGit) {
+    return distGit.push('-f', repo, `master:${branch}`)
+  })
+  .then(function() {
     return git.add('-A')
   })
-  .then(function(git) {
-    return git.commit(`"deploy: [release] v${version}"`)
+  .then(function() {
+    return git.commit(`chore(release): build ${version}`)
   })
-  .then(function(git) {
-    return git.push('-f', repo, `master:${branch}`)
+  .then(function() {
+    return git.push('--follow-tags', remote, `master`)
   })
-  // .then(function() {
-  //   return git.add('-A')
-  // })
-  // .then(function() {
-  //   return git.commit(`chore(release): build ${version}`)
-  // })
-  // .then(function() {
-  //   return git.push('--follow-tags', remote, `master`)
-  // })
-  // .then(function() {
-  //   return git.checkout(remote, 'develop')
-  // })
-  // .then(function() {
-  //   return git.rebase('master')
-  // })
-  // .then(function() {
-  //   return git.push(remote, 'develop')
-  // })
-  // .then(function() {
-  //   let args = ['publish']
-  //   if (version.indexOf('beta') >= 0) {
-  //     args.push('--tag')
-  //     args.push('beta')
-  //   }
-  //   return Git.spawn(process.platform === 'win32' ? 'npm.cmd' : 'npm', args, process.cwd(), true)
-  // })
+  .then(function() {
+    return git.checkout(remote, 'develop')
+  })
+  .then(function() {
+    return git.rebase('master')
+  })
+  .then(function() {
+    return git.push(remote, 'develop')
+  })
+  .then(function() {
+    let args = ['publish']
+    if (version.indexOf('beta') >= 0) {
+      args.push('--tag')
+      args.push('beta')
+    }
+    return Git.spawn(process.platform === 'win32' ? 'npm.cmd' : 'npm', args, process.cwd(), true)
+  })
   .then(
     function() {},
     function() {
