@@ -14,7 +14,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "async-validator": "^3.0.2",
+    "async-validator": "^3.1.0",
     "deepmerge": "^4.0.0",
     "enquire.js": "^2.1.6",
     "normalize-wheel": "^1.0.1",
@@ -24,10 +24,10 @@
     "tinycolor2": "^1.4.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.10.0",
-    "@vue/cli-plugin-eslint": "^3.10.0",
-    "@vue/cli-plugin-unit-jest": "^3.10.0",
-    "@vue/cli-service": "^3.10.0",
+    "@vue/cli-plugin-babel": "^3.11.0",
+    "@vue/cli-plugin-eslint": "^3.11.0",
+    "@vue/cli-plugin-unit-jest": "^3.11.0",
+    "@vue/cli-service": "^3.11.0",
     "@vue/component-compiler-utils": "^3.0.0",
     "@vue/eslint-config-prettier": "^5.0.0",
     "@vue/test-utils": "1.0.0-beta.29",
