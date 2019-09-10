@@ -1,18 +1,13 @@
-# Changelog
-
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
-
-## 1.2.5 (2019-09-07)
+## [1.2.5](https://github.com/yakcodo/yak/compare/c306fad...v1.2.5) (2019-09-07)
 
 
 ### Bug Fixes
 
-* **Descriptions:** 修复描述列表文档错误和代码错误 ([7945239](https://github.com/yakcodo/yak/commit/7945239))
 * **form:** 修复不同模式是否显示冒号的问题 ([59f9ab0](https://github.com/yakcodo/yak/commit/59f9ab0))
 * **form:** 修复表单`inline`模式`label`样式问题 ([0d8ea41](https://github.com/yakcodo/yak/commit/0d8ea41))
+* **PageHeader:** 修复按需导入缺失部分样式问题 ([6efcfb0](https://github.com/yakcodo/yak/commit/6efcfb0))
 * **Result:** 修复图片模式样式错误 ([4016d25](https://github.com/yakcodo/yak/commit/4016d25))
 * 修复图标头像会有底色的问题 ([4aa3f6d](https://github.com/yakcodo/yak/commit/4aa3f6d))
-* **PageHeader:** 修复按需导入缺失部分样式问题 ([6efcfb0](https://github.com/yakcodo/yak/commit/6efcfb0))
 
 
 ### Features
@@ -42,3 +37,6 @@ All notable changes to this project will be documented in this file. See [standa
 * **Table:** 优化空数据时，使用空状态`el-empty `组件 ([f1afa37](https://github.com/yakcodo/yak/commit/f1afa37))
 * **tag:** 优化`tag 标签`自定义主题色 ([39f5482](https://github.com/yakcodo/yak/commit/39f5482))
 * **timeline:** 优化节点自定大小和默认大小 ([5085446](https://github.com/yakcodo/yak/commit/5085446))
+
+
+
