@@ -258,6 +258,10 @@ Git.prototype.getRemoteUrl = function(remote) {
     })
 }
 
+Git.prototype.config = function(...args) {
+  return this.logByExec('config', ...args)
+}
+
 /**
  * Clone a repo into the given dir if it doesn't already exist.
  * @param {string} repo Repository URL.

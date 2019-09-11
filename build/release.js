@@ -35,6 +35,12 @@ git
     return git.checkout(remote, 'master')
   })
   .then(function() {
+    return git.config('user.name', 'yak-bot')
+  })
+  .then(function() {
+    return git.config('user.email', 'mamying@live.com')
+  })
+  .then(function() {
     return git.pull()
   })
   .then(function() {
@@ -68,28 +74,28 @@ git
     var pack = require(packagePath)
     console.info(`Releasing ${pack.name} v${version} ...`)
     // 处理文件版本
+    var promises = []
     ;[].concat(pkgFiles, lockFiles).forEach(function(filename) {
       let configPath = path.resolve(process.cwd(), filename)
       try {
         let stat = fs.lstatSync(configPath)
         if (stat.isFile()) {
-          var newPack = Object.assign({}, pack)
-          newPack.version = version
-          console.log(`bumping version in ${filename} from ${pack.version} to ${newPack.version}`)
-          fileSave(packagePath)
-            .write(JSON.stringify(newPack, null, 2), 'utf8')
+          var file = require(configPath)
+          var newFile = Object.assign({}, file)
+          newFile.version = version
+          console.log(`bumping version in ${filename} from ${file.version} to ${newFile.version}`)
+          fileSave(configPath)
+            .write(JSON.stringify(newFile, null, 2), 'utf8')
             .end('')
         }
+        promises.push(Promise.resolve())
       } catch (err) {
-        // 新版本
+        promises.push(Promise.reject(err))
       }
     })
+    return Promise.all(promises)
   })
   .then(function() {
-    var bool = true
-    if (bool) {
-      return Promise.reject
-    }
     return Git.spawn(
       process.platform === 'win32' ? 'npx.cmd' : 'npx',
       ['conventional-changelog', '-p', 'angular', '-i', 'CHANGELOG.md', '-s'],
@@ -113,7 +119,13 @@ git
     return distGit.add('-A')
   })
   .then(function(distGit) {
-    return distGit.commit(`"deploy: [release] v${version}"`)
+    return distGit.commit(`"[deploy]: [release] v${version}"`)
+  })
+  .then(function(distGit) {
+    return distGit.config('user.name', 'yak-bot')
+  })
+  .then(function(distGit) {
+    return distGit.config('user.email', 'mamying@live.com')
   })
   .then(function(distGit) {
     return distGit.push('-f', repo, `master:${branch}`)
@@ -122,7 +134,10 @@ git
     return git.add('-A')
   })
   .then(function() {
-    return git.commit(`chore(release): build ${version}`)
+    return git.commit(`[release]: ${version}`)
+  })
+  .then(function() {
+    return git.tag(`v${version}`)
   })
   .then(function() {
     return git.push('--follow-tags', remote, `master`)
@@ -145,8 +160,11 @@ git
     return Git.spawn(process.platform === 'win32' ? 'npm.cmd' : 'npm', args, process.cwd(), true)
   })
   .then(
-    function() {},
+    function() {
+      process.exit()
+    },
     function() {
       console.error(new Error('Unspecified error (run without silent option for detail)'))
+      process.exit(1)
     }
   )
