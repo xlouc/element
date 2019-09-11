@@ -127,6 +127,7 @@
               :max-date="maxDate"
               :range-state="rangeState"
               :disabled-date="disabledDate"
+              :cell-class-name="cellClassName"
               @changerange="handleChangeRange"
               :first-day-of-week="firstDayOfWeek"
               @pick="handleRangePick"
@@ -162,6 +163,7 @@
               :max-date="maxDate"
               :range-state="rangeState"
               :disabled-date="disabledDate"
+              :cell-class-name="cellClassName"
               @changerange="handleChangeRange"
               :first-day-of-week="firstDayOfWeek"
               @pick="handleRangePick"
@@ -327,6 +329,7 @@ export default {
       shortcuts: '',
       visible: '',
       disabledDate: '',
+      cellClassName: '',
       firstDayOfWeek: 7,
       minTimePickerVisible: false,
       maxTimePickerVisible: false,
