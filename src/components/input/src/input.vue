@@ -54,7 +54,7 @@
             <slot name="suffix"></slot>
             <i class="el-input__icon" v-if="suffixIcon" :class="suffixIcon"></i>
           </template>
-          <i v-if="showClear" class="el-input__icon el-icon-close-circle el-input__clear" @click="clear"></i>
+          <i v-if="showClear" class="el-input__icon el-icon-close-circle el-input__clear" @mousedown.prevent @click="clear"></i>
           <i
             v-if="showPwdVisible"
             :class="['el-input__icon el-input__clear', { 'el-icon-eye-close': !passwordVisible, 'el-icon-eye': passwordVisible }]"
