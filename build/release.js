@@ -1,6 +1,7 @@
 /** @format */
 
 /* eslint-disable no-unused-vars */
+const fileSave = require('file-save')
 const os = require('os')
 const fs = require('fs-extra')
 const path = require('path')
@@ -8,9 +9,8 @@ const Git = require('./git')
 const semver = require('semver')
 const inquirer = require('inquirer')
 
-function getCacheDir() {
-  return path.resolve(os.tmpdir(), 'yak-ui')
-}
+var pkgFiles = ['package.json', 'bower.json', 'manifest.json', 'composer.json']
+var lockFiles = ['package-lock.json', 'npm-shrinkwrap.json', 'composer.lock']
 
 function getDistDir() {
   return path.relative(process.cwd(), path.resolve(__dirname, '../dist/'))
@@ -65,14 +65,25 @@ git
   })
   .then(function(newVersion) {
     version = newVersion
-    const name = require(packagePath).name
-    console.info(`Releasing ${name} v${version} ...`)
-    return Git.spawn(
-      process.platform === 'win32' ? 'npm.cmd' : 'npm',
-      ['version', newVersion, '--message', `[release] ${version}`],
-      process.cwd(),
-      true
-    )
+    var pack = require(packagePath)
+    console.info(`Releasing ${pack.name} v${version} ...`)
+    // 处理文件版本
+    ;[].concat(pkgFiles, lockFiles).forEach(function(filename) {
+      let configPath = path.resolve(process.cwd(), filename)
+      try {
+        let stat = fs.lstatSync(configPath)
+        if (stat.isFile()) {
+          var newPack = Object.assign({}, pack)
+          newPack.version = version
+          console.log(`bumping version in ${filename} from ${pack.version} to ${newPack.version}`)
+          fileSave(packagePath)
+            .write(JSON.stringify(newPack, null, 2), 'utf8')
+            .end('')
+        }
+      } catch (err) {
+        // 新版本
+      }
+    })
   })
   .then(function() {
     var bool = true
