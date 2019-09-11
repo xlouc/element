@@ -1,9 +1,9 @@
 <!-- @format -->
 
 <template>
-  <div class="el-radio-group" role="radiogroup" @keydown="handleKeydown">
+  <component :is="_elTag" class="el-radio-group" role="radiogroup" @keydown="handleKeydown">
     <slot></slot>
-  </div>
+  </component>
 </template>
 <script>
 import Emitter from 'yak-ui/src/mixins/emitter'
@@ -38,6 +38,9 @@ export default {
   computed: {
     _elFormItemSize() {
       return (this.elFormItem || {}).elFormItemSize
+    },
+    _elTag() {
+      return (this.$vnode.data || {}).tag || 'div'
     },
     radioGroupSize() {
       return this.size || this._elFormItemSize || (this.$ELEMENT || {}).size

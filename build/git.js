@@ -29,6 +29,7 @@ function spawnSync(exe, args, cwd, stdio = false) {
   let options = { cwd: cwd || process.cwd() }
   if (stdio) {
     options.stdio = 'inherit'
+    options.shell = true
   }
   return cp.spawnSync(exe, args, options)
 }
@@ -45,6 +46,7 @@ function spawn(exe, args, cwd, stdio = false) {
     let options = { cwd: cwd || process.cwd() }
     if (stdio) {
       options.stdio = 'inherit'
+      options.shell = true
     }
     const child = cp.spawn(exe, args, options)
     const buffer = []
@@ -100,8 +102,8 @@ Git.prototype.exec = function() {
  *     or rejected with an error.
  */
 Git.prototype.logByExec = function() {
-  return spawn(this.cmd, [].slice.call(arguments), this.cwd, true).then(output => {
-    this.output = output
+  console.log(this.cmd, [].slice.call(arguments).join(' '))
+  return spawn(this.cmd, [].slice.call(arguments), this.cwd, true).then(() => {
     return this
   })
 }
@@ -222,6 +224,10 @@ Git.prototype.push = function(...args) {
 
 Git.prototype.pull = function() {
   return this.logByExec('pull')
+}
+
+Git.prototype.setRemoteUrl = function(remote, url) {
+  return this.exec('remote', 'add', remote, url)
 }
 
 /**

@@ -139,7 +139,9 @@ export default {
 
     activeIndex(val, oldVal) {
       this.resetItemPosition(oldVal)
-      this.$emit('change', val, oldVal)
+      if (oldVal > -1) {
+        this.$emit('change', val, oldVal)
+      }
     },
 
     autoplay(val) {

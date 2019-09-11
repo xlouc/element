@@ -11,7 +11,6 @@ import {
   validateRangeInOneMonth
 } from 'yak-ui/src/utils/date-util'
 
-const WEEK_DAYS = getI18nSettings().dayNames
 export default {
   props: {
     selectedDay: String, // formated date yyyy-MM-dd
@@ -29,6 +28,12 @@ export default {
   },
 
   inject: ['elCalendar'],
+
+  data() {
+    return {
+      WEEK_DAYS: getI18nSettings().dayNames
+    }
+  },
 
   methods: {
     toNestedArr(days) {
@@ -151,6 +156,8 @@ export default {
 
     weekDays() {
       const start = this.firstDayOfWeek
+      const { WEEK_DAYS } = this
+
       if (typeof start !== 'number' || start === 0) {
         return WEEK_DAYS.slice()
       } else {

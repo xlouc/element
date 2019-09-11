@@ -34,6 +34,7 @@
         :autocomplete="autoComplete || autocomplete"
         ref="input"
         @compositionstart="handleCompositionStart"
+        @compositionupdate="handleCompositionUpdate"
         @compositionend="handleCompositionEnd"
         @input="handleInput"
         @focus="handleFocus"
@@ -53,7 +54,7 @@
             <slot name="suffix"></slot>
             <i class="el-input__icon" v-if="suffixIcon" :class="suffixIcon"></i>
           </template>
-          <i v-if="showClear" class="el-input__icon el-icon-close-circle el-input__clear" @click="clear"></i>
+          <i v-if="showClear" class="el-input__icon el-icon-close-circle el-input__clear" @mousedown.prevent @click="clear"></i>
           <i
             v-if="showPwdVisible"
             :class="['el-input__icon el-input__clear', { 'el-icon-eye-close': !passwordVisible, 'el-icon-eye': passwordVisible }]"
@@ -75,6 +76,7 @@
       :tabindex="tabindex"
       class="el-textarea__inner"
       @compositionstart="handleCompositionStart"
+      @compositionupdate="handleCompositionUpdate"
       @compositionend="handleCompositionEnd"
       @input="handleInput"
       ref="textarea"
@@ -96,6 +98,7 @@ import emitter from 'yak-ui/src/mixins/emitter'
 import Migrating from 'yak-ui/src/mixins/migrating'
 import calcTextareaHeight from './calcTextareaHeight'
 import merge from 'yak-ui/src/utils/merge'
+import { isKorean } from 'yak-ui/src/utils/shared'
 
 export default {
   name: 'ElInput',
@@ -317,9 +320,16 @@ export default {
     handleCompositionStart() {
       this.isComposing = true
     },
+    handleCompositionUpdate(event) {
+      const text = event.target.value
+      const lastCharacter = text[text.length - 1] || ''
+      this.isComposing = !isKorean(lastCharacter)
+    },
     handleCompositionEnd(event) {
-      this.isComposing = false
-      this.handleInput(event)
+      if (this.isComposing) {
+        this.isComposing = false
+        this.handleInput(event)
+      }
     },
     handleInput(event) {
       // should not emit input during composition
