@@ -34,6 +34,7 @@
         :autocomplete="autoComplete || autocomplete"
         ref="input"
         @compositionstart="handleCompositionStart"
+        @compositionupdate="handleCompositionUpdate"
         @compositionend="handleCompositionEnd"
         @input="handleInput"
         @focus="handleFocus"
@@ -75,6 +76,7 @@
       :tabindex="tabindex"
       class="el-textarea__inner"
       @compositionstart="handleCompositionStart"
+      @compositionupdate="handleCompositionUpdate"
       @compositionend="handleCompositionEnd"
       @input="handleInput"
       ref="textarea"
@@ -96,6 +98,7 @@ import emitter from 'yak-ui/src/mixins/emitter'
 import Migrating from 'yak-ui/src/mixins/migrating'
 import calcTextareaHeight from './calcTextareaHeight'
 import merge from 'yak-ui/src/utils/merge'
+import { isKorean } from 'yak-ui/src/utils/shared'
 
 export default {
   name: 'ElInput',
@@ -317,9 +320,16 @@ export default {
     handleCompositionStart() {
       this.isComposing = true
     },
+    handleCompositionUpdate(event) {
+      const text = event.target.value
+      const lastCharacter = text[text.length - 1] || ''
+      this.isComposing = !isKorean(lastCharacter)
+    },
     handleCompositionEnd(event) {
-      this.isComposing = false
-      this.handleInput(event)
+      if (this.isComposing) {
+        this.isComposing = false
+        this.handleInput(event)
+      }
     },
     handleInput(event) {
       // should not emit input during composition
