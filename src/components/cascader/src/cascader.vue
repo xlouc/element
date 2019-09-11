@@ -280,6 +280,10 @@ export default {
   },
 
   watch: {
+    disabled() {
+      this.computePresentContent()
+    },
+
     value(val) {
       if (!isEqual(val, this.checkedValue)) {
         this.checkedValue = val
