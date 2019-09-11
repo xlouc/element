@@ -32,16 +32,15 @@ git
   .getRemoteUrl(remote)
   .then(function(_repo) {
     repo = _repo
-    return repo
-    // return git.checkout(remote, 'master')
+    return git.checkout(remote, 'master')
   })
-  // .then(function() {
-  //   return git.pull()
-  // })
-  // .then(function() {
-  //   console.info('git merge develop')
-  //   return git.merge('develop')
-  // })
+  .then(function() {
+    return git.pull()
+  })
+  .then(function() {
+    console.info('git merge develop')
+    return git.merge('develop')
+  })
   .then(function() {
     if (!fs.existsSync(packagePath)) {
       return Promise.reject(new Error(packagePath + "doesn't exist"))
@@ -67,10 +66,19 @@ git
   .then(function(newVersion) {
     version = newVersion
     const name = require(packagePath).name
-    console.info(`Releasing  ${name} v${version} ...`)
-    return Git.spawn(process.platform === 'win32' ? 'npm.cmd' : 'npm', ['version', version, '--message', `[release] ${version}`], process.cwd(), true)
+    console.info(`Releasing ${name} v${version} ...`)
+    return Git.spawn(
+      process.platform === 'win32' ? 'npm.cmd' : 'npm',
+      ['version', newVersion, '--message', `[release] ${version}`],
+      process.cwd(),
+      true
+    )
   })
   .then(function() {
+    var bool = true
+    if (bool) {
+      return Promise.reject
+    }
     return Git.spawn(
       process.platform === 'win32' ? 'npx.cmd' : 'npx',
       ['conventional-changelog', '-p', 'angular', '-i', 'CHANGELOG.md', '-s'],
