@@ -228,7 +228,7 @@ export default {
 
     handleScroll(type) {
       const value = Math.min(
-        Math.floor(
+        Math.round(
           (this.$refs[type].wrap.scrollTop - (this.scrollBarHeight(type) * 0.5 - 10) / this.typeItemHeight(type) + 3) / this.typeItemHeight(type)
         ),
         type === 'hours' ? 23 : 59
