@@ -28,15 +28,15 @@ export interface ElUploadProgressEvent extends ProgressEvent {
 }
 
 export interface HttpRequestOptions {
-  headers: object,
-  withCredentials: boolean,
-  file: ElUploadInternalFileDetail,
-  data: object,
-  filename: string,
-  action: string,
-  onProgress: (e: ElUploadProgressEvent) => void,
-  onSuccess: (response: any) => void,
-  onError: (err: ErrorEvent) => void
+  headers: object;
+  withCredentials: boolean;
+  file: File;
+  data: object;
+  filename: string;
+  action: string;
+  onProgress: (e: ElUploadProgressEvent) => void;
+  onSuccess: (response: any) => void;
+  onError: (err: ErrorEvent) => void;
 }
 
 /** Upload Component */
