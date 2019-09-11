@@ -112,6 +112,9 @@ export default {
     },
     pageHeader: {
       title: 'عودة'
+    },
+    empty: {
+      noData: 'لايوجد بيانات'
     }
   }
 }
