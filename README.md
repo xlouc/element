@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://git.paascloud.org/attachments/6e1386d7-6d05-4d51-91b1-35596c2e7e7e">
+  <img src="https://github.com/yakcodo/yak/raw/develop/yak_logo.png">
 </p>
 
 <p align="center">
