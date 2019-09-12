@@ -8,6 +8,7 @@ const path = require('path')
 const Git = require('./git')
 const semver = require('semver')
 const inquirer = require('inquirer')
+const colors = require('colors-console')
 
 var pkgFiles = ['package.json', 'bower.json', 'manifest.json', 'composer.json']
 var lockFiles = ['package-lock.json', 'npm-shrinkwrap.json', 'composer.lock']
@@ -78,18 +79,23 @@ git
     ;[].concat(pkgFiles, lockFiles).forEach(function(filename) {
       let configPath = path.resolve(process.cwd(), filename)
       try {
+        if (!fs.existsSync(configPath)) {
+          promises.push(Promise.resolve())
+          return
+        }
         let stat = fs.lstatSync(configPath)
-        if (stat.isFile()) {
+        if (fs.existsSync(configPath) && stat.isFile()) {
           var file = require(configPath)
           var newFile = Object.assign({}, file)
           newFile.version = version
-          console.log(`✔️ bumping version in ${filename} from ${file.version} to ${newFile.version}`)
+          console.log(`${colors('yellow', '√')} bumping version in ${filename} from ${file.version} to ${newFile.version}`)
           fileSave(configPath)
             .write(JSON.stringify(newFile, null, 2), 'utf8')
             .end('')
         }
         promises.push(Promise.resolve())
       } catch (err) {
+        console.error(err)
         promises.push(Promise.reject(err))
       }
     })
@@ -161,9 +167,19 @@ git
   })
   .then(
     function() {
+      return git.config('--remove-section', 'user')
+    },
+    function(error) {
+      return git.config('--remove-section', 'user').then(function() {
+        return Promise.reject(error)
+      })
+    }
+  )
+  .then(
+    function() {
       process.exit()
     },
-    function() {
+    function(error) {
       console.error(new Error('Unspecified error (run without silent option for detail)'))
       process.exit(1)
     }
