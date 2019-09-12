@@ -125,7 +125,7 @@ git
     return distGit.add('-A')
   })
   .then(function(distGit) {
-    return distGit.commit(`"[deploy]: [release] v${version}"`)
+    return distGit.commit(`'[deploy]: [release] v${version}'`)
   })
   .then(function(distGit) {
     return distGit.config('user.name', 'yak-bot')
@@ -140,7 +140,7 @@ git
     return git.add('-A')
   })
   .then(function() {
-    return git.commit(`[release]: ${version}`)
+    return git.commit(`'[release]: ${version}'`)
   })
   .then(function() {
     return git.tag(`v${version}`)
