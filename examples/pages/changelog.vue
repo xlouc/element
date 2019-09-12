@@ -66,7 +66,7 @@ export default {
       for (let i = 0; i < changeLogNodes.length; i++) {
         let node = changeLogNodes[i]
 
-        if (node.tagName === 'H2') {
+        if (node.tagName === 'H2' || node.textContent.match(versionRegx)) {
           let textContent = node.textContent
           item = {
             date: textContent.match(dateRegx)[0],
