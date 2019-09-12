@@ -83,7 +83,7 @@ git
           var file = require(configPath)
           var newFile = Object.assign({}, file)
           newFile.version = version
-          console.log(`bumping version in ${filename} from ${file.version} to ${newFile.version}`)
+          console.log(`✔️ bumping version in ${filename} from ${file.version} to ${newFile.version}`)
           fileSave(configPath)
             .write(JSON.stringify(newFile, null, 2), 'utf8')
             .end('')
