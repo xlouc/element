@@ -5,6 +5,11 @@
 </template>
 <script>
 import { arrayFind } from 'yak-ui/src/utils/util'
+
+const firstUpperCase = str => {
+  return str.toLowerCase().replace(/( |^)[a-z]/g, L => L.toUpperCase())
+}
+
 export default {
   name: 'TabBar',
 
@@ -22,29 +27,24 @@ export default {
         let tabSize = 0
         const sizeName = ['top', 'bottom'].indexOf(this.rootTabs.tabPosition) !== -1 ? 'width' : 'height'
         const sizeDir = sizeName === 'width' ? 'x' : 'y'
-        const firstUpperCase = str => {
-          return str.toLowerCase().replace(/( |^)[a-z]/g, L => L.toUpperCase())
-        }
+
         this.tabs.every((tab, index) => {
           let $el = arrayFind(this.$parent.$refs.tabs || [], t => t.id.replace('tab-', '') === tab.paneName)
           if (!$el) {
             return false
           }
-
-          if (!tab.active) {
-            offset += $el[`client${firstUpperCase(sizeName)}`]
-            return true
-          } else {
-            tabSize = $el[`client${firstUpperCase(sizeName)}`]
-            const tabStyles = window.getComputedStyle($el)
-            if (sizeName === 'width' && this.tabs.length > 1) {
-              tabSize -= parseFloat(tabStyles.paddingLeft) + parseFloat(tabStyles.paddingRight)
-            }
+          // 优化
+          if (tab.active) {
             if (sizeName === 'width') {
-              offset += parseFloat(tabStyles.paddingLeft)
+              offset = $el.offsetLeft
+              tabSize = $el.offsetWidth
+            } else {
+              offset = $el.offsetTop
+              tabSize = $el.offsetHeight
             }
             return false
           }
+          return true
         })
 
         const transform = `translate${firstUpperCase(sizeDir)}(${offset}px)`
