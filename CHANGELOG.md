@@ -1,3 +1,17 @@
+## [1.3.1](https://github.com/yakcodo/yak/compare/v1.3.0...v1.3.1) (2019-09-17)
+
+
+### Bug Fixes
+
+* **page-header:** 修复 PageHeader 中返回图标与面包屑无法共存的问题。 ([2039a7a](https://github.com/yakcodo/yak/commit/2039a7a))
+
+
+### Performance Improvements
+
+* **tabs:** 优化`tab-bar`位置计算方法 ([aae1442](https://github.com/yakcodo/yak/commit/aae1442))
+
+
+
 # [1.3.0](https://github.com/yakcodo/yak/compare/v1.2.5...v1.3.0) (2019-09-12)
 
 
