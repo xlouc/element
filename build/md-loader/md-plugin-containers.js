@@ -1,5 +1,5 @@
 /** @format */
-
+const { stripScript, stripStyle, stripTemplate } = require('./util')
 /**
  * Adds custom markdown containers
  *
@@ -38,7 +38,12 @@ function createContainer(className, md) {
           if (tokens[idx].nesting === 1) {
             const description = m && m.length > 1 ? m[1] : ''
             const content = tokens[idx + 1].type === 'fence' ? tokens[idx + 1].content : ''
-            return `<demo-block>
+            const html = stripTemplate(content)
+            const script = stripScript(content)
+            const style = stripStyle(content)
+            var codepen = { html: html, script: script, style: style }
+            codepen = md.utils.escapeHtml(JSON.stringify(codepen))
+            return `<demo-block :codepen="${codepen}">
               ${description ? `<div>${md.render(description)}</div>` : ''}
               <!--element-demo: ${content}:element-demo-->
               `

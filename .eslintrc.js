@@ -17,12 +17,8 @@ module.exports = {
         printWidth: 150,
         singleQuote: true,
         semi: false,
-        trailingComma: 'none',
         bracketSpacing: true,
-        jsxBracketSameLine: true,
-        htmlWhitespaceSensitivity: 'ignore',
-        insertPragma: true,
-        requirePragma: false
+        jsxBracketSameLine: true
       }
     ]
   },

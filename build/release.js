@@ -2,7 +2,6 @@
 
 /* eslint-disable no-unused-vars */
 const fileSave = require('file-save')
-const os = require('os')
 const fs = require('fs-extra')
 const path = require('path')
 const Git = require('./git')
@@ -39,7 +38,7 @@ git
     return git.config('user.name', 'yak-bot')
   })
   .then(function() {
-    return git.config('user.email', 'mamying@live.com')
+    return git.config('user.email', 'robot@yakcode.com')
   })
   .then(function() {
     return git.pull()
@@ -88,7 +87,7 @@ git
           var file = require(configPath)
           var newFile = Object.assign({}, file)
           newFile.version = version
-          console.log(`${colors('yellow', '√')} bumping version in ${filename} from ${file.version} to ${newFile.version}`)
+          console.log(`${colors('green', '√')} bumping version in ${filename} from ${file.version} to ${newFile.version}`)
           fileSave(configPath)
             .write(JSON.stringify(newFile, null, 2), 'utf8')
             .end('')
@@ -131,7 +130,7 @@ git
     return distGit.config('user.name', 'yak-bot')
   })
   .then(function(distGit) {
-    return distGit.config('user.email', 'mamying@live.com')
+    return distGit.config('user.email', 'robot@yakcode.com')
   })
   .then(function(distGit) {
     return distGit.push('-f', repo, `master:${branch}`)
@@ -147,6 +146,9 @@ git
   })
   .then(function() {
     return git.push('--follow-tags', remote, `master`)
+  })
+  .then(function() {
+    return git.push('--tags', remote)
   })
   .then(function() {
     return git.checkout(remote, 'develop')
