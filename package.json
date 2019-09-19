@@ -80,7 +80,7 @@
     "type": "git",
     "url": "git@github.com:yakcodo/yak.git"
   },
-  "homepage": "https://github.com/yakcodo/yak",
+  "homepage": "https://yakcodo.github.io/yak/",
   "files": [
     "lib",
     "src",

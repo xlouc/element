@@ -70,6 +70,7 @@
   "skeleton": "./src/components/skeleton/index.js",
   "slider": "./src/components/slider/index.js",
   "spinner": "./src/components/spinner/index.js",
+  "statistic": "./src/components/statistic/index.js",
   "step": "./src/components/step/index.js",
   "steps": "./src/components/steps/index.js",
   "submenu": "./src/components/submenu/index.js",
