@@ -72,7 +72,7 @@ export default {
     let title = this.title || this.$slots.title
     let description = this.description || this.$slots.description
     let extra = this.extra || this.$slots.extra
-    const isMeta = avatar && title && description
+    const isMeta = avatar || title || description
     const actions = this.$slots.actions
     let layout = []
     if (_elList.layout === 'vertical' && extra) {
