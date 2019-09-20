@@ -86,6 +86,7 @@ import { ElList } from "./list";
 import { ElListItem } from "./list-item";
 import { ElSkeleton } from "./skeleton";
 import { ElResult } from "./result";
+import { ElStatistic } from "./statistic";
 
 export interface InstallationOptions {
   locale: any,
@@ -368,3 +369,6 @@ export class Skeleton extends ElSkeleton {}
 
 /** Result Component */
 export class Result extends ElResult {}
+
+/** Statistic Component */
+export class Statistic extends ElStatistic {}

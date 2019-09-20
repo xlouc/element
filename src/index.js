@@ -73,6 +73,7 @@ import Select from './components/select/index.js'
 import Skeleton from './components/skeleton/index.js'
 import Slider from './components/slider/index.js'
 import Spinner from './components/spinner/index.js'
+import Statistic from './components/statistic/index.js'
 import Step from './components/step/index.js'
 import Steps from './components/steps/index.js'
 import Submenu from './components/submenu/index.js'
@@ -161,6 +162,7 @@ const components = [
   Skeleton,
   Slider,
   Spinner,
+  Statistic,
   Step,
   Steps,
   Submenu,
@@ -288,6 +290,7 @@ export default {
   Skeleton,
   Slider,
   Spinner,
+  Statistic,
   Step,
   Steps,
   Submenu,

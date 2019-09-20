@@ -164,6 +164,10 @@
             "title": "Avatar 头像"
           },
           {
+            "path": "/statistic",
+            "title": "Statistic 统计数值"
+          },
+          {
             "path": "/descriptions",
             "title": "Descriptions 描述列表"
           },

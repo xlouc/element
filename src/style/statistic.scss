@@ -1,0 +1,39 @@
+@import "mixins/mixins";
+
+@include b(statistic) {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: $--color-text-regular;
+  font-size: $--font-size-base;
+  font-variant: tabular-nums;
+  line-height: 1.5;
+  list-style: none;
+  font-feature-settings: "tnum";
+
+  @include e(title) {
+    margin-bottom: 4px;
+    color: $--color-text-secondary;
+    font-size: $--font-size-base;
+  }
+
+  @include e(content) {
+    color: $--color-text-primary;
+    font-size: $--font-size-extra-large;
+  }
+
+  @include e(content-prefix) {
+    margin-right: 4px;
+    display: inline-block;
+  }
+
+  @include e(content-suffix) {
+    margin-left: 4px;
+    font-size: $--font-size-medium;
+    display: inline-block;
+  }
+
+  @include e(content-value-decimal) {
+    font-size: $--font-size-medium;
+  }
+}
