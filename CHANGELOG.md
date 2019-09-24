@@ -1,3 +1,17 @@
+## [1.3.2](https://github.com/yakcodo/yak/compare/v1.3.1...v1.3.2) (2019-09-24)
+
+
+### Bug Fixes
+
+* **list:** 修复`list-item`渲染判断错误 ([03fba9b](https://github.com/yakcodo/yak/commit/03fba9b))
+
+
+### Features
+
+* **statistic:** 新增统计数值 ([c18becd](https://github.com/yakcodo/yak/commit/c18becd))
+
+
+
 ## [1.3.1](https://github.com/yakcodo/yak/compare/v1.3.0...v1.3.1) (2019-09-17)
 
 
