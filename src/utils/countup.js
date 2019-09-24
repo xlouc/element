@@ -12,205 +12,211 @@ const defaults = {
   onPrint: function() {}
 }
 
-class CountUp {
-  constructor(options) {
-    this.options = Object.assign({}, defaults, options)
+function CountUp(options) {
+  //
+  var _this = this
 
-    this.formattingFn = this.options.formattingFn ? this.options.formattingFn : this.formatNumber
-    this.easingFn = this.options.easingFn ? this.options.easingFn : this.easeOutExpo
-
-    this.startVal = this.validateValue(this.options.startVal)
-    this.frameVal = this.startVal
-
-    this.options.precision = Math.max(0 || this.options.precision)
-    this.decimalMult = Math.pow(10, this.options.precision)
-    this.resetDuration()
-    this.useEasing = this.options.useEasing
-    if (this.options.separator === '') {
-      this.options.useGrouping = false
-    }
-  }
-
-  // determines where easing starts and whether to count down or up
-  determineDirectionAndSmartEasing() {
-    const end = this.finalEndVal ? this.finalEndVal : this.endVal
-    this.countDown = this.startVal > end
-    const animateAmount = end - this.startVal
-    if (Math.abs(animateAmount) > this.options.smartEasingThreshold) {
-      this.finalEndVal = end
-      const up = this.countDown ? 1 : -1
-      this.endVal = end + up * this.options.smartEasingAmount
-      this.duration = this.duration / 2
-    } else {
-      this.endVal = end
-      this.finalEndVal = null
-    }
-    if (this.finalEndVal) {
-      this.useEasing = false
-    } else {
-      this.useEasing = this.options.useEasing
-    }
-  }
-
-  // start animation
-  start(newEndVal) {
-    this.endVal = this.validateValue(newEndVal)
-    if (this.duration > 0) {
-      this.determineDirectionAndSmartEasing()
-      this.paused = false
-      this.rAF = requestAnimationFrame(this.count)
-    } else {
-      this.printValue(this.endVal)
-    }
-  }
-
-  // pause/resume animation
-  pauseResume() {
-    if (!this.paused) {
-      cancelAnimationFrame(this.rAF)
-    } else {
-      this.startTime = null
-      this.duration = this.remaining
-      this.startVal = this.frameVal
-      this.determineDirectionAndSmartEasing()
-      this.rAF = requestAnimationFrame(this.count)
-    }
-    this.paused = !this.paused
-  }
-
-  // reset to startVal so animation can be run again
-  reset() {
-    cancelAnimationFrame(this.rAF)
-    this.paused = true
-    this.resetDuration()
-    this.startVal = this.validateValue(this.options.startVal)
-    this.frameVal = this.startVal
-    this.printValue(this.startVal)
-  }
-
-  // pass a new endVal and start animation
-  update(newEndVal) {
-    cancelAnimationFrame(this.rAF)
-    this.startTime = null
-    this.endVal = this.validateValue(newEndVal)
-    if (this.endVal === this.frameVal) {
-      return
-    }
-    this.startVal = this.frameVal
-    if (!this.finalEndVal) {
-      this.resetDuration()
-    }
-    this.determineDirectionAndSmartEasing()
-    this.rAF = requestAnimationFrame(this.count)
-  }
-
-  count = timestamp => {
-    if (!this.startTime) {
-      this.startTime = timestamp
+  this.count = function(timestamp) {
+    if (!_this.startTime) {
+      _this.startTime = timestamp
     }
 
-    const progress = timestamp - this.startTime
-    this.remaining = this.duration - progress
+    var progress = timestamp - _this.startTime
+    _this.remaining = _this.duration - progress // to ease or not to ease
 
-    // to ease or not to ease
-    if (this.useEasing) {
-      if (this.countDown) {
-        this.frameVal = this.startVal - this.easingFn(progress, 0, this.startVal - this.endVal, this.duration)
+    if (_this.useEasing) {
+      if (_this.countDown) {
+        _this.frameVal = _this.startVal - _this.easingFn(progress, 0, _this.startVal - _this.endVal, _this.duration)
       } else {
-        this.frameVal = this.easingFn(progress, this.startVal, this.endVal - this.startVal, this.duration)
+        _this.frameVal = _this.easingFn(progress, _this.startVal, _this.endVal - _this.startVal, _this.duration)
       }
     } else {
-      if (this.countDown) {
-        this.frameVal = this.startVal - (this.startVal - this.endVal) * (progress / this.duration)
+      if (_this.countDown) {
+        _this.frameVal = _this.startVal - (_this.startVal - _this.endVal) * (progress / _this.duration)
       } else {
-        this.frameVal = this.startVal + (this.endVal - this.startVal) * (progress / this.duration)
+        _this.frameVal = _this.startVal + (_this.endVal - _this.startVal) * (progress / _this.duration)
       }
-    }
+    } // don't go past endVal since progress can exceed duration in the last frame
 
-    // don't go past endVal since progress can exceed duration in the last frame
-    if (this.countDown) {
-      this.frameVal = this.frameVal < this.endVal ? this.endVal : this.frameVal
+    if (_this.countDown) {
+      _this.frameVal = _this.frameVal < _this.endVal ? _this.endVal : _this.frameVal
     } else {
-      this.frameVal = this.frameVal > this.endVal ? this.endVal : this.frameVal
-    }
+      _this.frameVal = _this.frameVal > _this.endVal ? _this.endVal : _this.frameVal
+    } // decimal
 
-    // decimal
-    this.frameVal = Math.round(this.frameVal * this.decimalMult) / this.decimalMult
+    _this.frameVal = Math.round(_this.frameVal * _this.decimalMult) / _this.decimalMult // format and print value
 
-    // format and print value
-    this.printValue(this.frameVal)
+    _this.printValue(_this.frameVal) // whether to continue
 
-    // whether to continue
-    if (progress < this.duration) {
-      this.rAF = requestAnimationFrame(this.count)
-    } else if (this.finalEndVal !== null) {
+    if (progress < _this.duration) {
+      _this.rAF = requestAnimationFrame(_this.count)
+    } else if (_this.finalEndVal !== null) {
       // smart easing
-      this.update(this.finalEndVal)
+      _this.update(_this.finalEndVal)
     } else {
-      if (this.options.onEnd) {
-        this.options.onEnd()
+      if (_this.options.onEnd) {
+        _this.options.onEnd()
       }
     }
   }
 
-  printValue(val) {
-    const result = this.formattingFn(val)
-    if (this.options.onPrint) {
-      this.options.onPrint(result)
-    }
-  }
-
-  ensureNumber(n) {
-    return typeof n === 'number' && !isNaN(n)
-  }
-
-  validateValue(value) {
-    const newValue = Number(value)
-    if (!this.ensureNumber(newValue)) {
-      throw `[CountUp] invalid start or end value: ${value}`
-    } else {
-      return newValue
-    }
-  }
-
-  resetDuration() {
-    this.startTime = null
-    this.duration = Number(this.options.duration) * 1000
-    this.remaining = this.duration
-  }
-
-  // default format and easing functions
-  formatNumber = num => {
-    const neg = num < 0 ? '-' : ''
-    let result, x, x1, x2, x3
-    result = Math.abs(num).toFixed(this.options.precision)
+  this.formatNumber = function(num) {
+    var neg = num < 0 ? '-' : ''
+    var result, x, x1, x2, x3
+    result = Math.abs(num).toFixed(_this.options.precision)
     result += ''
     x = result.split('.')
     x1 = x[0]
-    x2 = x.length > 1 ? this.options.decimal + x[1] : ''
-    if (this.options.useGrouping) {
+    x2 = x.length > 1 ? _this.options.decimal + x[1] : ''
+
+    if (_this.options.useGrouping) {
       x3 = ''
-      for (let i = 0, len = x1.length; i < len; ++i) {
+
+      for (var i = 0, len = x1.length; i < len; ++i) {
         if (i !== 0 && i % 3 === 0) {
-          x3 = this.options.separator + x3
+          x3 = _this.options.separator + x3
         }
+
         x3 = x1[len - i - 1] + x3
       }
+
       x1 = x3
     }
     // optional numeral substitution
-    if (this.options.numerals && this.options.numerals.length) {
-      x1 = x1.replace(/[0-9]/g, w => this.options.numerals[+w])
-      x2 = x2.replace(/[0-9]/g, w => this.options.numerals[+w])
+    if (_this.options.numerals && _this.options.numerals.length) {
+      x1 = x1.replace(/[0-9]/g, function(w) {
+        return _this.options.numerals[+w]
+      })
+      x2 = x2.replace(/[0-9]/g, function(w) {
+        return _this.options.numerals[+w]
+      })
     }
+
     return neg + x1 + x2
   }
 
-  easeOutExpo = (t, b, c, d) => (c * (-Math.pow(2, (-10 * t) / d) + 1) * 1024) / 1023 + b
-
-  destroy() {
-    cancelAnimationFrame(this.rAF)
+  this.easeOutExpo = function(t, b, c, d) {
+    return (c * (-Math.pow(2, (-10 * t) / d) + 1) * 1024) / 1023 + b
   }
+
+  // 初始化
+  this.options = Object.assign({}, defaults, options)
+
+  this.formattingFn = this.options.formattingFn ? this.options.formattingFn : this.formatNumber
+  this.easingFn = this.options.easingFn ? this.options.easingFn : this.easeOutExpo
+
+  this.startVal = this.validateValue(this.options.startVal)
+  this.frameVal = this.startVal
+
+  this.options.precision = Math.max(0 || this.options.precision)
+  this.decimalMult = Math.pow(10, this.options.precision)
+  this.resetDuration()
+  this.useEasing = this.options.useEasing
+  if (this.options.separator === '') {
+    this.options.useGrouping = false
+  }
+}
+
+// determines where easing starts and whether to count down or up
+CountUp.prototype.determineDirectionAndSmartEasing = function() {
+  const end = this.finalEndVal ? this.finalEndVal : this.endVal
+  this.countDown = this.startVal > end
+  const animateAmount = end - this.startVal
+  if (Math.abs(animateAmount) > this.options.smartEasingThreshold) {
+    this.finalEndVal = end
+    const up = this.countDown ? 1 : -1
+    this.endVal = end + up * this.options.smartEasingAmount
+    this.duration = this.duration / 2
+  } else {
+    this.endVal = end
+    this.finalEndVal = null
+  }
+  if (this.finalEndVal) {
+    this.useEasing = false
+  } else {
+    this.useEasing = this.options.useEasing
+  }
+}
+// start animation
+CountUp.prototype.start = function(newEndVal) {
+  this.endVal = this.validateValue(newEndVal)
+  if (this.duration > 0) {
+    this.determineDirectionAndSmartEasing()
+    this.paused = false
+    this.rAF = requestAnimationFrame(this.count)
+  } else {
+    this.printValue(this.endVal)
+  }
+}
+
+// pause/resume animation
+CountUp.prototype.pauseResume = function() {
+  if (!this.paused) {
+    cancelAnimationFrame(this.rAF)
+  } else {
+    this.startTime = null
+    this.duration = this.remaining
+    this.startVal = this.frameVal
+    this.determineDirectionAndSmartEasing()
+    this.rAF = requestAnimationFrame(this.count)
+  }
+  this.paused = !this.paused
+}
+
+// reset to startVal so animation can be run again
+CountUp.prototype.reset = function() {
+  cancelAnimationFrame(this.rAF)
+  this.paused = true
+  this.resetDuration()
+  this.startVal = this.validateValue(this.options.startVal)
+  this.frameVal = this.startVal
+  this.printValue(this.startVal)
+}
+
+// pass a new endVal and start animation
+CountUp.prototype.update = function(newEndVal) {
+  cancelAnimationFrame(this.rAF)
+  this.startTime = null
+  this.endVal = this.validateValue(newEndVal)
+  if (this.endVal === this.frameVal) {
+    return
+  }
+  this.startVal = this.frameVal
+  if (!this.finalEndVal) {
+    this.resetDuration()
+  }
+  this.determineDirectionAndSmartEasing()
+  this.rAF = requestAnimationFrame(this.count)
+}
+
+CountUp.prototype.printValue = function(val) {
+  const result = this.formattingFn(val)
+  if (this.options.onPrint) {
+    this.options.onPrint(result)
+  }
+}
+
+CountUp.prototype.ensureNumber = function(n) {
+  return typeof n === 'number' && !isNaN(n)
+}
+
+CountUp.prototype.validateValue = function(value) {
+  const newValue = Number(value)
+  if (!this.ensureNumber(newValue)) {
+    throw `[CountUp] invalid start or end value: ${value}`
+  } else {
+    return newValue
+  }
+}
+
+CountUp.prototype.resetDuration = function() {
+  this.startTime = null
+  this.duration = Number(this.options.duration) * 1000
+  this.remaining = this.duration
+}
+
+CountUp.prototype.destroy = function() {
+  cancelAnimationFrame(this.rAF)
 }
 
 export default CountUp
