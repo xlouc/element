@@ -123,8 +123,6 @@ export default {
         this.$nextTick(this.updatePopper)
       }
 
-      console.log('options', options)
-
       this.popperJS = new PopperJS(reference, popper, options)
 
       this.popperJS.popper.style.zIndex = PopupManager.nextZIndex()

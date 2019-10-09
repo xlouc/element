@@ -20,7 +20,7 @@ npm i yak-ui -S
 <!-- 引入样式 -->
 <link rel="stylesheet" href="//unpkg.com/yak-ui/lib/theme-chalk/index.css">
 <!-- 引入组件库 -->
-<script src="//unpkg.com/yak-ui/lib/index.js"></script>
+<script src="//unpkg.com/yak-ui/lib/yak.umd.min.js"></script>
 ```
 
 :::tip
