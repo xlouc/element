@@ -477,7 +477,10 @@ export default {
     },
 
     handleMenuEnter() {
-      this.$nextTick(() => this.scrollToOption(this.selected))
+      this.$nextTick(function() {
+        this.scrollToOption(this.selected)
+        this.resetInputWidth()
+      })
     },
 
     emitChange(val) {
