@@ -13,7 +13,6 @@ const poperMixins = {
       default: false
     },
     offset: Popper.props.offset,
-    boundariesPadding: Popper.props.boundariesPadding,
     popperOptions: Popper.props.popperOptions
   },
   data: Popper.data,
