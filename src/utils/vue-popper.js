@@ -25,10 +25,6 @@ export default {
       type: String,
       default: 'bottom'
     },
-    boundariesPadding: {
-      type: Number,
-      default: 5
-    },
     reference: {},
     popper: {},
     offset: {
@@ -48,7 +44,14 @@ export default {
       type: Object,
       default() {
         return {
-          gpuAcceleration: false
+          modifiers: {
+            computeStyle: {
+              gpuAcceleration: false
+            },
+            preventOverflow: {
+              boundariesElement: 'viewport'
+            }
+          }
         }
       }
     }
@@ -85,7 +88,7 @@ export default {
         return
       }
 
-      const options = Object.assign({}, this.popperOptions)
+      const options = this.popperOptions
       const popper = (this.popperElm = this.popperElm || this.popper || this.$refs.popper)
       let reference = (this.referenceElm = this.referenceElm || this.reference || this.$refs.reference)
 
@@ -94,33 +97,20 @@ export default {
       }
 
       if (!popper || !reference) return
-      if (this.visibleArrow) this.appendArrow(popper)
+      if (this.visibleArrow) {
+        this.appendArrow(popper)
+        if (this.arrowOffset > 0) {
+          SetVal(options, 'modifiers.arrow.enabled', false)
+        }
+      } else {
+        SetVal(options, 'modifiers.arrow.enabled', false)
+      }
       if (this.appendToBody) document.body.appendChild(this.popperElm)
       if (this.popperJS && this.popperJS.destroy) {
         this.popperJS.destroy()
       }
 
       options.placement = this.currentPlacement
-
-      if (typeof this.popperOptions.preventOverflowOrder !== 'undefined') {
-        SetVal(options, 'modifiers.preventOverflow.priority', this.popperOptions.preventOverflowOrder)
-      }
-
-      if (typeof this.popperOptions.flipBehavior !== 'undefined') {
-        SetVal(options, 'modifiers.flip.behavior', this.popperOptions.flipBehavior)
-      }
-
-      if (typeof this.popperOptions.boundariesElement !== 'undefined') {
-        SetVal(options, 'modifiers.preventOverflow.boundariesElement', this.popperOptions.boundariesElement)
-      } else {
-        SetVal(options, 'modifiers.preventOverflow.boundariesElement', 'viewport')
-      }
-
-      if (typeof this.popperOptions.gpuAcceleration !== 'undefined') {
-        SetVal(options, 'modifiers.computeStyle.gpuAcceleration', this.popperOptions.gpuAcceleration)
-      } else {
-        SetVal(options, 'modifiers.preventOverflow.boundariesElement', false)
-      }
 
       if (typeof this.offset !== 'undefined') {
         SetVal(options, 'modifiers.offset.offset', this.offset)
@@ -129,6 +119,7 @@ export default {
       options.onCreate = _ => {
         this.$emit('created', this)
         this.resetTransformOrigin()
+        this.resetArrowPosition()
         this.$nextTick(this.updatePopper)
       }
 
@@ -160,6 +151,7 @@ export default {
     destroyPopper() {
       if (this.popperJS) {
         this.resetTransformOrigin()
+        this.resetArrowPosition()
       }
     },
 
@@ -179,14 +171,18 @@ export default {
           : ['top', 'bottom'].indexOf(placement) > -1
           ? `center ${origin}`
           : `${origin} center`
-      if (this.arrowOffset && this.visibleArrow) {
+    },
+
+    resetArrowPosition() {
+      if (this.visibleArrow && this.arrowOffset > 0) {
+        let placement = this.popperJS.popper.getAttribute('x-placement').split('-')[0]
         let placementArrowMap = {
           top: 'left',
           bottom: 'left',
           left: 'top',
           right: 'top'
         }
-        origin = placementArrowMap[placement]
+        let origin = placementArrowMap[placement]
         let arrow = this.popperJS.popper.querySelector('[x-arrow]')
         arrow.style[origin] = `${this.arrowOffset}px`
       }

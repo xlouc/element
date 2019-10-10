@@ -67,7 +67,7 @@ img {
 }
 
 .doc-container {
-  max-width: 1200px;
+  max-width: 75%;
   margin: 0 auto;
 }
 

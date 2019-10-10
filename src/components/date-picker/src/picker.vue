@@ -88,8 +88,7 @@ const NewPopper = {
   props: {
     appendToBody: Popper.props.appendToBody,
     offset: Popper.props.offset,
-    boundariesPadding: Popper.props.boundariesPadding,
-    arrowOffset: Popper.props.arrowOffset
+    arrowOffset: { default: 0 }
   },
   methods: Popper.methods,
   data() {
@@ -548,8 +547,14 @@ export default {
   created() {
     // vue-popper
     this.popperOptions = {
-      boundariesPadding: 0,
-      gpuAcceleration: false
+      modifiers: {
+        computeStyle: {
+          gpuAcceleration: false
+        },
+        preventOverflow: {
+          boundariesElement: 'viewport'
+        }
+      }
     }
     this.placement = PLACEMENT_MAP[this.align] || PLACEMENT_MAP.left
 

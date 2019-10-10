@@ -84,7 +84,21 @@ export default {
       default: 'value'
     },
     popperClass: String,
-    popperOptions: Object,
+    popperOptions: {
+      type: Object,
+      default() {
+        return {
+          modifiers: {
+            computeStyle: {
+              gpuAcceleration: false
+            },
+            preventOverflow: {
+              boundariesElement: 'viewport'
+            }
+          }
+        }
+      }
+    },
     placeholder: String,
     clearable: {
       type: Boolean,

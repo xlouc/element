@@ -35,14 +35,7 @@ export default {
       type: String,
       default: 'el-fade-in-linear'
     },
-    popperOptions: {
-      default() {
-        return {
-          boundariesPadding: 10,
-          gpuAcceleration: false
-        }
-      }
-    },
+    popperOptions: Popper.props.popperOptions,
     enterable: {
       type: Boolean,
       default: true

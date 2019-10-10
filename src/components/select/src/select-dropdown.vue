@@ -21,17 +21,7 @@ export default {
       default: 'bottom-start'
     },
 
-    boundariesPadding: {
-      default: 0
-    },
-
-    popperOptions: {
-      default() {
-        return {
-          gpuAcceleration: false
-        }
-      }
-    },
+    popperOptions: Popper.props.popperOptions,
 
     visibleArrow: {
       default: true
