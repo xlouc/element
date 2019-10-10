@@ -1,3 +1,14 @@
+## [1.3.4](https://github.com/yakcodo/yak/compare/v1.3.3...v1.3.4) (2019-10-10)
+
+
+### Bug Fixes
+
+* **popper.js:** 修复升级`popper.js`引发的样式错位 ([c7d6ef6](https://github.com/yakcodo/yak/commit/c7d6ef6))
+* **select:** 修复异步渲染时下拉框宽度不能获取正确 ([193c4a6](https://github.com/yakcodo/yak/commit/193c4a6))
+* **vue-popper.js:** 删除日志打印 ([d7048b3](https://github.com/yakcodo/yak/commit/d7048b3))
+
+
+
 ## [1.3.3](https://github.com/yakcodo/yak/compare/v1.3.2...v1.3.3) (2019-09-24)
 
 
