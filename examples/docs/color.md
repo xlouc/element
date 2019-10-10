@@ -26,7 +26,7 @@
     success: swatches.quick['green-500'],
     warning: swatches.quick['orange-500'],
     danger: swatches.quick['red-500'],
-    info: swatches.quick['grey-500'],
+    info: swatches.quick['blue-grey-500'],
     white: '#FFFFFF',
     black: '#000000',
     textPrimary: 'rgba(0, 0, 0, 0.85)',

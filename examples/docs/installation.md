@@ -26,3 +26,13 @@ npm i yak-ui -S
 :::tip
 我们建议使用 CDN 引入 Yak 的用户在链接地址上锁定版本，以免将来 Yak 升级时受到非兼容性更新的影响。锁定版本的方法请查看 [unpkg.com](https://unpkg.com)。
 :::
+
+### Hello world
+
+通过 CDN 的方式我们可以很容易地使用 Element 写出一个 Hello world 页面。[在线演示](https://codepen.io/mamying/pen/QWWbXor)
+
+<iframe height="400" style="width: 100%;" scrolling="no" title="Dialog 对话框" src="https://codepen.io/mamying/embed/QWWbXor?height=265&theme-id=light&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/mamying/pen/QWWbXor'>Dialog 对话框</a> by PaaS Cloud
+  (<a href='https://codepen.io/mamying'>@mamying</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
