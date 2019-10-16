@@ -87,6 +87,7 @@ import { ElListItem } from "./list-item";
 import { ElSkeleton } from "./skeleton";
 import { ElResult } from "./result";
 import { ElStatistic } from "./statistic";
+import { ElIconPicker } from "./icon-picker";
 
 export interface InstallationOptions {
   locale: any,
@@ -372,3 +373,6 @@ export class Result extends ElResult {}
 
 /** Statistic Component */
 export class Statistic extends ElStatistic {}
+
+/** IconPicker Component */
+export class IconPicker extends ElIconPicker {}

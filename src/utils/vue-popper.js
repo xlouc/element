@@ -124,7 +124,6 @@ export default {
       }
 
       this.popperJS = new PopperJS(reference, popper, options)
-
       this.popperJS.popper.style.zIndex = PopupManager.nextZIndex()
       this.popperElm.addEventListener('click', stop)
     },

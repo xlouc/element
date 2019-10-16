@@ -1,0 +1,146 @@
+@import "mixins/mixins";
+@import "mixins/utils";
+@import "common/var";
+@import "./popper";
+@import "input";
+@import "empty";
+
+@include b(iconpicker) {
+  display: inline-block;
+  position: relative;
+
+  &:hover .el-iconpicker__input {
+    border-color: $--border-color-hover;
+  }
+
+  @include e(input) {
+    border: $--border-base;
+    height: $--size-base;
+    line-height: $--size-base;
+    width: 90px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: relative;
+  }
+
+  @include e(icon) {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    text-align: center;
+    background: $--color-white;
+    transition: all 0.3s;
+    padding-right: 30px;
+    font-size: $--font-size-extra-large;
+  }
+
+  @include e(caret) {
+    position: absolute;
+    right: 5px;
+    top: 0;
+    height: inherit;
+    line-height: inherit;
+    text-align: center;
+    color: $--color-text-placeholder;
+    transition: transform 0.3s;
+    pointer-events: none;
+    transform: rotateZ(180deg);
+  }
+
+  @include when(focus) {
+    .el-iconpicker__input {
+      border-color: $--input-focus-border;
+    }
+    .el-iconpicker__caret {
+      transform: rotateZ(0deg);
+    }
+  }
+
+  @include m(medium) {
+    .el-iconpicker__input {
+      height: $--size-medium;
+      line-height: $--size-medium;
+    }
+  }
+  
+  @include m(small) {
+    .el-iconpicker__input {
+      height: $--size-small;
+      line-height: $--size-small;
+    }
+  }
+
+  @include m(mini) {
+    .el-iconpicker__input {
+      height: $--size-mini;
+      line-height: $--size-mini;
+    }
+  }
+}
+
+@include b(iconpicker-search) {
+  position: relative;
+  margin: 0 0 6px 0;
+}
+
+@include b(iconpicker-list) {
+  background-color: $--color-white;
+  border: $--border-base;
+  border-radius: 4px;
+
+  @include e(item) {
+    display: inline-block;
+    width: 21.1%;
+    line-height: 36px;
+    text-align: center;
+    cursor: pointer;
+    vertical-align: top;
+    height: 36px;
+    margin: 4px;
+    font-size: $--font-size-large;
+    border: $--border-base;
+    border-color: $--border-color-lighter;
+    border-radius: 2px;
+    transition: 300ms;
+
+    &:hover,
+    &.is-active {
+      color: $--color-primary;
+      border-color: $--color-primary-light-7;
+      background-color: $--color-primary-light-9;
+    }
+  }
+}
+
+@include b(iconpicker-page) {
+  margin-top: 6px;
+  font-size: $--font-size-extra-small;
+  padding: 0 2px;
+
+  @include e(count) {
+    display: inline-block;
+  }
+  @include e(operate) {
+    display: inline-block;
+    float: right;
+    cursor: default;
+
+    i {
+      cursor: pointer;
+    }
+  }
+}
+
+@include b(iconpicker-dropdown) {
+  position: absolute;
+  z-index: #{$--index-top + 1};
+  border: $--select-dropdown-border;
+  border-radius: $--border-radius-base;
+  background-color: $--color-white;
+  box-shadow: $--box-shadow-light;
+  box-sizing: border-box;
+  padding: 6px;
+  width: 280px;
+}

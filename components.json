@@ -38,6 +38,7 @@
   "form-item": "./src/components/form-item/index.js",
   "header": "./src/components/header/index.js",
   "icon": "./src/components/icon/index.js",
+  "icon-picker": "./src/components/icon-picker/index.js",
   "image": "./src/components/image/index.js",
   "infinite-scroll": "./src/components/infinite-scroll/index.js",
   "input": "./src/components/input/index.js",

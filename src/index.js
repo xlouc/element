@@ -41,6 +41,7 @@ import Form from './components/form/index.js'
 import FormItem from './components/form-item/index.js'
 import Header from './components/header/index.js'
 import Icon from './components/icon/index.js'
+import IconPicker from './components/icon-picker/index.js'
 import Image from './components/image/index.js'
 import InfiniteScroll from './components/infinite-scroll/index.js'
 import Input from './components/input/index.js'
@@ -134,6 +135,7 @@ const components = [
   FormItem,
   Header,
   Icon,
+  IconPicker,
   Image,
   InfiniteScroll,
   Input,
@@ -259,6 +261,7 @@ export default {
   FormItem,
   Header,
   Icon,
+  IconPicker,
   Image,
   InfiniteScroll,
   Input,
