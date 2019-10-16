@@ -1,5 +1,3 @@
-/** @format */
-
 export const DEFAULT_THEME_CONFIG = {
   global: {},
   local: {}

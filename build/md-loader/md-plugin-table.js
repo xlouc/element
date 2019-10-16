@@ -1,5 +1,3 @@
-/** @format */
-
 /**
  * Converts table to QMarkupTable
  */

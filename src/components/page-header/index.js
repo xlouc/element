@@ -1,5 +1,3 @@
-/** @format */
-
 import PageHeader from './src/main'
 
 /* istanbul ignore next */

@@ -1,5 +1,3 @@
-/** @format */
-
 import ElButton from './src/button'
 
 /* istanbul ignore next */

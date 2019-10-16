@@ -1,4 +1,3 @@
-/** @format */
 const fs = require('fs')
 var ProgressBar = require('progress')
 var Git = require('./git')
@@ -29,13 +28,31 @@ Git.spawnSync(
 
 Git.spawnSync(
   process.platform === 'win32' ? 'npx.cmd' : 'npx',
-  [`vue-cli-service`, 'build', '--target', 'lib', '--dest', `lib`, '--no-clean', '--formats', 'umd,umd-min', '--filename', `yak`, './src/index.js'],
+  [
+    `vue-cli-service`,
+    'build',
+    '--target',
+    'lib',
+    '--dest',
+    `lib`,
+    '--no-clean',
+    '--formats',
+    'umd,umd-min',
+    '--filename',
+    `yak`,
+    './src/index.js'
+  ],
   process.cwd(),
   true
 )
 
 // 编译样式
-Git.spawnSync(process.platform === 'win32' ? 'npx.cmd' : 'npx', ['gulp', 'build', '--gulpfile', './build/gulpfile.js'], process.cwd(), true)
+Git.spawnSync(
+  process.platform === 'win32' ? 'npx.cmd' : 'npx',
+  ['gulp', 'build', '--gulpfile', './build/gulpfile.js'],
+  process.cwd(),
+  true
+)
 
 var barLeft = chalk.bold('[')
 var barRight = chalk.bold(']')

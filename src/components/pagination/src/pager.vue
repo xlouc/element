@@ -1,8 +1,10 @@
-<!-- @format -->
-
 <template>
   <ul @click="onPagerClick" class="el-pager">
-    <li :class="{ active: currentPage === 1, disabled }" v-if="pageCount > 0" class="number">
+    <li
+      :class="{ active: currentPage === 1, disabled }"
+      v-if="pageCount > 0"
+      class="number"
+    >
       1
     </li>
     <li
@@ -12,7 +14,12 @@
       @mouseenter="onMouseenter('left')"
       @mouseleave="quickprevIconClass = 'el-icon-ellipsis'"
     ></li>
-    <li v-for="pager in pagers" :key="pager" :class="{ active: currentPage === pager, disabled }" class="number">
+    <li
+      v-for="pager in pagers"
+      :key="pager"
+      :class="{ active: currentPage === pager, disabled }"
+      class="number"
+    >
       {{ pager }}
     </li>
     <li
@@ -22,7 +29,11 @@
       @mouseenter="onMouseenter('right')"
       @mouseleave="quicknextIconClass = 'el-icon-ellipsis'"
     ></li>
-    <li :class="{ active: currentPage === pageCount, disabled }" class="number" v-if="pageCount > 1">
+    <li
+      :class="{ active: currentPage === pageCount, disabled }"
+      class="number"
+      v-if="pageCount > 1"
+    >
       {{ pageCount }}
     </li>
   </ul>

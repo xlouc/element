@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <div
     v-show="ready"
@@ -14,7 +12,11 @@
     @click="handleItemClick"
     :style="itemStyle"
   >
-    <div v-if="$parent.type === 'card'" v-show="!active" class="el-carousel__mask"></div>
+    <div
+      v-if="$parent.type === 'card'"
+      v-show="!active"
+      class="el-carousel__mask"
+    ></div>
     <slot></slot>
   </div>
 </template>
@@ -62,7 +64,9 @@ export default {
     calcCardTranslate(index, activeIndex) {
       const parentWidth = this.$parent.$el.offsetWidth
       if (this.inStage) {
-        return (parentWidth * ((2 - CARD_SCALE) * (index - activeIndex) + 1)) / 4
+        return (
+          (parentWidth * ((2 - CARD_SCALE) * (index - activeIndex) + 1)) / 4
+        )
       } else if (index < activeIndex) {
         return (-(1 + CARD_SCALE) * parentWidth) / 4
       } else {
@@ -71,7 +75,9 @@ export default {
     },
 
     calcTranslate(index, activeIndex, isVertical) {
-      const distance = this.$parent.$el[isVertical ? 'offsetHeight' : 'offsetWidth']
+      const distance = this.$parent.$el[
+        isVertical ? 'offsetHeight' : 'offsetWidth'
+      ]
       return distance * (index - activeIndex)
     },
 
@@ -87,7 +93,9 @@ export default {
       }
       if (parentType === 'card') {
         if (parentDirection === 'vertical') {
-          console.warn('[Element Warn][Carousel]vertical directionis not supported in card mode')
+          console.warn(
+            '[Element Warn][Carousel]vertical directionis not supported in card mode'
+          )
         }
         this.inStage = Math.round(Math.abs(index - activeIndex)) <= 1
         this.active = index === activeIndex
@@ -116,7 +124,8 @@ export default {
     },
 
     itemStyle() {
-      const translateType = this.parentDirection === 'vertical' ? 'translateY' : 'translateX'
+      const translateType =
+        this.parentDirection === 'vertical' ? 'translateY' : 'translateX'
       const value = `${translateType}(${this.translate}px) scale(${this.scale})`
       const style = {
         transform: value

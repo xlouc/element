@@ -1,8 +1,11 @@
-<!-- @format -->
-
 <template>
   <a
-    :class="['el-link', type ? `el-link--${type}` : '', disabled && 'is-disabled', underline && !disabled && 'is-underline']"
+    :class="[
+      'el-link',
+      type ? `el-link--${type}` : '',
+      disabled && 'is-disabled',
+      underline && !disabled && 'is-underline'
+    ]"
     :href="disabled ? null : href"
     v-bind="$attrs"
     @click="handleClick"

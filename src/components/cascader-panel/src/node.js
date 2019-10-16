@@ -1,5 +1,3 @@
-/** @format */
-
 import { isEqual, capitalize } from 'yak-ui/src/utils/util'
 import { isDef } from 'yak-ui/src/utils/shared'
 
@@ -36,7 +34,9 @@ export default class Node {
     const childrenKey = config.children
     const childrenData = this.data[childrenKey]
     this.hasChildren = Array.isArray(childrenData)
-    this.children = (childrenData || []).map(child => new Node(child, config, this))
+    this.children = (childrenData || []).map(
+      child => new Node(child, config, this)
+    )
   }
 
   get isDisabled() {
@@ -50,7 +50,11 @@ export default class Node {
     const { data, loaded, hasChildren, children } = this
     const { lazy, leaf: leafKey } = this.config
     if (lazy) {
-      const isLeaf = isDef(data[leafKey]) ? data[leafKey] : loaded ? !children.length : false
+      const isLeaf = isDef(data[leafKey])
+        ? data[leafKey]
+        : loaded
+        ? !children.length
+        : false
       this.hasChildren = !isLeaf
       return isLeaf
     }
@@ -87,7 +91,9 @@ export default class Node {
 
   isSameNode(checkedValue) {
     const value = this.getValueByOption()
-    return this.config.multiple && Array.isArray(checkedValue) ? checkedValue.some(val => isEqual(val, value)) : isEqual(checkedValue, value)
+    return this.config.multiple && Array.isArray(checkedValue)
+      ? checkedValue.some(val => isEqual(val, value))
+      : isEqual(checkedValue, value)
   }
 
   broadcast(event, ...args) {
@@ -120,7 +126,9 @@ export default class Node {
   onChildCheck() {
     const { children } = this
     const validChildren = children.filter(child => !child.isDisabled)
-    const checked = validChildren.length ? validChildren.every(child => child.checked) : false
+    const checked = validChildren.length
+      ? validChildren.every(child => child.checked)
+      : false
 
     this.setCheckState(checked)
   }

@@ -1,5 +1,3 @@
-/** @format */
-
 import DescriptionsItem from '../descriptions/src/item'
 
 /* istanbul ignore next */

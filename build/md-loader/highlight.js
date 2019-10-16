@@ -1,4 +1,3 @@
-/** @format */
 const prism = require('prismjs')
 const loadLanguages = require('prismjs/components/index')
 

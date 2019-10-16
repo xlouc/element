@@ -1,5 +1,3 @@
-/** @format */
-
 import { createTest, createVue, destroyVM } from '../util'
 import Button from 'packages/button'
 

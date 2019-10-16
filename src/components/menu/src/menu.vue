@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <script type="text/jsx">
 import tinycolor from 'tinycolor2'
 import emitter from 'yak-ui/src/mixins/emitter';

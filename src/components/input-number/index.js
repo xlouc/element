@@ -1,5 +1,3 @@
-/** @format */
-
 import ElInputNumber from './src/input-number'
 
 /* istanbul ignore next */

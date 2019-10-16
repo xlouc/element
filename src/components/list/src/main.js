@@ -1,4 +1,3 @@
-/** @format */
 import Row from 'yak-ui/components/row'
 
 const getGrid = function(grid, t) {
@@ -62,7 +61,9 @@ export default {
     let childrenContent
 
     if (grid) {
-      childrenContent = h(Row, { props: { gutter: grid.gutter || 0 } }, [<div class="el-list__items">{this.$slots.default}</div>])
+      childrenContent = h(Row, { props: { gutter: grid.gutter || 0 } }, [
+        <div class="el-list__items">{this.$slots.default}</div>
+      ])
     } else {
       childrenContent = <ul class="el-list__items">{this.$slots.default}</ul>
     }

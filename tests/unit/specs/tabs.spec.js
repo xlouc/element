@@ -1,4 +1,3 @@
-/** @format */
 import sinon from 'sinon'
 import { createVue, destroyVM, triggerKeyDown } from '../util'
 
@@ -460,12 +459,18 @@ describe('Tabs', () => {
     )
 
     setTimeout(_ => {
-      expect(vm.$el.querySelector('[role=tablist]').classList.contains('is-stretch')).to.be.true
+      expect(
+        vm.$el.querySelector('[role=tablist]').classList.contains('is-stretch')
+      ).to.be.true
 
       vm.tabPosition = 'left'
 
       vm.$nextTick(_ => {
-        expect(vm.$el.querySelector('[role=tablist]').classList.contains('is-stretch')).not.to.be.true
+        expect(
+          vm.$el
+            .querySelector('[role=tablist]')
+            .classList.contains('is-stretch')
+        ).not.to.be.true
         done()
       })
     }, 100)
@@ -567,19 +572,31 @@ describe('Tabs', () => {
       true
     )
 
-    expect(vm.$el.querySelector('.el-tabs__content').children.length).to.be.equal(3)
-    expect(vm.$el.querySelector('.el-tabs__content > #pane-D')).to.be.equal(null)
+    expect(
+      vm.$el.querySelector('.el-tabs__content').children.length
+    ).to.be.equal(3)
+    expect(vm.$el.querySelector('.el-tabs__content > #pane-D')).to.be.equal(
+      null
+    )
 
     setTimeout(_ => {
       vm.$el.querySelector('.el-tabs__nav > #tab-D').click()
       vm.$nextTick(() => {
-        expect(vm.$el.querySelector('.el-tabs__content').children.length).to.be.equal(4)
-        expect(vm.$el.querySelector('.el-tabs__content > #pane-D')).not.to.be.equal(null)
+        expect(
+          vm.$el.querySelector('.el-tabs__content').children.length
+        ).to.be.equal(4)
+        expect(
+          vm.$el.querySelector('.el-tabs__content > #pane-D')
+        ).not.to.be.equal(null)
 
         vm.$el.querySelector('.el-tabs__nav > #tab-A').click()
         vm.$nextTick(() => {
-          expect(vm.$el.querySelector('.el-tabs__content').children.length).to.be.equal(4)
-          expect(vm.$el.querySelector('.el-tabs__content > #pane-D')).not.to.be.equal(null)
+          expect(
+            vm.$el.querySelector('.el-tabs__content').children.length
+          ).to.be.equal(4)
+          expect(
+            vm.$el.querySelector('.el-tabs__content > #pane-D')
+          ).not.to.be.equal(null)
           done()
         })
       })

@@ -1,5 +1,3 @@
-/** @format */
-
 import NProgress from 'nprogress'
 import Vue from 'vue'
 import Router from 'vue-router'
@@ -28,7 +26,10 @@ navs.forEach(nav => {
 })
 
 function addRoute(page) {
-  const component = page.path === '/changelog' ? () => import('./pages/changelog.vue') : () => import(`./docs${page.path}.md`)
+  const component =
+    page.path === '/changelog'
+      ? () => import('./pages/changelog.vue')
+      : () => import(`./docs${page.path}.md`)
   let child = {
     path: page.path.slice(1),
     meta: {

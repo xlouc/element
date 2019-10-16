@@ -1,6 +1,11 @@
-/** @format */
 import sinon from 'sinon'
-import { createVue, destroyVM, triggerEvent, wait, waitImmediate } from '../util'
+import {
+  createVue,
+  destroyVM,
+  triggerEvent,
+  wait,
+  waitImmediate
+} from '../util'
 
 describe('Input', () => {
   let vm
@@ -135,7 +140,9 @@ describe('Input', () => {
       },
       true
     )
-    expect(vm.$el.querySelector('.el-textarea__inner').getAttribute('rows')).to.be.equal('3')
+    expect(
+      vm.$el.querySelector('.el-textarea__inner').getAttribute('rows')
+    ).to.be.equal('3')
   })
 
   // Github issue #2836
@@ -154,10 +161,14 @@ describe('Input', () => {
       true
     )
     await waitImmediate()
-    expect(vm.$el.querySelector('.el-textarea__inner').style.resize).to.be.equal(vm.resize)
+    expect(
+      vm.$el.querySelector('.el-textarea__inner').style.resize
+    ).to.be.equal(vm.resize)
     vm.resize = 'horizontal'
     await waitImmediate()
-    expect(vm.$el.querySelector('.el-textarea__inner').style.resize).to.be.equal(vm.resize)
+    expect(
+      vm.$el.querySelector('.el-textarea__inner').style.resize
+    ).to.be.equal(vm.resize)
   })
 
   it('autosize', async () => {
@@ -183,7 +194,8 @@ describe('Input', () => {
       `,
         data() {
           return {
-            textareaValue: 'sda\ndasd\nddasdsda\ndasd\nddasdsda\ndasd\nddasdsda\ndasd\nddasd'
+            textareaValue:
+              'sda\ndasd\nddasdsda\ndasd\nddasdsda\ndasd\nddasdsda\ndasd\nddasd'
           }
         }
       },
@@ -247,7 +259,9 @@ describe('Input', () => {
     vm.$refs.input.hovering = true
 
     await wait()
-    const suffixEl = document.querySelector('.input-with-select > .el-input__suffix')
+    const suffixEl = document.querySelector(
+      '.input-with-select > .el-input__suffix'
+    )
     expect(suffixEl).to.not.be.null
     expect(suffixEl.style.transform).to.not.be.empty
   })
@@ -437,14 +451,20 @@ describe('Input', () => {
         true
       )
 
-      expect(vm.$refs.inputComp.$refs.input.selectionStart).to.equal(testContent.length)
-      expect(vm.$refs.inputComp.$refs.input.selectionEnd).to.equal(testContent.length)
+      expect(vm.$refs.inputComp.$refs.input.selectionStart).to.equal(
+        testContent.length
+      )
+      expect(vm.$refs.inputComp.$refs.input.selectionEnd).to.equal(
+        testContent.length
+      )
 
       vm.$refs.inputComp.select()
 
       await waitImmediate()
       expect(vm.$refs.inputComp.$refs.input.selectionStart).to.equal(0)
-      expect(vm.$refs.inputComp.$refs.input.selectionEnd).to.equal(testContent.length)
+      expect(vm.$refs.inputComp.$refs.input.selectionEnd).to.equal(
+        testContent.length
+      )
     })
   })
 

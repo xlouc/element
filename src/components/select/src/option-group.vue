@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <ul class="el-select-group__wrap" v-show="visible">
     <li class="el-select-group__title">{{ label }}</li>
@@ -43,7 +41,10 @@ export default {
 
   methods: {
     queryChange() {
-      this.visible = this.$children && Array.isArray(this.$children) && this.$children.some(option => option.visible === true)
+      this.visible =
+        this.$children &&
+        Array.isArray(this.$children) &&
+        this.$children.some(option => option.visible === true)
     }
   },
 

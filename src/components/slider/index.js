@@ -1,5 +1,3 @@
-/** @format */
-
 import Slider from './src/main'
 
 /* istanbul ignore next */

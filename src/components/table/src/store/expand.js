@@ -1,5 +1,3 @@
-/** @format */
-
 import { toggleRowStatus, getKeysMap, getRowIdentity } from '../util'
 
 export default {

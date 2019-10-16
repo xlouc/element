@@ -1,4 +1,3 @@
-/** @format */
 import sinon from 'sinon'
 import { createTest, createVue, destroyVM, triggerEvent, wait } from '../util'
 import DatePicker from 'packages/date-picker'
@@ -61,8 +60,12 @@ describe('DatePicker', () => {
     setTimeout(_ => {
       const $el = vm.$refs.compo.picker.$el
       const spans = $el.querySelectorAll('.el-date-picker__header-label')
-      const arrowLeftElm = $el.querySelector('.el-date-picker__prev-btn.el-icon-left')
-      const arrowRightElm = $el.querySelector('.el-date-picker__next-btn.el-icon-right')
+      const arrowLeftElm = $el.querySelector(
+        '.el-date-picker__prev-btn.el-icon-left'
+      )
+      const arrowRightElm = $el.querySelector(
+        '.el-date-picker__next-btn.el-icon-right'
+      )
 
       expect(spans[0].textContent).to.include(date.getFullYear())
       expect(spans[1].textContent).to.include(date.getMonth() + 1)
@@ -175,7 +178,9 @@ describe('DatePicker', () => {
         vm.$nextTick(_ => {
           vm.value = ''
           setTimeout(_ => {
-            expect(vm.$refs.compo.picker.date.getDate()).to.equal(new Date().getDate())
+            expect(vm.$refs.compo.picker.date.getDate()).to.equal(
+              new Date().getDate()
+            )
             done()
           }, DELAY)
         })
@@ -286,7 +291,8 @@ describe('DatePicker', () => {
   it('nuke invalid input on close', done => {
     vm = createVue(
       {
-        template: '<el-date-picker v-model="value" value-format="yyyy-MM-dd" ref="compo" />',
+        template:
+          '<el-date-picker v-model="value" value-format="yyyy-MM-dd" ref="compo" />',
         data() {
           return {
             value: '2010-10-01'
@@ -519,7 +525,9 @@ describe('DatePicker', () => {
 
       vm.$refs.compo.$el.querySelector('input').focus()
       setTimeout(_ => {
-        vm.$refs.compo.picker.$el.querySelector('.el-date-table td.available').click()
+        vm.$refs.compo.picker.$el
+          .querySelector('.el-date-table td.available')
+          .click()
         setTimeout(_ => {
           const today = new Date()
           const yyyy = today.getFullYear()
@@ -555,7 +563,9 @@ describe('DatePicker', () => {
       vm.$refs.compo.$el.querySelector('input').focus()
 
       setTimeout(_ => {
-        vm.$refs.compo.picker.$el.querySelector('.el-date-table td.available').click()
+        vm.$refs.compo.picker.$el
+          .querySelector('.el-date-table td.available')
+          .click()
         setTimeout(_ => {
           const today = new Date()
           const yyyy = today.getFullYear()
@@ -595,7 +605,9 @@ describe('DatePicker', () => {
         expect(date.getFullYear()).to.equal(2000)
         expect(date.getMonth()).to.equal(1)
         expect(date.getDate()).to.equal(1)
-        vm.$refs.compo.picker.$el.querySelector('.el-date-table .current').click()
+        vm.$refs.compo.picker.$el
+          .querySelector('.el-date-table .current')
+          .click()
         setTimeout(_ => {
           expect(input.value).to.equal('2000-02-01')
           done()
@@ -768,7 +780,10 @@ describe('DatePicker', () => {
           triggerEvent(inputs[1], 'input')
           keyDown(inputs[0], ENTER)
           setTimeout(_ => {
-            expect(vm.value).to.eql([new Date(2000, 9, 1).getTime(), new Date(2000, 9, 2).getTime()])
+            expect(vm.value).to.eql([
+              new Date(2000, 9, 1).getTime(),
+              new Date(2000, 9, 2).getTime()
+            ])
             done()
           }, DELAY)
         }, DELAY)
@@ -818,7 +833,8 @@ describe('DatePicker', () => {
 
       vm = createVue(
         {
-          template: '<el-date-picker v-model="value" ref="compo" :default-value="defaultValue" />',
+          template:
+            '<el-date-picker v-model="value" ref="compo" :default-value="defaultValue" />',
           data() {
             return {
               value: new Date(),
@@ -842,7 +858,8 @@ describe('DatePicker', () => {
             input.focus()
             setTimeout(() => {
               $el = vm.$refs.compo.picker.$el
-              expect($el.querySelector('.el-date-table td.current')).to.not.exist
+              expect($el.querySelector('.el-date-table td.current')).to.not
+                .exist
               expect($el.querySelector('.el-date-table td.default')).to.exist
               $el.querySelector('.el-date-table td.default').click()
               setTimeout(() => {
@@ -862,7 +879,8 @@ describe('DatePicker', () => {
     beforeEach(done => {
       vm = createVue(
         {
-          template: '<el-date-picker ref="compo" v-model="value"></el-date-picker>',
+          template:
+            '<el-date-picker ref="compo" v-model="value"></el-date-picker>',
           data() {
             return {
               value: ''
@@ -922,8 +940,12 @@ describe('DatePicker', () => {
         keyDown(input, LEFT)
         setTimeout(_ => {
           expect(datePicker.pickerVisible).to.true
-          expect(datePicker.picker.date.getFullYear()).to.equal(prevDate.getFullYear())
-          expect(datePicker.picker.date.getMonth()).to.equal(prevDate.getMonth())
+          expect(datePicker.picker.date.getFullYear()).to.equal(
+            prevDate.getFullYear()
+          )
+          expect(datePicker.picker.date.getMonth()).to.equal(
+            prevDate.getMonth()
+          )
           expect(datePicker.picker.date.getDate()).to.equal(prevDate.getDate())
           done()
         }, DELAY)
@@ -1032,8 +1054,10 @@ describe('DatePicker', () => {
       prevYear = $el.querySelector('button.el-icon-doubleleft')
       nextMonth = $el.querySelector('button.el-icon-right')
       nextYear = $el.querySelector('button.el-icon-doubleright')
-      getYearLabel = () => $el.querySelectorAll('.el-date-picker__header-label')[0].textContent
-      getMonthLabel = () => $el.querySelectorAll('.el-date-picker__header-label')[1].textContent
+      getYearLabel = () =>
+        $el.querySelectorAll('.el-date-picker__header-label')[0].textContent
+      getMonthLabel = () =>
+        $el.querySelectorAll('.el-date-picker__header-label')[1].textContent
     }
 
     it('month, year', async () => {
@@ -1077,7 +1101,9 @@ describe('DatePicker', () => {
     it('month label with fewer dates', async () => {
       await initNavigationTest(new Date(2000, 6, 31))
       const $el = vm.$refs.compo.picker.$el
-      const monthLabel = $el.querySelectorAll('.el-date-picker__header-label')[1]
+      const monthLabel = $el.querySelectorAll(
+        '.el-date-picker__header-label'
+      )[1]
       await clickAndWait(monthLabel)
       const juneLabel = $el.querySelectorAll('.el-month-table td a')[5]
       await clickAndWait(juneLabel)
@@ -1100,8 +1126,11 @@ describe('DatePicker', () => {
     input.focus()
 
     setTimeout(_ => {
-      expect(vm.picker.$el.querySelector('.el-month-table').style.display).to.be.empty
-      expect(vm.picker.$el.querySelector('.el-year-table').style.display).to.be.equal('none')
+      expect(vm.picker.$el.querySelector('.el-month-table').style.display).to.be
+        .empty
+      expect(
+        vm.picker.$el.querySelector('.el-year-table').style.display
+      ).to.be.equal('none')
       vm.picker.$el.querySelector('.el-month-table a.cell').click()
       expect(vm.pickerVisible).to.false
       done()
@@ -1122,8 +1151,11 @@ describe('DatePicker', () => {
     input.focus()
 
     setTimeout(_ => {
-      expect(vm.picker.$el.querySelector('.el-year-table').style.display).to.empty
-      expect(vm.picker.$el.querySelector('.el-month-table').style.display).to.be.equal('none')
+      expect(vm.picker.$el.querySelector('.el-year-table').style.display).to
+        .empty
+      expect(
+        vm.picker.$el.querySelector('.el-month-table').style.display
+      ).to.be.equal('none')
 
       const leftBtn = vm.picker.$el.querySelector('.el-icon-doubleleft')
       const rightBtn = vm.picker.$el.querySelector('.el-icon-doubleright')
@@ -1151,7 +1183,8 @@ describe('DatePicker', () => {
     it('create', done => {
       vm = createVue(
         {
-          template: '<el-date-picker type="datetime" v-model="value" ref="compo" />',
+          template:
+            '<el-date-picker type="datetime" v-model="value" ref="compo" />',
           data() {
             return {
               value: ''
@@ -1174,7 +1207,8 @@ describe('DatePicker', () => {
     it('both picker show correct formated value (extract date-format and time-format from format property)', done => {
       vm = createVue(
         {
-          template: '<el-date-picker type="datetime" v-model="value" :format="format" :pickerOptions="pickerOptions" ref="compo" />',
+          template:
+            '<el-date-picker type="datetime" v-model="value" :format="format" :pickerOptions="pickerOptions" ref="compo" />',
           data() {
             return {
               value: new Date(2018, 2, 5, 10, 15, 24),
@@ -1191,8 +1225,12 @@ describe('DatePicker', () => {
       input.focus()
       setTimeout(_ => {
         const datePanel = vm.$refs.compo.picker
-        const dateInput = datePanel.$el.querySelector('.el-date-picker__time-header > span:nth-child(1) input')
-        const timeInput = datePanel.$el.querySelector('.el-date-picker__time-header > span:nth-child(2) input')
+        const dateInput = datePanel.$el.querySelector(
+          '.el-date-picker__time-header > span:nth-child(1) input'
+        )
+        const timeInput = datePanel.$el.querySelector(
+          '.el-date-picker__time-header > span:nth-child(2) input'
+        )
         timeInput.focus()
         setTimeout(_ => {
           // both input shows correct value
@@ -1220,7 +1258,8 @@ describe('DatePicker', () => {
     it('both picker show correct value', done => {
       vm = createVue(
         {
-          template: '<el-date-picker type="datetime" v-model="value" ref="compo" />',
+          template:
+            '<el-date-picker type="datetime" v-model="value" ref="compo" />',
           data() {
             return {
               value: new Date(2000, 9, 1, 10, 0, 1)
@@ -1235,8 +1274,12 @@ describe('DatePicker', () => {
       input.focus()
       setTimeout(_ => {
         const datePanel = vm.$refs.compo.picker
-        const dateInput = datePanel.$el.querySelector('.el-date-picker__time-header > span:nth-child(1) input')
-        const timeInput = datePanel.$el.querySelector('.el-date-picker__time-header > span:nth-child(2) input')
+        const dateInput = datePanel.$el.querySelector(
+          '.el-date-picker__time-header > span:nth-child(1) input'
+        )
+        const timeInput = datePanel.$el.querySelector(
+          '.el-date-picker__time-header > span:nth-child(2) input'
+        )
         timeInput.focus()
         setTimeout(_ => {
           const timePanel = datePanel.$refs.timepicker
@@ -1244,7 +1287,9 @@ describe('DatePicker', () => {
           expect(dateInput.value).to.equal('2000-10-01')
           expect(timeInput.value).to.equal('10:00:01')
           // time spinner highlight is correct
-          const [hours, minutes, seconds] = timePanel.$el.querySelectorAll('.el-time-spinner ul li.active')
+          const [hours, minutes, seconds] = timePanel.$el.querySelectorAll(
+            '.el-time-spinner ul li.active'
+          )
           expect(hours.textContent).to.include('10')
           expect(minutes.textContent).to.include('00')
           expect(seconds.textContent).to.include('01')
@@ -1253,7 +1298,9 @@ describe('DatePicker', () => {
           setTimeout(_ => {
             expect(dateInput.value).to.equal('2001-11-02')
             expect(timeInput.value).to.equal('11:01:02')
-            const [hours, minutes, seconds] = timePanel.$el.querySelectorAll('.el-time-spinner ul li.active')
+            const [hours, minutes, seconds] = timePanel.$el.querySelectorAll(
+              '.el-time-spinner ul li.active'
+            )
             expect(hours.textContent).to.include('11')
             expect(minutes.textContent).to.include('01')
             expect(seconds.textContent).to.include('02')
@@ -1303,7 +1350,9 @@ describe('DatePicker', () => {
       input.focus()
 
       setTimeout(_ => {
-        const input = vm.picker.$el.querySelectorAll('.el-date-picker__editor-wrap input')[1]
+        const input = vm.picker.$el.querySelectorAll(
+          '.el-date-picker__editor-wrap input'
+        )[1]
         triggerEvent(input, 'focus')
 
         setTimeout(_ => {
@@ -1328,7 +1377,9 @@ describe('DatePicker', () => {
       input.focus()
 
       setTimeout(_ => {
-        const input = vm.picker.$el.querySelectorAll('.el-date-picker__editor-wrap input')[1]
+        const input = vm.picker.$el.querySelectorAll(
+          '.el-date-picker__editor-wrap input'
+        )[1]
 
         input.value = '20:30:33'
         triggerEvent(input, 'change', true)
@@ -1355,7 +1406,9 @@ describe('DatePicker', () => {
       input.focus()
 
       setTimeout(_ => {
-        const input = vm.picker.$el.querySelector('.el-date-picker__editor-wrap input')
+        const input = vm.picker.$el.querySelector(
+          '.el-date-picker__editor-wrap input'
+        )
 
         input.value = '2017-2-2'
         triggerEvent(input, 'change', true)
@@ -1382,7 +1435,9 @@ describe('DatePicker', () => {
       input.focus()
 
       setTimeout(_ => {
-        const input = vm.picker.$el.querySelectorAll('.el-date-picker__editor-wrap input')[1]
+        const input = vm.picker.$el.querySelectorAll(
+          '.el-date-picker__editor-wrap input'
+        )[1]
         input.blur()
         input.focus()
         input.blur()
@@ -1405,7 +1460,8 @@ describe('DatePicker', () => {
       it('pick date, emits on confirm', done => {
         vm = createVue(
           {
-            template: '<el-date-picker type="datetime" v-model="value" ref="compo" />',
+            template:
+              '<el-date-picker type="datetime" v-model="value" ref="compo" />',
             data() {
               return {
                 value: ''
@@ -1426,7 +1482,9 @@ describe('DatePicker', () => {
           vm.$refs.compo.picker.$el.querySelector('td.available').click()
           setTimeout(_ => {
             expect(spy.called).to.equal(false)
-            vm.$refs.compo.picker.$el.querySelector('.el-picker-panel__footer .el-button--default').click()
+            vm.$refs.compo.picker.$el
+              .querySelector('.el-picker-panel__footer .el-button--default')
+              .click()
             setTimeout(_ => {
               expect(vm.value).is.a('date')
               expect(spy.calledOnce).to.equal(true)
@@ -1439,7 +1497,8 @@ describe('DatePicker', () => {
       it('input date, enter, emits on confirm', done => {
         vm = createVue(
           {
-            template: '<el-date-picker type="datetime" v-model="value" ref="compo" />',
+            template:
+              '<el-date-picker type="datetime" v-model="value" ref="compo" />',
             data() {
               return {
                 value: ''
@@ -1461,7 +1520,9 @@ describe('DatePicker', () => {
           // simplified change
           picker.handleVisibleDateChange('2000-01-02')
           setTimeout(_ => {
-            expect(picker.$el.querySelector('td.current').innerText.trim()).to.equal('2')
+            expect(
+              picker.$el.querySelector('td.current').innerText.trim()
+            ).to.equal('2')
             expect(spy.called).to.equal(false)
             // keyDown does not work, event listener attached to document.body
             picker.handleKeydown({
@@ -1485,7 +1546,8 @@ describe('DatePicker', () => {
       it('cancel to empty', done => {
         vm = createVue(
           {
-            template: '<el-date-picker type="datetime" v-model="value" ref="compo" />',
+            template:
+              '<el-date-picker type="datetime" v-model="value" ref="compo" />',
             data() {
               return {
                 value: ''
@@ -1500,10 +1562,14 @@ describe('DatePicker', () => {
         input.focus()
 
         setTimeout(_ => {
-          const timeInput = vm.$refs.compo.picker.$el.querySelector('.el-date-picker__time-header > span:nth-child(2) input')
+          const timeInput = vm.$refs.compo.picker.$el.querySelector(
+            '.el-date-picker__time-header > span:nth-child(2) input'
+          )
           timeInput.focus()
           setTimeout(_ => {
-            const cancel = vm.$refs.compo.picker.$refs.timepicker.$el.querySelector('button.cancel')
+            const cancel = vm.$refs.compo.picker.$refs.timepicker.$el.querySelector(
+              'button.cancel'
+            )
             cancel.click()
             setTimeout(_ => {
               expect(vm.value).to.equal('')
@@ -1517,7 +1583,8 @@ describe('DatePicker', () => {
       it('cancel to old value', done => {
         vm = createVue(
           {
-            template: '<el-date-picker type="datetime" v-model="value" ref="compo" />',
+            template:
+              '<el-date-picker type="datetime" v-model="value" ref="compo" />',
             data() {
               return {
                 value: new Date(2000, 9, 1, 10, 0, 0)
@@ -1534,13 +1601,19 @@ describe('DatePicker', () => {
         const oldValue = vm.value.toISOString()
 
         setTimeout(_ => {
-          const timeInput = vm.$refs.compo.picker.$el.querySelector('.el-date-picker__time-header > span:nth-child(2) input')
+          const timeInput = vm.$refs.compo.picker.$el.querySelector(
+            '.el-date-picker__time-header > span:nth-child(2) input'
+          )
           timeInput.focus()
           setTimeout(_ => {
-            const nextTime = vm.$refs.compo.picker.$refs.timepicker.$el.querySelector('.active + *')
+            const nextTime = vm.$refs.compo.picker.$refs.timepicker.$el.querySelector(
+              '.active + *'
+            )
             nextTime.click()
             setTimeout(_ => {
-              const cancel = vm.$refs.compo.picker.$refs.timepicker.$el.querySelector('button.cancel')
+              const cancel = vm.$refs.compo.picker.$refs.timepicker.$el.querySelector(
+                'button.cancel'
+              )
               cancel.click()
               setTimeout(_ => {
                 expect(vm.value.toISOString()).to.equal(oldValue)
@@ -1556,7 +1629,8 @@ describe('DatePicker', () => {
     it('now button: can not choose disabled date', done => {
       vm = createVue(
         {
-          template: '<el-date-picker type="datetime" v-model="value" ref="compo" :pickerOptions="pickerOptions" />',
+          template:
+            '<el-date-picker type="datetime" v-model="value" ref="compo" :pickerOptions="pickerOptions" />',
           data() {
             return {
               value: '',
@@ -1573,7 +1647,9 @@ describe('DatePicker', () => {
       vm.$refs.compo.$el.querySelector('input').focus()
       setTimeout(_ => {
         // click now button
-        vm.$refs.compo.picker.$el.querySelector('.el-picker-panel__footer .el-button--text').click()
+        vm.$refs.compo.picker.$el
+          .querySelector('.el-picker-panel__footer .el-button--text')
+          .click()
         setTimeout(_ => {
           expect(vm.value).to.equal('')
           done()
@@ -1584,7 +1660,8 @@ describe('DatePicker', () => {
     it('select time honors picked date', done => {
       vm = createVue(
         {
-          template: '<el-date-picker type="datetime" v-model="value" ref="compo" />',
+          template:
+            '<el-date-picker type="datetime" v-model="value" ref="compo" />',
           data() {
             return {
               value: new Date(2000, 9, 1, 12, 0, 0) // 2010-10-01 12:00:00
@@ -1596,13 +1673,21 @@ describe('DatePicker', () => {
       vm.$refs.compo.$el.querySelector('input').focus()
       setTimeout(_ => {
         // changed month / year should not effect picked time
-        vm.$refs.compo.picker.$el.querySelector('.el-date-picker__header .el-icon-right').click()
+        vm.$refs.compo.picker.$el
+          .querySelector('.el-date-picker__header .el-icon-right')
+          .click()
         setTimeout(_ => {
-          vm.$refs.compo.picker.$el.querySelector('.el-date-picker__header .el-icon-doubleright').click()
+          vm.$refs.compo.picker.$el
+            .querySelector('.el-date-picker__header .el-icon-doubleright')
+            .click()
           setTimeout(_ => {
             // simulate time selection
             // handleTimePick takes Date object, but it's non-time fields are ignored
-            vm.$refs.compo.picker.handleTimePick(new Date(2001, 10, 10, 13, 14, 15), false, false)
+            vm.$refs.compo.picker.handleTimePick(
+              new Date(2001, 10, 10, 13, 14, 15),
+              false,
+              false
+            )
             setTimeout(_ => {
               expect(vm.value.getFullYear()).to.equal(2000)
               expect(vm.value.getMonth()).to.equal(9)
@@ -1620,7 +1705,8 @@ describe('DatePicker', () => {
     it('confirm button honors picked date', done => {
       vm = createVue(
         {
-          template: '<el-date-picker type="datetime" v-model="value" ref="compo" />',
+          template:
+            '<el-date-picker type="datetime" v-model="value" ref="compo" />',
           data() {
             return {
               value: new Date(2000, 9, 1, 12, 0, 0) // 2010-10-01 12:00:00
@@ -1632,12 +1718,18 @@ describe('DatePicker', () => {
       vm.$refs.compo.$el.querySelector('input').focus()
       setTimeout(_ => {
         // changed month / year should not effect picked time
-        vm.$refs.compo.picker.$el.querySelector('.el-date-picker__header .el-icon-right').click()
+        vm.$refs.compo.picker.$el
+          .querySelector('.el-date-picker__header .el-icon-right')
+          .click()
         setTimeout(_ => {
-          vm.$refs.compo.picker.$el.querySelector('.el-date-picker__header .el-icon-doubleright').click()
+          vm.$refs.compo.picker.$el
+            .querySelector('.el-date-picker__header .el-icon-doubleright')
+            .click()
           setTimeout(_ => {
             // click confirm button
-            vm.$refs.compo.picker.$el.querySelector('.el-picker-panel__footer .el-button--default').click()
+            vm.$refs.compo.picker.$el
+              .querySelector('.el-picker-panel__footer .el-button--default')
+              .click()
             setTimeout(_ => {
               expect(vm.value.getFullYear()).to.equal(2000)
               expect(vm.value.getMonth()).to.equal(9)
@@ -1702,7 +1794,10 @@ describe('DatePicker', () => {
         vm.picker.$el.querySelector('.el-month-table .cell').click()
 
         setTimeout(_ => {
-          expect(vm.picker.$el.querySelector('.el-date-table.is-week-mode').style.display).to.equal('')
+          expect(
+            vm.picker.$el.querySelector('.el-date-table.is-week-mode').style
+              .display
+          ).to.equal('')
           done()
         }, DELAY)
       }, DELAY)
@@ -1711,7 +1806,8 @@ describe('DatePicker', () => {
     it('highlight correctly', done => {
       vm = createVue(
         {
-          template: '<el-date-picker type="week" v-model="value" ref="compo" />',
+          template:
+            '<el-date-picker type="week" v-model="value" ref="compo" />',
           data() {
             return {
               value: null
@@ -1727,10 +1823,15 @@ describe('DatePicker', () => {
 
       setTimeout(() => {
         const pickerEl = vm.$refs.compo.picker.$el
-        const numberOfHighlightRows = () => pickerEl.querySelectorAll('.el-date-table__row.current').length
+        const numberOfHighlightRows = () =>
+          pickerEl.querySelectorAll('.el-date-table__row.current').length
         expect(numberOfHighlightRows()).to.equal(0)
         setTimeout(() => {
-          pickerEl.querySelector('.el-date-table__row ~ .el-date-table__row td.available').click()
+          pickerEl
+            .querySelector(
+              '.el-date-table__row ~ .el-date-table__row td.available'
+            )
+            .click()
           setTimeout(() => {
             expect(vm.value).to.exist
             input.blur()
@@ -1762,7 +1863,8 @@ describe('DatePicker', () => {
     beforeEach(done => {
       vm = createVue(
         {
-          template: '<el-date-picker type="dates" value-format="timestamp" v-model="value" ref="compo" />',
+          template:
+            '<el-date-picker type="dates" value-format="timestamp" v-model="value" ref="compo" />',
           data() {
             return {
               value: []
@@ -1781,7 +1883,9 @@ describe('DatePicker', () => {
     afterEach(() => destroyVM(vm))
 
     it('click cell', done => {
-      const td = vm.$refs.compo.picker.$el.querySelector('.el-date-table__row .available')
+      const td = vm.$refs.compo.picker.$el.querySelector(
+        '.el-date-table__row .available'
+      )
       td.click()
       setTimeout(_ => {
         expect(vm.$refs.compo.value).to.be.an('array')
@@ -1793,7 +1897,9 @@ describe('DatePicker', () => {
     })
 
     it('restore value when cancel', done => {
-      const td = vm.$refs.compo.picker.$el.querySelector('.el-date-table__row .available')
+      const td = vm.$refs.compo.picker.$el.querySelector(
+        '.el-date-table__row .available'
+      )
       td.click()
       setTimeout(_ => {
         vm.$refs.compo.handleClose()
@@ -1811,7 +1917,8 @@ describe('DatePicker', () => {
     it('works', done => {
       vm = createVue(
         {
-          template: '<el-date-picker type="daterange" v-model="value" ref="compo" />',
+          template:
+            '<el-date-picker type="daterange" v-model="value" ref="compo" />',
           data() {
             return {
               value: ''
@@ -1826,7 +1933,9 @@ describe('DatePicker', () => {
       inputs[0].focus()
 
       setTimeout(_ => {
-        const panels = rangePicker.picker.$el.querySelectorAll('.el-date-range-picker__content')
+        const panels = rangePicker.picker.$el.querySelectorAll(
+          '.el-date-range-picker__content'
+        )
         expect(Array.prototype.slice.call(panels)).to.length(2)
         panels[0].querySelector('td.available').click()
         setTimeout(_ => {
@@ -1835,9 +1944,15 @@ describe('DatePicker', () => {
             inputs[0].focus()
             setTimeout(_ => {
               // correct highlight
-              const startDate = rangePicker.picker.$el.querySelectorAll('.start-date')
-              const endDate = rangePicker.picker.$el.querySelectorAll('.end-date')
-              const inRangeDate = rangePicker.picker.$el.querySelectorAll('.in-range')
+              const startDate = rangePicker.picker.$el.querySelectorAll(
+                '.start-date'
+              )
+              const endDate = rangePicker.picker.$el.querySelectorAll(
+                '.end-date'
+              )
+              const inRangeDate = rangePicker.picker.$el.querySelectorAll(
+                '.in-range'
+              )
               expect(startDate.length).to.equal(1)
               expect(endDate.length).to.equal(1)
               expect(inRangeDate.length).to.above(0)
@@ -1856,7 +1971,8 @@ describe('DatePicker', () => {
     it('works: reverse selection', done => {
       vm = createVue(
         {
-          template: '<el-date-picker type="daterange" v-model="value" ref="compo" />',
+          template:
+            '<el-date-picker type="daterange" v-model="value" ref="compo" />',
           data() {
             return {
               value: ''
@@ -1871,7 +1987,9 @@ describe('DatePicker', () => {
       inputs[0].focus()
 
       setTimeout(_ => {
-        const panels = rangePicker.picker.$el.querySelectorAll('.el-date-range-picker__content')
+        const panels = rangePicker.picker.$el.querySelectorAll(
+          '.el-date-range-picker__content'
+        )
         expect(Array.prototype.slice.call(panels)).to.length(2)
         panels[1].querySelector('td.available').click()
         setTimeout(_ => {
@@ -1880,9 +1998,15 @@ describe('DatePicker', () => {
             inputs[0].focus()
             setTimeout(_ => {
               // correct highlight
-              const startDate = rangePicker.picker.$el.querySelectorAll('.start-date')
-              const endDate = rangePicker.picker.$el.querySelectorAll('.end-date')
-              const inRangeDate = rangePicker.picker.$el.querySelectorAll('.in-range')
+              const startDate = rangePicker.picker.$el.querySelectorAll(
+                '.start-date'
+              )
+              const endDate = rangePicker.picker.$el.querySelectorAll(
+                '.end-date'
+              )
+              const inRangeDate = rangePicker.picker.$el.querySelectorAll(
+                '.in-range'
+              )
               expect(startDate.length).to.equal(1)
               expect(endDate.length).to.equal(1)
               expect(inRangeDate.length).to.above(0)
@@ -1903,7 +2027,8 @@ describe('DatePicker', () => {
     it('type:daterange unlink:true', done => {
       vm = createVue(
         {
-          template: '<el-date-picker type="daterange" unlink-panels v-model="value" ref="compo" />',
+          template:
+            '<el-date-picker type="daterange" unlink-panels v-model="value" ref="compo" />',
           data() {
             return {
               value: [new Date(2000, 9, 1), new Date(2000, 9, 2)]
@@ -1918,9 +2043,13 @@ describe('DatePicker', () => {
       setTimeout(_ => {
         inputs[0].focus()
         setTimeout(_ => {
-          const panels = rangePicker.picker.$el.querySelectorAll('.el-date-range-picker__content')
+          const panels = rangePicker.picker.$el.querySelectorAll(
+            '.el-date-range-picker__content'
+          )
           const left = panels[0].querySelector('.el-date-range-picker__header')
-          const right = panels[1].querySelector('.is-right .el-date-range-picker__header')
+          const right = panels[1].querySelector(
+            '.is-right .el-date-range-picker__header'
+          )
           const leftText = left.textContent.match(/\d+/g).map(i => Number(i))
           const rightText = right.textContent.match(/\d+/g).map(i => Number(i))
           expect(rightText[1] - leftText[1]).to.equal(1) // one month
@@ -1943,7 +2072,9 @@ describe('DatePicker', () => {
       input.click()
 
       setTimeout(_ => {
-        const panels = vm.picker.$el.querySelectorAll('.el-date-range-picker__content')
+        const panels = vm.picker.$el.querySelectorAll(
+          '.el-date-range-picker__content'
+        )
 
         expect(Array.prototype.slice.call(panels)).to.length(2)
 
@@ -1952,12 +2083,18 @@ describe('DatePicker', () => {
 
         setTimeout(_ => {
           const left = panels[0].querySelector('.el-date-range-picker__header')
-          const right = panels[1].querySelector('.is-right .el-date-range-picker__header')
+          const right = panels[1].querySelector(
+            '.is-right .el-date-range-picker__header'
+          )
           const leftText = left.textContent.match(/\d+/g).map(i => Number(i))
           const rightText = right.textContent.match(/\d+/g).map(i => Number(i))
 
-          expect((rightText[1] <= 2 ? rightText[0] - 1 : rightText[0]) - leftText[0]).to.equal(1)
-          expect((rightText[1] <= 2 ? rightText[1] + 12 : rightText[1]) - leftText[1]).to.equal(2)
+          expect(
+            (rightText[1] <= 2 ? rightText[0] - 1 : rightText[0]) - leftText[0]
+          ).to.equal(1)
+          expect(
+            (rightText[1] <= 2 ? rightText[1] + 12 : rightText[1]) - leftText[1]
+          ).to.equal(2)
 
           done()
         }, DELAY)
@@ -1970,7 +2107,8 @@ describe('DatePicker', () => {
       // AEST -> AEDT shift happened on 2016-10-02 02:00:00
       vm = createVue(
         {
-          template: '<el-date-picker type="daterange" v-model="value" ref="compo" />',
+          template:
+            '<el-date-picker type="daterange" v-model="value" ref="compo" />',
           data() {
             return {
               value: [new Date(2016, 9, 1), new Date(2016, 9, 3)]
@@ -1996,7 +2134,8 @@ describe('DatePicker', () => {
     it('clear value', done => {
       vm = createVue(
         {
-          template: '<el-date-picker type="daterange" v-model="value" ref="compo" />',
+          template:
+            '<el-date-picker type="daterange" v-model="value" ref="compo" />',
           data() {
             return {
               value: [new Date(2000, 9, 1), new Date(2000, 9, 2)]
@@ -2080,7 +2219,8 @@ describe('DatePicker', () => {
 
         vm = createVue(
           {
-            template: '<el-date-picker type="daterange" v-model="value" ref="compo" :default-value="defaultValue" />',
+            template:
+              '<el-date-picker type="daterange" v-model="value" ref="compo" :default-value="defaultValue" />',
             data() {
               return {
                 value: '',
@@ -2113,7 +2253,8 @@ describe('DatePicker', () => {
 
         vm = createVue(
           {
-            template: '<el-date-picker type="daterange" v-model="value" ref="compo" :default-value="defaultValue" />',
+            template:
+              '<el-date-picker type="daterange" v-model="value" ref="compo" :default-value="defaultValue" />',
             data() {
               return {
                 value: '',
@@ -2126,7 +2267,9 @@ describe('DatePicker', () => {
 
         vm.$el.querySelector('input').focus()
         setTimeout(_ => {
-          const defaultEls = vm.$refs.compo.picker.$el.querySelectorAll('.el-date-table td.default')
+          const defaultEls = vm.$refs.compo.picker.$el.querySelectorAll(
+            '.el-date-table td.default'
+          )
           expect(defaultEls.length).to.equal(2)
           defaultEls[0].click()
           setTimeout(_ => {
@@ -2148,7 +2291,10 @@ describe('DatePicker', () => {
         DatePicker,
         {
           type: 'datetimerange',
-          value: [new Date(2000, 10, 10, 10, 10), new Date(2000, 10, 11, 10, 10)]
+          value: [
+            new Date(2000, 10, 10, 10, 10),
+            new Date(2000, 10, 11, 10, 10)
+          ]
         },
         true
       )
@@ -2161,11 +2307,17 @@ describe('DatePicker', () => {
     afterEach(() => destroyVM(vm))
 
     it('create', () => {
-      expect(Array.prototype.slice.call(vm.picker.$el.querySelectorAll('.el-time-panel'))).to.length(2)
+      expect(
+        Array.prototype.slice.call(
+          vm.picker.$el.querySelectorAll('.el-time-panel')
+        )
+      ).to.length(2)
     })
 
     it('select daterange', done => {
-      const pickers = vm.picker.$el.querySelectorAll('.el-date-range-picker__content')
+      const pickers = vm.picker.$el.querySelectorAll(
+        '.el-date-range-picker__content'
+      )
       const leftCell = pickers[0].querySelector('td.available')
       const rightCell = pickers[1].querySelector('td.available')
 
@@ -2195,7 +2347,10 @@ describe('DatePicker', () => {
         `,
           data() {
             return {
-              value: [new Date(2000, 10, 10, 10, 10), new Date(2000, 10, 11, 10, 10)],
+              value: [
+                new Date(2000, 10, 10, 10, 10),
+                new Date(2000, 10, 11, 10, 10)
+              ],
               defaultTime: ['11:59:59']
             }
           }
@@ -2207,7 +2362,9 @@ describe('DatePicker', () => {
         vm.$el.click()
 
         setTimeout(_ => {
-          const pickers = vm.picker.$el.querySelectorAll('.el-date-range-picker__content')
+          const pickers = vm.picker.$el.querySelectorAll(
+            '.el-date-range-picker__content'
+          )
           const leftCell = pickers[0].querySelector('td.available')
           const rightCell = pickers[1].querySelector('td.available')
 
@@ -2254,7 +2411,10 @@ describe('DatePicker', () => {
         `,
           data() {
             return {
-              value: [new Date(2018, 8, 5, 10, 20, 30), new Date(2018, 8, 15, 15, 35, 45)],
+              value: [
+                new Date(2018, 8, 5, 10, 20, 30),
+                new Date(2018, 8, 15, 15, 35, 45)
+              ],
               format: 'yyyy/MM/dd hh:mm A'
             }
           }
@@ -2266,14 +2426,24 @@ describe('DatePicker', () => {
         const compo = vm.$refs.compo
         compo.$el.click()
         setTimeout(_ => {
-          const pickers = compo.picker.$el.querySelectorAll('.el-date-range-picker__time-header .el-date-range-picker__editors-wrap')
+          const pickers = compo.picker.$el.querySelectorAll(
+            '.el-date-range-picker__time-header .el-date-range-picker__editors-wrap'
+          )
           const left = {
-            dateInput: pickers[0].querySelector('.el-date-range-picker__time-picker-wrap:nth-child(1) input'),
-            timeInput: pickers[0].querySelector('.el-date-range-picker__time-picker-wrap:nth-child(2) input')
+            dateInput: pickers[0].querySelector(
+              '.el-date-range-picker__time-picker-wrap:nth-child(1) input'
+            ),
+            timeInput: pickers[0].querySelector(
+              '.el-date-range-picker__time-picker-wrap:nth-child(2) input'
+            )
           }
           const right = {
-            dateInput: pickers[1].querySelector('.el-date-range-picker__time-picker-wrap:nth-child(1) input'),
-            timeInput: pickers[1].querySelector('.el-date-range-picker__time-picker-wrap:nth-child(2) input')
+            dateInput: pickers[1].querySelector(
+              '.el-date-range-picker__time-picker-wrap:nth-child(1) input'
+            ),
+            timeInput: pickers[1].querySelector(
+              '.el-date-range-picker__time-picker-wrap:nth-child(2) input'
+            )
           }
           left.timeInput.focus()
           right.timeInput.focus()
@@ -2306,7 +2476,10 @@ describe('DatePicker', () => {
         `,
           data() {
             return {
-              value: [new Date(2000, 10, 10, 10, 10), new Date(2000, 10, 11, 10, 10)],
+              value: [
+                new Date(2000, 10, 10, 10, 10),
+                new Date(2000, 10, 11, 10, 10)
+              ],
               defaultTime: ['11:59:59', '18:00:00']
             }
           }
@@ -2318,7 +2491,9 @@ describe('DatePicker', () => {
         vm.$el.click()
 
         setTimeout(_ => {
-          const pickers = vm.picker.$el.querySelectorAll('.el-date-range-picker__content')
+          const pickers = vm.picker.$el.querySelectorAll(
+            '.el-date-range-picker__content'
+          )
           const leftCell = pickers[0].querySelector('td.available')
           const rightCell = pickers[1].querySelector('td.available')
 
@@ -2358,8 +2533,12 @@ describe('DatePicker', () => {
     it('prev/next month button', done => {
       const leftBtn = vm.picker.$el.querySelector('.is-left .el-icon-left')
       const rightBtn = vm.picker.$el.querySelector('.is-right .el-icon-right')
-      const left = vm.picker.$el.querySelector('.is-left .el-date-range-picker__header')
-      const right = vm.picker.$el.querySelector('.is-right .el-date-range-picker__header')
+      const left = vm.picker.$el.querySelector(
+        '.is-left .el-date-range-picker__header'
+      )
+      const right = vm.picker.$el.querySelector(
+        '.is-right .el-date-range-picker__header'
+      )
       const leftText = left.textContent.match(/\d+/g)
       const rightText = right.textContent.match(/\d+/g)
       let count = 20
@@ -2383,10 +2562,18 @@ describe('DatePicker', () => {
     })
 
     it('prev/next year button', done => {
-      const leftBtn = vm.picker.$el.querySelector('.is-left .el-icon-doubleleft')
-      const rightBtn = vm.picker.$el.querySelector('.is-right .el-icon-doubleright')
-      const left = vm.picker.$el.querySelector('.is-left .el-date-range-picker__header')
-      const right = vm.picker.$el.querySelector('.is-right .el-date-range-picker__header')
+      const leftBtn = vm.picker.$el.querySelector(
+        '.is-left .el-icon-doubleleft'
+      )
+      const rightBtn = vm.picker.$el.querySelector(
+        '.is-right .el-icon-doubleright'
+      )
+      const left = vm.picker.$el.querySelector(
+        '.is-left .el-date-range-picker__header'
+      )
+      const right = vm.picker.$el.querySelector(
+        '.is-right .el-date-range-picker__header'
+      )
       const leftText = left.textContent.match(/\d+/g)
       const rightText = right.textContent.match(/\d+/g)
 
@@ -2412,8 +2599,12 @@ describe('DatePicker', () => {
     })
 
     it('input date', done => {
-      const input = vm.picker.$el.querySelector('.el-date-range-picker__editors-wrap input')
-      const pickers = vm.picker.$el.querySelectorAll('.el-date-range-picker__content')
+      const input = vm.picker.$el.querySelector(
+        '.el-date-range-picker__editors-wrap input'
+      )
+      const pickers = vm.picker.$el.querySelectorAll(
+        '.el-date-range-picker__content'
+      )
       const leftCell = pickers[0].querySelector('td.available')
       const rightCell = pickers[1].querySelector('td.available')
 
@@ -2440,9 +2631,15 @@ describe('DatePicker', () => {
     })
 
     it('input date when minDate > maxDate', done => {
-      const input = vm.picker.$el.querySelector('.el-date-range-picker__editors-wrap input')
-      const input2 = vm.picker.$el.querySelectorAll('.el-date-range-picker__editors-wrap input')[2]
-      const pickers = vm.picker.$el.querySelectorAll('.el-date-range-picker__content')
+      const input = vm.picker.$el.querySelector(
+        '.el-date-range-picker__editors-wrap input'
+      )
+      const input2 = vm.picker.$el.querySelectorAll(
+        '.el-date-range-picker__editors-wrap input'
+      )[2]
+      const pickers = vm.picker.$el.querySelectorAll(
+        '.el-date-range-picker__content'
+      )
       const leftCell = pickers[0].querySelector('td.available')
       const rightCell = pickers[1].querySelector('td.available')
 
@@ -2471,13 +2668,17 @@ describe('DatePicker', () => {
     })
 
     it('select time', done => {
-      const input = vm.picker.$el.querySelectorAll('.el-date-range-picker__editors-wrap input')[1]
+      const input = vm.picker.$el.querySelectorAll(
+        '.el-date-range-picker__editors-wrap input'
+      )[1]
       input.blur()
       input.focus()
       input.blur()
 
       setTimeout(_ => {
-        const button = vm.picker.$el.querySelector('.el-date-range-picker__time-picker-wrap .el-time-panel .confirm')
+        const button = vm.picker.$el.querySelector(
+          '.el-date-range-picker__time-picker-wrap .el-time-panel .confirm'
+        )
         button.click()
 
         setTimeout(_ => {
@@ -2522,7 +2723,10 @@ describe('DatePicker', () => {
             // simulate click outside to close picker
             vm.$refs.compo.handleClose()
             setTimeout(_ => {
-              expect(vm.value).to.eql(['2000-10-02 00:00:00', '2000-10-03 00:00:00'])
+              expect(vm.value).to.eql([
+                '2000-10-02 00:00:00',
+                '2000-10-03 00:00:00'
+              ])
               done()
             }, DELAY)
           }, DELAY)
@@ -2537,7 +2741,8 @@ describe('DatePicker', () => {
     it('works', done => {
       vm = createVue(
         {
-          template: '<el-date-picker type="monthrange" v-model="value" ref="compo" />',
+          template:
+            '<el-date-picker type="monthrange" v-model="value" ref="compo" />',
           data() {
             return {
               value: ''
@@ -2552,7 +2757,9 @@ describe('DatePicker', () => {
       inputs[0].focus()
 
       setTimeout(_ => {
-        const panels = rangePicker.picker.$el.querySelectorAll('.el-date-range-picker__content')
+        const panels = rangePicker.picker.$el.querySelectorAll(
+          '.el-date-range-picker__content'
+        )
         expect(Array.prototype.slice.call(panels)).to.length(2)
         panels[0].querySelector('td:not(.disabled)').click()
         setTimeout(_ => {
@@ -2561,9 +2768,15 @@ describe('DatePicker', () => {
             inputs[0].focus()
             setTimeout(_ => {
               // correct highlight
-              const startDate = rangePicker.picker.$el.querySelectorAll('.start-date')
-              const endDate = rangePicker.picker.$el.querySelectorAll('.end-date')
-              const inRangeDate = rangePicker.picker.$el.querySelectorAll('.in-range')
+              const startDate = rangePicker.picker.$el.querySelectorAll(
+                '.start-date'
+              )
+              const endDate = rangePicker.picker.$el.querySelectorAll(
+                '.end-date'
+              )
+              const inRangeDate = rangePicker.picker.$el.querySelectorAll(
+                '.in-range'
+              )
               expect(startDate.length).to.equal(1)
               expect(endDate.length).to.equal(1)
               expect(inRangeDate.length).to.above(0)
@@ -2582,7 +2795,8 @@ describe('DatePicker', () => {
     it('works: reverse selection', done => {
       vm = createVue(
         {
-          template: '<el-date-picker type="monthrange" v-model="value" ref="compo" />',
+          template:
+            '<el-date-picker type="monthrange" v-model="value" ref="compo" />',
           data() {
             return {
               value: ''
@@ -2597,7 +2811,9 @@ describe('DatePicker', () => {
       inputs[0].focus()
 
       setTimeout(_ => {
-        const panels = rangePicker.picker.$el.querySelectorAll('.el-date-range-picker__content')
+        const panels = rangePicker.picker.$el.querySelectorAll(
+          '.el-date-range-picker__content'
+        )
         expect(Array.prototype.slice.call(panels)).to.length(2)
         panels[1].querySelector('td:not(.disabled)').click()
         setTimeout(_ => {
@@ -2606,9 +2822,15 @@ describe('DatePicker', () => {
             inputs[0].focus()
             setTimeout(_ => {
               // correct highlight
-              const startDate = rangePicker.picker.$el.querySelectorAll('.start-date')
-              const endDate = rangePicker.picker.$el.querySelectorAll('.end-date')
-              const inRangeDate = rangePicker.picker.$el.querySelectorAll('.in-range')
+              const startDate = rangePicker.picker.$el.querySelectorAll(
+                '.start-date'
+              )
+              const endDate = rangePicker.picker.$el.querySelectorAll(
+                '.end-date'
+              )
+              const inRangeDate = rangePicker.picker.$el.querySelectorAll(
+                '.in-range'
+              )
               expect(startDate.length).to.equal(1)
               expect(endDate.length).to.equal(1)
               expect(inRangeDate.length).to.above(0)
@@ -2629,7 +2851,8 @@ describe('DatePicker', () => {
     it('type:monthrange unlink:true', done => {
       vm = createVue(
         {
-          template: '<el-date-picker type="monthrange" unlink-panels v-model="value" ref="compo" />',
+          template:
+            '<el-date-picker type="monthrange" unlink-panels v-model="value" ref="compo" />',
           data() {
             return {
               value: [new Date(2000, 9), new Date(2000, 10)]
@@ -2644,9 +2867,13 @@ describe('DatePicker', () => {
       setTimeout(_ => {
         inputs[0].focus()
         setTimeout(_ => {
-          const panels = rangePicker.picker.$el.querySelectorAll('.el-date-range-picker__content')
+          const panels = rangePicker.picker.$el.querySelectorAll(
+            '.el-date-range-picker__content'
+          )
           const left = panels[0].querySelector('.el-date-range-picker__header')
-          const right = panels[1].querySelector('.is-right .el-date-range-picker__header')
+          const right = panels[1].querySelector(
+            '.is-right .el-date-range-picker__header'
+          )
           const leftText = left.textContent.match(/\d+/g).map(i => Number(i))
           const rightText = right.textContent.match(/\d+/g).map(i => Number(i))
           expect(rightText[0] - leftText[0]).to.equal(1) // one year
@@ -2668,14 +2895,18 @@ describe('DatePicker', () => {
       input.click()
 
       setTimeout(_ => {
-        const panels = vm.picker.$el.querySelectorAll('.el-date-range-picker__content')
+        const panels = vm.picker.$el.querySelectorAll(
+          '.el-date-range-picker__content'
+        )
         expect(Array.prototype.slice.call(panels)).to.length(2)
 
         panels[1].querySelector('.el-icon-doubleright').click()
 
         setTimeout(_ => {
           const left = panels[0].querySelector('.el-date-range-picker__header')
-          const right = panels[1].querySelector('.is-right .el-date-range-picker__header')
+          const right = panels[1].querySelector(
+            '.is-right .el-date-range-picker__header'
+          )
           const leftText = left.textContent.match(/\d+/g).map(i => Number(i))
           const rightText = right.textContent.match(/\d+/g).map(i => Number(i))
 
@@ -2692,7 +2923,8 @@ describe('DatePicker', () => {
       // AEST -> AEDT shift happened on 2016-10-02 02:00:00
       vm = createVue(
         {
-          template: '<el-date-picker type="monthrange" v-model="value" ref="compo" />',
+          template:
+            '<el-date-picker type="monthrange" v-model="value" ref="compo" />',
           data() {
             return {
               value: [new Date(2016, 6), new Date(2016, 12)]
@@ -2718,7 +2950,8 @@ describe('DatePicker', () => {
     it('clear value', done => {
       vm = createVue(
         {
-          template: '<el-date-picker type="monthrange" v-model="value" ref="compo" />',
+          template:
+            '<el-date-picker type="monthrange" v-model="value" ref="compo" />',
           data() {
             return {
               value: [new Date(2000, 9), new Date(2000, 10)]
@@ -2770,7 +3003,9 @@ describe('DatePicker', () => {
         setTimeout(_ => {
           picker.$el.querySelector('td:not(.disabled)').click()
           setTimeout(_ => {
-            picker.$el.querySelector('td:not(.disabled) ~ td:not(.disabled)').click()
+            picker.$el
+              .querySelector('td:not(.disabled) ~ td:not(.disabled)')
+              .click()
             setTimeout(_ => {
               expect(spy.calledOnce).to.equal(true)
               // change event is not emitted if used does not change value
@@ -2804,7 +3039,8 @@ describe('DatePicker', () => {
 
         vm = createVue(
           {
-            template: '<el-date-picker type="monthrange" v-model="value" ref="compo" :default-value="defaultValue" />',
+            template:
+              '<el-date-picker type="monthrange" v-model="value" ref="compo" :default-value="defaultValue" />',
             data() {
               return {
                 value: '',
@@ -2837,7 +3073,8 @@ describe('DatePicker', () => {
 
         vm = createVue(
           {
-            template: '<el-date-picker type="monthrange" v-model="value" ref="compo" :default-value="defaultValue" />',
+            template:
+              '<el-date-picker type="monthrange" v-model="value" ref="compo" :default-value="defaultValue" />',
             data() {
               return {
                 value: '',
@@ -2850,7 +3087,9 @@ describe('DatePicker', () => {
 
         vm.$el.querySelector('input').focus()
         setTimeout(_ => {
-          const defaultEls = vm.$refs.compo.picker.$el.querySelectorAll('.el-month-table td.default')
+          const defaultEls = vm.$refs.compo.picker.$el.querySelectorAll(
+            '.el-month-table td.default'
+          )
           expect(defaultEls.length).to.equal(2)
           defaultEls[0].click()
           setTimeout(_ => {
@@ -2947,7 +3186,11 @@ describe('DatePicker', () => {
             return {
               value: new Date(2019, 0, 1, 18, 50),
               pickerOptions: {
-                selectableRange: ['17:30:00 - 18:30:00', '18:50:00 - 20:30:00', '21:00:00 - 22:00:00']
+                selectableRange: [
+                  '17:30:00 - 18:30:00',
+                  '18:50:00 - 20:30:00',
+                  '21:00:00 - 22:00:00'
+                ]
               }
             }
           }
@@ -2959,17 +3202,23 @@ describe('DatePicker', () => {
       input.focus()
       setTimeout(() => {
         const $el = vm.$refs.compo.picker.$el
-        const input1 = $el.querySelectorAll('.el-date-picker__editor-wrap input')[1]
+        const input1 = $el.querySelectorAll(
+          '.el-date-picker__editor-wrap input'
+        )[1]
         input1.blur()
         input1.focus()
         setTimeout(_ => {
           const list = $el.querySelectorAll('.el-time-spinner__list')
           const hoursEl = list[0]
-          const disabledHours = [].slice.call(hoursEl.querySelectorAll('.disabled')).map(node => Number(node.textContent))
+          const disabledHours = [].slice
+            .call(hoursEl.querySelectorAll('.disabled'))
+            .map(node => Number(node.textContent))
           expect(disabledHours[disabledHours.length - 2]).to.equal(16)
           expect(disabledHours[disabledHours.length - 1]).to.equal(23)
           const minutesEl = list[1]
-          const disabledMinutes = [].slice.call(minutesEl.querySelectorAll('.disabled')).map(node => Number(node.textContent))
+          const disabledMinutes = [].slice
+            .call(minutesEl.querySelectorAll('.disabled'))
+            .map(node => Number(node.textContent))
           expect(disabledMinutes.length).to.equal(19)
           done()
         }, DELAY)
@@ -3044,8 +3293,12 @@ describe('DatePicker', () => {
       vm.picker.value = date
 
       setTimeout(_ => {
-        const currentElement = vm.picker.$el.querySelector('tr:nth-child(2) td:nth-child(7) span')
-        const lastPrevMonthElement = vm.picker.$el.querySelector('tr:nth-child(2) td:nth-child(6) span')
+        const currentElement = vm.picker.$el.querySelector(
+          'tr:nth-child(2) td:nth-child(7) span'
+        )
+        const lastPrevMonthElement = vm.picker.$el.querySelector(
+          'tr:nth-child(2) td:nth-child(6) span'
+        )
         expect(currentElement.innerText.trim()).to.equal('1')
         expect(lastPrevMonthElement.innerText.trim()).to.equal('31')
         done()
@@ -3057,8 +3310,12 @@ describe('DatePicker', () => {
       vm.picker.value = date
 
       setTimeout(_ => {
-        const currentElement = vm.picker.$el.querySelector('tr:nth-child(2) td:nth-child(6) span')
-        const lastPrevMonthElement = vm.picker.$el.querySelector('tr:nth-child(2) td:nth-child(5) span')
+        const currentElement = vm.picker.$el.querySelector(
+          'tr:nth-child(2) td:nth-child(6) span'
+        )
+        const lastPrevMonthElement = vm.picker.$el.querySelector(
+          'tr:nth-child(2) td:nth-child(5) span'
+        )
         expect(currentElement.innerText.trim()).to.equal('1')
         expect(lastPrevMonthElement.innerText.trim()).to.equal('31')
         done()

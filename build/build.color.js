@@ -1,11 +1,27 @@
-/** @format */
 const path = require('path')
 const fileSave = require('file-save')
 
-let colorFile = fileSave(path.resolve(__dirname, '../src/style/common/color.scss'))
+let colorFile = fileSave(
+  path.resolve(__dirname, '../src/style/common/color.scss')
+)
 
 const colorSys = {
-  shades: ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900', 'A100', 'A200', 'A400', 'A700'],
+  shades: [
+    '50',
+    '100',
+    '200',
+    '300',
+    '400',
+    '500',
+    '600',
+    '700',
+    '800',
+    '900',
+    'A100',
+    'A200',
+    'A400',
+    'A700'
+  ],
   palettes: [
     {
       name: 'Red',
@@ -313,15 +329,48 @@ const colorSys = {
     },
     {
       name: 'Brown',
-      hexes: ['#EFEBE9', '#D7CCC8', '#BCAAA4', '#A1887F', '#8D6E63', '#795548', '#6D4C41', '#5D4037', '#4E342E', '#3E2723']
+      hexes: [
+        '#EFEBE9',
+        '#D7CCC8',
+        '#BCAAA4',
+        '#A1887F',
+        '#8D6E63',
+        '#795548',
+        '#6D4C41',
+        '#5D4037',
+        '#4E342E',
+        '#3E2723'
+      ]
     },
     {
       name: 'Grey',
-      hexes: ['#FAFAFA', '#F5F5F5', '#EEEEEE', '#E0E0E0', '#BDBDBD', '#9E9E9E', '#757575', '#616161', '#424242', '#212121']
+      hexes: [
+        '#FAFAFA',
+        '#F5F5F5',
+        '#EEEEEE',
+        '#E0E0E0',
+        '#BDBDBD',
+        '#9E9E9E',
+        '#757575',
+        '#616161',
+        '#424242',
+        '#212121'
+      ]
     },
     {
       name: 'Blue Grey',
-      hexes: ['#ECEFF1', '#CFD8DC', '#B0BEC5', '#90A4AE', '#78909C', '#607D8B', '#546E7A', '#455A64', '#37474F', '#263238']
+      hexes: [
+        '#ECEFF1',
+        '#CFD8DC',
+        '#B0BEC5',
+        '#90A4AE',
+        '#78909C',
+        '#607D8B',
+        '#546E7A',
+        '#455A64',
+        '#37474F',
+        '#263238'
+      ]
     }
   ]
 }
@@ -358,5 +407,8 @@ palettes.forEach(function(color) {
 })
 
 fileSave(path.resolve(__dirname, '../examples/colors.json'))
-  .write(JSON.stringify({ quick: quickColors, colors: demoColors }, null, '  '), 'utf8')
+  .write(
+    JSON.stringify({ quick: quickColors, colors: demoColors }, null, '  '),
+    'utf8'
+  )
   .end('\n')

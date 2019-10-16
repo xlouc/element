@@ -1,4 +1,3 @@
-/** @format */
 let enquire
 
 if (typeof window !== 'undefined') {
@@ -63,7 +62,9 @@ const responsiveObserve = {
     }
   },
   unregister() {
-    Object.keys(responsiveMap).map(screen => enquire.unregister(responsiveMap[screen]))
+    Object.keys(responsiveMap).map(screen =>
+      enquire.unregister(responsiveMap[screen])
+    )
   },
   register() {
     Object.keys(responsiveMap).map(screen =>

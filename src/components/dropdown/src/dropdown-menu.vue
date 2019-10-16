@@ -1,8 +1,10 @@
-<!-- @format -->
-
 <template>
   <transition name="el-zoom-in-top" @after-leave="doDestroy">
-    <ul class="el-dropdown-menu el-popper" :class="[size && `el-dropdown-menu--${size}`]" v-show="showPopper">
+    <ul
+      class="el-dropdown-menu el-popper"
+      :class="[size && `el-dropdown-menu--${size}`]"
+      v-show="showPopper"
+    >
       <slot></slot>
     </ul>
   </transition>
@@ -47,7 +49,9 @@ export default {
 
   mounted() {
     this.dropdown.popperElm = this.popperElm = this.$el
-    this.referenceElm = this.dropdown.$el.querySelector('.el-dropdown__caret-button') || this.dropdown.$el
+    this.referenceElm =
+      this.dropdown.$el.querySelector('.el-dropdown__caret-button') ||
+      this.dropdown.$el
     // compatible with 2.6 new v-slot syntax
     // issue link https://github.com/ElemeFE/element/issues/14345
     this.dropdown.initDomOperation()

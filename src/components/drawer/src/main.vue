@@ -1,9 +1,17 @@
-<!-- @format -->
-
 <template>
-  <transition name="el-drawer-fade" @after-enter="afterEnter" @after-leave="afterLeave">
+  <transition
+    name="el-drawer-fade"
+    @after-enter="afterEnter"
+    @after-leave="afterLeave"
+  >
     <div class="el-dialog__wrapper" role="presentation" v-show="visible">
-      <div class="el-drawer__container" :class="visible && 'el-drawer__open'" @click.self="handleWrapperClick" role="document" tabindex="-1">
+      <div
+        class="el-drawer__container"
+        :class="visible && 'el-drawer__open'"
+        @click.self="handleWrapperClick"
+        role="document"
+        tabindex="-1"
+      >
         <div
           aria-modal="true"
           aria-labelledby="el-drawer__title"
@@ -17,7 +25,13 @@
             <slot name="title">
               <span role="heading">{{ title }}</span>
             </slot>
-            <button :aria-label="`close ${title || 'drawer'}`" class="el-drawer__close-btn" type="button" v-if="showClose" @click="closeDrawer">
+            <button
+              :aria-label="`close ${title || 'drawer'}`"
+              class="el-drawer__close-btn"
+              type="button"
+              v-if="showClose"
+              @click="closeDrawer"
+            >
               <i class="el-dialog__close el-icon el-icon-close"></i>
             </button>
           </header>
@@ -112,9 +126,13 @@ export default {
       }
       if (isPush) {
         if (direction === 'rtl' || direction === 'ltr') {
-          drawerStyle.transform = `translateX(${direction === 'ltr' ? 180 : -180}px)`
+          drawerStyle.transform = `translateX(${
+            direction === 'ltr' ? 180 : -180
+          }px)`
         } else {
-          drawerStyle.transform = `translateY(${direction === 'ttb' ? 180 : -180}px)`
+          drawerStyle.transform = `translateY(${
+            direction === 'ttb' ? 180 : -180
+          }px)`
         }
       }
       return drawerStyle

@@ -1,4 +1,3 @@
-/** @format */
 import sinon from 'sinon'
 import { createVue, destroyVM, waitImmediate, wait } from '../util'
 
@@ -29,7 +28,9 @@ describe('Drawer', () => {
     const drawer = vm.$children[0]
     await waitImmediate()
     expect(document.querySelector('.v-modal')).to.exist
-    expect(vm.$el.querySelector('.el-drawer__header').textContent).to.equal(title)
+    expect(vm.$el.querySelector('.el-drawer__header').textContent).to.equal(
+      title
+    )
     expect(drawer.$el.style.display).to.not.equal('none')
   })
 
@@ -54,7 +55,9 @@ describe('Drawer', () => {
       true
     )
     await waitImmediate()
-    expect(vm.$el.querySelector('.el-drawer__body span').textContent).to.equal('这是一段信息')
+    expect(vm.$el.querySelector('.el-drawer__body span').textContent).to.equal(
+      '这是一段信息'
+    )
     const footerBtns = vm.$el.querySelectorAll('.el-button')
     expect(footerBtns.length).to.equal(2)
     expect(footerBtns[0].querySelector('span').textContent).to.equal('取消')
@@ -122,7 +125,9 @@ describe('Drawer', () => {
     })
 
     await waitImmediate()
-    expect(vm.$el.querySelector('.el-drawer__body span').textContent).to.equal(content)
+    expect(vm.$el.querySelector('.el-drawer__body span').textContent).to.equal(
+      content
+    )
     vm.$refs.drawer.closeDrawer()
     await wait(400)
     expect(vm.$el.querySelector('.el-drawer__body')).not.to.exist
@@ -302,7 +307,9 @@ describe('Drawer', () => {
     const renderer = (size, isVertical) =>
       createVue({
         template: `
-         <el-drawer :title='title' :visible='visible' direction='${isVertical ? 'ltr' : 'ttb'}' size='${size}'>
+         <el-drawer :title='title' :visible='visible' direction='${
+           isVertical ? 'ltr' : 'ttb'
+         }' size='${size}'>
             <span>${content}</span>
          </el-drawer>
       `,

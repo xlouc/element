@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <div class="el-color-predefine">
     <div class="el-color-predefine__colors">

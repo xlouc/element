@@ -1,5 +1,3 @@
-/** @format */
-
 import Select from './src/select'
 
 /* istanbul ignore next */

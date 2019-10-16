@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <script>
 import UploadList from './upload-list'
 import Upload from './upload'
@@ -325,7 +323,9 @@ export default {
     return (
       <div>
         {this.listType === 'picture-card' ? uploadList : ''}
-        {this.$slots.trigger ? [uploadComponent, this.$slots.default] : uploadComponent}
+        {this.$slots.trigger
+          ? [uploadComponent, this.$slots.default]
+          : uploadComponent}
         {this.$slots.tip}
         {this.listType !== 'picture-card' ? uploadList : ''}
       </div>

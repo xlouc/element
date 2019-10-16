@@ -1,5 +1,3 @@
-/** @format */
-
 import Step from '../steps/src/step'
 
 /* istanbul ignore next */

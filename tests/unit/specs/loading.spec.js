@@ -1,5 +1,3 @@
-/** @format */
-
 import { getStyle } from '../../../src/utils/dom'
 import { createVue, destroyVM } from '../util'
 import Vue from 'vue'
@@ -12,11 +10,15 @@ describe('Loading', () => {
     destroyVM(vm)
     if (loadingInstance) {
       loadingInstance.close()
-      loadingInstance.$el && loadingInstance.$el.parentNode && loadingInstance.$el.parentNode.removeChild(loadingInstance.$el)
+      loadingInstance.$el &&
+        loadingInstance.$el.parentNode &&
+        loadingInstance.$el.parentNode.removeChild(loadingInstance.$el)
     }
     if (loadingInstance2) {
       loadingInstance2.close()
-      loadingInstance2.$el && loadingInstance2.$el.parentNode && loadingInstance2.$el.parentNode.removeChild(loadingInstance2.$el)
+      loadingInstance2.$el &&
+        loadingInstance2.$el.parentNode &&
+        loadingInstance2.$el.parentNode.removeChild(loadingInstance2.$el)
     }
   })
 

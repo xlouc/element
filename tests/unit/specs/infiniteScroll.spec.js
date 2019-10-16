@@ -1,5 +1,3 @@
-/** @format */
-
 import { createVue, wait, destroyVM } from '../util'
 
 describe('InfiniteScroll', () => {

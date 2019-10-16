@@ -1,5 +1,3 @@
-/** @format */
-
 import Vue from 'vue'
 import Main from './main.vue'
 import { PopupManager } from 'yak-ui/src/utils/popup'
@@ -77,7 +75,8 @@ Message.close = function(id, userOnClose) {
   const removedHeight = instances[index].$el.offsetHeight
   for (let i = index; i < len - 1; i++) {
     let dom = instances[i].$el
-    dom.style['top'] = parseInt(dom.style['top'], 10) - removedHeight - 16 + 'px'
+    dom.style['top'] =
+      parseInt(dom.style['top'], 10) - removedHeight - 16 + 'px'
   }
 }
 

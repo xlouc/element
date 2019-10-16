@@ -1,5 +1,3 @@
-/** @format */
-
 import Divider from './src/main'
 
 /* istanbul ignore next */

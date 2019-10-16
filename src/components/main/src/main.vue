@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <main class="el-main">
     <slot></slot>

@@ -1,5 +1,3 @@
-/** @format */
-
 import ElCheckbox from './src/checkbox'
 
 /* istanbul ignore next */

@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <div
     class="el-progress"
@@ -17,7 +15,10 @@
     aria-valuemax="100"
   >
     <div class="el-progress-bar" v-if="type === 'line'">
-      <div class="el-progress-bar__outer" :style="{ height: strokeWidth + 'px' }">
+      <div
+        class="el-progress-bar__outer"
+        :style="{ height: strokeWidth + 'px' }"
+      >
         <div class="el-progress-bar__inner" :style="barStyle">
           <div class="el-progress-bar__innerText" v-if="showText && textInside">
             {{ content }}
@@ -25,7 +26,11 @@
         </div>
       </div>
     </div>
-    <div class="el-progress-circle" :style="{ height: width + 'px', width: width + 'px' }" v-else>
+    <div
+      class="el-progress-circle"
+      :style="{ height: width + 'px', width: width + 'px' }"
+      v-else
+    >
       <svg viewBox="0 0 100 100">
         <path
           class="el-progress-circle__track"
@@ -46,7 +51,11 @@
         ></path>
       </svg>
     </div>
-    <div class="el-progress__text" v-if="showText && !textInside" :style="{ fontSize: progressTextSize + 'px' }">
+    <div
+      class="el-progress__text"
+      v-if="showText && !textInside"
+      :style="{ fontSize: progressTextSize + 'px' }"
+    >
       <template v-if="!status">
         {{ content }}
       </template>
@@ -140,7 +149,9 @@ export default {
     },
     circlePathStyle() {
       return {
-        strokeDasharray: `${this.perimeter * this.rate * (this.percentage / 100)}px, ${this.perimeter}px`,
+        strokeDasharray: `${this.perimeter *
+          this.rate *
+          (this.percentage / 100)}px, ${this.perimeter}px`,
         strokeDashoffset: this.strokeDashoffset,
         transition: 'stroke-dasharray 0.6s ease 0s, stroke 0.6s ease'
       }
@@ -171,13 +182,17 @@ export default {
         return 'el-icon-warning-circle'
       }
       if (this.type === 'line') {
-        return this.status === 'success' ? 'el-icon-check-circle' : 'el-icon-close-circle'
+        return this.status === 'success'
+          ? 'el-icon-check-circle'
+          : 'el-icon-close-circle'
       } else {
         return this.status === 'success' ? 'el-icon-check' : 'el-icon-close'
       }
     },
     progressTextSize() {
-      return this.type === 'line' ? 12 + this.strokeWidth * 0.4 : this.width * 0.111111 + 2
+      return this.type === 'line'
+        ? 12 + this.strokeWidth * 0.4
+        : this.width * 0.111111 + 2
     },
     content() {
       if (typeof this.format === 'function') {
@@ -198,7 +213,9 @@ export default {
       }
     },
     getLevelColor(percentage) {
-      const colorArray = this.getColorArray().sort((a, b) => a.percentage - b.percentage)
+      const colorArray = this.getColorArray().sort(
+        (a, b) => a.percentage - b.percentage
+      )
 
       for (let i = 0; i < colorArray.length; i++) {
         if (colorArray[i].percentage > percentage) {

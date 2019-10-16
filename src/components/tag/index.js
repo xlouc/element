@@ -1,5 +1,3 @@
-/** @format */
-
 import ElTag from './src/tag'
 
 /* istanbul ignore next */

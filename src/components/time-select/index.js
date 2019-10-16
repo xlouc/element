@@ -1,5 +1,3 @@
-/** @format */
-
 import TimeSelect from '../date-picker/src/picker/time-select'
 
 /* istanbul ignore next */

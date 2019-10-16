@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <transition name="viewer-fade">
     <div class="el-image-viewer__wrapper" :style="{ 'z-index': zIndex }">
@@ -10,10 +8,18 @@
       </span>
       <!-- ARROW -->
       <template v-if="!isSingle">
-        <span class="el-image-viewer__btn el-image-viewer__prev" :class="{ 'is-disabled': !infinite && isFirst }" @click="prev">
+        <span
+          class="el-image-viewer__btn el-image-viewer__prev"
+          :class="{ 'is-disabled': !infinite && isFirst }"
+          @click="prev"
+        >
           <i class="el-icon-left" />
         </span>
-        <span class="el-image-viewer__btn el-image-viewer__next" :class="{ 'is-disabled': !infinite && isLast }" @click="next">
+        <span
+          class="el-image-viewer__btn el-image-viewer__next"
+          :class="{ 'is-disabled': !infinite && isLast }"
+          @click="next"
+        >
           <i class="el-icon-right" />
         </span>
       </template>
@@ -270,7 +276,9 @@ export default {
       switch (action) {
         case 'zoomOut':
           if (transform.scale > 0.2) {
-            transform.scale = parseFloat((transform.scale - zoomRate).toFixed(3))
+            transform.scale = parseFloat(
+              (transform.scale - zoomRate).toFixed(3)
+            )
           }
           break
         case 'zoomIn':

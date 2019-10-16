@@ -1,5 +1,3 @@
-/** @format */
-
 import Vue from 'vue'
 import Main from './main.vue'
 import merge from 'yak-ui/src/utils/merge'
@@ -83,7 +81,11 @@ Notification.close = function(id, userOnClose) {
   const removedHeight = instance.dom.offsetHeight
   for (let i = index; i < len - 1; i++) {
     if (instances[i].position === position) {
-      instances[i].dom.style[instance.verticalProperty] = parseInt(instances[i].dom.style[instance.verticalProperty], 10) - removedHeight - 16 + 'px'
+      instances[i].dom.style[instance.verticalProperty] =
+        parseInt(instances[i].dom.style[instance.verticalProperty], 10) -
+        removedHeight -
+        16 +
+        'px'
     }
   }
 }

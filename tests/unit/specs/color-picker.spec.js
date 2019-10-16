@@ -1,5 +1,3 @@
-/** @format */
-
 import { createTest, createVue, destroyVM } from '../util'
 import ColorPicker from 'packages/color-picker'
 
@@ -10,7 +8,8 @@ describe('ColorPicker', () => {
     vm.$destroy(true)
     destroyVM(vm)
     const dropdown = document.querySelector('.el-color-dropdown')
-    if (dropdown && dropdown.parentNode) dropdown.parentNode.removeChild(dropdown)
+    if (dropdown && dropdown.parentNode)
+      dropdown.parentNode.removeChild(dropdown)
   })
 
   it('should work', () => {
@@ -325,8 +324,13 @@ describe('ColorPicker', () => {
     trigger.click()
 
     setTimeout(() => {
-      expect(document.querySelectorAll('.el-color-predefine__color-selector').length === 9).to.be.true
-      const selector = document.querySelector('.el-color-predefine__color-selector:nth-child(4)')
+      expect(
+        document.querySelectorAll('.el-color-predefine__color-selector')
+          .length === 9
+      ).to.be.true
+      const selector = document.querySelector(
+        '.el-color-predefine__color-selector:nth-child(4)'
+      )
       selector.click()
       vm.$nextTick(() => {
         const picker = vm.$children[0]
@@ -335,7 +339,9 @@ describe('ColorPicker', () => {
         expect(picker.color._value === 20).to.be.true
         expect(picker.color._alpha === 50).to.be.true
 
-        const selector2 = document.querySelector('.el-color-predefine__color-selector:nth-child(3)')
+        const selector2 = document.querySelector(
+          '.el-color-predefine__color-selector:nth-child(3)'
+        )
         selector2.click()
 
         vm.$nextTick(() => {
@@ -379,7 +385,9 @@ describe('ColorPicker', () => {
     trigger.click()
 
     setTimeout(() => {
-      const selector = document.querySelector('.el-color-predefine__color-selector:nth-child(4)')
+      const selector = document.querySelector(
+        '.el-color-predefine__color-selector:nth-child(4)'
+      )
       selector.click()
       vm.$nextTick(() => {
         expect(selector.classList.contains('selected')).to.be.true

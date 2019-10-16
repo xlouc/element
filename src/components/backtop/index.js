@@ -1,5 +1,3 @@
-/** @format */
-
 import Backtop from './src/main'
 
 /* istanbul ignore next */

@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <li
     @mouseenter="hoverItem"
@@ -55,7 +53,10 @@ export default {
 
   computed: {
     isObject() {
-      return Object.prototype.toString.call(this.value).toLowerCase() === '[object object]'
+      return (
+        Object.prototype.toString.call(this.value).toLowerCase() ===
+        '[object object]'
+      )
     },
 
     currentLabel() {
@@ -76,7 +77,11 @@ export default {
 
     limitReached() {
       if (this.select.multiple) {
-        return !this.itemSelected && (this.select.value || []).length >= this.select.multipleLimit && this.select.multipleLimit > 0
+        return (
+          !this.itemSelected &&
+          (this.select.value || []).length >= this.select.multipleLimit &&
+          this.select.multipleLimit > 0
+        )
       } else {
         return false
       }
@@ -85,12 +90,18 @@ export default {
 
   watch: {
     currentLabel() {
-      if (!this.created && !this.select.remote) this.dispatch('ElSelect', 'setSelected')
+      if (!this.created && !this.select.remote)
+        this.dispatch('ElSelect', 'setSelected')
     },
     value(val, oldVal) {
       const { remote, valueKey } = this.select
       if (!this.created && !remote) {
-        if (valueKey && typeof val === 'object' && typeof oldVal === 'object' && val[valueKey] === oldVal[valueKey]) {
+        if (
+          valueKey &&
+          typeof val === 'object' &&
+          typeof oldVal === 'object' &&
+          val[valueKey] === oldVal[valueKey]
+        ) {
           return
         }
         this.dispatch('ElSelect', 'setSelected')
@@ -116,7 +127,10 @@ export default {
         return (
           arr &&
           arr.some(item => {
-            return getValueByPath(item, valueKey) === getValueByPath(target, valueKey)
+            return (
+              getValueByPath(item, valueKey) ===
+              getValueByPath(target, valueKey)
+            )
           })
         )
       }
@@ -139,7 +153,9 @@ export default {
     },
 
     queryChange(query) {
-      this.visible = new RegExp(escapeRegexpString(query), 'i').test(this.currentLabel) || this.created
+      this.visible =
+        new RegExp(escapeRegexpString(query), 'i').test(this.currentLabel) ||
+        this.created
       if (!this.visible) {
         this.select.filteredOptionsCount--
       }

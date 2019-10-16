@@ -1,5 +1,3 @@
-/** @format */
-
 import Spinner from './src/spinner'
 
 /* istanbul ignore next */

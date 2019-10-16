@@ -1,5 +1,3 @@
-/** @format */
-
 import Clickoutside from 'yak-ui/src/utils/clickoutside'
 const ctx = '@@clickoutsideContext'
 

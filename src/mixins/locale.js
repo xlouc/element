@@ -1,5 +1,3 @@
-/** @format */
-
 import { t } from 'yak-ui/src/locale'
 
 export default {

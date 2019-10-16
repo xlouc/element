@@ -1,5 +1,3 @@
-/** @format */
-
 'use strict'
 
 const { series, src, dest } = require('gulp')
@@ -84,4 +82,12 @@ function compileDirectives() {
     .pipe(dest('../lib/directives'))
 }
 
-exports.build = series(compileStyle, copyfont, compileUtils, compileTransitions, compileMixins, compileLocale, compileDirectives)
+exports.build = series(
+  compileStyle,
+  copyfont,
+  compileUtils,
+  compileTransitions,
+  compileMixins,
+  compileLocale,
+  compileDirectives
+)

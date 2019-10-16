@@ -1,5 +1,3 @@
-/** @format */
-
 import Switch from './src/component'
 
 /* istanbul ignore next */

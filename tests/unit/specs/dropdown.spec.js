@@ -1,4 +1,3 @@
-/** @format */
 import sinon from 'sinon'
 import { createVue, triggerEvent, destroyVM, triggerKeyDown } from '../util'
 

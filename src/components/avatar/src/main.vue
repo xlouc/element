@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <script>
 export default {
   name: 'ElAvatar',
@@ -75,7 +73,15 @@ export default {
       const { icon, src, alt, isImageExist, srcSet, fit } = this
 
       if (isImageExist && src) {
-        return <img src={src} onError={this.handleError} alt={alt} srcSet={srcSet} style={{ 'object-fit': fit }} />
+        return (
+          <img
+            src={src}
+            onError={this.handleError}
+            alt={alt}
+            srcSet={srcSet}
+            style={{ 'object-fit': fit }}
+          />
+        )
       }
 
       if (icon) {

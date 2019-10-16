@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <div class="el-breadcrumb" aria-label="Breadcrumb" role="navigation">
     <slot></slot>

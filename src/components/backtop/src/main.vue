@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <transition name="el-fade-in">
     <div

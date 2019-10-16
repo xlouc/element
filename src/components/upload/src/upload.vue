@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <script>
 import ajax from './ajax'
 import UploadDragger from './upload-dragger.vue'
@@ -183,7 +181,18 @@ export default {
   },
 
   render(h) {
-    let { handleClick, drag, name, handleChange, multiple, accept, listType, uploadFiles, disabled, handleKeydown } = this
+    let {
+      handleClick,
+      drag,
+      name,
+      handleChange,
+      multiple,
+      accept,
+      listType,
+      uploadFiles,
+      disabled,
+      handleKeydown
+    } = this
     const data = {
       class: {
         'el-upload': true
@@ -203,7 +212,14 @@ export default {
         ) : (
           this.$slots.default
         )}
-        <input class="el-upload__input" type="file" ref="input" name={name} on-change={handleChange} multiple={multiple} accept={accept}></input>
+        <input
+          class="el-upload__input"
+          type="file"
+          ref="input"
+          name={name}
+          on-change={handleChange}
+          multiple={multiple}
+          accept={accept}></input>
       </div>
     )
   }

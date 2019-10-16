@@ -1,6 +1,11 @@
-/** @format */
 import sinon from 'sinon'
-import { createVue, triggerEvent, destroyVM, waitImmediate, wait } from '../util'
+import {
+  createVue,
+  triggerEvent,
+  destroyVM,
+  waitImmediate,
+  wait
+} from '../util'
 
 const DELAY = 10
 const testDataArr = []
@@ -76,17 +81,26 @@ describe('Table', () => {
       setTimeout(_ => {
         const ths = toArray(vm.$el.querySelectorAll('thead th'))
 
-        expect(ths.map(node => node.textContent).filter(o => o)).to.eql(['片名', '发行日期', '导演', '时长（分）'])
+        expect(ths.map(node => node.textContent).filter(o => o)).to.eql([
+          '片名',
+          '发行日期',
+          '导演',
+          '时长（分）'
+        ])
         done()
       }, DELAY)
     })
 
     it('row length', () => {
-      expect(vm.$el.querySelectorAll('.el-table__body-wrapper tbody tr')).to.length(getTestData().length)
+      expect(
+        vm.$el.querySelectorAll('.el-table__body-wrapper tbody tr')
+      ).to.length(getTestData().length)
     })
 
     it('row data', () => {
-      const cells = toArray(vm.$el.querySelectorAll('td .cell')).map(node => node.textContent)
+      const cells = toArray(vm.$el.querySelectorAll('td .cell')).map(
+        node => node.textContent
+      )
 
       expect(cells).to.eql(testDataArr)
       destroyVM(vm)
@@ -173,7 +187,9 @@ describe('Table', () => {
     it('show-header', done => {
       const vm = createTable(':show-header="false"')
       setTimeout(_ => {
-        expect(vm.$el.querySelectorAll('.el-table__header-wrapper').length).to.equal(0)
+        expect(
+          vm.$el.querySelectorAll('.el-table__header-wrapper').length
+        ).to.equal(0)
         destroyVM(vm)
         done()
       }, DELAY)
@@ -206,7 +222,9 @@ describe('Table', () => {
       const vm = createTable(':row-style="{ height: \'60px\' }"', {})
 
       setTimeout(_ => {
-        expect(vm.$el.querySelector('.el-table__body tr').style.height).to.equal('60px')
+        expect(
+          vm.$el.querySelector('.el-table__body tr').style.height
+        ).to.equal('60px')
         destroyVM(vm)
         done()
       }, DELAY)
@@ -226,8 +244,12 @@ describe('Table', () => {
       })
 
       setTimeout(_ => {
-        expect(vm.$el.querySelector('.el-table__body tr:nth-child(1)').style.height).to.equal('')
-        expect(vm.$el.querySelector('.el-table__body tr:nth-child(2)').style.height).to.equal('60px')
+        expect(
+          vm.$el.querySelector('.el-table__body tr:nth-child(1)').style.height
+        ).to.equal('')
+        expect(
+          vm.$el.querySelector('.el-table__body tr:nth-child(2)').style.height
+        ).to.equal('60px')
         destroyVM(vm)
         done()
       }, DELAY)
@@ -262,7 +284,9 @@ describe('Table', () => {
           expect(tr.classList.contains('current-row')).to.be.true
           vm.currentRowKey = 2
 
-          const rows = vm.$el.querySelectorAll('.el-table__body-wrapper tbody tr')
+          const rows = vm.$el.querySelectorAll(
+            '.el-table__body-wrapper tbody tr'
+          )
           setTimeout(_ => {
             expect(tr.classList.contains('current-row')).to.be.false
             expect(rows[1].classList.contains('current-row')).to.be.true
@@ -389,10 +413,17 @@ describe('Table', () => {
         triggerEvent(filter.querySelector('.el-checkbox'), 'click', true, false)
         // confrim button
         setTimeout(_ => {
-          triggerEvent(filter.querySelector('.el-table-filter__bottom button'), 'click', true, false)
+          triggerEvent(
+            filter.querySelector('.el-table-filter__bottom button'),
+            'click',
+            true,
+            false
+          )
           setTimeout(_ => {
             expect(vm.filters['director']).to.be.eql(['John Lasseter'])
-            expect(vm.$el.querySelectorAll('.el-table__body-wrapper tbody tr')).to.length(3)
+            expect(
+              vm.$el.querySelectorAll('.el-table__body-wrapper tbody tr')
+            ).to.length(3)
             document.body.removeChild(filter)
             done()
           }, DELAY)
@@ -411,10 +442,19 @@ describe('Table', () => {
         triggerEvent(filter.querySelector('.el-checkbox'), 'click', true, false)
         setTimeout(_ => {
           // reset button
-          triggerEvent(filter.querySelectorAll('.el-table-filter__bottom button')[1], 'click', true, false)
+          triggerEvent(
+            filter.querySelectorAll('.el-table-filter__bottom button')[1],
+            'click',
+            true,
+            false
+          )
           setTimeout(_ => {
             expect(vm.filters['director']).to.be.eql([])
-            expect(filter.querySelector('.el-table-filter__bottom button').classList.contains('is-disabled')).to.true
+            expect(
+              filter
+                .querySelector('.el-table-filter__bottom button')
+                .classList.contains('is-disabled')
+            ).to.true
             document.body.removeChild(filter)
             destroyVM(vm)
             done()
@@ -621,7 +661,14 @@ describe('Table', () => {
   })
 
   describe('column attributes', () => {
-    const createTable = function(props1, props2, props3, props4, opts, tableProps) {
+    const createTable = function(
+      props1,
+      props2,
+      props3,
+      props4,
+      opts,
+      tableProps
+    ) {
       return createVue(
         Object.assign(
           {
@@ -659,7 +706,9 @@ describe('Table', () => {
     it('width', done => {
       const vm = createTable('width="123px"', ':width="102"', 'width="39"')
       setTimeout(_ => {
-        const ths = toArray(vm.$el.querySelectorAll('.el-table__header-wrapper col'))
+        const ths = toArray(
+          vm.$el.querySelectorAll('.el-table__header-wrapper col')
+        )
           .map(node => node.width)
           .filter(o => o)
 
@@ -673,19 +722,40 @@ describe('Table', () => {
     })
 
     it('fixed', done => {
-      const vm = createTable('fixed label="test1"', 'fixed="right" label="test2"', 'fixed="left" label="test3"')
+      const vm = createTable(
+        'fixed label="test1"',
+        'fixed="right" label="test2"',
+        'fixed="left" label="test3"'
+      )
       setTimeout(_ => {
-        expect(toArray(vm.$el.querySelectorAll('.el-table__fixed th:not(.is-hidden)')).map(node => node.textContent)).to.eql(['test1', 'test3'])
+        expect(
+          toArray(
+            vm.$el.querySelectorAll('.el-table__fixed th:not(.is-hidden)')
+          ).map(node => node.textContent)
+        ).to.eql(['test1', 'test3'])
 
-        expect(toArray(vm.$el.querySelectorAll('.el-table__fixed-right th:not(.is-hidden)')).map(node => node.textContent)).to.eql(['test2'])
-        expect(vm.$el.querySelector('.el-table__body-wrapper').style.height).to.equal('')
+        expect(
+          toArray(
+            vm.$el.querySelectorAll('.el-table__fixed-right th:not(.is-hidden)')
+          ).map(node => node.textContent)
+        ).to.eql(['test2'])
+        expect(
+          vm.$el.querySelector('.el-table__body-wrapper').style.height
+        ).to.equal('')
         destroyVM(vm)
         done()
       }, DELAY)
     })
 
     it('resizable', done => {
-      const vm = createTable('resizable', ':resizable="false"', '', '', {}, 'border')
+      const vm = createTable(
+        'resizable',
+        ':resizable="false"',
+        '',
+        '',
+        {},
+        'border'
+      )
 
       setTimeout(_ => {
         const firstCol = vm.$el.querySelector('thead th')
@@ -706,8 +776,14 @@ describe('Table', () => {
       })
 
       setTimeout(_ => {
-        const cells = toArray(vm.$el.querySelectorAll('.el-table__body-wrapper tbody tr td:first-child'))
-        expect(cells.map(n => n.textContent)).to.eql(getTestData().map(o => `[${o.name}]`))
+        const cells = toArray(
+          vm.$el.querySelectorAll(
+            '.el-table__body-wrapper tbody tr td:first-child'
+          )
+        )
+        expect(cells.map(n => n.textContent)).to.eql(
+          getTestData().map(o => `[${o.name}]`)
+        )
         destroyVM(vm)
         done()
       }, DELAY)
@@ -753,7 +829,9 @@ describe('Table', () => {
       })
 
       setTimeout(_ => {
-        const headerCell = vm.$el.querySelector('.el-table__header-wrapper thead tr th:first-child .cell')
+        const headerCell = vm.$el.querySelector(
+          '.el-table__header-wrapper thead tr th:first-child .cell'
+        )
         expect(headerCell.textContent.trim()).to.equal('0:name')
         destroyVM(vm)
         done()
@@ -773,7 +851,11 @@ describe('Table', () => {
     })
 
     it('class-name', done => {
-      const vm = createTable('class-name="column-1"', 'class-name="column-2 column-class-a"', 'class-name="column-class-a"')
+      const vm = createTable(
+        'class-name="column-1"',
+        'class-name="column-2 column-class-a"',
+        'class-name="column-class-a"'
+      )
       setTimeout(_ => {
         var len = getTestData().length + 1
         expect(vm.$el.querySelectorAll('.column-1')).to.length(len)
@@ -957,7 +1039,9 @@ describe('Table', () => {
 
         it('render', done => {
           setTimeout(_ => {
-            expect(vm.$el.querySelectorAll('.el-checkbox')).to.length(getTestData().length + 1)
+            expect(vm.$el.querySelectorAll('.el-checkbox')).to.length(
+              getTestData().length + 1
+            )
             done()
           }, DELAY)
         })
@@ -1002,13 +1086,13 @@ describe('Table', () => {
 
         it('render', done => {
           setTimeout(_ => {
-            expect(toArray(vm.$el.querySelectorAll('.el-table__body-wrapper tbody tr td:first-child')).map(node => node.textContent)).to.eql([
-              '1',
-              '2',
-              '3',
-              '4',
-              '5'
-            ])
+            expect(
+              toArray(
+                vm.$el.querySelectorAll(
+                  '.el-table__body-wrapper tbody tr td:first-child'
+                )
+              ).map(node => node.textContent)
+            ).to.eql(['1', '2', '3', '4', '5'])
             destroyVM(vm)
             done()
           }, DELAY)
@@ -1057,7 +1141,9 @@ describe('Table', () => {
         it('works', done => {
           const vm = createInstance()
           setTimeout(_ => {
-            expect(vm.$el.querySelectorAll('td.el-table__expand-column').length).to.equal(5)
+            expect(
+              vm.$el.querySelectorAll('td.el-table__expand-column').length
+            ).to.equal(5)
             destroyVM(vm)
             done()
           }, DELAY)
@@ -1066,13 +1152,25 @@ describe('Table', () => {
         it('should expand when click icon', done => {
           const vm = createInstance()
           setTimeout(_ => {
-            vm.$el.querySelector('td.el-table__expand-column .el-table__expand-icon').click()
+            vm.$el
+              .querySelector(
+                'td.el-table__expand-column .el-table__expand-icon'
+              )
+              .click()
             setTimeout(_ => {
-              expect(vm.$el.querySelectorAll('.el-table__expanded-cell').length).to.equal(1)
+              expect(
+                vm.$el.querySelectorAll('.el-table__expanded-cell').length
+              ).to.equal(1)
               expect(vm.expandCount).to.equal(1)
-              vm.$el.querySelector('td.el-table__expand-column .el-table__expand-icon').click()
+              vm.$el
+                .querySelector(
+                  'td.el-table__expand-column .el-table__expand-icon'
+                )
+                .click()
               setTimeout(_ => {
-                expect(vm.$el.querySelectorAll('.el-table__expanded-cell').length).to.equal(0)
+                expect(
+                  vm.$el.querySelectorAll('.el-table__expanded-cell').length
+                ).to.equal(0)
                 expect(vm.expandCount).to.equal(2)
                 destroyVM(vm)
                 done()
@@ -1086,10 +1184,14 @@ describe('Table', () => {
           setTimeout(_ => {
             vm.expandRowKeys = [1, 3]
             setTimeout(_ => {
-              expect(vm.$el.querySelectorAll('.el-table__expanded-cell').length).to.equal(2)
+              expect(
+                vm.$el.querySelectorAll('.el-table__expanded-cell').length
+              ).to.equal(2)
               vm.expandRowKeys = [2]
               setTimeout(_ => {
-                expect(vm.$el.querySelectorAll('.el-table__expanded-cell').length).to.equal(1)
+                expect(
+                  vm.$el.querySelectorAll('.el-table__expanded-cell').length
+                ).to.equal(1)
                 destroyVM(vm)
                 done()
               }, DELAY)
@@ -1100,7 +1202,9 @@ describe('Table', () => {
         it('should default-expand-all when default-expand-all is true', done => {
           const vm = createInstance('default-expand-all')
           setTimeout(_ => {
-            expect(vm.$el.querySelectorAll('.el-table__expanded-cell').length).to.equal(5)
+            expect(
+              vm.$el.querySelectorAll('.el-table__expanded-cell').length
+            ).to.equal(5)
             destroyVM(vm)
             done()
           }, DELAY)
@@ -1109,18 +1213,32 @@ describe('Table', () => {
         it('should unexpand after refresh data and click', function(done) {
           const vm = createInstance()
           setTimeout(_ => {
-            vm.$el.querySelector('td.el-table__expand-column .el-table__expand-icon').click()
+            vm.$el
+              .querySelector(
+                'td.el-table__expand-column .el-table__expand-icon'
+              )
+              .click()
             setTimeout(_ => {
-              expect(vm.$el.querySelectorAll('.el-table__expanded-cell').length).to.equal(1)
+              expect(
+                vm.$el.querySelectorAll('.el-table__expanded-cell').length
+              ).to.equal(1)
               expect(vm.expandCount).to.equal(1)
               vm.refreshData()
               setTimeout(_ => {
                 // wait until refreshed
-                expect(vm.$el.querySelectorAll('.el-table__expanded-cell').length).to.equal(1)
-                vm.$el.querySelector('td.el-table__expand-column .el-table__expand-icon').click()
+                expect(
+                  vm.$el.querySelectorAll('.el-table__expanded-cell').length
+                ).to.equal(1)
+                vm.$el
+                  .querySelector(
+                    'td.el-table__expand-column .el-table__expand-icon'
+                  )
+                  .click()
                 setTimeout(_ => {
                   // should unexpand
-                  expect(vm.$el.querySelectorAll('.el-table__expanded-cell').length).to.equal(0)
+                  expect(
+                    vm.$el.querySelectorAll('.el-table__expanded-cell').length
+                  ).to.equal(0)
                   expect(vm.expandCount).to.equal(2)
                   destroyVM(vm)
                   done()
@@ -1143,15 +1261,29 @@ describe('Table', () => {
       })
 
       it('sortable orders', done => {
-        const vm = createTable('', '', '', "sortable :sort-orders=\"['descending', 'ascending']\"", {})
+        const vm = createTable(
+          '',
+          '',
+          '',
+          "sortable :sort-orders=\"['descending', 'ascending']\"",
+          {}
+        )
 
         setTimeout(_ => {
           const elm = vm.$el.querySelector('.caret-wrapper')
           elm.click()
 
           setTimeout(_ => {
-            const lastCells = vm.$el.querySelectorAll('.el-table__body-wrapper tbody tr td:last-child')
-            expect(toArray(lastCells).map(node => node.textContent)).to.eql(['100', '95', '92', '92', '80'])
+            const lastCells = vm.$el.querySelectorAll(
+              '.el-table__body-wrapper tbody tr td:last-child'
+            )
+            expect(toArray(lastCells).map(node => node.textContent)).to.eql([
+              '100',
+              '95',
+              '92',
+              '92',
+              '80'
+            ])
             destroyVM(vm)
             done()
           }, DELAY)
@@ -1159,28 +1291,42 @@ describe('Table', () => {
       })
 
       it('sortable method', done => {
-        const vm = createTable('sortable :sort-method="sortMethod"', '', '', '', {
-          methods: {
-            sortMethod(a, b) {
-              // sort method should return number
-              if (a.runtime < b.runtime) {
-                return 1
+        const vm = createTable(
+          'sortable :sort-method="sortMethod"',
+          '',
+          '',
+          '',
+          {
+            methods: {
+              sortMethod(a, b) {
+                // sort method should return number
+                if (a.runtime < b.runtime) {
+                  return 1
+                }
+                if (a.runtime > b.runtime) {
+                  return -1
+                }
+                return 0
               }
-              if (a.runtime > b.runtime) {
-                return -1
-              }
-              return 0
             }
           }
-        })
+        )
 
         setTimeout(_ => {
           const elm = vm.$el.querySelector('.caret-wrapper')
           elm.click()
 
           setTimeout(_ => {
-            const lastCells = vm.$el.querySelectorAll('.el-table__body-wrapper tbody tr td:last-child')
-            expect(toArray(lastCells).map(node => node.textContent)).to.eql(['100', '95', '92', '92', '80'])
+            const lastCells = vm.$el.querySelectorAll(
+              '.el-table__body-wrapper tbody tr td:last-child'
+            )
+            expect(toArray(lastCells).map(node => node.textContent)).to.eql([
+              '100',
+              '95',
+              '92',
+              '92',
+              '80'
+            ])
             destroyVM(vm)
             done()
           }, DELAY)
@@ -1201,8 +1347,16 @@ describe('Table', () => {
           elm.click()
 
           setTimeout(_ => {
-            const lastCells = vm.$el.querySelectorAll('.el-table__body-wrapper tbody tr td:last-child')
-            expect(toArray(lastCells).map(node => node.textContent)).to.eql(['100', '95', '92', '92', '80'])
+            const lastCells = vm.$el.querySelectorAll(
+              '.el-table__body-wrapper tbody tr td:last-child'
+            )
+            expect(toArray(lastCells).map(node => node.textContent)).to.eql([
+              '100',
+              '95',
+              '92',
+              '92',
+              '80'
+            ])
             destroyVM(vm)
             done()
           }, DELAY)
@@ -1217,8 +1371,16 @@ describe('Table', () => {
           elm.click()
 
           setTimeout(_ => {
-            const lastCells = vm.$el.querySelectorAll('.el-table__body-wrapper tbody tr td:last-child')
-            expect(toArray(lastCells).map(node => node.textContent)).to.eql(['80', '92', '92', '95', '100'])
+            const lastCells = vm.$el.querySelectorAll(
+              '.el-table__body-wrapper tbody tr td:last-child'
+            )
+            expect(toArray(lastCells).map(node => node.textContent)).to.eql([
+              '80',
+              '92',
+              '92',
+              '95',
+              '100'
+            ])
             destroyVM(vm)
             done()
           }, DELAY)
@@ -1262,8 +1424,16 @@ describe('Table', () => {
 
         elm.click()
         setTimeout(_ => {
-          const lastCells = vm.$el.querySelectorAll('.el-table__body-wrapper tbody tr td:last-child')
-          expect(toArray(lastCells).map(node => node.textContent)).to.eql(['80', '92', '92', '95', '100'])
+          const lastCells = vm.$el.querySelectorAll(
+            '.el-table__body-wrapper tbody tr td:last-child'
+          )
+          expect(toArray(lastCells).map(node => node.textContent)).to.eql([
+            '80',
+            '92',
+            '92',
+            '95',
+            '100'
+          ])
           done()
         }, DELAY)
       })
@@ -1273,8 +1443,16 @@ describe('Table', () => {
 
         elm.click()
         setTimeout(_ => {
-          const lastCells = vm.$el.querySelectorAll('.el-table__body-wrapper tbody tr td:last-child')
-          expect(toArray(lastCells).map(node => node.textContent)).to.eql(['100', '95', '92', '92', '80'])
+          const lastCells = vm.$el.querySelectorAll(
+            '.el-table__body-wrapper tbody tr td:last-child'
+          )
+          expect(toArray(lastCells).map(node => node.textContent)).to.eql([
+            '100',
+            '95',
+            '92',
+            '92',
+            '80'
+          ])
           destroyVM(vm)
           done()
         }, DELAY)
@@ -1332,7 +1510,9 @@ describe('Table', () => {
       )
 
       setTimeout(_ => {
-        const cells = toArray(vm.$el.querySelectorAll('.el-table__footer .cell'))
+        const cells = toArray(
+          vm.$el.querySelectorAll('.el-table__footer .cell')
+        )
         expect(cells[0].innerText).to.equal('Time')
         destroyVM(vm)
         done()
@@ -1363,7 +1543,9 @@ describe('Table', () => {
                 const prop = column.property
                 if (prop === 'release') {
                   const dates = data.map(item => item[prop])
-                  const releaseYears = dates.map(date => Number(date.slice(0, 4)))
+                  const releaseYears = dates.map(date =>
+                    Number(date.slice(0, 4))
+                  )
                   result.push(
                     releaseYears.reduce((prev, curr) => {
                       return prev + curr
@@ -1381,7 +1563,9 @@ describe('Table', () => {
       )
 
       setTimeout(_ => {
-        const cells = toArray(vm.$el.querySelectorAll('.el-table__footer .cell'))
+        const cells = toArray(
+          vm.$el.querySelectorAll('.el-table__footer .cell')
+        )
         expect(cells[1].innerText).to.equal('9996')
         destroyVM(vm)
         done()
@@ -1419,8 +1603,12 @@ describe('Table', () => {
         expect(firstRowHeader).to.equal(3)
         expect(secondRowHeader).to.equal(2)
 
-        expect(trs[0].querySelector('th:first-child').getAttribute('rowspan')).to.equal('2')
-        expect(trs[0].querySelector('th:nth-child(2)').getAttribute('colspan')).to.equal('2')
+        expect(
+          trs[0].querySelector('th:first-child').getAttribute('rowspan')
+        ).to.equal('2')
+        expect(
+          trs[0].querySelector('th:nth-child(2)').getAttribute('colspan')
+        ).to.equal('2')
         destroyVM(vm)
         done()
       }, DELAY)
@@ -1460,10 +1648,18 @@ describe('Table', () => {
         expect(secondRowHeader).to.equal(2)
         expect(thirdRowHeader).to.equal(2)
 
-        expect(trs[0].querySelector('th:first-child').getAttribute('rowspan')).to.equal('3')
-        expect(trs[0].querySelector('th:nth-child(2)').getAttribute('colspan')).to.equal('3')
-        expect(trs[1].querySelector('th:first-child').getAttribute('colspan')).to.equal('2')
-        expect(trs[1].querySelector('th:nth-child(2)').getAttribute('rowspan')).to.equal('2')
+        expect(
+          trs[0].querySelector('th:first-child').getAttribute('rowspan')
+        ).to.equal('3')
+        expect(
+          trs[0].querySelector('th:nth-child(2)').getAttribute('colspan')
+        ).to.equal('3')
+        expect(
+          trs[1].querySelector('th:first-child').getAttribute('colspan')
+        ).to.equal('2')
+        expect(
+          trs[1].querySelector('th:nth-child(2)').getAttribute('rowspan')
+        ).to.equal('2')
 
         destroyVM(vm)
         done()
@@ -1496,8 +1692,12 @@ describe('Table', () => {
         expect(firstRowLength).to.equal(1)
         expect(secondRowLength).to.equal(1)
 
-        expect(trs[0].querySelector('th:first-child').getAttribute('rowspan')).to.equal('1')
-        expect(trs[0].querySelector('th:first-child').getAttribute('colspan')).to.equal('1')
+        expect(
+          trs[0].querySelector('th:first-child').getAttribute('rowspan')
+        ).to.equal('1')
+        expect(
+          trs[0].querySelector('th:first-child').getAttribute('colspan')
+        ).to.equal('1')
         destroyVM(vm)
         done()
       }, DELAY)
@@ -1533,10 +1733,14 @@ describe('Table', () => {
       )
 
       setTimeout(() => {
-        expect(vm.$el.querySelector('.el-table__header th .cell').textContent).to.equal('name')
+        expect(
+          vm.$el.querySelector('.el-table__header th .cell').textContent
+        ).to.equal('name')
         vm.label = 'NAME'
         vm.$nextTick(() => {
-          expect(vm.$el.querySelector('.el-table__header th .cell').textContent).to.equal('NAME')
+          expect(
+            vm.$el.querySelector('.el-table__header th .cell').textContent
+          ).to.equal('NAME')
           destroyVM(vm)
           done()
         })
@@ -1566,10 +1770,14 @@ describe('Table', () => {
       )
 
       setTimeout(() => {
-        expect(vm.$el.querySelectorAll('.el-table__body td.is-right').length === 0).to.be.true
+        expect(
+          vm.$el.querySelectorAll('.el-table__body td.is-right').length === 0
+        ).to.be.true
         vm.align = 'right'
         vm.$nextTick(() => {
-          expect(vm.$el.querySelectorAll('.el-table__body td.is-right').length > 0).to.be.true
+          expect(
+            vm.$el.querySelectorAll('.el-table__body td.is-right').length > 0
+          ).to.be.true
           destroyVM(vm)
           done()
         })
@@ -1600,24 +1808,48 @@ describe('Table', () => {
       )
 
       vm.$nextTick(() => {
-        expect(vm.$el.querySelectorAll('.el-table__header th.is-left').length).to.above(0)
-        expect(vm.$el.querySelectorAll('.el-table__header th.is-center').length).to.equal(0)
-        expect(vm.$el.querySelectorAll('.el-table__header th.is-right').length).to.equal(0)
+        expect(
+          vm.$el.querySelectorAll('.el-table__header th.is-left').length
+        ).to.above(0)
+        expect(
+          vm.$el.querySelectorAll('.el-table__header th.is-center').length
+        ).to.equal(0)
+        expect(
+          vm.$el.querySelectorAll('.el-table__header th.is-right').length
+        ).to.equal(0)
         vm.align = 'right'
         vm.$nextTick(() => {
-          expect(vm.$el.querySelectorAll('.el-table__header th.is-left').length).to.equal(0)
-          expect(vm.$el.querySelectorAll('.el-table__header th.is-center').length).to.equal(0)
-          expect(vm.$el.querySelectorAll('.el-table__header th.is-right').length).to.above(0)
+          expect(
+            vm.$el.querySelectorAll('.el-table__header th.is-left').length
+          ).to.equal(0)
+          expect(
+            vm.$el.querySelectorAll('.el-table__header th.is-center').length
+          ).to.equal(0)
+          expect(
+            vm.$el.querySelectorAll('.el-table__header th.is-right').length
+          ).to.above(0)
           vm.headerAlign = 'center'
           vm.$nextTick(() => {
-            expect(vm.$el.querySelectorAll('.el-table__header th.is-left').length).to.equal(0)
-            expect(vm.$el.querySelectorAll('.el-table__header th.is-center').length).to.above(0)
-            expect(vm.$el.querySelectorAll('.el-table__header th.is-right').length).to.equal(0)
+            expect(
+              vm.$el.querySelectorAll('.el-table__header th.is-left').length
+            ).to.equal(0)
+            expect(
+              vm.$el.querySelectorAll('.el-table__header th.is-center').length
+            ).to.above(0)
+            expect(
+              vm.$el.querySelectorAll('.el-table__header th.is-right').length
+            ).to.equal(0)
             vm.headerAlign = null
             vm.$nextTick(() => {
-              expect(vm.$el.querySelectorAll('.el-table__header th.is-left').length).to.equal(0)
-              expect(vm.$el.querySelectorAll('.el-table__header th.is-center').length).to.equal(0)
-              expect(vm.$el.querySelectorAll('.el-table__header th.is-right').length).to.above(0)
+              expect(
+                vm.$el.querySelectorAll('.el-table__header th.is-left').length
+              ).to.equal(0)
+              expect(
+                vm.$el.querySelectorAll('.el-table__header th.is-center').length
+              ).to.equal(0)
+              expect(
+                vm.$el.querySelectorAll('.el-table__header th.is-right').length
+              ).to.above(0)
               destroyVM(vm)
               done()
             })
@@ -1649,10 +1881,14 @@ describe('Table', () => {
       )
 
       setTimeout(() => {
-        expect(vm.$el.querySelector('.el-table__body col').getAttribute('width')).to.equal('100')
+        expect(
+          vm.$el.querySelector('.el-table__body col').getAttribute('width')
+        ).to.equal('100')
         vm.width = 200
         setTimeout(() => {
-          expect(vm.$el.querySelector('.el-table__body col').getAttribute('width')).to.equal('200')
+          expect(
+            vm.$el.querySelector('.el-table__body col').getAttribute('width')
+          ).to.equal('200')
           destroyVM(vm)
           done()
         }, 100)
@@ -1682,10 +1918,14 @@ describe('Table', () => {
       )
 
       setTimeout(() => {
-        expect(vm.$el.querySelector('.el-table__body col').getAttribute('width')).to.equal('100')
+        expect(
+          vm.$el.querySelector('.el-table__body col').getAttribute('width')
+        ).to.equal('100')
         vm.width = 200
         setTimeout(() => {
-          expect(vm.$el.querySelector('.el-table__body col').getAttribute('width')).to.equal('200')
+          expect(
+            vm.$el.querySelector('.el-table__body col').getAttribute('width')
+          ).to.equal('200')
           destroyVM(vm)
           done()
         }, 100)
@@ -1754,13 +1994,20 @@ describe('Table', () => {
       )
 
       setTimeout(() => {
-        let firstColumnContent = vm.$el.querySelector('.el-table__body td .cell').textContent
-        let secondColumnContent = vm.$el.querySelector('.el-table__body td:nth-child(2) .cell').textContent
+        let firstColumnContent = vm.$el.querySelector(
+          '.el-table__body td .cell'
+        ).textContent
+        let secondColumnContent = vm.$el.querySelector(
+          '.el-table__body td:nth-child(2) .cell'
+        ).textContent
         expect(firstColumnContent !== secondColumnContent).to.be.true
         vm.prop = 'release'
         setTimeout(() => {
-          firstColumnContent = vm.$el.querySelector('.el-table__body td .cell').textContent
-          secondColumnContent = vm.$el.querySelector('.el-table__body td:nth-child(2) .cell').textContent
+          firstColumnContent = vm.$el.querySelector('.el-table__body td .cell')
+            .textContent
+          secondColumnContent = vm.$el.querySelector(
+            '.el-table__body td:nth-child(2) .cell'
+          ).textContent
           expect(firstColumnContent === secondColumnContent).to.be.true
           destroyVM(vm)
           done()
@@ -1872,14 +2119,30 @@ describe('Table', () => {
       })
 
       setTimeout(() => {
-        const lastCells = vm.$el.querySelectorAll('.el-table__body-wrapper tbody tr td:last-child')
-        expect(toArray(lastCells).map(node => node.textContent)).to.eql(['80', '92', '92', '95', '100'])
+        const lastCells = vm.$el.querySelectorAll(
+          '.el-table__body-wrapper tbody tr td:last-child'
+        )
+        expect(toArray(lastCells).map(node => node.textContent)).to.eql([
+          '80',
+          '92',
+          '92',
+          '95',
+          '100'
+        ])
 
         vm.$nextTick(() => {
-          vm.testData = vm.testData.map(data => Object.assign(data, { runtime: -data.runtime }))
+          vm.testData = vm.testData.map(data =>
+            Object.assign(data, { runtime: -data.runtime })
+          )
           vm.$refs.table.sort('runtime', 'ascending')
           vm.$nextTick(() => {
-            expect(toArray(lastCells).map(node => node.textContent)).to.eql(['-100', '-95', '-92', '-92', '-80'])
+            expect(toArray(lastCells).map(node => node.textContent)).to.eql([
+              '-100',
+              '-95',
+              '-92',
+              '-92',
+              '-80'
+            ])
             destroyVM(vm)
             done()
           })
@@ -1889,7 +2152,9 @@ describe('Table', () => {
 
     it('sort correct change icon', async () => {
       function assertSortIconCount($el, msg, count = 1) {
-        const sortIconCount = $el.querySelectorAll('th.ascending, th.descending').length
+        const sortIconCount = $el.querySelectorAll(
+          'th.ascending, th.descending'
+        ).length
         expect(sortIconCount).to.equal(count, msg)
       }
 
@@ -1918,7 +2183,10 @@ describe('Table', () => {
       assertSortIconCount(vm.$el, 'sorting icon is not one after call sort')
       vm.$refs.table.sort('director', 'ascending')
       await waitImmediate()
-      assertSortIconCount(vm.$el, 'sorting icon is not one after sort same column')
+      assertSortIconCount(
+        vm.$el,
+        'sorting icon is not one after sort same column'
+      )
       destroyVM(vm)
     })
   })
@@ -1985,11 +2253,15 @@ describe('Table', () => {
           expect(tr.classList.contains('current-row')).to.be.false
           expect(rows[1].classList.contains('current-row')).to.be.true
 
-          const ths = vm.$el.querySelectorAll('.el-table__header-wrapper thead th')
+          const ths = vm.$el.querySelectorAll(
+            '.el-table__header-wrapper thead th'
+          )
           triggerEvent(ths[3], 'click', true, false)
 
           setTimeout(_ => {
-            const rows = vm.$el.querySelectorAll('.el-table__body-wrapper tbody tr')
+            const rows = vm.$el.querySelectorAll(
+              '.el-table__body-wrapper tbody tr'
+            )
 
             expect(rows[1].classList.contains('current-row')).to.be.false
             expect(rows[3].classList.contains('current-row')).to.be.true
@@ -2070,7 +2342,9 @@ describe('Table', () => {
       triggerEvent(rows[1], 'click', true, false)
       setTimeout(() => {
         expect(rows[1].classList.contains('current-row')).to.be.true
-        const cells = vm.$el.querySelectorAll('.el-table__header-wrapper thead th > .cell')
+        const cells = vm.$el.querySelectorAll(
+          '.el-table__header-wrapper thead th > .cell'
+        )
         triggerEvent(cells[3], 'click', true, false)
 
         setTimeout(() => {
@@ -2191,7 +2465,8 @@ describe('Table', () => {
 
       await waitImmediate()
 
-      expect(expandIcon.classList.contains('el-table__expand-icon--expanded')).to.be.true
+      expect(expandIcon.classList.contains('el-table__expand-icon--expanded'))
+        .to.be.true
       expect(vm.$el.querySelectorAll('.el-table__row').length).to.equal(8)
     })
 
@@ -2256,7 +2531,8 @@ describe('Table', () => {
 
       await waitImmediate()
 
-      expect(expandIcon.classList.contains('el-table__expand-icon--expanded')).to.be.true
+      expect(expandIcon.classList.contains('el-table__expand-icon--expanded'))
+        .to.be.true
       expect(vm.$el.querySelectorAll('.el-table__row').length).to.equal(8)
       expect(spy.args[0][0]).to.be.an('object')
       expect(spy.args[0][1]).to.be.true
@@ -2318,11 +2594,13 @@ describe('Table', () => {
 
       await waitImmediate()
 
-      expect(expandIcon.classList.contains('el-table__expand-icon--expanded')).to.be.true
+      expect(expandIcon.classList.contains('el-table__expand-icon--expanded'))
+        .to.be.true
       vm.closeExpandRow()
 
       await waitImmediate()
-      expect(expandIcon.classList.contains('el-table__expand-icon--expanded')).to.be.false
+      expect(expandIcon.classList.contains('el-table__expand-icon--expanded'))
+        .to.be.false
     })
   })
 })

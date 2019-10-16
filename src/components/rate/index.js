@@ -1,5 +1,3 @@
-/** @format */
-
 import Rate from './src/main'
 
 /* istanbul ignore next */

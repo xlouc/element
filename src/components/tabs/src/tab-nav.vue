@@ -1,8 +1,9 @@
-<!-- @format -->
-
 <script>
 import TabBar from './tab-bar'
-import { addResizeListener, removeResizeListener } from 'yak-ui/src/utils/resize-event'
+import {
+  addResizeListener,
+  removeResizeListener
+} from 'yak-ui/src/utils/resize-event'
 
 function noop() {}
 const firstUpperCase = str => {
@@ -45,35 +46,46 @@ export default {
 
   computed: {
     navStyle() {
-      const dir = ['top', 'bottom'].indexOf(this.rootTabs.tabPosition) !== -1 ? 'X' : 'Y'
+      const dir =
+        ['top', 'bottom'].indexOf(this.rootTabs.tabPosition) !== -1 ? 'X' : 'Y'
       return {
         transform: `translate${dir}(-${this.navOffset}px)`
       }
     },
     sizeName() {
-      return ['top', 'bottom'].indexOf(this.rootTabs.tabPosition) !== -1 ? 'width' : 'height'
+      return ['top', 'bottom'].indexOf(this.rootTabs.tabPosition) !== -1
+        ? 'width'
+        : 'height'
     }
   },
 
   methods: {
     scrollPrev() {
-      const containerSize = this.$refs.navScroll[`offset${firstUpperCase(this.sizeName)}`]
+      const containerSize = this.$refs.navScroll[
+        `offset${firstUpperCase(this.sizeName)}`
+      ]
       const currentOffset = this.navOffset
 
       if (!currentOffset) return
 
-      let newOffset = currentOffset > containerSize ? currentOffset - containerSize : 0
+      let newOffset =
+        currentOffset > containerSize ? currentOffset - containerSize : 0
 
       this.navOffset = newOffset
     },
     scrollNext() {
       const navSize = this.$refs.nav[`offset${firstUpperCase(this.sizeName)}`]
-      const containerSize = this.$refs.navScroll[`offset${firstUpperCase(this.sizeName)}`]
+      const containerSize = this.$refs.navScroll[
+        `offset${firstUpperCase(this.sizeName)}`
+      ]
       const currentOffset = this.navOffset
 
       if (navSize - currentOffset <= containerSize) return
 
-      let newOffset = navSize - currentOffset > containerSize * 2 ? currentOffset + containerSize : navSize - containerSize
+      let newOffset =
+        navSize - currentOffset > containerSize * 2
+          ? currentOffset + containerSize
+          : navSize - containerSize
 
       this.navOffset = newOffset
     },
@@ -83,26 +95,34 @@ export default {
       const activeTab = this.$el.querySelector('.is-active')
       if (!activeTab) return
       const navScroll = this.$refs.navScroll
-      const isHorizontal = ['top', 'bottom'].indexOf(this.rootTabs.tabPosition) !== -1
+      const isHorizontal =
+        ['top', 'bottom'].indexOf(this.rootTabs.tabPosition) !== -1
       const activeTabBounding = activeTab.getBoundingClientRect()
       const navScrollBounding = navScroll.getBoundingClientRect()
-      const maxOffset = isHorizontal ? nav.offsetWidth - navScrollBounding.width : nav.offsetHeight - navScrollBounding.height
+      const maxOffset = isHorizontal
+        ? nav.offsetWidth - navScrollBounding.width
+        : nav.offsetHeight - navScrollBounding.height
       const currentOffset = this.navOffset
       let newOffset = currentOffset
 
       if (isHorizontal) {
         if (activeTabBounding.left < navScrollBounding.left) {
-          newOffset = currentOffset - (navScrollBounding.left - activeTabBounding.left)
+          newOffset =
+            currentOffset - (navScrollBounding.left - activeTabBounding.left)
         }
         if (activeTabBounding.right > navScrollBounding.right) {
-          newOffset = currentOffset + activeTabBounding.right - navScrollBounding.right
+          newOffset =
+            currentOffset + activeTabBounding.right - navScrollBounding.right
         }
       } else {
         if (activeTabBounding.top < navScrollBounding.top) {
-          newOffset = currentOffset - (navScrollBounding.top - activeTabBounding.top)
+          newOffset =
+            currentOffset - (navScrollBounding.top - activeTabBounding.top)
         }
         if (activeTabBounding.bottom > navScrollBounding.bottom) {
-          newOffset = currentOffset + (activeTabBounding.bottom - navScrollBounding.bottom)
+          newOffset =
+            currentOffset +
+            (activeTabBounding.bottom - navScrollBounding.bottom)
         }
       }
 
@@ -113,7 +133,9 @@ export default {
       if (!this.$refs.nav) return
       const sizeName = this.sizeName
       const navSize = this.$refs.nav[`offset${firstUpperCase(sizeName)}`]
-      const containerSize = this.$refs.navScroll[`offset${firstUpperCase(sizeName)}`]
+      const containerSize = this.$refs.navScroll[
+        `offset${firstUpperCase(sizeName)}`
+      ]
       const currentOffset = this.navOffset
 
       if (containerSize < navSize) {
@@ -213,10 +235,14 @@ export default {
     } = this
     const scrollBtn = scrollable
       ? [
-          <span class={['el-tabs__nav-prev', scrollable.prev ? '' : 'is-disabled']} on-click={scrollPrev}>
+          <span
+            class={['el-tabs__nav-prev', scrollable.prev ? '' : 'is-disabled']}
+            on-click={scrollPrev}>
             <i class="el-icon-left"></i>
           </span>,
-          <span class={['el-tabs__nav-next', scrollable.next ? '' : 'is-disabled']} on-click={scrollNext}>
+          <span
+            class={['el-tabs__nav-next', scrollable.next ? '' : 'is-disabled']}
+            on-click={scrollNext}>
             <i class="el-icon-right"></i>
           </span>
         ]
@@ -277,14 +303,22 @@ export default {
       )
     })
     return (
-      <div class={['el-tabs__nav-wrap', scrollable ? 'is-scrollable' : '', `is-${this.rootTabs.tabPosition}`]}>
+      <div
+        class={[
+          'el-tabs__nav-wrap',
+          scrollable ? 'is-scrollable' : '',
+          `is-${this.rootTabs.tabPosition}`
+        ]}>
         {scrollBtn}
         <div class={['el-tabs__nav-scroll']} ref="navScroll">
           <div
             class={[
               'el-tabs__nav',
               `is-${this.rootTabs.tabPosition}`,
-              stretch && ['top', 'bottom'].indexOf(this.rootTabs.tabPosition) !== -1 ? 'is-stretch' : ''
+              stretch &&
+              ['top', 'bottom'].indexOf(this.rootTabs.tabPosition) !== -1
+                ? 'is-stretch'
+                : ''
             ]}
             ref="nav"
             style={navStyle}
@@ -310,7 +344,10 @@ export default {
 
   beforeDestroy() {
     if (this.$el && this.update) removeResizeListener(this.$el, this.update)
-    document.removeEventListener('visibilitychange', this.visibilityChangeHandler)
+    document.removeEventListener(
+      'visibilitychange',
+      this.visibilityChangeHandler
+    )
     window.removeEventListener('blur', this.windowBlurHandler)
     window.removeEventListener('focus', this.windowFocusHandler)
   }

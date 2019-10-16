@@ -1,5 +1,3 @@
-/** @format */
-
 import MenuItem from './aria-menuitem'
 
 const Menu = function(domNode) {

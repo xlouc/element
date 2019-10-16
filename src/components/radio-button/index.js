@@ -1,5 +1,3 @@
-/** @format */
-
 import RadioButton from '../radio/src/radio-button.vue'
 
 /* istanbul ignore next */

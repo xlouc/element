@@ -1,5 +1,3 @@
-/** @format */
-
 import Vue from 'vue'
 import scrollbarWidth from 'yak-ui/src/utils/scrollbar-width'
 import { parseHeight } from './util'
@@ -62,7 +60,8 @@ class TableLayout {
     value = parseHeight(value)
     this.height = value
 
-    if (!el && (value || value === 0)) return Vue.nextTick(() => this.setHeight(value, prop))
+    if (!el && (value || value === 0))
+      return Vue.nextTick(() => this.setHeight(value, prop))
 
     if (typeof value === 'number') {
       el.style[prop] = value + 'px'
@@ -102,19 +101,34 @@ class TableLayout {
     const headerTrElm = headerWrapper.querySelector('.el-table__header tr')
     const noneHeader = this.headerDisplayNone(headerTrElm)
 
-    const headerHeight = (this.headerHeight = !this.showHeader ? 0 : headerWrapper.offsetHeight)
-    if (this.showHeader && !noneHeader && headerWrapper.offsetWidth > 0 && (this.table.columns || []).length > 0 && headerHeight < 2) {
+    const headerHeight = (this.headerHeight = !this.showHeader
+      ? 0
+      : headerWrapper.offsetHeight)
+    if (
+      this.showHeader &&
+      !noneHeader &&
+      headerWrapper.offsetWidth > 0 &&
+      (this.table.columns || []).length > 0 &&
+      headerHeight < 2
+    ) {
       return Vue.nextTick(() => this.updateElsHeight())
     }
     const tableHeight = (this.tableHeight = this.table.$el.clientHeight)
-    const footerHeight = (this.footerHeight = footerWrapper ? footerWrapper.offsetHeight : 0)
+    const footerHeight = (this.footerHeight = footerWrapper
+      ? footerWrapper.offsetHeight
+      : 0)
     if (this.height !== null) {
-      this.bodyHeight = tableHeight - headerHeight - footerHeight + (footerWrapper ? 1 : 0)
+      this.bodyHeight =
+        tableHeight - headerHeight - footerHeight + (footerWrapper ? 1 : 0)
     }
-    this.fixedBodyHeight = this.scrollX ? this.bodyHeight - this.gutterWidth : this.bodyHeight
+    this.fixedBodyHeight = this.scrollX
+      ? this.bodyHeight - this.gutterWidth
+      : this.bodyHeight
 
     const noData = !this.table.data || this.table.data.length === 0
-    this.viewportHeight = this.scrollX ? tableHeight - (noData ? 0 : this.gutterWidth) : tableHeight
+    this.viewportHeight = this.scrollX
+      ? tableHeight - (noData ? 0 : this.gutterWidth)
+      : tableHeight
 
     this.updateScrollY()
     this.notifyObservers('scrollable')
@@ -138,11 +152,14 @@ class TableLayout {
     let bodyMinWidth = 0
 
     const flattenColumns = this.getFlattenColumns()
-    let flexColumns = flattenColumns.filter(column => typeof column.width !== 'number')
+    let flexColumns = flattenColumns.filter(
+      column => typeof column.width !== 'number'
+    )
 
     flattenColumns.forEach(column => {
       // Clean those columns whose width changed from flex to unflex
-      if (typeof column.width === 'number' && column.realWidth) column.realWidth = null
+      if (typeof column.width === 'number' && column.realWidth)
+        column.realWidth = null
     })
 
     if (flexColumns.length > 0 && fit) {
@@ -159,20 +176,27 @@ class TableLayout {
         const totalFlexWidth = bodyWidth - scrollYWidth - bodyMinWidth
 
         if (flexColumns.length === 1) {
-          flexColumns[0].realWidth = (flexColumns[0].minWidth || 80) + totalFlexWidth
+          flexColumns[0].realWidth =
+            (flexColumns[0].minWidth || 80) + totalFlexWidth
         } else {
-          const allColumnsWidth = flexColumns.reduce((prev, column) => prev + (column.minWidth || 80), 0)
+          const allColumnsWidth = flexColumns.reduce(
+            (prev, column) => prev + (column.minWidth || 80),
+            0
+          )
           const flexWidthPerPixel = totalFlexWidth / allColumnsWidth
           let noneFirstWidth = 0
 
           flexColumns.forEach((column, index) => {
             if (index === 0) return
-            const flexWidth = Math.floor((column.minWidth || 80) * flexWidthPerPixel)
+            const flexWidth = Math.floor(
+              (column.minWidth || 80) * flexWidthPerPixel
+            )
             noneFirstWidth += flexWidth
             column.realWidth = (column.minWidth || 80) + flexWidth
           })
 
-          flexColumns[0].realWidth = (flexColumns[0].minWidth || 80) + totalFlexWidth - noneFirstWidth
+          flexColumns[0].realWidth =
+            (flexColumns[0].minWidth || 80) + totalFlexWidth - noneFirstWidth
         }
       } else {
         // HAVE HORIZONTAL SCROLL BAR

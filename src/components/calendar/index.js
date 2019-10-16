@@ -1,5 +1,3 @@
-/** @format */
-
 import Calendar from './src/main'
 
 /* istanbul ignore next */

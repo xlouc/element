@@ -1,5 +1,3 @@
-/** @format */
-
 import Pagination from './src/pagination'
 
 /* istanbul ignore next */

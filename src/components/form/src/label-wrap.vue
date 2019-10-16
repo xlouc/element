@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <script>
 export default {
   props: {
@@ -34,14 +32,20 @@ export default {
   methods: {
     getLabelWidth() {
       if (this.$el && this.$el.firstElementChild) {
-        const computedWidth = window.getComputedStyle(this.$el.firstElementChild).width
+        const computedWidth = window.getComputedStyle(
+          this.$el.firstElementChild
+        ).width
         return Math.ceil(parseFloat(computedWidth))
       } else {
         return 0
       }
     },
     updateLabelWidth(action = 'update') {
-      if (this.$slots.default && this.isAutoWidth && this.$el.firstElementChild) {
+      if (
+        this.$slots.default &&
+        this.isAutoWidth &&
+        this.$el.firstElementChild
+      ) {
         if (action === 'update') {
           this.computedWidth = this.getLabelWidth()
         } else if (action === 'remove') {

@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <div
     class="el-tree-node"
@@ -25,7 +23,10 @@
     @drop.stop="handleDrop"
     ref="node"
   >
-    <div class="el-tree-node__content" :style="{ 'padding-left': (node.level - 1) * tree.indent + 'px' }">
+    <div
+      class="el-tree-node__content"
+      :style="{ 'padding-left': (node.level - 1) * tree.indent + 'px' }"
+    >
       <span
         @click.stop="handleExpandIconClick"
         :class="[
@@ -42,7 +43,10 @@
         @click.native.stop
         @change="handleCheckChange"
       ></el-checkbox>
-      <span v-if="node.loading" class="el-tree-node__loading-icon el-icon-loading anticon">
+      <span
+        v-if="node.loading"
+        class="el-tree-node__loading-icon el-icon-loading anticon"
+      >
         <svg viewBox="0 0 32 32" width="1em" height="1em" fill="currentColor">
           <title>spinner</title>
           <path
@@ -53,7 +57,13 @@
       <node-content :node="node"></node-content>
     </div>
     <el-collapse-transition>
-      <div class="el-tree-node__children" v-if="!renderAfterExpand || childNodeRendered" v-show="expanded" role="group" :aria-expanded="expanded">
+      <div
+        class="el-tree-node__children"
+        v-if="!renderAfterExpand || childNodeRendered"
+        v-show="expanded"
+        role="group"
+        :aria-expanded="expanded"
+      >
         <el-tree-node
           :render-content="renderContent"
           v-for="child in node.childNodes"

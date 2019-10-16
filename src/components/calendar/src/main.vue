@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <div class="el-calendar">
     <div class="el-calendar__header">
@@ -20,8 +18,17 @@
         </el-button-group>
       </div>
     </div>
-    <div class="el-calendar__body" v-if="validatedRange.length === 0" key="no-range">
-      <date-table :date="date" :selected-day="realSelectedDay" :first-day-of-week="realFirstDayOfWeek" @pick="pickDay" />
+    <div
+      class="el-calendar__body"
+      v-if="validatedRange.length === 0"
+      key="no-range"
+    >
+      <date-table
+        :date="date"
+        :selected-day="realSelectedDay"
+        :first-day-of-week="realFirstDayOfWeek"
+        @pick="pickDay"
+      />
     </div>
     <div v-else class="el-calendar__body" key="has-range">
       <date-table
@@ -45,7 +52,15 @@ import DateTable from './date-table'
 import { validateRangeInOneMonth } from 'yak-ui/src/utils/date-util'
 
 const validTypes = ['prev-month', 'today', 'next-month']
-const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+const weekDays = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday'
+]
 const oneDay = 86400000
 
 export default {
@@ -63,7 +78,15 @@ export default {
       type: Array,
       validator(range) {
         if (Array.isArray(range)) {
-          return range.length === 2 && range.every(item => typeof item === 'string' || typeof item === 'number' || item instanceof Date)
+          return (
+            range.length === 2 &&
+            range.every(
+              item =>
+                typeof item === 'string' ||
+                typeof item === 'number' ||
+                item instanceof Date
+            )
+          )
         } else {
           return true
         }
@@ -112,10 +135,20 @@ export default {
 
     rangeValidator(date, isStart) {
       const firstDayOfWeek = this.realFirstDayOfWeek
-      const expected = isStart ? firstDayOfWeek : firstDayOfWeek === 0 ? 6 : firstDayOfWeek - 1
-      const message = `${isStart ? 'start' : 'end'} of range should be ${weekDays[expected]}.`
+      const expected = isStart
+        ? firstDayOfWeek
+        : firstDayOfWeek === 0
+        ? 6
+        : firstDayOfWeek - 1
+      const message = `${isStart ? 'start' : 'end'} of range should be ${
+        weekDays[expected]
+      }.`
       if (date.getDay() !== expected) {
-        console.warn('[ElementCalendar]', message, 'Invalid range will be ignored.')
+        console.warn(
+          '[ElementCalendar]',
+          message,
+          'Invalid range will be ignored.'
+        )
         return false
       }
       return true
@@ -134,7 +167,11 @@ export default {
     },
 
     nextMonthDatePrefix() {
-      const temp = new Date(this.date.getFullYear(), this.date.getMonth() + 1, 1)
+      const temp = new Date(
+        this.date.getFullYear(),
+        this.date.getMonth() + 1,
+        1
+      )
       return fecha.format(temp, 'yyyy-MM')
     },
 
@@ -145,7 +182,9 @@ export default {
     i18nDate() {
       const year = this.date.getFullYear()
       const month = this.date.getMonth() + 1
-      return `${year} ${this.t('el.datepicker.year')} ${this.t('el.datepicker.month' + month)}`
+      return `${year} ${this.t('el.datepicker.year')} ${this.t(
+        'el.datepicker.month' + month
+      )}`
     },
 
     formatedToday() {
@@ -192,7 +231,9 @@ export default {
       if (range.length === 2) {
         const [start, end] = range
         if (start > end) {
-          console.warn('[ElementCalendar]end time should be greater than start time')
+          console.warn(
+            '[ElementCalendar]end time should be greater than start time'
+          )
           return []
         }
         // start time and end time in one month
@@ -203,7 +244,9 @@ export default {
         let startDay = new Date(start.getFullYear(), start.getMonth() + 1, 1)
         const lastDay = this.toDate(startDay.getTime() - oneDay)
         if (!validateRangeInOneMonth(startDay, end)) {
-          console.warn('[ElementCalendar]start time and end time interval must not exceed two months')
+          console.warn(
+            '[ElementCalendar]start time and end time interval must not exceed two months'
+          )
           return []
         }
         // 第一个月的时间范围

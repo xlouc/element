@@ -1,5 +1,3 @@
-/** @format */
-
 import Popper from 'yak-ui/src/utils/vue-popper'
 import { debounce } from 'throttle-debounce'
 import { addClass, removeClass, on, off } from 'yak-ui/src/utils/dom'
@@ -87,7 +85,11 @@ export default {
             id={this.tooltipId}
             aria-hidden={this.disabled || !this.showPopper ? 'true' : 'false'}
             v-show={!this.disabled && this.showPopper}
-            class={['el-tooltip__popper', 'is-' + this.effect, this.popperClass]}>
+            class={[
+              'el-tooltip__popper',
+              'is-' + this.effect,
+              this.popperClass
+            ]}>
             {this.$slots.content || this.content}
           </div>
         </transition>

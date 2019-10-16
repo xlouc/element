@@ -1,5 +1,3 @@
-/** @format */
-
 import { createTest, createVue, destroyVM } from '../util'
 import Container from 'packages/container'
 import Header from 'packages/header'

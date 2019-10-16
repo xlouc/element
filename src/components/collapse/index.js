@@ -1,5 +1,3 @@
-/** @format */
-
 import ElCollapse from './src/collapse'
 
 /* istanbul ignore next */

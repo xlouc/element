@@ -1,5 +1,3 @@
-/** @format */
-
 import { createVue, destroyVM, waitImmediate } from '../util'
 
 describe('Calendar', () => {

@@ -1,5 +1,3 @@
-/** @format */
-
 /*!
  * set-value <https://github.com/jonschlinkert/set-value>
  *

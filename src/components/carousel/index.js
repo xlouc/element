@@ -1,5 +1,3 @@
-/** @format */
-
 import Carousel from './src/main'
 
 /* istanbul ignore next */

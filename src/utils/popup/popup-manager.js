@@ -1,5 +1,3 @@
-/** @format */
-
 import Vue from 'vue'
 import { addClass, removeClass } from 'yak-ui/src/utils/dom'
 
@@ -185,7 +183,11 @@ if (!Vue.prototype.$isServer) {
       const topPopup = getTopPopup()
 
       if (topPopup && topPopup.closeOnPressEscape) {
-        topPopup.handleClose ? topPopup.handleClose() : topPopup.handleAction ? topPopup.handleAction('cancel') : topPopup.close()
+        topPopup.handleClose
+          ? topPopup.handleClose()
+          : topPopup.handleAction
+          ? topPopup.handleAction('cancel')
+          : topPopup.close()
       }
     }
   })

@@ -1,4 +1,3 @@
-/** @format */
 const { stripScript, stripStyle, stripTemplate } = require('./util')
 /**
  * Adds custom markdown containers
@@ -37,7 +36,8 @@ function createContainer(className, md) {
           const m = tokens[idx].info.trim().match(/^demo\s*(.*)$/)
           if (tokens[idx].nesting === 1) {
             const description = m && m.length > 1 ? m[1] : ''
-            const content = tokens[idx + 1].type === 'fence' ? tokens[idx + 1].content : ''
+            const content =
+              tokens[idx + 1].type === 'fence' ? tokens[idx + 1].content : ''
             const html = stripTemplate(content)
             const script = stripScript(content)
             const style = stripStyle(content)
@@ -64,7 +64,8 @@ function createContainer(className, md) {
             .slice(className.length)
             .trim()
           if (token.nesting === 1) {
-            return `<div class="doc-note doc-note--${className}" title="${info || md}">\n`
+            return `<div class="doc-note doc-note--${className}" title="${info ||
+              md}">\n`
           } else {
             return `</div>\n`
           }
@@ -82,6 +83,7 @@ module.exports = function(md) {
 
     // explicitly escape Vue syntax
     .use(container, 'v-pre', {
-      render: (tokens, idx) => (tokens[idx].nesting === 1 ? `<div v-pre>\n` : `</div>\n`)
+      render: (tokens, idx) =>
+        tokens[idx].nesting === 1 ? `<div v-pre>\n` : `</div>\n`
     })
 }

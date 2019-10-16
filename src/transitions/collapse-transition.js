@@ -1,5 +1,3 @@
-/** @format */
-
 import { addClass, removeClass } from 'yak-ui/src/utils/dom'
 
 class Transition {

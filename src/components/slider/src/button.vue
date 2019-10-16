@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <div
     class="el-slider__button-wrapper"
@@ -18,9 +16,17 @@
     @keydown.down.prevent="onLeftKeyDown"
     @keydown.up.prevent="onRightKeyDown"
   >
-    <el-tooltip placement="top" ref="tooltip" :popper-class="tooltipClass" :disabled="!showTooltip">
+    <el-tooltip
+      placement="top"
+      ref="tooltip"
+      :popper-class="tooltipClass"
+      :disabled="!showTooltip"
+    >
       <span slot="content">{{ formatValue }}</span>
-      <div class="el-slider__button" :class="{ hover: hovering, dragging: dragging }"></div>
+      <div
+        class="el-slider__button"
+        :class="{ hover: hovering, dragging: dragging }"
+      ></div>
     </el-tooltip>
   </div>
 </template>
@@ -96,11 +102,16 @@ export default {
     },
 
     formatValue() {
-      return (this.enableFormat && this.$parent.formatTooltip(this.value)) || this.value
+      return (
+        (this.enableFormat && this.$parent.formatTooltip(this.value)) ||
+        this.value
+      )
     },
 
     wrapperStyle() {
-      return this.vertical ? { bottom: this.currentPosition } : { left: this.currentPosition }
+      return this.vertical
+        ? { bottom: this.currentPosition }
+        : { left: this.currentPosition }
     }
   },
 
@@ -141,13 +152,17 @@ export default {
     },
     onLeftKeyDown() {
       if (this.disabled) return
-      this.newPosition = parseFloat(this.currentPosition) - (this.step / (this.max - this.min)) * 100
+      this.newPosition =
+        parseFloat(this.currentPosition) -
+        (this.step / (this.max - this.min)) * 100
       this.setPosition(this.newPosition)
       this.$parent.emitChange()
     },
     onRightKeyDown() {
       if (this.disabled) return
-      this.newPosition = parseFloat(this.currentPosition) + (this.step / (this.max - this.min)) * 100
+      this.newPosition =
+        parseFloat(this.currentPosition) +
+        (this.step / (this.max - this.min)) * 100
       this.setPosition(this.newPosition)
       this.$parent.emitChange()
     },
@@ -220,7 +235,8 @@ export default {
       }
       const lengthPerStep = 100 / ((this.max - this.min) / this.step)
       const steps = Math.round(newPosition / lengthPerStep)
-      let value = steps * lengthPerStep * (this.max - this.min) * 0.01 + this.min
+      let value =
+        steps * lengthPerStep * (this.max - this.min) * 0.01 + this.min
       value = parseFloat(value.toFixed(this.precision))
       this.$emit('input', value)
       this.$nextTick(() => {

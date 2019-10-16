@@ -1,5 +1,3 @@
-/** @format */
-
 import Upload from './src'
 
 /* istanbul ignore next */

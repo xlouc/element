@@ -1,5 +1,3 @@
-/** @format */
-
 import Vue from 'vue'
 import Yak from 'main/index.js'
 

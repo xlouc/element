@@ -1,5 +1,3 @@
-/** @format */
-
 import { createTest, createVue, destroyVM } from '../util'
 import Transfer from 'packages/transfer'
 
@@ -75,13 +73,16 @@ describe('Transfer', () => {
   })
 
   it('transfer', done => {
-    vm = createTransfer('v-model="value" :left-default-checked="[2, 3]" :right-default-checked="[1]"', {
-      data() {
-        return {
-          value: [1, 4]
+    vm = createTransfer(
+      'v-model="value" :left-default-checked="[2, 3]" :right-default-checked="[1]"',
+      {
+        data() {
+          return {
+            value: [1, 4]
+          }
         }
       }
-    })
+    )
     const transfer = vm.$refs.transfer
 
     setTimeout(_ => {
@@ -98,26 +99,35 @@ describe('Transfer', () => {
   })
 
   it('customize', () => {
-    vm = createTransfer('v-model="value" :titles="titles" :render-content="renderFunc" :format="format"', {
-      data() {
-        return {
-          value: [2],
-          titles: ['表1', '表2'],
-          format: { noChecked: 'no', hasChecked: 'has' },
-          renderFunc(h, option) {
-            return (
-              <span>
-                {option.key} - {option.label}
-              </span>
-            )
+    vm = createTransfer(
+      'v-model="value" :titles="titles" :render-content="renderFunc" :format="format"',
+      {
+        data() {
+          return {
+            value: [2],
+            titles: ['表1', '表2'],
+            format: { noChecked: 'no', hasChecked: 'has' },
+            renderFunc(h, option) {
+              return (
+                <span>
+                  {option.key} - {option.label}
+                </span>
+              )
+            }
           }
         }
       }
-    })
+    )
     const transfer = vm.$refs.transfer.$el
-    const label = transfer.querySelector('.el-transfer-panel__header .el-checkbox__label')
+    const label = transfer.querySelector(
+      '.el-transfer-panel__header .el-checkbox__label'
+    )
     expect(label.innerText.indexOf('表1') > -1).to.true
-    expect(transfer.querySelector('.el-transfer-panel__list .el-checkbox__label span').innerText).to.equal('1 - 备选项 1')
+    expect(
+      transfer.querySelector(
+        '.el-transfer-panel__list .el-checkbox__label span'
+      ).innerText
+    ).to.equal('1 - 备选项 1')
     expect(label.querySelector('span').innerText).to.equal('no')
   })
 
@@ -129,7 +139,8 @@ describe('Transfer', () => {
         }
       }
     })
-    const leftList = vm.$refs.transfer.$el.querySelector('.el-transfer-panel').__vue__
+    const leftList = vm.$refs.transfer.$el.querySelector('.el-transfer-panel')
+      .__vue__
     leftList.handleAllCheckedChange({ target: { checked: true } })
     expect(leftList.checked.length).to.equal(12)
   })
@@ -148,51 +159,78 @@ describe('Transfer', () => {
         transfer.addToRight()
         setTimeout(() => {
           const targetItems = [].slice.call(
-            vm.$el.querySelectorAll('.el-transfer__buttons + .el-transfer-panel .el-transfer-panel__body .el-checkbox__label span')
+            vm.$el.querySelectorAll(
+              '.el-transfer__buttons + .el-transfer-panel .el-transfer-panel__body .el-checkbox__label span'
+            )
           )
-          expect(targetItems.map(item => item.innerText)).to.deep.equal(['备选项 1', '备选项 2', '备选项 3', '备选项 4'])
+          expect(targetItems.map(item => item.innerText)).to.deep.equal([
+            '备选项 1',
+            '备选项 2',
+            '备选项 3',
+            '备选项 4'
+          ])
           done()
         }, 50)
       }, 50)
     })
 
     it('push', done => {
-      vm = createTransfer('v-model="value" :left-default-checked="[2, 3]" target-order="push"', {
-        data() {
-          return {
-            value: [1, 4]
+      vm = createTransfer(
+        'v-model="value" :left-default-checked="[2, 3]" target-order="push"',
+        {
+          data() {
+            return {
+              value: [1, 4]
+            }
           }
         }
-      })
+      )
       const transfer = vm.$refs.transfer
       setTimeout(() => {
         transfer.addToRight()
         setTimeout(() => {
           const targetItems = [].slice.call(
-            vm.$el.querySelectorAll('.el-transfer__buttons + .el-transfer-panel .el-transfer-panel__body .el-checkbox__label span')
+            vm.$el.querySelectorAll(
+              '.el-transfer__buttons + .el-transfer-panel .el-transfer-panel__body .el-checkbox__label span'
+            )
           )
-          expect(targetItems.map(item => item.innerText)).to.deep.equal(['备选项 1', '备选项 4', '备选项 2', '备选项 3'])
+          expect(targetItems.map(item => item.innerText)).to.deep.equal([
+            '备选项 1',
+            '备选项 4',
+            '备选项 2',
+            '备选项 3'
+          ])
           done()
         }, 50)
       }, 50)
     })
 
     it('unshift', done => {
-      vm = createTransfer('v-model="value" :left-default-checked="[2, 3]" target-order="unshift"', {
-        data() {
-          return {
-            value: [1, 4]
+      vm = createTransfer(
+        'v-model="value" :left-default-checked="[2, 3]" target-order="unshift"',
+        {
+          data() {
+            return {
+              value: [1, 4]
+            }
           }
         }
-      })
+      )
       const transfer = vm.$refs.transfer
       setTimeout(() => {
         transfer.addToRight()
         setTimeout(() => {
           const targetItems = [].slice.call(
-            vm.$el.querySelectorAll('.el-transfer__buttons + .el-transfer-panel .el-transfer-panel__body .el-checkbox__label span')
+            vm.$el.querySelectorAll(
+              '.el-transfer__buttons + .el-transfer-panel .el-transfer-panel__body .el-checkbox__label span'
+            )
           )
-          expect(targetItems.map(item => item.innerText)).to.deep.equal(['备选项 2', '备选项 3', '备选项 1', '备选项 4'])
+          expect(targetItems.map(item => item.innerText)).to.deep.equal([
+            '备选项 2',
+            '备选项 3',
+            '备选项 1',
+            '备选项 4'
+          ])
           done()
         }, 50)
       }, 50)

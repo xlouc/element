@@ -1,5 +1,3 @@
-/** @format */
-
 import ElForm from './src/form'
 
 /* istanbul ignore next */

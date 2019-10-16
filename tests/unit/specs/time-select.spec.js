@@ -1,4 +1,3 @@
-/** @format */
 import sinon from 'sinon'
 import { createTest, createVue, destroyVM } from '../util'
 import TimeSelect from 'packages/time-select'
@@ -32,7 +31,9 @@ describe('TimeSelect', () => {
       expect(vm.picker.start).to.equal('08:30')
       expect(vm.picker.end).to.equal('18:30')
       expect(vm.picker.step).to.equal('00:15')
-      expect(vm.$el.querySelector('input').getAttribute('placeholder')).to.equal('test')
+      expect(
+        vm.$el.querySelector('input').getAttribute('placeholder')
+      ).to.equal('test')
       done()
     })
   })
@@ -61,7 +62,9 @@ describe('TimeSelect', () => {
     input.blur()
 
     Vue.nextTick(_ => {
-      const items = vm.$refs.compo.picker.$el.querySelectorAll('.time-select-item')
+      const items = vm.$refs.compo.picker.$el.querySelectorAll(
+        '.time-select-item'
+      )
       const target = items[4]
       const time = target.textContent
 
@@ -89,7 +92,9 @@ describe('TimeSelect', () => {
     setTimeout(_ => {
       expect(input.value).to.equal('14:30')
       expect(vm.picker.$el.querySelector('.selected')).to.be.ok
-      expect(vm.picker.$el.querySelector('.selected').textContent).to.equal('14:30')
+      expect(vm.picker.$el.querySelector('.selected').textContent).to.equal(
+        '14:30'
+      )
       done()
     }, 50)
   })

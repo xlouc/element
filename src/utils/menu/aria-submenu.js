@@ -1,5 +1,3 @@
-/** @format */
-
 import Utils from '../aria-utils'
 
 const SubMenu = function(parent, domNode) {

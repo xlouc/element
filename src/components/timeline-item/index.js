@@ -1,5 +1,3 @@
-/** @format */
-
 import ElTimelineItem from '../timeline/src/item'
 
 /* istanbul ignore next */

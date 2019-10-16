@@ -1,5 +1,3 @@
-/** @format */
-
 import Skeleton from './src/main'
 
 /* istanbul ignore next */

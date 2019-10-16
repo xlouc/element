@@ -1,5 +1,3 @@
-/** @format */
-
 import ElBreadcrumbItem from '../breadcrumb/src/breadcrumb-item'
 
 /* istanbul ignore next */

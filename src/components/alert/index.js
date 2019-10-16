@@ -1,5 +1,3 @@
-/** @format */
-
 import Alert from './src/main'
 
 /* istanbul ignore next */

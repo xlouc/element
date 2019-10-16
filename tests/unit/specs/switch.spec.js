@@ -1,5 +1,3 @@
-/** @format */
-
 import { createTest, createVue, destroyVM } from '../util'
 import Switch from 'packages/switch'
 import Vue from 'vue'
@@ -22,7 +20,10 @@ describe('Switch', () => {
     const core = vm.$el.querySelector('.el-switch__core')
     expect(core.style.backgroundColor).to.equal('rgb(255, 0, 0)')
     expect(core.style.width).to.equal('100px')
-    expect(vm.$el.querySelector('.el-switch__label--left').querySelector('span').textContent).to.equal('off')
+    expect(
+      vm.$el.querySelector('.el-switch__label--left').querySelector('span')
+        .textContent
+    ).to.equal('off')
   })
 
   it('switch with icons', () => {
@@ -31,7 +32,9 @@ describe('Switch', () => {
       inactiveIconClass: 'el-icon-close'
     })
 
-    const icon = vm.$el.querySelector('.el-switch__label--left').querySelector('i')
+    const icon = vm.$el
+      .querySelector('.el-switch__label--left')
+      .querySelector('i')
     expect(icon.classList.contains('el-icon-close')).to.true
   })
 

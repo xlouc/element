@@ -1,5 +1,3 @@
-/** @format */
-
 import isObject from 'isobject'
 
 function join(segs, joinChar, options) {
@@ -43,7 +41,8 @@ export default function getValue(target, path, options) {
   const isArray = Array.isArray(path)
   const isString = typeof path === 'string'
   const splitChar = options.separator || '.'
-  const joinChar = options.joinChar || (typeof splitChar === 'string' ? splitChar : '.')
+  const joinChar =
+    options.joinChar || (typeof splitChar === 'string' ? splitChar : '.')
 
   if (!isString && !isArray) {
     return target

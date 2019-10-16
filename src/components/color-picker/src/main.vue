@@ -1,7 +1,12 @@
-<!-- @format -->
-
 <template>
-  <div :class="['el-color-picker', colorDisabled ? 'is-disabled' : '', colorSize ? `el-color-picker--${colorSize}` : '']" v-clickoutside="hide">
+  <div
+    :class="[
+      'el-color-picker',
+      colorDisabled ? 'is-disabled' : '',
+      colorSize ? `el-color-picker--${colorSize}` : ''
+    ]"
+    v-clickoutside="hide"
+  >
     <div class="el-color-picker__mask" v-if="colorDisabled"></div>
     <div class="el-color-picker__trigger" @click="handleTrigger">
       <span class="el-color-picker__color" :class="{ 'is-alpha': showAlpha }">
@@ -11,9 +16,15 @@
             backgroundColor: displayedColor
           }"
         ></span>
-        <span class="el-color-picker__empty el-icon-close" v-if="!value && !showPanelColor"></span>
+        <span
+          class="el-color-picker__empty el-icon-close"
+          v-if="!value && !showPanelColor"
+        ></span>
       </span>
-      <span class="el-color-picker__icon el-icon-down" v-show="value || showPanelColor"></span>
+      <span
+        class="el-color-picker__icon el-icon-down"
+        v-show="value || showPanelColor"
+      ></span>
     </div>
     <picker-dropdown
       ref="dropdown"
@@ -104,7 +115,10 @@ export default {
       })
       currentValueColor.fromString(this.value)
 
-      const currentValueColorRgb = this.displayedRgb(currentValueColor, this.showAlpha)
+      const currentValueColorRgb = this.displayedRgb(
+        currentValueColor,
+        this.showAlpha
+      )
       if (val !== currentValueColorRgb) {
         this.$emit('active-change', val)
       }
@@ -152,7 +166,9 @@ export default {
       }
 
       const { r, g, b } = color.toRgb()
-      return showAlpha ? `rgba(${r}, ${g}, ${b}, ${color.get('alpha') / 100})` : `rgb(${r}, ${g}, ${b})`
+      return showAlpha
+        ? `rgba(${r}, ${g}, ${b}, ${color.get('alpha') / 100})`
+        : `rgb(${r}, ${g}, ${b})`
     }
   },
 

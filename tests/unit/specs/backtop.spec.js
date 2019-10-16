@@ -1,5 +1,3 @@
-/** @format */
-
 import { createVue, destroyVM, wait } from '../util'
 
 describe('Backtop', () => {

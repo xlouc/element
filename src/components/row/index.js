@@ -1,5 +1,3 @@
-/** @format */
-
 import Row from './src/row'
 
 /* istanbul ignore next */

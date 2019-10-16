@@ -1,4 +1,3 @@
-/** @format */
 import ListItem from '../list/src/item'
 
 /* istanbul ignore next */

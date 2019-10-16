@@ -25,7 +25,9 @@ export default {
 
   render(h) {
     const { valueStyle, value = 0, title } = this
-    let valueNode = this.$slots.default || h(StatisticNumber, { props: Object.assign({}, this.$props, { value }) })
+    let valueNode =
+      this.$slots.default ||
+      h(StatisticNumber, { props: Object.assign({}, this.$props, { value }) })
     let prefix = this.prefix || this.$slots.prefix
     let suffix = this.suffix || this.$slots.suffix
 

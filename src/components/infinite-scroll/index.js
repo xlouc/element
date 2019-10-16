@@ -1,5 +1,3 @@
-/** @format */
-
 import InfiniteScroll from './src/main.js'
 
 /* istanbul ignore next */

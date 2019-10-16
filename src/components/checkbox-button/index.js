@@ -1,5 +1,3 @@
-/** @format */
-
 import ElCheckboxButton from '../checkbox/src/checkbox-button.vue'
 
 /* istanbul ignore next */

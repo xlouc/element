@@ -1,4 +1,3 @@
-/** @format */
 import { isVNode } from 'yak-ui/src/utils/vdom'
 import Avatar from 'yak-ui/components/avatar'
 import Col from 'yak-ui/components/col'
@@ -21,7 +20,9 @@ const ListItemMeta = {
       avatarVm = h(Avatar, { props: { src: avatar, shape: 'circle' } })
     }
     let titleVm = h('h4', { class: 'el-list-item__meta-title' }, [title])
-    let descrVm = h('div', { class: 'el-list-item__meta-description' }, [description])
+    let descrVm = h('div', { class: 'el-list-item__meta-description' }, [
+      description
+    ])
     return (
       <div class="el-list-item__meta">
         <div class="el-list-item__meta--avatar">{avatarVm}</div>
@@ -92,7 +93,9 @@ export default {
         </div>
       )
     } else {
-      layout.push(isMeta && h(ListItemMeta, { props: { avatar, title, description } }))
+      layout.push(
+        isMeta && h(ListItemMeta, { props: { avatar, title, description } })
+      )
       layout.push(this.$slots.default)
       if (actions) {
         layout.push(<div class="el-list-item__action">{actions}</div>)
@@ -100,9 +103,17 @@ export default {
     }
 
     if (_elList.itemAttr) {
-      return h(Col, { props: _elList.itemAttr }, [<div class={{ 'el-list-item': true, 'is-no-flex': !isFlexMode }}>{layout}</div>])
+      return h(Col, { props: _elList.itemAttr }, [
+        <div class={{ 'el-list-item': true, 'is-no-flex': !isFlexMode }}>
+          {layout}
+        </div>
+      ])
     } else {
-      return <li class={{ 'el-list-item': true, 'is-no-flex': !isFlexMode }}>{layout}</li>
+      return (
+        <li class={{ 'el-list-item': true, 'is-no-flex': !isFlexMode }}>
+          {layout}
+        </li>
+      )
     }
   }
 }

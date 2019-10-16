@@ -1,5 +1,3 @@
-/** @format */
-
 import Pager from './pager.vue'
 import ElSelect from 'yak-ui/components/select'
 import ElOption from 'yak-ui/components/option'
@@ -25,7 +23,9 @@ export default {
     pagerCount: {
       type: Number,
       validator(value) {
-        return (value | 0) === value && value > 4 && value < 22 && value % 2 === 1
+        return (
+          (value | 0) === value && value > 4 && value < 22 && value % 2 === 1
+        )
       },
       default: 7
     },
@@ -71,7 +71,11 @@ export default {
   render(h) {
     const layout = this.layout
     if (!layout) return null
-    if (this.hideOnSinglePage && (!this.internalPageCount || this.internalPageCount === 1)) return null
+    if (
+      this.hideOnSinglePage &&
+      (!this.internalPageCount || this.internalPageCount === 1)
+    )
+      return null
 
     let template = (
       <div
@@ -132,9 +136,15 @@ export default {
           <button
             type="button"
             class="btn-prev"
-            disabled={this.$parent.disabled || this.$parent.internalCurrentPage <= 1}
+            disabled={
+              this.$parent.disabled || this.$parent.internalCurrentPage <= 1
+            }
             on-click={this.$parent.prev}>
-            {this.$parent.prevText ? <span>{this.$parent.prevText}</span> : <i class="el-icon el-icon-left"></i>}
+            {this.$parent.prevText ? (
+              <span>{this.$parent.prevText}</span>
+            ) : (
+              <i class="el-icon el-icon-left"></i>
+            )}
           </button>
         )
       }
@@ -147,10 +157,17 @@ export default {
             type="button"
             class="btn-next"
             disabled={
-              this.$parent.disabled || this.$parent.internalCurrentPage === this.$parent.internalPageCount || this.$parent.internalPageCount === 0
+              this.$parent.disabled ||
+              this.$parent.internalCurrentPage ===
+                this.$parent.internalPageCount ||
+              this.$parent.internalPageCount === 0
             }
             on-click={this.$parent.next}>
-            {this.$parent.nextText ? <span>{this.$parent.nextText}</span> : <i class="el-icon el-icon-right"></i>}
+            {this.$parent.nextText ? (
+              <span>{this.$parent.nextText}</span>
+            ) : (
+              <i class="el-icon el-icon-right"></i>
+            )}
           </button>
         )
       }
@@ -169,7 +186,10 @@ export default {
           handler(newVal, oldVal) {
             if (valueEquals(newVal, oldVal)) return
             if (Array.isArray(newVal)) {
-              this.$parent.internalPageSize = newVal.indexOf(this.$parent.pageSize) > -1 ? this.$parent.pageSize : this.pageSizes[0]
+              this.$parent.internalPageSize =
+                newVal.indexOf(this.$parent.pageSize) > -1
+                  ? this.$parent.pageSize
+                  : this.pageSizes[0]
             }
           }
         }
@@ -185,7 +205,9 @@ export default {
               on-input={this.handleChange}
               disabled={this.$parent.disabled}>
               {this.pageSizes.map(item => (
-                <el-option value={item} label={item + this.t('el.pagination.pagesize')}></el-option>
+                <el-option
+                  value={item}
+                  label={item + this.t('el.pagination.pagesize')}></el-option>
               ))}
             </el-select>
           </span>
@@ -239,7 +261,9 @@ export default {
           this.userInput = value
         },
         handleChange(value) {
-          this.$parent.internalCurrentPage = this.$parent.getValidCurrentPage(value)
+          this.$parent.internalCurrentPage = this.$parent.getValidCurrentPage(
+            value
+          )
           this.$parent.emitChange()
           this.userInput = null
         }
@@ -253,7 +277,11 @@ export default {
               class="el-pagination__editor is-in-pagination"
               min={1}
               max={this.$parent.internalPageCount}
-              value={this.userInput !== null ? this.userInput : this.$parent.internalCurrentPage}
+              value={
+                this.userInput !== null
+                  ? this.userInput
+                  : this.$parent.internalCurrentPage
+              }
               type="number"
               disabled={this.$parent.disabled}
               nativeOnKeyup={this.handleKeyup}
@@ -271,7 +299,9 @@ export default {
 
       render(h) {
         return typeof this.$parent.total === 'number' ? (
-          <span class="el-pagination__total">{this.t('el.pagination.total', { total: this.$parent.total })}</span>
+          <span class="el-pagination__total">
+            {this.t('el.pagination.total', { total: this.$parent.total })}
+          </span>
         ) : (
           ''
         )
@@ -331,7 +361,10 @@ export default {
 
     emitChange() {
       this.$nextTick(() => {
-        if (this.internalCurrentPage !== this.lastEmittedPage || this.userChangePageSize) {
+        if (
+          this.internalCurrentPage !== this.lastEmittedPage ||
+          this.userChangePageSize
+        ) {
           this.$emit('current-change', this.internalCurrentPage)
           this.lastEmittedPage = this.internalCurrentPage
           this.userChangePageSize = false

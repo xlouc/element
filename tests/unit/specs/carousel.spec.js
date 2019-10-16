@@ -1,5 +1,3 @@
-/** @format */
-
 import { createVue, destroyVM } from '../util'
 
 describe('Carousel', () => {
@@ -55,7 +53,11 @@ describe('Carousel', () => {
     })
 
     setTimeout(() => {
-      expect(vm.$el.querySelectorAll('.el-carousel__item')[1].classList.contains('is-active')).to.true
+      expect(
+        vm.$el
+          .querySelectorAll('.el-carousel__item')[1]
+          .classList.contains('is-active')
+      ).to.true
       done()
     }, 10)
   })
@@ -127,7 +129,9 @@ describe('Carousel', () => {
       `
     })
     setTimeout(_ => {
-      expect(vm.$el.querySelector('.el-carousel__button').innerText).to.equal('1')
+      expect(vm.$el.querySelector('.el-carousel__button').innerText).to.equal(
+        '1'
+      )
       done()
     }, 10)
   })
@@ -147,7 +151,11 @@ describe('Carousel', () => {
       setTimeout(() => {
         vm.$children[0].throttledIndicatorHover(1)
         setTimeout(() => {
-          expect(vm.$el.querySelectorAll('.el-carousel__item')[1].classList.contains('is-active')).to.true
+          expect(
+            vm.$el
+              .querySelectorAll('.el-carousel__item')[1]
+              .classList.contains('is-active')
+          ).to.true
           done()
         }, 10)
       }, 10)
@@ -196,7 +204,11 @@ describe('Carousel', () => {
       setTimeout(() => {
         vm.$children[0].setActiveItem(1)
         setTimeout(() => {
-          expect(vm.$el.querySelectorAll('.el-carousel__item')[1].classList.contains('is-active')).to.true
+          expect(
+            vm.$el
+              .querySelectorAll('.el-carousel__item')[1]
+              .classList.contains('is-active')
+          ).to.true
           done()
         }, 10)
       }, 10)

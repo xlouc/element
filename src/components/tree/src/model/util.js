@@ -1,5 +1,3 @@
-/** @format */
-
 export const NODE_KEY = '$treeNodeId'
 
 export const markNodeData = function(node, data) {

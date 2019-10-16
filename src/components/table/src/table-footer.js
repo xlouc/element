@@ -1,5 +1,3 @@
-/** @format */
-
 import LayoutObserver from './layout-observer'
 import { mapStates } from './store/helper'
 
@@ -21,7 +19,9 @@ export default {
           sums[index] = this.sumText
           return
         }
-        const values = this.store.states.data.map(item => Number(item[column.property]))
+        const values = this.store.states.data.map(item =>
+          Number(item[column.property])
+        )
         const precisions = []
         let notNumber = true
         values.forEach(value => {
@@ -48,7 +48,11 @@ export default {
     }
 
     return (
-      <table class="el-table__footer" cellspacing="0" cellpadding="0" border="0">
+      <table
+        class="el-table__footer"
+        cellspacing="0"
+        cellpadding="0"
+        border="0">
         <colgroup>
           {this.columns.map(column => (
             <col name={column.id} key={column.id} />
@@ -58,8 +62,14 @@ export default {
         <tbody class={[{ 'has-gutter': this.hasGutter }]}>
           <tr>
             {this.columns.map((column, cellIndex) => (
-              <td key={cellIndex} colspan={column.colSpan} rowspan={column.rowSpan} class={this.getRowClasses(column, cellIndex)}>
-                <div class={['cell', column.labelClassName]}>{sums[cellIndex]}</div>
+              <td
+                key={cellIndex}
+                colspan={column.colSpan}
+                rowspan={column.rowSpan}
+                class={this.getRowClasses(column, cellIndex)}>
+                <div class={['cell', column.labelClassName]}>
+                  {sums[cellIndex]}
+                </div>
               </td>
             ))}
             {this.hasGutter ? <th class="gutter"></th> : ''}
@@ -122,7 +132,10 @@ export default {
         // hide cell when footer instance is not fixed and column is fixed
         return true
       } else {
-        return index < this.leftFixedCount || index >= this.columnsCount - this.rightFixedCount
+        return (
+          index < this.leftFixedCount ||
+          index >= this.columnsCount - this.rightFixedCount
+        )
       }
     },
 

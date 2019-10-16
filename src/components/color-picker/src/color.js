@@ -1,8 +1,10 @@
-/** @format */
-
 /* eslint-disable no-case-declarations */
 const hsv2hsl = function(hue, sat, val) {
-  return [hue, (sat * val) / ((hue = (2 - sat) * val) < 1 ? hue : 2 - hue) || 0, hue / 2]
+  return [
+    hue,
+    (sat * val) / ((hue = (2 - sat) * val) < 1 ? hue : 2 - hue) || 0,
+    hue / 2
+  ]
 }
 
 // Need to handle 1.0 as 100%, since once it is a number, there is no difference between it and 1
@@ -55,7 +57,10 @@ const HEX_INT_MAP = { A: 10, B: 11, C: 12, D: 13, E: 14, F: 15 }
 
 const parseHexChannel = function(hex) {
   if (hex.length === 2) {
-    return (HEX_INT_MAP[hex[0].toUpperCase()] || +hex[0]) * 16 + (HEX_INT_MAP[hex[1].toUpperCase()] || +hex[1])
+    return (
+      (HEX_INT_MAP[hex[0].toUpperCase()] || +hex[0]) * 16 +
+      (HEX_INT_MAP[hex[1].toUpperCase()] || +hex[1])
+    )
   }
 
   return HEX_INT_MAP[hex[1].toUpperCase()] || +hex[1]
@@ -271,7 +276,9 @@ export default class Color {
       }
 
       if (hex.length === 8) {
-        this._alpha = Math.floor((parseHexChannel(hex.substring(6)) / 255) * 100)
+        this._alpha = Math.floor(
+          (parseHexChannel(hex.substring(6)) / 255) * 100
+        )
       } else if (hex.length === 3 || hex.length === 6) {
         this._alpha = 100
       }
@@ -297,10 +304,14 @@ export default class Color {
       switch (format) {
         case 'hsl':
           const hsl = hsv2hsl(_hue, _saturation / 100, _value / 100)
-          this.value = `hsla(${_hue}, ${Math.round(hsl[1] * 100)}%, ${Math.round(hsl[2] * 100)}%, ${_alpha / 100})`
+          this.value = `hsla(${_hue}, ${Math.round(
+            hsl[1] * 100
+          )}%, ${Math.round(hsl[2] * 100)}%, ${_alpha / 100})`
           break
         case 'hsv':
-          this.value = `hsva(${_hue}, ${Math.round(_saturation)}%, ${Math.round(_value)}%, ${_alpha / 100})`
+          this.value = `hsva(${_hue}, ${Math.round(_saturation)}%, ${Math.round(
+            _value
+          )}%, ${_alpha / 100})`
           break
         default:
           const { r, g, b } = hsv2rgb(_hue, _saturation, _value)
@@ -310,10 +321,14 @@ export default class Color {
       switch (format) {
         case 'hsl':
           const hsl = hsv2hsl(_hue, _saturation / 100, _value / 100)
-          this.value = `hsl(${_hue}, ${Math.round(hsl[1] * 100)}%, ${Math.round(hsl[2] * 100)}%)`
+          this.value = `hsl(${_hue}, ${Math.round(hsl[1] * 100)}%, ${Math.round(
+            hsl[2] * 100
+          )}%)`
           break
         case 'hsv':
-          this.value = `hsv(${_hue}, ${Math.round(_saturation)}%, ${Math.round(_value)}%)`
+          this.value = `hsv(${_hue}, ${Math.round(_saturation)}%, ${Math.round(
+            _value
+          )}%)`
           break
         case 'rgb':
           const { r, g, b } = hsv2rgb(_hue, _saturation, _value)

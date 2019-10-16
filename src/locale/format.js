@@ -1,5 +1,3 @@
-/** @format */
-
 import { hasOwn } from 'yak-ui/src/utils/util'
 
 const RE_NARGS = /(%|)\{([0-9a-zA-Z_]+)\}/g

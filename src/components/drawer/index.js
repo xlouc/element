@@ -1,5 +1,3 @@
-/** @format */
-
 import Drawer from './src/main'
 
 /* istanbul ignore next */

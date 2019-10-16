@@ -1,5 +1,3 @@
-/** @format */
-
 import Radio from './src/radio'
 
 /* istanbul ignore next */

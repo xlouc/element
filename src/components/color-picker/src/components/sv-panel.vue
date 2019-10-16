@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <div
     class="el-color-svpanel"

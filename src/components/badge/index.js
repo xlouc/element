@@ -1,5 +1,3 @@
-/** @format */
-
 import Badge from './src/main'
 
 /* istanbul ignore next */

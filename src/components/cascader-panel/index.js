@@ -1,5 +1,3 @@
-/** @format */
-
 import CascaderPanel from './src/cascader-panel'
 
 /* istanbul ignore next */

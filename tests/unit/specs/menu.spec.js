@@ -1,5 +1,3 @@
-/** @format */
-
 import { createVue, triggerEvent, destroyVM } from '../util'
 
 describe('Menu', () => {
@@ -53,7 +51,9 @@ describe('Menu', () => {
     expect(vm.$refs.item2.$el.style.color).to.equal('rgb(0, 255, 0)')
     triggerEvent(vm.$refs.item1.$el, 'mouseenter')
     setTimeout(_ => {
-      expect(vm.$refs.item1.$el.style.backgroundColor).to.equal('rgb(204, 0, 0)')
+      expect(vm.$refs.item1.$el.style.backgroundColor).to.equal(
+        'rgb(204, 0, 0)'
+      )
       done()
     }, 20)
   })
@@ -172,7 +172,8 @@ describe('Menu', () => {
         },
         true
       )
-      expect(vm.$refs.submenuItem2.$el.classList.contains('is-active')).to.be.true
+      expect(vm.$refs.submenuItem2.$el.classList.contains('is-active')).to.be
+        .true
 
       setTimeout(_ => {
         expect(vm.$refs.submenu.$el.classList.contains('is-opened')).to.be.true
@@ -200,7 +201,8 @@ describe('Menu', () => {
         },
         true
       )
-      expect(vm.$refs.submenuItem2.$el.classList.contains('is-active')).to.be.true
+      expect(vm.$refs.submenuItem2.$el.classList.contains('is-active')).to.be
+        .true
 
       setTimeout(_ => {
         expect(vm.$refs.submenu.$el.classList.contains('is-opened')).to.be.true
@@ -280,7 +282,8 @@ describe('Menu', () => {
       vm.defaultOpeneds = ['2']
       setTimeout(_ => {
         expect(vm.$refs.submenu1.$el.classList.contains('is-opened')).to.be.true
-        expect(vm.$refs.submenu2.$el.classList.contains('is-opened')).to.not.true
+        expect(vm.$refs.submenu2.$el.classList.contains('is-opened')).to.not
+          .true
         done()
       }, 20)
     })
@@ -367,7 +370,10 @@ describe('Menu', () => {
     var submenu = vm.$refs.submenu
     triggerEvent(submenu.$el, 'mouseenter')
     setTimeout(_ => {
-      expect(document.body.querySelector('.el-menu--popup').parentElement.style.display).to.not.ok
+      expect(
+        document.body.querySelector('.el-menu--popup').parentElement.style
+          .display
+      ).to.not.ok
       done()
     }, 500)
   })
@@ -400,10 +406,16 @@ describe('Menu', () => {
     triggerElm.click()
 
     setTimeout(_ => {
-      expect(document.body.querySelector('.el-menu--popup').parentElement.style.display).to.not.ok
+      expect(
+        document.body.querySelector('.el-menu--popup').parentElement.style
+          .display
+      ).to.not.ok
       triggerElm.click()
       setTimeout(_ => {
-        expect(document.body.querySelector('.el-menu--popup').parentElement.style.display).to.be.equal('none')
+        expect(
+          document.body.querySelector('.el-menu--popup').parentElement.style
+            .display
+        ).to.be.equal('none')
         done()
       }, 1000)
     }, 500)
@@ -429,7 +441,9 @@ describe('Menu', () => {
       },
       true
     )
-    expect(vm.$refs.group1.$el.querySelector('.el-menu-item-group__title').innerText).to.be.equal('分组一')
+    expect(
+      vm.$refs.group1.$el.querySelector('.el-menu-item-group__title').innerText
+    ).to.be.equal('分组一')
   })
   it('dynamic menus, issue 9092', done => {
     vm = createVue(
@@ -455,9 +469,15 @@ describe('Menu', () => {
     )
     setTimeout(_ => {
       vm.active = '2'
-      vm.menus = [{ name: '1', description: 'happy' }, { name: '2', description: 'new' }, { name: '3', description: 'year' }]
+      vm.menus = [
+        { name: '1', description: 'happy' },
+        { name: '2', description: 'new' },
+        { name: '3', description: 'year' }
+      ]
       setTimeout(_ => {
-        expect(vm.$el.querySelector('.el-menu-item.is-active').innerText).to.equal('new')
+        expect(
+          vm.$el.querySelector('.el-menu-item.is-active').innerText
+        ).to.equal('new')
         done()
       }, 20)
     }, 100)

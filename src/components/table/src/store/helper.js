@@ -1,5 +1,3 @@
-/** @format */
-
 import Store from './index'
 import { debounce } from 'throttle-debounce'
 
