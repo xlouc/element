@@ -1,25 +1,51 @@
-<!-- @format -->
-
 <template>
   <div class="side-nav">
     <ul>
       <li class="nav-item" v-for="(item, key) in navs" :key="key">
         <template v-if="item.title || item.name">
           <a v-if="!item.path && !item.href">{{ item.name }}</a>
-          <a v-if="item.href" :href="item.href" target="_blank">{{ item.name }}</a>
-          <router-link v-if="item.path" active-class="active" :to="base + item.path" exact v-text="item.title || item.name"></router-link>
+          <a v-if="item.href" :href="item.href" target="_blank">{{
+            item.name
+          }}</a>
+          <router-link
+            v-if="item.path"
+            active-class="active"
+            :to="base + item.path"
+            exact
+            v-text="item.title || item.name"
+          ></router-link>
         </template>
         <ul class="pure-menu-list sub-nav" v-if="item.children">
-          <li class="nav-item" v-for="(navItem, key) in item.children" :key="key">
-            <router-link class="" active-class="active" :to="base + navItem.path" exact v-text="navItem.title || navItem.name"></router-link>
+          <li
+            class="nav-item"
+            v-for="(navItem, key) in item.children"
+            :key="key"
+          >
+            <router-link
+              class=""
+              active-class="active"
+              :to="base + navItem.path"
+              exact
+              v-text="navItem.title || navItem.name"
+            ></router-link>
           </li>
         </ul>
         <template v-if="item.groups">
           <div class="nav-group" v-for="(group, key) in item.groups" :key="key">
             <div class="nav-group__title">{{ group.groupName }}</div>
             <ul class="pure-menu-list">
-              <li class="nav-item" v-for="(navItem, key) in group.list" v-show="!navItem.disabled" :key="key">
-                <router-link active-class="active" :to="base + navItem.path" exact v-text="navItem.title"></router-link>
+              <li
+                class="nav-item"
+                v-for="(navItem, key) in group.list"
+                v-show="!navItem.disabled"
+                :key="key"
+              >
+                <router-link
+                  active-class="active"
+                  :to="base + navItem.path"
+                  exact
+                  v-text="navItem.title"
+                ></router-link>
               </li>
             </ul>
           </div>

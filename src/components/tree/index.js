@@ -1,5 +1,3 @@
-/** @format */
-
 import Tree from './src/tree.vue'
 
 /* istanbul ignore next */

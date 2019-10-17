@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <transition name="el-notification-fade">
     <div
@@ -11,8 +9,15 @@
       @click="click"
       role="alert"
     >
-      <i class="el-notification__icon" :class="[typeClass, iconClass]" v-if="type || iconClass"></i>
-      <div class="el-notification__group" :class="{ 'is-with-icon': typeClass || iconClass }">
+      <i
+        class="el-notification__icon"
+        :class="[typeClass, iconClass]"
+        v-if="type || iconClass"
+      ></i>
+      <div
+        class="el-notification__group"
+        :class="{ 'is-with-icon': typeClass || iconClass }"
+      >
         <h2 class="el-notification__title" v-text="title"></h2>
         <div class="el-notification__content" v-show="message">
           <slot>
@@ -20,7 +25,11 @@
             <p v-else v-html="message"></p>
           </slot>
         </div>
-        <div class="el-notification__closeBtn el-icon-close" v-if="showClose" @click.stop="close"></div>
+        <div
+          class="el-notification__closeBtn el-icon-close"
+          v-if="showClose"
+          @click.stop="close"
+        ></div>
       </div>
     </div>
   </transition>
@@ -57,7 +66,9 @@ export default {
 
   computed: {
     typeClass() {
-      return this.type && typeMap[this.type] ? `el-icon-${typeMap[this.type]}` : ''
+      return this.type && typeMap[this.type]
+        ? `el-icon-${typeMap[this.type]}`
+        : ''
     },
 
     horizontalClass() {

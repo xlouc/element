@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <el-container>
     <el-aside style="min-height: 100%;">

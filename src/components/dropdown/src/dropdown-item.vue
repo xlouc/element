@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <li
     class="el-dropdown-menu__item"

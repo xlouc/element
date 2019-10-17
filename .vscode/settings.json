@@ -5,6 +5,10 @@
   "eslint.options": {
     "extensions": [".js", ".vue"]
   },
+  // Enable per-language
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
   // 添加 vue 支持
   "eslint.validate": [
     "javascript",
@@ -13,11 +17,5 @@
       "language": "vue",
       "autoFix": true
     }
-  ],
-  // vetur 格式化配置
-  "vetur.format.defaultFormatter.html": "prettier",
-  "vetur.format.defaultFormatter.js": "prettier",
-  "vetur.format.defaultFormatter.scss": "prettier",
-  "vetur.format.defaultFormatter.css": "prettier",
-  "vetur.format.defaultFormatter.ts": "prettier"
+  ]
 }

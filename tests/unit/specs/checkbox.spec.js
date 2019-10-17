@@ -1,5 +1,3 @@
-/** @format */
-
 import { createVue, destroyVM } from '../util'
 
 describe('Checkbox', () => {
@@ -433,11 +431,23 @@ describe('Checkbox', () => {
       )
       expect(vm.checkList.length === 2).to.be.true
       expect(vm.$refs.a.$el.classList.contains('is-checked')).to.be.true
-      expect(vm.$refs.a.$el.classList.contains('el-checkbox-button--large')).to.be.true
-      expect(vm.$refs.a.$el.querySelector('.el-checkbox-button__inner').style.backgroundColor).to.be.eql('rgb(255, 0, 0)')
-      expect(vm.$refs.a.$el.querySelector('.el-checkbox-button__inner').style.boxShadow).to.be.eql('rgb(255, 0, 0) -1px 0px 0px 0px')
-      expect(vm.$refs.a.$el.querySelector('.el-checkbox-button__inner').style.borderColor).to.be.eql('rgb(255, 0, 0)')
-      expect(vm.$refs.a.$el.querySelector('.el-checkbox-button__inner').style.color).to.be.eql('rgb(0, 0, 0)')
+      expect(vm.$refs.a.$el.classList.contains('el-checkbox-button--large')).to
+        .be.true
+      expect(
+        vm.$refs.a.$el.querySelector('.el-checkbox-button__inner').style
+          .backgroundColor
+      ).to.be.eql('rgb(255, 0, 0)')
+      expect(
+        vm.$refs.a.$el.querySelector('.el-checkbox-button__inner').style
+          .boxShadow
+      ).to.be.eql('rgb(255, 0, 0) -1px 0px 0px 0px')
+      expect(
+        vm.$refs.a.$el.querySelector('.el-checkbox-button__inner').style
+          .borderColor
+      ).to.be.eql('rgb(255, 0, 0)')
+      expect(
+        vm.$refs.a.$el.querySelector('.el-checkbox-button__inner').style.color
+      ).to.be.eql('rgb(0, 0, 0)')
       expect(vm.$refs.b.$el.classList.contains('is-checked')).to.be.false
       expect(vm.$refs.c.$el.classList.contains('is-checked')).to.be.false
       expect(vm.$refs.d.$el.classList.contains('is-checked')).to.be.true

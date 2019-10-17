@@ -1,8 +1,8 @@
-<!-- @format -->
-
 <script>
 import { cloneVNode } from 'yak-ui/src/utils/vdom'
-import ResponsiveObserve, { responsiveArray } from 'yak-ui/src/utils/responsive-observe'
+import ResponsiveObserve, {
+  responsiveArray
+} from 'yak-ui/src/utils/responsive-observe'
 import Col from './col'
 
 const defaultColumnMap = {
@@ -72,7 +72,14 @@ export default {
       childrenArray.push(lastChildren)
 
       const renderCol = (childrenItem, type, idx) => (
-        <Col child={childrenItem} bordered={bordered} colon={colon} type={type} key={`${type}-${idx}`} layout={layout} />
+        <Col
+          child={childrenItem}
+          bordered={bordered}
+          colon={colon}
+          type={type}
+          key={`${type}-${idx}`}
+          layout={layout}
+        />
       )
       const cloneChildren = []
       const cloneContentChildren = []
@@ -155,11 +162,25 @@ export default {
     if (!Array.isArray(childrenArray)) childrenArray = [childrenArray]
     childrenArray = _generateChildrenRows(childrenArray, column)
     return (
-      <div class={['el-descriptions', { [`el-descriptions--${size}`]: Boolean(size), 'el-descriptions--bordered': bordered }]}>
+      <div
+        class={[
+          'el-descriptions',
+          {
+            [`el-descriptions--${size}`]: Boolean(size),
+            'el-descriptions--bordered': bordered
+          }
+        ]}>
         {title && <div class="el-descriptions__title">{title}</div>}
         <div class="el-descriptions__view">
           <table>
-            <tbody>{childrenArray.map((child, index) => _renderRow(h, child, index, { column, isLast: index === childrenArray.length - 1 }))}</tbody>
+            <tbody>
+              {childrenArray.map((child, index) =>
+                _renderRow(h, child, index, {
+                  column,
+                  isLast: index === childrenArray.length - 1
+                })
+              )}
+            </tbody>
           </table>
           <div class="el-descriptions__hide">{this.$slots.default}</div>
         </div>

@@ -1,7 +1,9 @@
-<!-- @format -->
-
 <template>
-  <div :class="carouselClasses" @mouseenter.stop="handleMouseEnter" @mouseleave.stop="handleMouseLeave">
+  <div
+    :class="carouselClasses"
+    @mouseenter.stop="handleMouseEnter"
+    @mouseleave.stop="handleMouseLeave"
+  >
     <div class="el-carousel__container" :style="{ height: height }">
       <transition v-if="arrowDisplay" name="carousel-arrow-left">
         <button
@@ -18,7 +20,10 @@
       <transition v-if="arrowDisplay" name="carousel-arrow-right">
         <button
           type="button"
-          v-show="(arrow === 'always' || hover) && (loop || activeIndex < items.length - 1)"
+          v-show="
+            (arrow === 'always' || hover) &&
+              (loop || activeIndex < items.length - 1)
+          "
           @mouseenter="handleButtonEnter('right')"
           @mouseleave="handleButtonLeave"
           @click.stop="throttledArrowClick(activeIndex + 1)"
@@ -33,7 +38,11 @@
       <li
         v-for="(item, index) in items"
         :key="index"
-        :class="['el-carousel__indicator', 'el-carousel__indicator--' + direction, { 'is-active': index === activeIndex }]"
+        :class="[
+          'el-carousel__indicator',
+          'el-carousel__indicator--' + direction,
+          { 'is-active': index === activeIndex }
+        ]"
         @mouseenter="throttledIndicatorHover(index)"
         @click.stop="handleIndicatorClick(index)"
       >
@@ -47,7 +56,10 @@
 
 <script>
 import { throttle } from 'throttle-debounce'
-import { addResizeListener, removeResizeListener } from 'yak-ui/src/utils/resize-event'
+import {
+  addResizeListener,
+  removeResizeListener
+} from 'yak-ui/src/utils/resize-event'
 
 export default {
   name: 'ElCarousel',
@@ -121,7 +133,10 @@ export default {
     },
 
     indicatorsClasses() {
-      const classes = ['el-carousel__indicators', 'el-carousel__indicators--' + this.direction]
+      const classes = [
+        'el-carousel__indicators',
+        'el-carousel__indicators--' + this.direction
+      ]
       if (this.hasLabel) {
         classes.push('el-carousel__indicators--labels')
       }
@@ -166,7 +181,10 @@ export default {
 
     itemInStage(item, index) {
       const length = this.items.length
-      if ((index === length - 1 && item.inStage && this.items[0].active) || (item.inStage && this.items[index + 1] && this.items[index + 1].active)) {
+      if (
+        (index === length - 1 && item.inStage && this.items[0].active) ||
+        (item.inStage && this.items[index + 1] && this.items[index + 1].active)
+      ) {
         return 'left'
       } else if (
         (index === 0 && item.inStage && this.items[length - 1].active) ||
@@ -194,7 +212,9 @@ export default {
     },
 
     updateItems() {
-      this.items = this.$children.filter(child => child.$options.name === 'ElCarouselItem')
+      this.items = this.$children.filter(
+        child => child.$options.name === 'ElCarouselItem'
+      )
     },
 
     resetItemPosition(oldIndex) {

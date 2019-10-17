@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <div class="guide-design">
     <h2>设计原则</h2>

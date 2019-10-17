@@ -1,5 +1,3 @@
-/** @format */
-
 import ElCarouselItem from '../carousel/src/item'
 
 /* istanbul ignore next */

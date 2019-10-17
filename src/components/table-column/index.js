@@ -1,5 +1,3 @@
-/** @format */
-
 import ElTableColumn from '../table/src/table-column'
 
 /* istanbul ignore next */

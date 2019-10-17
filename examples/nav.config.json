@@ -123,6 +123,10 @@
             "title": "ColorPicker 颜色选择器"
           },
           {
+            "path": "/icon-picker",
+            "title": "IconPicker 图标选择器"
+          },
+          {
             "path": "/transfer",
             "title": "Transfer 穿梭框"
           },
@@ -150,6 +154,10 @@
           {
             "path": "/tree",
             "title": "Tree 树形控件"
+          },
+          {
+            "path": "/treemap",
+            "title": "Treemap 组织结构图"
           },
           {
             "path": "/pagination",

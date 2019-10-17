@@ -1,5 +1,3 @@
-/** @format */
-
 import { createTest, createVue, destroyVM, wait } from '../util'
 import Image from 'packages/image'
 

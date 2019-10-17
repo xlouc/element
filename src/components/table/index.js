@@ -1,5 +1,3 @@
-/** @format */
-
 import ElTable from './src/table'
 
 /* istanbul ignore next */

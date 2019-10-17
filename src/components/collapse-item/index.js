@@ -1,5 +1,3 @@
-/** @format */
-
 import ElCollapseItem from '../collapse/src/collapse-item.vue'
 
 /* istanbul ignore next */

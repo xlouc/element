@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <script>
 import ElCheckbox from 'yak-ui/components/checkbox'
 import ElRadio from 'yak-ui/components/radio'
@@ -44,7 +42,9 @@ export default {
     inCheckedPath() {
       if (!this.config.checkStrictly) return false
 
-      return this.panel.checkedNodePaths.some(checkedPath => this.isInPath(checkedPath))
+      return this.panel.checkedNodePaths.some(checkedPath =>
+        this.isInPath(checkedPath)
+      )
     },
     value() {
       return this.node.getValueByOption()
@@ -131,7 +131,13 @@ export default {
         events.nativeOn.click = stopPropagation
       }
 
-      return <el-checkbox value={node.checked} indeterminate={node.indeterminate} disabled={isDisabled} {...events}></el-checkbox>
+      return (
+        <el-checkbox
+          value={node.checked}
+          indeterminate={node.indeterminate}
+          disabled={isDisabled}
+          {...events}></el-checkbox>
+      )
     },
 
     renderRadio(h) {
@@ -143,7 +149,12 @@ export default {
       }
 
       return (
-        <el-radio value={checkedValue} label={value} disabled={isDisabled} onChange={this.handleCheckChange} nativeOnClick={stopPropagation}>
+        <el-radio
+          value={checkedValue}
+          label={value}
+          disabled={isDisabled}
+          onChange={this.handleCheckChange}
+          nativeOnClick={stopPropagation}>
           {/* add an empty element to avoid render label */}
           <span></span>
         </el-radio>
@@ -179,7 +190,15 @@ export default {
   },
 
   render(h) {
-    const { inActivePath, inCheckedPath, isChecked, isLeaf, isDisabled, config, nodeId } = this
+    const {
+      inActivePath,
+      inCheckedPath,
+      isChecked,
+      isLeaf,
+      isDisabled,
+      config,
+      nodeId
+    } = this
     const { expandTrigger, checkStrictly, multiple } = config
     const disabled = !checkStrictly && isDisabled
     const events = { on: {} }

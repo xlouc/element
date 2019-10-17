@@ -1,5 +1,3 @@
-/** @format */
-
 import ElFormItem from '../form/src/form-item'
 
 /* istanbul ignore next */

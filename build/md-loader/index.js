@@ -1,4 +1,3 @@
-/** @format */
 const markdownIt = require('markdown-it')
 
 const { stripScript, stripTemplate, genInlineComponentText } = require('./util')
@@ -48,7 +47,9 @@ module.exports = function(source) {
     let demoComponentContent = genInlineComponentText(html, script)
     const demoComponentName = `element-demo${id}`
     output.push(`<template v-slot:source><${demoComponentName} /></template>`)
-    componenetsString += `${JSON.stringify(demoComponentName)}: ${demoComponentContent},`
+    componenetsString += `${JSON.stringify(
+      demoComponentName
+    )}: ${demoComponentContent},`
 
     // 重新计算下一次的位置
     id++

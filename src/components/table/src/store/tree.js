@@ -1,5 +1,3 @@
-/** @format */
-
 import { walkTreeNode, getRowIdentity } from '../util'
 
 export default {
@@ -60,7 +58,12 @@ export default {
 
   methods: {
     normalize(data) {
-      const { childrenColumnName, lazyColumnIdentifier, rowKey, lazy } = this.states
+      const {
+        childrenColumnName,
+        lazyColumnIdentifier,
+        rowKey,
+        lazy
+      } = this.states
       const res = {}
       walkTreeNode(
         data,
@@ -92,10 +95,17 @@ export default {
       const keys = Object.keys(nested)
       const newTreeData = {}
       if (keys.length) {
-        const { treeData: oldTreeData, defaultExpandAll, expandRowKeys, lazy } = this.states
+        const {
+          treeData: oldTreeData,
+          defaultExpandAll,
+          expandRowKeys,
+          lazy
+        } = this.states
         const rootLazyRowKeys = []
         const getExpanded = (oldValue, key) => {
-          const included = defaultExpandAll || (expandRowKeys && expandRowKeys.indexOf(key) !== -1)
+          const included =
+            defaultExpandAll ||
+            (expandRowKeys && expandRowKeys.indexOf(key) !== -1)
           return !!((oldValue && oldValue.expanded) || included)
         }
         // 合并 expanded 与 display，确保数据刷新后，状态不变

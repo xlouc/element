@@ -1,5 +1,3 @@
-/** @format */
-
 export default {
   data() {
     return {
@@ -9,7 +7,9 @@ export default {
 
   computed: {
     optionsAllDisabled() {
-      return this.options.filter(option => option.visible).every(option => option.disabled)
+      return this.options
+        .filter(option => option.visible)
+        .every(option => option.disabled)
     }
   },
 
@@ -44,7 +44,11 @@ export default {
           }
         }
         const option = this.options[this.hoverIndex]
-        if (option.disabled === true || option.groupDisabled === true || !option.visible) {
+        if (
+          option.disabled === true ||
+          option.groupDisabled === true ||
+          !option.visible
+        ) {
           this.navigateOptions(direction)
         }
         this.$nextTick(() => this.scrollToOption(this.hoverOption))

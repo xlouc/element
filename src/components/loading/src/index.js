@@ -1,5 +1,3 @@
-/** @format */
-
 import Vue from 'vue'
 import loadingVue from './loading.vue'
 import { addClass, removeClass, getStyle } from 'yak-ui/src/utils/dom'
@@ -52,10 +50,15 @@ const addStyle = (options, parent, instance) => {
     instance.originalPosition = getStyle(document.body, 'position')
     ;['top', 'left'].forEach(property => {
       let scroll = property === 'top' ? 'scrollTop' : 'scrollLeft'
-      maskStyle[property] = options.target.getBoundingClientRect()[property] + document.body[scroll] + document.documentElement[scroll] + 'px'
+      maskStyle[property] =
+        options.target.getBoundingClientRect()[property] +
+        document.body[scroll] +
+        document.documentElement[scroll] +
+        'px'
     })
     ;['height', 'width'].forEach(property => {
-      maskStyle[property] = options.target.getBoundingClientRect()[property] + 'px'
+      maskStyle[property] =
+        options.target.getBoundingClientRect()[property] + 'px'
     })
   } else {
     instance.originalPosition = getStyle(parent, 'position')
@@ -88,7 +91,10 @@ const Loading = (options = {}) => {
   })
 
   addStyle(options, parent, instance)
-  if (instance.originalPosition !== 'absolute' && instance.originalPosition !== 'fixed') {
+  if (
+    instance.originalPosition !== 'absolute' &&
+    instance.originalPosition !== 'fixed'
+  ) {
     addClass(parent, 'el-loading-parent--relative')
   }
   if (options.fullscreen && options.lock) {

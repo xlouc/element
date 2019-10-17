@@ -1,4 +1,3 @@
-/** @format */
 const cp = require('child_process')
 const fs = require('fs-extra')
 const path = require('path')
@@ -200,7 +199,9 @@ Git.prototype.add = function(...args) {
  * @return {Promise} A promise.
  */
 Git.prototype.commit = function(message) {
-  return this.logByExec('diff-index', '--quiet', 'HEAD').catch(() => this.logByExec('commit', '-m', message))
+  return this.logByExec('diff-index', '--quiet', 'HEAD').catch(() =>
+    this.logByExec('commit', '-m', message)
+  )
 }
 
 /**
@@ -242,7 +243,9 @@ Git.prototype.getRemoteUrl = function(remote) {
       if (repo) {
         return repo
       } else {
-        throw new Error('Failed to get repo URL from options or current directory.')
+        throw new Error(
+          'Failed to get repo URL from options or current directory.'
+        )
       }
     })
     .catch(err => {
@@ -275,7 +278,12 @@ Git.clone = function clone(repo, dir, ...args) {
       return Promise.resolve(new Git(dir, 'git'))
     } else {
       return fs.mkdirp(path.dirname(path.resolve(dir))).then(() => {
-        return spawn('git', ['clone', repo, dir].concat([].slice.call(args)), process.cwd(), true).then(() => new Git(dir, 'git'))
+        return spawn(
+          'git',
+          ['clone', repo, dir].concat([].slice.call(args)),
+          process.cwd(),
+          true
+        ).then(() => new Git(dir, 'git'))
       })
     }
   })

@@ -1,5 +1,3 @@
-/** @format */
-
 import { createTest, destroyVM } from '../util'
 import Row from 'packages/row'
 

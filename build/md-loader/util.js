@@ -1,4 +1,3 @@
-/** @format */
 /*eslint-disable*/
 const { compileTemplate } = require('@vue/component-compiler-utils')
 const compiler = require('vue-template-compiler')

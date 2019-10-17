@@ -1,5 +1,3 @@
-/** @format */
-
 import ElButtonGroup from '../button/src/button-group'
 
 /* istanbul ignore next */

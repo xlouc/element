@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <div class="doc-guide-about">
     <doc-about></doc-about>
@@ -12,9 +10,11 @@ export default {
   components: { DocAbout },
   mounted() {
     this.$nextTick(function() {
-      this.$el.querySelectorAll('input[type="checkbox"]').forEach(function(dom) {
-        dom.setAttribute('disabled', 'disabled')
-      })
+      this.$el
+        .querySelectorAll('input[type="checkbox"]')
+        .forEach(function(dom) {
+          dom.setAttribute('disabled', 'disabled')
+        })
     })
   }
 }

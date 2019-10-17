@@ -1,5 +1,3 @@
-/** @format */
-
 import ElTabs from './src/tabs'
 
 /* istanbul ignore next */

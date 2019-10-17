@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <script>
 import tinycolor from 'tinycolor2'
 export default {
@@ -56,15 +54,29 @@ export default {
 
   render(h) {
     const { type, tagSize, hit, effect } = this
-    const classes = ['el-tag', type ? `el-tag--${type}` : '', tagSize ? `el-tag--${tagSize}` : '', effect ? `el-tag--${effect}` : '', hit && 'is-hit']
+    const classes = [
+      'el-tag',
+      type ? `el-tag--${type}` : '',
+      tagSize ? `el-tag--${tagSize}` : '',
+      effect ? `el-tag--${effect}` : '',
+      hit && 'is-hit'
+    ]
     const tagEl = (
       <span class={classes} style={this.tagStyle} on-click={this.handleClick}>
         {this.$slots.default}
-        {this.closable && <i class="el-tag__close el-icon-close" on-click={this.handleClose}></i>}
+        {this.closable && (
+          <i
+            class="el-tag__close el-icon-close"
+            on-click={this.handleClose}></i>
+        )}
       </span>
     )
 
-    return this.disableTransitions ? tagEl : <transition name="el-zoom-in-center">{tagEl}</transition>
+    return this.disableTransitions ? (
+      tagEl
+    ) : (
+      <transition name="el-zoom-in-center">{tagEl}</transition>
+    )
   }
 }
 </script>

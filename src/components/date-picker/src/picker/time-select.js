@@ -1,5 +1,3 @@
-/** @format */
-
 import Picker from '../picker'
 import Panel from '../panel/time-select'
 

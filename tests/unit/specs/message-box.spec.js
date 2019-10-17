@@ -1,5 +1,3 @@
-/** @format */
-
 import MessageBox from 'packages/message-box'
 
 describe('MessageBox', () => {
@@ -35,8 +33,13 @@ describe('MessageBox', () => {
     setTimeout(() => {
       const msgbox = document.querySelector('.el-message-box__wrapper')
       expect(msgbox.__vue__.$parent.visible).to.true
-      expect(msgbox.querySelector('.el-message-box__title span').textContent).to.equal('消息')
-      expect(msgbox.querySelector('.el-message-box__message').querySelector('p').textContent).to.equal('这是一段内容')
+      expect(
+        msgbox.querySelector('.el-message-box__title span').textContent
+      ).to.equal('消息')
+      expect(
+        msgbox.querySelector('.el-message-box__message').querySelector('p')
+          .textContent
+      ).to.equal('这是一段内容')
       MessageBox.close()
       expect(msgbox.__vue__.$parent.visible).to.false
       done()
@@ -105,8 +108,13 @@ describe('MessageBox', () => {
     })
     setTimeout(() => {
       document.querySelector('.v-modal').click()
-      expect(document.querySelector('.el-message-box__wrapper').__vue__.$parent.visible).to.true
-      expect(document.querySelector('.el-message-box__wrapper').__vue__.$parent.type).to.equal('warning')
+      expect(
+        document.querySelector('.el-message-box__wrapper').__vue__.$parent
+          .visible
+      ).to.true
+      expect(
+        document.querySelector('.el-message-box__wrapper').__vue__.$parent.type
+      ).to.equal('warning')
       done()
     }, 300)
   })
@@ -121,7 +129,10 @@ describe('MessageBox', () => {
         .querySelector('.el-message-box__wrapper')
         .querySelector('.el-button--primary')
         .click()
-      expect(document.querySelector('.el-message-box__wrapper').__vue__.$parent.visible).to.false
+      expect(
+        document.querySelector('.el-message-box__wrapper').__vue__.$parent
+          .visible
+      ).to.false
       done()
     }, 200)
   })
@@ -133,13 +144,18 @@ describe('MessageBox', () => {
       inputErrorMessage: 'validation failed'
     })
     setTimeout(() => {
-      const messageBox = document.querySelector('.el-message-box__wrapper').__vue__.$parent
+      const messageBox = document.querySelector('.el-message-box__wrapper')
+        .__vue__.$parent
       expect(messageBox.$el.querySelector('.el-message-box__input')).to.exist
-      const haveFocus = messageBox.$el.querySelector('input').isSameNode(document.activeElement)
+      const haveFocus = messageBox.$el
+        .querySelector('input')
+        .isSameNode(document.activeElement)
       expect(haveFocus).to.true
       messageBox.inputValue = 'no'
       setTimeout(() => {
-        expect(messageBox.$el.querySelector('.el-message-box__errormsg').textContent).to.equal('validation failed')
+        expect(
+          messageBox.$el.querySelector('.el-message-box__errormsg').textContent
+        ).to.equal('validation failed')
         done()
       }, 100)
     }, 700)
@@ -151,8 +167,11 @@ describe('MessageBox', () => {
       title: '标题名称'
     })
     setTimeout(() => {
-      const messageBox = document.querySelector('.el-message-box__wrapper').__vue__.$parent
-      const haveFocus = messageBox.$el.querySelector('textarea').isSameNode(document.activeElement)
+      const messageBox = document.querySelector('.el-message-box__wrapper')
+        .__vue__.$parent
+      const haveFocus = messageBox.$el
+        .querySelector('textarea')
+        .isSameNode(document.activeElement)
       expect(haveFocus).to.true
       done()
     }, 700)
@@ -169,13 +188,18 @@ describe('MessageBox', () => {
         inputValidator: validator
       })
       setTimeout(() => {
-        const messageBox = document.querySelector('.el-message-box__wrapper').__vue__.$parent
+        const messageBox = document.querySelector('.el-message-box__wrapper')
+          .__vue__.$parent
         messageBox.inputValue = 'no'
         setTimeout(() => {
-          expect(document.querySelector('.el-message-box__errormsg').textContent).to.equal('wrong')
+          expect(
+            document.querySelector('.el-message-box__errormsg').textContent
+          ).to.equal('wrong')
           messageBox.inputValue = 'test'
           setTimeout(() => {
-            expect(document.querySelector('.el-message-box__errormsg').textContent).to.equal('')
+            expect(
+              document.querySelector('.el-message-box__errormsg').textContent
+            ).to.equal('')
             done()
           }, 100)
         }, 100)
@@ -189,10 +213,13 @@ describe('MessageBox', () => {
         inputValidator: validator
       })
       setTimeout(() => {
-        const messageBox = document.querySelector('.el-message-box__wrapper').__vue__.$parent
+        const messageBox = document.querySelector('.el-message-box__wrapper')
+          .__vue__.$parent
         messageBox.inputValue = 'no'
         setTimeout(() => {
-          expect(document.querySelector('.el-message-box__errormsg').textContent).to.equal('输入的数据不合法!')
+          expect(
+            document.querySelector('.el-message-box__errormsg').textContent
+          ).to.equal('输入的数据不合法!')
           done()
         }, 100)
       }, 200)
@@ -234,7 +261,9 @@ describe('MessageBox', () => {
       }
     )
     setTimeout(() => {
-      document.querySelector('.el-message-box__wrapper .el-button--primary').click()
+      document
+        .querySelector('.el-message-box__wrapper .el-button--primary')
+        .click()
       setTimeout(() => {
         expect(msgAction).to.equal('confirm')
         done()
@@ -244,20 +273,26 @@ describe('MessageBox', () => {
 
   describe('promise', () => {
     it('resolve', done => {
-      MessageBox.confirm('此操作将永久删除该文件, 是否继续?', '提示').then(action => {
-        expect(action).to.equal('confirm')
-        done()
-      })
+      MessageBox.confirm('此操作将永久删除该文件, 是否继续?', '提示').then(
+        action => {
+          expect(action).to.equal('confirm')
+          done()
+        }
+      )
       setTimeout(() => {
-        document.querySelector('.el-message-box__wrapper .el-button--primary').click()
+        document
+          .querySelector('.el-message-box__wrapper .el-button--primary')
+          .click()
       }, 50)
     })
 
     it('reject', done => {
-      MessageBox.confirm('此操作将永久删除该文件, 是否继续?', '提示').catch(action => {
-        expect(action).to.equal('cancel')
-        done()
-      })
+      MessageBox.confirm('此操作将永久删除该文件, 是否继续?', '提示').catch(
+        action => {
+          expect(action).to.equal('cancel')
+          done()
+        }
+      )
       setTimeout(() => {
         document.querySelector('.el-message-box__wrapper .el-button').click()
       }, 50)

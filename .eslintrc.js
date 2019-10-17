@@ -1,5 +1,3 @@
-/** @format */
-
 module.exports = {
   root: true,
   env: {
@@ -14,7 +12,6 @@ module.exports = {
     'prettier/prettier': [
       'warn',
       {
-        printWidth: 150,
         singleQuote: true,
         semi: false,
         bracketSpacing: true,

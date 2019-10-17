@@ -1,5 +1,3 @@
-/** @format */
-
 import ElProgress from './src/progress'
 
 /* istanbul ignore next */

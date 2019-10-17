@@ -1,5 +1,3 @@
-/** @format */
-
 import { createVue, destroyVM } from '../util'
 
 describe('Divider', () => {

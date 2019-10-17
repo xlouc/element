@@ -1,5 +1,3 @@
-/** @format */
-
 import TabPane from '../tabs/src/tab-pane.vue'
 
 /* istanbul ignore next */

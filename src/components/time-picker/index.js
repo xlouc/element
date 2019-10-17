@@ -1,5 +1,3 @@
-/** @format */
-
 import TimePicker from '../date-picker/src/picker/time-picker'
 
 /* istanbul ignore next */

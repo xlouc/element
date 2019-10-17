@@ -1,5 +1,3 @@
-/** @format */
-
 import ElAutocomplete from './src/autocomplete'
 
 /* istanbul ignore next */

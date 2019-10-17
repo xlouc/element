@@ -1,11 +1,24 @@
-/** @format */
 import sinon from 'sinon'
-import { createTest, createVue, triggerEvent, destroyVM, waitImmediate } from '../util'
+import {
+  createTest,
+  createVue,
+  triggerEvent,
+  destroyVM,
+  waitImmediate
+} from '../util'
 import Select from 'packages/select'
 
 describe('Select', () => {
   const getSelectVm = (configs = {}, options) => {
-    ;['multiple', 'clearable', 'filterable', 'allowCreate', 'remote', 'collapseTags', 'automaticDropdown'].forEach(config => {
+    ;[
+      'multiple',
+      'clearable',
+      'filterable',
+      'allowCreate',
+      'remote',
+      'collapseTags',
+      'automaticDropdown'
+    ].forEach(config => {
       configs[config] = configs[config] || false
     })
     configs.multipleLimit = configs.multipleLimit || 0
@@ -100,7 +113,9 @@ describe('Select', () => {
   it('create', () => {
     vm = createTest(Select, true)
     expect(vm.$el.className).to.equal('el-select')
-    expect(vm.$el.querySelector('.el-input__inner').placeholder).to.equal('请选择')
+    expect(vm.$el.querySelector('.el-input__inner').placeholder).to.equal(
+      '请选择'
+    )
     vm.toggleMenu()
     expect(vm.visible).to.true
   })
@@ -248,7 +263,8 @@ describe('Select', () => {
 
   it('disabled select', () => {
     vm = createTest(Select, { disabled: true }, true)
-    expect(vm.$el.querySelector('.el-input').classList.contains('is-disabled')).to.true
+    expect(vm.$el.querySelector('.el-input').classList.contains('is-disabled'))
+      .to.true
   })
 
   it('visible event', done => {
@@ -314,7 +330,9 @@ describe('Select', () => {
     vm.value = '选项1'
     select.inputHovering = true
     setTimeout(() => {
-      const iconClear = vm.$el.querySelector('.el-input__icon.el-icon-close-circle')
+      const iconClear = vm.$el.querySelector(
+        '.el-input__icon.el-icon-close-circle'
+      )
       expect(iconClear).to.exist
       iconClear.click()
       expect(vm.value).to.equal('')
@@ -361,7 +379,11 @@ describe('Select', () => {
     )
     setTimeout(() => {
       expect(vm.$el.querySelector('.el-input__inner').value).to.equal('label1')
-      expect(vm.$el.querySelector('.el-select-dropdown__item').classList.contains('selected'))
+      expect(
+        vm.$el
+          .querySelector('.el-select-dropdown__item')
+          .classList.contains('selected')
+      )
       done()
     }, 100)
   })
@@ -389,7 +411,11 @@ describe('Select', () => {
         }
       }
     })
-    expect(vm.$el.querySelector('.el-input__icon').classList.contains('el-icon-search')).to.be.true
+    expect(
+      vm.$el
+        .querySelector('.el-input__icon')
+        .classList.contains('el-icon-search')
+    ).to.be.true
   })
 
   it('custom el-option template', () => {
@@ -423,7 +449,9 @@ describe('Select', () => {
       },
       true
     )
-    expect(vm.$el.querySelector('.el-select-dropdown__item p').textContent).to.equal('label value')
+    expect(
+      vm.$el.querySelector('.el-select-dropdown__item p').textContent
+    ).to.equal('label value')
   })
 
   it('option group', () => {
@@ -517,7 +545,9 @@ describe('Select', () => {
   it('filterable with custom filter-method', done => {
     const filterMethod = vm => {
       return query => {
-        vm.options = vm.options.filter(option => option.label.indexOf(query) === -1)
+        vm.options = vm.options.filter(
+          option => option.label.indexOf(query) === -1
+        )
       }
     }
     vm = getSelectVm({ filterable: true, filterMethod })
@@ -583,8 +613,13 @@ describe('Select', () => {
       select.selectedLabel = 'new'
       select.onInputChange()
       setTimeout(() => {
-        const options = document.querySelectorAll('.el-select-dropdown__item span')
-        const target = [].filter.call(options, option => option.innerText === 'new')
+        const options = document.querySelectorAll(
+          '.el-select-dropdown__item span'
+        )
+        const target = [].filter.call(
+          options,
+          option => option.innerText === 'new'
+        )
         target[0].click()
         setTimeout(() => {
           expect(select.value.indexOf('new') > -1).to.true
@@ -603,7 +638,9 @@ describe('Select', () => {
       setTimeout(() => {
         options[3].click()
         setTimeout(() => {
-          expect(vm.value.indexOf('选项2') > -1 && vm.value.indexOf('选项4') > -1).to.true
+          expect(
+            vm.value.indexOf('选项2') > -1 && vm.value.indexOf('选项4') > -1
+          ).to.true
           const tagCloseIcons = vm.$el.querySelectorAll('.el-tag__close')
           tagCloseIcons[0].click()
           setTimeout(() => {
@@ -892,7 +929,9 @@ describe('Select', () => {
       }
     })
 
-    expect(vm.$el.querySelector('.empty-slot').innerText).to.be.equal('EmptySlot')
+    expect(vm.$el.querySelector('.empty-slot').innerText).to.be.equal(
+      'EmptySlot'
+    )
     done()
   })
 
@@ -914,7 +953,9 @@ describe('Select', () => {
     vm.$refs.select.$el.click()
     await waitImmediate()
     expect(vm.$refs.select.visible).to.be.equal(true)
-    expect(vm.$el.querySelector('.el-input__inner').placeholder).to.be.equal('test')
+    expect(vm.$el.querySelector('.el-input__inner').placeholder).to.be.equal(
+      'test'
+    )
     expect(vm.value).to.be.equal('test')
   })
 

@@ -1,5 +1,3 @@
-/** @format */
-
 import List from './src/main'
 
 /* istanbul ignore next */

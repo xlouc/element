@@ -1,5 +1,3 @@
-/** @format */
-
 import { once, on } from 'yak-ui/src/utils/dom'
 
 export default {

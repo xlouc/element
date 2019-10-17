@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <div
     class="el-upload-dragger"
@@ -47,7 +45,8 @@ export default {
         'file',
         [].slice.call(e.dataTransfer.files).filter(file => {
           const { type, name } = file
-          const extension = name.indexOf('.') > -1 ? `.${name.split('.').pop()}` : ''
+          const extension =
+            name.indexOf('.') > -1 ? `.${name.split('.').pop()}` : ''
           const baseType = type.replace(/\/.*$/, '')
           return accept
             .split(',')

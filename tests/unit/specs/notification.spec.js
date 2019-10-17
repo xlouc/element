@@ -1,5 +1,3 @@
-/** @format */
-
 import Vue from 'vue'
 import { triggerEvent } from '../util'
 import Notification from 'packages/notification'
@@ -76,7 +74,9 @@ describe('Notification', () => {
     const group = document.querySelector('.el-notification__group')
     const message = group.querySelector('.el-notification__content')
 
-    expect(message.innerHTML).to.equal('<p style="color: red;">大美兴，川普王</p>')
+    expect(message.innerHTML).to.equal(
+      '<p style="color: red;">大美兴，川普王</p>'
+    )
   })
 
   it('alias by vnode', () => {
@@ -92,7 +92,9 @@ describe('Notification', () => {
 
   it('invoke with type', () => {
     Notification.success('太阳之子')
-    expect(document.querySelector('.el-notification').__vue__.type).to.equal('success')
+    expect(document.querySelector('.el-notification').__vue__.type).to.equal(
+      'success'
+    )
   })
 
   it('reset timer', done => {

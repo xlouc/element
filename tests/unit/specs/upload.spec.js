@@ -1,4 +1,3 @@
-/** @format */
 import sinon from 'sinon'
 import { createVue, destroyVM } from '../util.js'
 import ajax from 'packages/upload/src/ajax'
@@ -322,7 +321,9 @@ describe('Upload', () => {
         })
       }
 
-      uploader.$nextTick(_ => uploader.$refs['upload-inner'].handleChange({ target: { files } }))
+      uploader.$nextTick(_ =>
+        uploader.$refs['upload-inner'].handleChange({ target: { files } })
+      )
     })
   })
 })

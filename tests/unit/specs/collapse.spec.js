@@ -1,4 +1,3 @@
-/** @format */
 import sinon from 'sinon'
 import { createVue, destroyVM } from '../util'
 

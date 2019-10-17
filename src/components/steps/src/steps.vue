@@ -1,7 +1,8 @@
-<!-- @format -->
-
 <template>
-  <div class="el-steps" :class="[!simple && 'el-steps--' + direction, simple && 'el-steps--simple']">
+  <div
+    class="el-steps"
+    :class="[!simple && 'el-steps--' + direction, simple && 'el-steps--simple']"
+  >
     <slot></slot>
   </div>
 </template>

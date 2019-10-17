@@ -1,5 +1,3 @@
-/** @format */
-
 import Popover from './src/main'
 import directive from './src/directive'
 import Vue from 'vue'

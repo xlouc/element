@@ -1,5 +1,3 @@
-/** @format */
-
 require('babel-regenerator-runtime') // add regenerator support for async await
 require('packages/theme-chalk/lib/index.css')
 

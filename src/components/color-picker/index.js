@@ -1,5 +1,3 @@
-/** @format */
-
 import ColorPicker from './src/main'
 
 /* istanbul ignore next */

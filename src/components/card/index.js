@@ -1,5 +1,3 @@
-/** @format */
-
 import Card from './src/main'
 
 /* istanbul ignore next */

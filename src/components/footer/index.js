@@ -1,5 +1,3 @@
-/** @format */
-
 import Footer from './src/main'
 
 /* istanbul ignore next */

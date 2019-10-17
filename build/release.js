@@ -1,5 +1,3 @@
-/** @format */
-
 /* eslint-disable no-unused-vars */
 const fileSave = require('file-save')
 const fs = require('fs-extra')
@@ -55,8 +53,18 @@ git
     if (!version) {
       return Promise.reject(new Error('no version in package.json'))
     }
-    const releaseType = ['patch', 'minor', 'major', 'prepatch', 'preminor', 'premajor', 'prerelease']
-    const choices = releaseType.map(item => `${item}: ${semver.inc(version, item)}`)
+    const releaseType = [
+      'patch',
+      'minor',
+      'major',
+      'prepatch',
+      'preminor',
+      'premajor',
+      'prerelease'
+    ]
+    const choices = releaseType.map(
+      item => `${item}: ${semver.inc(version, item)}`
+    )
     return prompt([
       {
         name: 'version',
@@ -87,7 +95,11 @@ git
           var file = require(configPath)
           var newFile = Object.assign({}, file)
           newFile.version = version
-          console.log(`${colors('green', '√')} bumping version in ${filename} from ${file.version} to ${newFile.version}`)
+          console.log(
+            `${colors('green', '√')} bumping version in ${filename} from ${
+              file.version
+            } to ${newFile.version}`
+          )
           fileSave(configPath)
             .write(JSON.stringify(newFile, null, 2), 'utf8')
             .end('')
@@ -110,7 +122,12 @@ git
   })
   .then(function() {
     console.info('Start build project ...')
-    return Git.spawn(process.platform === 'win32' ? 'npm.cmd' : 'npm', ['run', 'build'], process.cwd(), true)
+    return Git.spawn(
+      process.platform === 'win32' ? 'npm.cmd' : 'npm',
+      ['run', 'build'],
+      process.cwd(),
+      true
+    )
   })
   .then(function() {
     // 上传编译后的内容至 gh-pages
@@ -165,7 +182,12 @@ git
       args.push('--tag')
       args.push('beta')
     }
-    return Git.spawn(process.platform === 'win32' ? 'npm.cmd' : 'npm', args, process.cwd(), true)
+    return Git.spawn(
+      process.platform === 'win32' ? 'npm.cmd' : 'npm',
+      args,
+      process.cwd(),
+      true
+    )
   })
   .then(
     function() {
@@ -182,7 +204,9 @@ git
       process.exit()
     },
     function(error) {
-      console.error(new Error('Unspecified error (run without silent option for detail)'))
+      console.error(
+        new Error('Unspecified error (run without silent option for detail)')
+      )
       process.exit(1)
     }
   )

@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <script>
 import Avatar from './avatar'
 import Title from './title'

@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <label
     :class="[
@@ -104,21 +102,31 @@ export default {
         } else {
           this.$emit('input', val)
         }
-        this.$refs.radio && (this.$refs.radio.checked = this.model === this.label)
+        this.$refs.radio &&
+          (this.$refs.radio.checked = this.model === this.label)
       }
     },
     _elFormItemSize() {
       return (this.elFormItem || {}).elFormItemSize
     },
     radioSize() {
-      const temRadioSize = this.size || this._elFormItemSize || (this.$ELEMENT || {}).size
-      return this.isGroup ? this._radioGroup.radioGroupSize || temRadioSize : temRadioSize
+      const temRadioSize =
+        this.size || this._elFormItemSize || (this.$ELEMENT || {}).size
+      return this.isGroup
+        ? this._radioGroup.radioGroupSize || temRadioSize
+        : temRadioSize
     },
     isDisabled() {
-      return this.isGroup ? this._radioGroup.disabled || this.disabled || (this.elForm || {}).disabled : this.disabled || (this.elForm || {}).disabled
+      return this.isGroup
+        ? this._radioGroup.disabled ||
+            this.disabled ||
+            (this.elForm || {}).disabled
+        : this.disabled || (this.elForm || {}).disabled
     },
     tabIndex() {
-      return this.isDisabled || (this.isGroup && this.model !== this.label) ? -1 : 0
+      return this.isDisabled || (this.isGroup && this.model !== this.label)
+        ? -1
+        : 0
     }
   },
 
@@ -129,7 +137,8 @@ export default {
     handleChange() {
       this.$nextTick(() => {
         this.$emit('change', this.model)
-        this.isGroup && this.dispatch('ElRadioGroup', 'handleChange', this.model)
+        this.isGroup &&
+          this.dispatch('ElRadioGroup', 'handleChange', this.model)
       })
     }
   }

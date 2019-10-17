@@ -1,9 +1,10 @@
-<!-- @format -->
-
 <template>
   <transition name="el-zoom-in-top" @after-leave="$emit('dodestroy')">
     <div v-show="visible" class="el-time-panel el-popper" :class="popperClass">
-      <div class="el-time-panel__content" :class="{ 'has-seconds': showSeconds }">
+      <div
+        class="el-time-panel__content"
+        :class="{ 'has-seconds': showSeconds }"
+      >
         <time-spinner
           ref="spinner"
           @change="handleChange"
@@ -15,10 +16,19 @@
         ></time-spinner>
       </div>
       <div class="el-time-panel__footer">
-        <button type="button" class="el-time-panel__btn cancel" @click="handleCancel">
+        <button
+          type="button"
+          class="el-time-panel__btn cancel"
+          @click="handleCancel"
+        >
           {{ t('el.datepicker.cancel') }}
         </button>
-        <button type="button" class="el-time-panel__btn" :class="{ confirm: !disabled }" @click="handleConfirm()">
+        <button
+          type="button"
+          class="el-time-panel__btn"
+          :class="{ confirm: !disabled }"
+          @click="handleConfirm()"
+        >
           {{ t('el.datepicker.confirm') }}
         </button>
       </div>
@@ -27,7 +37,12 @@
 </template>
 
 <script type="text/babel">
-import { limitTimeRange, isDate, clearMilliseconds, timeWithinRange } from 'yak-ui/src/utils/date-util'
+import {
+  limitTimeRange,
+  isDate,
+  clearMilliseconds,
+  timeWithinRange
+} from 'yak-ui/src/utils/date-util'
 import Locale from 'yak-ui/src/mixins/locale'
 import TimeSpinner from '../basic/time-spinner'
 
@@ -132,7 +147,9 @@ export default {
 
     handleConfirm(visible = false, first) {
       if (first) return
-      const date = clearMilliseconds(limitTimeRange(this.date, this.selectableRange, this.format))
+      const date = clearMilliseconds(
+        limitTimeRange(this.date, this.selectableRange, this.format)
+      )
       this.$emit('pick', date, visible, first)
     },
 
@@ -167,7 +184,9 @@ export default {
 
     changeSelectionRange(step) {
       const list = [0, 3].concat(this.showSeconds ? [6] : [])
-      const mapping = ['hours', 'minutes'].concat(this.showSeconds ? ['seconds'] : [])
+      const mapping = ['hours', 'minutes'].concat(
+        this.showSeconds ? ['seconds'] : []
+      )
       const index = list.indexOf(this.selectionRange[0])
       const next = (index + step + list.length) % list.length
       this.$refs.spinner.emitSelectRange(mapping[next])

@@ -1,5 +1,3 @@
-/** @format */
-
 import Vue from 'vue'
 
 let scrollBarWidth

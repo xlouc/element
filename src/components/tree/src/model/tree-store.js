@@ -1,5 +1,3 @@
-/** @format */
-
 import Node from './node'
 import { getNodeKey } from './util'
 
@@ -160,7 +158,10 @@ export default class TreeStore {
       const childNodes = node.root ? node.root.childNodes : node.childNodes
 
       childNodes.forEach(child => {
-        if ((child.checked || (includeHalfChecked && child.indeterminate)) && (!leafOnly || (leafOnly && child.isLeaf))) {
+        if (
+          (child.checked || (includeHalfChecked && child.indeterminate)) &&
+          (!leafOnly || (leafOnly && child.isLeaf))
+        ) {
           checkedNodes.push(child.data)
         }
 

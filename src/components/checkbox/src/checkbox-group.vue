@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <script>
 import Emitter from 'yak-ui/src/mixins/emitter'
 

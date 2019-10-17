@@ -1,5 +1,3 @@
-/** @format */
-
 import { createVue, destroyVM } from '../util'
 
 describe('Breadcrumb', () => {
@@ -18,7 +16,9 @@ describe('Breadcrumb', () => {
       </el-breadcrumb>
     `)
     vm.$nextTick(_ => {
-      expect(vm.$el.querySelector('.el-breadcrumb__separator').innerText).to.equal('>')
+      expect(
+        vm.$el.querySelector('.el-breadcrumb__separator').innerText
+      ).to.equal('>')
       done()
     })
   })

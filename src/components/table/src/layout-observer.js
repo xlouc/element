@@ -1,5 +1,3 @@
-/** @format */
-
 export default {
   created() {
     this.tableLayout.addObserver(this)

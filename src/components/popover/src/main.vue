@@ -1,8 +1,10 @@
-<!-- @format -->
-
 <template>
   <span>
-    <transition :name="transition" @after-enter="handleAfterEnter" @after-leave="handleAfterLeave">
+    <transition
+      :name="transition"
+      @after-enter="handleAfterEnter"
+      @after-leave="handleAfterLeave"
+    >
       <div
         class="el-popover el-popper"
         :class="[popperClass, content && 'el-popover--plain']"
@@ -35,7 +37,8 @@ export default {
     trigger: {
       type: String,
       default: 'click',
-      validator: value => ['click', 'focus', 'hover', 'manual'].indexOf(value) > -1
+      validator: value =>
+        ['click', 'focus', 'hover', 'manual'].indexOf(value) > -1
     },
     openDelay: {
       type: Number,
@@ -121,7 +124,9 @@ export default {
       on(popper, 'mouseleave', this.handleMouseLeave)
     } else if (this.trigger === 'focus') {
       if (this.tabindex < 0) {
-        console.warn('[Element Warn][Popover]a negative taindex means that the element cannot be focused by tab key')
+        console.warn(
+          '[Element Warn][Popover]a negative taindex means that the element cannot be focused by tab key'
+        )
       }
       if (reference.querySelector('input, textarea')) {
         on(reference, 'focusin', this.doShow)
@@ -153,14 +158,16 @@ export default {
     },
     handleFocus() {
       addClass(this.referenceElm, 'focusing')
-      if (this.trigger === 'click' || this.trigger === 'focus') this.showPopper = true
+      if (this.trigger === 'click' || this.trigger === 'focus')
+        this.showPopper = true
     },
     handleClick() {
       removeClass(this.referenceElm, 'focusing')
     },
     handleBlur() {
       removeClass(this.referenceElm, 'focusing')
-      if (this.trigger === 'click' || this.trigger === 'focus') this.showPopper = false
+      if (this.trigger === 'click' || this.trigger === 'focus')
+        this.showPopper = false
     },
     handleMouseEnter() {
       clearTimeout(this._timer)
@@ -195,7 +202,15 @@ export default {
       if (!reference && this.$slots.reference && this.$slots.reference[0]) {
         reference = this.referenceElm = this.$slots.reference[0].elm
       }
-      if (!this.$el || !reference || this.$el.contains(e.target) || reference.contains(e.target) || !popper || popper.contains(e.target)) return
+      if (
+        !this.$el ||
+        !reference ||
+        this.$el.contains(e.target) ||
+        reference.contains(e.target) ||
+        !popper ||
+        popper.contains(e.target)
+      )
+        return
       this.showPopper = false
     },
     handleAfterEnter() {

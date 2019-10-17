@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <div :class="['el-badge', { 'el-badge--status': status }]">
     <template v-if="!status">
@@ -21,7 +19,10 @@
       </transition>
     </template>
     <template v-else-if="!hidden">
-      <span :class="['el-badge__status-dot', { [`is-${type}`]: Boolean(type) }]" :style="{ backgroundColor: color }"></span>
+      <span
+        :class="['el-badge__status-dot', { [`is-${type}`]: Boolean(type) }]"
+        :style="{ backgroundColor: color }"
+      ></span>
       <span class="el-badge__status-text">
         <slot></slot>
       </span>
@@ -43,7 +44,9 @@ export default {
     type: {
       type: String,
       validator(val) {
-        return ['primary', 'success', 'warning', 'info', 'danger'].indexOf(val) > -1
+        return (
+          ['primary', 'success', 'warning', 'info', 'danger'].indexOf(val) > -1
+        )
       }
     }
   },

@@ -1,4 +1,3 @@
-/** @format */
 import sinon from 'sinon'
 import { createVue, triggerClick, destroyVM, triggerKeyDown } from '../util'
 
@@ -30,7 +29,9 @@ describe('Autocomplete', () => {
         methods: {
           querySearch(queryString, cb) {
             var restaurants = this.restaurants
-            var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants
+            var results = queryString
+              ? restaurants.filter(this.createFilter(queryString))
+              : restaurants
             cb(results)
           },
           createFilter(queryString) {
@@ -63,12 +64,17 @@ describe('Autocomplete', () => {
     let inputElm = elm.querySelector('input')
     inputElm.focus()
 
-    expect(inputElm.getAttribute('placeholder')).to.be.equal('请输入内容autocomplete1')
+    expect(inputElm.getAttribute('placeholder')).to.be.equal(
+      '请输入内容autocomplete1'
+    )
 
     setTimeout(_ => {
       const suggestions = vm.$refs.autocomplete.$refs.suggestions.$el
       expect(suggestions.style.display).to.not.equal('none')
-      expect(suggestions.querySelectorAll('.el-autocomplete-suggestion__list li').length).to.be.equal(4)
+      expect(
+        suggestions.querySelectorAll('.el-autocomplete-suggestion__list li')
+          .length
+      ).to.be.equal(4)
 
       triggerClick(document)
       setTimeout(_ => {
@@ -97,7 +103,9 @@ describe('Autocomplete', () => {
         methods: {
           querySearch(queryString, cb) {
             var restaurants = this.restaurants
-            var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants
+            var results = queryString
+              ? restaurants.filter(this.createFilter(queryString))
+              : restaurants
             cb(results)
           },
           createFilter(queryString) {
@@ -136,7 +144,9 @@ describe('Autocomplete', () => {
 
     setTimeout(_ => {
       const suggestions = autocomplete.$refs.suggestions.$el
-      const suggestionList = suggestions.querySelectorAll('.el-autocomplete-suggestion__list li')
+      const suggestionList = suggestions.querySelectorAll(
+        '.el-autocomplete-suggestion__list li'
+      )
       suggestionList[1].click()
       setTimeout(_ => {
         expect(inputElm.value).to.be.equal('Hot honey 首尔炸鸡（仙霞路）')
@@ -167,7 +177,9 @@ describe('Autocomplete', () => {
         methods: {
           querySearch(queryString, cb) {
             var restaurants = this.restaurants
-            var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants
+            var results = queryString
+              ? restaurants.filter(this.createFilter(queryString))
+              : restaurants
             cb(results)
           },
           createFilter(queryString) {
@@ -201,7 +213,9 @@ describe('Autocomplete', () => {
     input.$emit('input', '三')
     setTimeout(() => {
       expect(vm.state).to.be.equal('三')
-      expect(autocomplete.suggestions[0].value).to.be.equal('三全鲜食（北新泾店）')
+      expect(autocomplete.suggestions[0].value).to.be.equal(
+        '三全鲜食（北新泾店）'
+      )
       input.$emit('input', '')
       setTimeout(() => {
         expect(vm.state).to.be.equal('')
@@ -235,7 +249,9 @@ describe('Autocomplete', () => {
           methods: {
             querySearch(queryString, cb) {
               var restaurants = this.restaurants
-              var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants
+              var results = queryString
+                ? restaurants.filter(this.createFilter(queryString))
+                : restaurants
               cb(results)
             },
             createFilter(queryString) {
@@ -322,7 +338,9 @@ describe('Autocomplete', () => {
         methods: {
           querySearch(queryString, cb) {
             var restaurants = this.restaurants
-            var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants
+            var results = queryString
+              ? restaurants.filter(this.createFilter(queryString))
+              : restaurants
             cb(results)
           },
           createFilter(queryString) {
@@ -361,7 +379,9 @@ describe('Autocomplete', () => {
 
     setTimeout(_ => {
       const suggestions = autocomplete.$refs.suggestions.$el
-      const suggestionList = suggestions.querySelectorAll('.el-autocomplete-suggestion__list li')
+      const suggestionList = suggestions.querySelectorAll(
+        '.el-autocomplete-suggestion__list li'
+      )
       expect(suggestionList[1].innerHTML === '上海市长宁区淞虹路661号')
       suggestionList[1].click()
       setTimeout(_ => {
@@ -393,7 +413,9 @@ describe('Autocomplete', () => {
         methods: {
           querySearch(queryString, cb) {
             var restaurants = this.restaurants
-            var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants
+            var results = queryString
+              ? restaurants.filter(this.createFilter(queryString))
+              : restaurants
             cb(results)
           },
           createFilter(queryString) {
@@ -478,11 +500,16 @@ describe('Autocomplete', () => {
     setTimeout(_ => {
       autocomplete.highlight(8)
       vm.$nextTick(_ => {
-        const suggestions = autocomplete.$refs.suggestions.$el.querySelector('.el-autocomplete-suggestion__wrap')
-        let suggestionsList = suggestions.querySelectorAll('.el-autocomplete-suggestion__list li')
+        const suggestions = autocomplete.$refs.suggestions.$el.querySelector(
+          '.el-autocomplete-suggestion__wrap'
+        )
+        let suggestionsList = suggestions.querySelectorAll(
+          '.el-autocomplete-suggestion__list li'
+        )
         let highlightedItem = suggestionsList[8]
         expect(highlightedItem.classList.contains('highlighted')).to.be.true
-        expect(suggestions.scrollTop === highlightedItem.scrollHeight).to.be.true
+        expect(suggestions.scrollTop === highlightedItem.scrollHeight).to.be
+          .true
         done()
       })
     }, 500)
@@ -507,7 +534,9 @@ describe('Autocomplete', () => {
         methods: {
           querySearch(queryString, cb) {
             var restaurants = this.restaurants
-            var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants
+            var results = queryString
+              ? restaurants.filter(this.createFilter(queryString))
+              : restaurants
             cb(results)
           },
           createFilter(queryString) {
@@ -564,7 +593,9 @@ describe('Autocomplete', () => {
       autocomplete.highlight(15)
       vm.$nextTick(_ => {
         const suggestions = autocomplete.$refs.suggestions.$el
-        const suggestionsList = suggestions.querySelectorAll('.el-autocomplete-suggestion__list li')
+        const suggestionsList = suggestions.querySelectorAll(
+          '.el-autocomplete-suggestion__list li'
+        )
         let highlightedItem = suggestionsList[11]
         expect(highlightedItem.className).to.be.equal('highlighted')
         done()
@@ -592,7 +623,9 @@ describe('Autocomplete', () => {
         methods: {
           querySearch(queryString, cb) {
             var restaurants = this.restaurants
-            var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants
+            var results = queryString
+              ? restaurants.filter(this.createFilter(queryString))
+              : restaurants
             cb(results)
           },
           createFilter(queryString) {
@@ -651,7 +684,9 @@ describe('Autocomplete', () => {
         methods: {
           querySearch(queryString, cb) {
             var restaurants = this.restaurants
-            var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants
+            var results = queryString
+              ? restaurants.filter(this.createFilter(queryString))
+              : restaurants
             cb(results)
           },
           createFilter(queryString) {
@@ -714,8 +749,17 @@ describe('Autocomplete', () => {
         },
         methods: {
           querySearch(queryString, cb) {
-            const opts = [{ value: '1' }, { value: '11' }, { value: '2' }, { value: '22' }]
-            cb(queryString ? opts.filter(opt => opt.value.indexOf(queryString) >= 0) : opts)
+            const opts = [
+              { value: '1' },
+              { value: '11' },
+              { value: '2' },
+              { value: '22' }
+            ]
+            cb(
+              queryString
+                ? opts.filter(opt => opt.value.indexOf(queryString) >= 0)
+                : opts
+            )
           }
         }
       },
@@ -731,7 +775,9 @@ describe('Autocomplete', () => {
 
     setTimeout(_ => {
       const suggestions = vm.$refs.autocomplete.$refs.suggestions.$el
-      const items = suggestions.querySelectorAll('.el-autocomplete-suggestion__list li')
+      const items = suggestions.querySelectorAll(
+        '.el-autocomplete-suggestion__list li'
+      )
 
       expect(items.length).to.equal(2)
       expect(items[0].classList.contains('highlighted')).to.be.true

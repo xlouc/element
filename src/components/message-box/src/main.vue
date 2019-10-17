@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <transition name="msgbox-fade">
     <div
@@ -11,10 +9,16 @@
       aria-modal="true"
       :aria-label="title || 'dialog'"
     >
-      <div class="el-message-box" :class="[customClass, center && 'el-message-box--center']">
+      <div
+        class="el-message-box"
+        :class="[customClass, center && 'el-message-box--center']"
+      >
         <div class="el-message-box__header" v-if="title !== null">
           <div class="el-message-box__title">
-            <div :class="['el-message-box__status', icon]" v-if="icon && center"></div>
+            <div
+              :class="['el-message-box__status', icon]"
+              v-if="icon && center"
+            ></div>
             <span>{{ title }}</span>
           </div>
           <button
@@ -22,14 +26,21 @@
             class="el-message-box__headerbtn"
             aria-label="Close"
             v-if="showClose"
-            @click="handleAction(distinguishCancelAndClose ? 'close' : 'cancel')"
-            @keydown.enter="handleAction(distinguishCancelAndClose ? 'close' : 'cancel')"
+            @click="
+              handleAction(distinguishCancelAndClose ? 'close' : 'cancel')
+            "
+            @keydown.enter="
+              handleAction(distinguishCancelAndClose ? 'close' : 'cancel')
+            "
           >
             <i class="el-message-box__close el-icon-close"></i>
           </button>
         </div>
         <div class="el-message-box__content">
-          <div :class="['el-message-box__status', icon]" v-if="icon && !center && message !== ''"></div>
+          <div
+            :class="['el-message-box__status', icon]"
+            v-if="icon && !center && message !== ''"
+          ></div>
           <div class="el-message-box__message" v-if="message !== ''">
             <slot>
               <p v-if="!dangerouslyUseHTMLString">{{ message }}</p>
@@ -142,7 +153,9 @@ export default {
   computed: {
     icon() {
       const { type, iconClass } = this
-      return iconClass || (type && typeMap[type] ? `el-icon-${typeMap[type]}` : '')
+      return (
+        iconClass || (type && typeMap[type] ? `el-icon-${typeMap[type]}` : '')
+      )
     },
 
     confirmButtonClasses() {
@@ -208,7 +221,8 @@ export default {
       if (this.$type === 'prompt') {
         const inputPattern = this.inputPattern
         if (inputPattern && !inputPattern.test(this.inputValue || '')) {
-          this.editorErrorMessage = this.inputErrorMessage || t('el.messagebox.error')
+          this.editorErrorMessage =
+            this.inputErrorMessage || t('el.messagebox.error')
           addClass(this.getInputElement(), 'invalid')
           return false
         }
@@ -216,7 +230,8 @@ export default {
         if (typeof inputValidator === 'function') {
           const validateResult = inputValidator(this.inputValue)
           if (validateResult === false) {
-            this.editorErrorMessage = this.inputErrorMessage || t('el.messagebox.error')
+            this.editorErrorMessage =
+              this.inputErrorMessage || t('el.messagebox.error')
             addClass(this.getInputElement(), 'invalid')
             return false
           }
@@ -233,7 +248,9 @@ export default {
     },
     getFirstFocus() {
       const btn = this.$el.querySelector('.el-message-box__btns .el-button')
-      const title = this.$el.querySelector('.el-message-box__btns .el-message-box__title')
+      const title = this.$el.querySelector(
+        '.el-message-box__btns .el-message-box__title'
+      )
       return btn || title
     },
     getInputElement() {
@@ -266,7 +283,11 @@ export default {
           })
         }
         this.focusAfterClosed = document.activeElement
-        messageBox = new Dialog(this.$el, this.focusAfterClosed, this.getFirstFocus())
+        messageBox = new Dialog(
+          this.$el,
+          this.focusAfterClosed,
+          this.getFirstFocus()
+        )
       }
 
       // prompt

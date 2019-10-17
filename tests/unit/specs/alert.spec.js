@@ -1,5 +1,3 @@
-/** @format */
-
 import { createTest, createVue, destroyVM } from '../util'
 import Alert from 'packages/alert'
 
@@ -18,7 +16,9 @@ describe('Alert', () => {
       },
       true
     )
-    expect(vm.$el.querySelector('.el-alert__title').textContent).to.equal('test')
+    expect(vm.$el.querySelector('.el-alert__title').textContent).to.equal(
+      'test'
+    )
     expect(vm.$el.classList.contains('el-alert--info')).to.true
   })
 
@@ -45,7 +45,9 @@ describe('Alert', () => {
       },
       true
     )
-    expect(vm.$el.querySelector('.el-alert__description').textContent).to.equal('Unbowed, Unbent, Unbroken')
+    expect(vm.$el.querySelector('.el-alert__description').textContent).to.equal(
+      'Unbowed, Unbent, Unbroken'
+    )
   })
 
   it('theme', () => {

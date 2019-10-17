@@ -1,5 +1,3 @@
-/** @format */
-
 import { createVue, triggerEvent, createTest, destroyVM } from '../util'
 import Popover from 'packages/popover'
 

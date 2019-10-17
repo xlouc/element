@@ -1,5 +1,3 @@
-/** @format */
-
 import ElMenuItemGroup from '../menu/src/menu-item-group'
 
 /* istanbul ignore next */

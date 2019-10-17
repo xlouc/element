@@ -1,5 +1,3 @@
-/** @format */
-
 import { createTest, createVue, destroyVM } from '../util'
 import Rate from 'packages/rate'
 import Vue from 'vue'
@@ -105,7 +103,9 @@ describe('Rate', () => {
       },
       true
     )
-    const thirdIcon = vm.$el.querySelectorAll('.el-rate__item')[2].querySelector('.el-rate__icon')
+    const thirdIcon = vm.$el
+      .querySelectorAll('.el-rate__item')[2]
+      .querySelector('.el-rate__icon')
     expect(thirdIcon.style.color).to.equal('rgb(255, 153, 0)')
   })
 
@@ -139,7 +139,9 @@ describe('Rate', () => {
     setTimeout(() => {
       vm.muted = true
       vm.$nextTick(() => {
-        const thirdIcon = vm.$el.querySelectorAll('.el-rate__item')[2].querySelector('.el-rate__icon')
+        const thirdIcon = vm.$el
+          .querySelectorAll('.el-rate__item')[2]
+          .querySelector('.el-rate__icon')
         expect(thirdIcon.style.color).to.equal('rgb(153, 153, 153)')
         done()
       })
@@ -163,7 +165,9 @@ describe('Rate', () => {
       },
       true
     )
-    const thirdIcon = vm.$el.querySelectorAll('.el-rate__item')[2].querySelector('.el-rate__icon')
+    const thirdIcon = vm.$el
+      .querySelectorAll('.el-rate__item')[2]
+      .querySelector('.el-rate__icon')
     expect(thirdIcon.style.color).to.equal('rgb(247, 186, 42)')
   })
 
@@ -254,7 +258,9 @@ describe('Rate', () => {
       },
       true
     )
-    const thirdIcon = vm.$el.querySelectorAll('.el-rate__item')[3].querySelector('.el-rate__icon')
+    const thirdIcon = vm.$el
+      .querySelectorAll('.el-rate__item')[3]
+      .querySelector('.el-rate__icon')
     expect(thirdIcon.className).to.include('icon-rate-face-3')
   })
 })

@@ -1,10 +1,20 @@
-<!-- @format -->
-
 <template>
-  <transition-group tag="ul" :class="['el-upload-list', 'el-upload-list--' + listType, { 'is-disabled': disabled }]" name="el-list">
+  <transition-group
+    tag="ul"
+    :class="[
+      'el-upload-list',
+      'el-upload-list--' + listType,
+      { 'is-disabled': disabled }
+    ]"
+    name="el-list"
+  >
     <li
       v-for="file in files"
-      :class="['el-upload-list__item', 'is-' + file.status, focusing ? 'focusing' : '']"
+      :class="[
+        'el-upload-list__item',
+        'is-' + file.status,
+        focusing ? 'focusing' : ''
+      ]"
       :key="file.uid"
       tabindex="0"
       @keydown.delete="!disabled && $emit('remove', file)"
@@ -15,7 +25,10 @@
       <slot :file="file">
         <img
           class="el-upload-list__item-thumbnail"
-          v-if="file.status !== 'uploading' && ['picture-card', 'picture'].indexOf(listType) > -1"
+          v-if="
+            file.status !== 'uploading' &&
+              ['picture-card', 'picture'].indexOf(listType) > -1
+          "
           :src="file.url"
           alt=""
         />
@@ -28,12 +41,19 @@
             :class="{
               'el-icon-upload-success': true,
               'el-icon-check-circle': listType === 'text',
-              'el-icon-check': ['picture-card', 'picture'].indexOf(listType) > -1
+              'el-icon-check':
+                ['picture-card', 'picture'].indexOf(listType) > -1
             }"
           ></i>
         </label>
-        <i class="el-icon-close" v-if="!disabled" @click="$emit('remove', file)"></i>
-        <i class="el-icon-close-tip" v-if="!disabled">{{ t('el.upload.deleteTip') }}</i>
+        <i
+          class="el-icon-close"
+          v-if="!disabled"
+          @click="$emit('remove', file)"
+        ></i>
+        <i class="el-icon-close-tip" v-if="!disabled">{{
+          t('el.upload.deleteTip')
+        }}</i>
         <!--因为close按钮只在li:focus的时候 display, li blur后就不存在了，所以键盘导航时永远无法 focus到 close按钮上-->
         <el-progress
           v-if="file.status === 'uploading'"
@@ -41,11 +61,22 @@
           :stroke-width="listType === 'picture-card' ? 6 : 2"
           :percentage="parsePercentage(file.percentage)"
         ></el-progress>
-        <span class="el-upload-list__item-actions" v-if="listType === 'picture-card'">
-          <span class="el-upload-list__item-preview" v-if="handlePreview && listType === 'picture-card'" @click="handlePreview(file)">
+        <span
+          class="el-upload-list__item-actions"
+          v-if="listType === 'picture-card'"
+        >
+          <span
+            class="el-upload-list__item-preview"
+            v-if="handlePreview && listType === 'picture-card'"
+            @click="handlePreview(file)"
+          >
             <i class="el-icon-zoomin"></i>
           </span>
-          <span v-if="!disabled" class="el-upload-list__item-delete" @click="$emit('remove', file)">
+          <span
+            v-if="!disabled"
+            class="el-upload-list__item-delete"
+            @click="$emit('remove', file)"
+          >
             <i class="el-icon-delete"></i>
           </span>
         </span>

@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template functional>
   <el-header class="doc-header">
     <div class="doc-container">
@@ -31,7 +29,9 @@
                   <router-link to="/resource">资 源</router-link>
                 </li>
                 <li class="doc-nav-item">
-                  <a href="https://github.com/yakcodo/yak" target="_blank">Github</a>
+                  <a href="https://github.com/yakcodo/yak" target="_blank"
+                    >Github</a
+                  >
                 </li>
               </ul>
             </div>

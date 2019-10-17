@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <li
     class="el-menu-item"
@@ -16,9 +14,19 @@
     @blur="onMouseLeave"
     @mouseleave="onMouseLeave"
   >
-    <el-tooltip v-if="parentMenu.$options.componentName === 'ElMenu' && rootMenu.collapse && $slots.title" effect="dark" placement="right">
+    <el-tooltip
+      v-if="
+        parentMenu.$options.componentName === 'ElMenu' &&
+          rootMenu.collapse &&
+          $slots.title
+      "
+      effect="dark"
+      placement="right"
+    >
       <div slot="content"><slot name="title"></slot></div>
-      <div style="position: absolute;left: 0;top: 0;height: 100%;width: 100%;display: inline-block;box-sizing: border-box;padding: 0 20px;">
+      <div
+        style="position: absolute;left: 0;top: 0;height: 100%;width: 100%;display: inline-block;box-sizing: border-box;padding: 0 20px;"
+      >
         <slot></slot>
       </div>
     </el-tooltip>
@@ -71,7 +79,9 @@ export default {
       if (this.active) {
         if (this.mode === 'horizontal' && !this.isNested) {
           itemStyle.color = this.colorMaps.activeBackgroundColor
-          itemStyle['border-bottom-color'] = this.colorMaps.activeBackgroundColor
+          itemStyle[
+            'border-bottom-color'
+          ] = this.colorMaps.activeBackgroundColor
         } else {
           itemStyle.color = this.colorMaps.activeColor
           itemStyle.backgroundColor = this.colorMaps.activeBackgroundColor
@@ -92,7 +102,9 @@ export default {
       if (!this.colorMaps || this.active || this.disabled) return
       if (this.mode === 'horizontal' && !this.isNested) {
         this.$el.style.color = this.colorMaps.activeBackgroundColor
-        this.$el.style['border-bottom-color'] = this.colorMaps.activeBackgroundColor
+        this.$el.style[
+          'border-bottom-color'
+        ] = this.colorMaps.activeBackgroundColor
       } else {
         this.$el.style.color = this.colorMaps.activeColor
       }

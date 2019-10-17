@@ -1,5 +1,3 @@
-/** @format */
-
 import Header from './src/main'
 
 /* istanbul ignore next */

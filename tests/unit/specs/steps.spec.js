@@ -1,5 +1,3 @@
-/** @format */
-
 import { createVue, destroyVM, waitImmediate } from '../util'
 
 describe('Steps', () => {
@@ -83,7 +81,9 @@ describe('Steps', () => {
       expect(vm.$el.querySelectorAll('.el-step__head.is-error')).to.length(1)
       vm.processStatus = 'process'
       vm.$nextTick(_ => {
-        expect(vm.$el.querySelectorAll('.el-step__head.is-process')).to.length(1)
+        expect(vm.$el.querySelectorAll('.el-step__head.is-process')).to.length(
+          1
+        )
         done()
       })
     })
@@ -164,9 +164,13 @@ describe('Steps', () => {
     `)
 
     vm.$nextTick(_ => {
-      const errorLine = vm.$el.querySelector('.el-step:nth-child(2) .el-step__line-inner')
+      const errorLine = vm.$el.querySelector(
+        '.el-step:nth-child(2) .el-step__line-inner'
+      )
       expect(errorLine.getBoundingClientRect().width).to.equal(0)
-      const nextStep = vm.$el.querySelector('.el-step:nth-child(3) .el-step__head')
+      const nextStep = vm.$el.querySelector(
+        '.el-step:nth-child(3) .el-step__head'
+      )
       expect(nextStep.classList.contains('is-wait')).to.equal(true)
       done()
     })

@@ -1,5 +1,3 @@
-/** @format */
-
 import { createTest, createVue, triggerEvent, destroyVM } from '../util'
 import Pagination from 'packages/pagination'
 
@@ -214,12 +212,11 @@ describe('Pagination', () => {
     expect(vm.$el.querySelector('.el-select-dropdown__item.selected'))
       .to.property('textContent')
       .include('35')
-    expect([].slice.call(vm.$el.querySelectorAll('.el-select-dropdown__item')).map(node => parseInt(node.textContent, 10))).to.deep.equal([
-      10,
-      15,
-      35,
-      50
-    ])
+    expect(
+      [].slice
+        .call(vm.$el.querySelectorAll('.el-select-dropdown__item'))
+        .map(node => parseInt(node.textContent, 10))
+    ).to.deep.equal([10, 15, 35, 50])
   })
 
   it('pageSizes:not found pageSize', () => {

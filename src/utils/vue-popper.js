@@ -1,10 +1,10 @@
-/** @format */
-
 import Vue from 'vue'
 import SetVal from 'yak-ui/src/utils/set-value'
 import { PopupManager } from 'yak-ui/src/utils/popup'
 
-const PopperJS = Vue.prototype.$isServer ? function() {} : require('popper.js/dist/umd/popper.js')
+const PopperJS = Vue.prototype.$isServer
+  ? function() {}
+  : require('popper.js/dist/umd/popper.js')
 const stop = e => e.stopPropagation()
 
 /**
@@ -84,13 +84,17 @@ export default {
     createPopper() {
       if (this.$isServer) return
       this.currentPlacement = this.currentPlacement || this.placement
-      if (!/^(top|bottom|left|right)(-start|-end)?$/g.test(this.currentPlacement)) {
+      if (
+        !/^(top|bottom|left|right)(-start|-end)?$/g.test(this.currentPlacement)
+      ) {
         return
       }
 
       const options = this.popperOptions
-      const popper = (this.popperElm = this.popperElm || this.popper || this.$refs.popper)
-      let reference = (this.referenceElm = this.referenceElm || this.reference || this.$refs.reference)
+      const popper = (this.popperElm =
+        this.popperElm || this.popper || this.$refs.popper)
+      let reference = (this.referenceElm =
+        this.referenceElm || this.reference || this.$refs.reference)
 
       if (!reference && this.$slots.reference && this.$slots.reference[0]) {
         reference = this.referenceElm = this.$slots.reference[0].elm
@@ -124,7 +128,6 @@ export default {
       }
 
       this.popperJS = new PopperJS(reference, popper, options)
-
       this.popperJS.popper.style.zIndex = PopupManager.nextZIndex()
       this.popperElm.addEventListener('click', stop)
     },
@@ -163,7 +166,9 @@ export default {
         left: 'right',
         right: 'left'
       }
-      let placement = this.popperJS.popper.getAttribute('x-placement').split('-')[0]
+      let placement = this.popperJS.popper
+        .getAttribute('x-placement')
+        .split('-')[0]
       let origin = placementMap[placement]
       this.popperJS.popper.style.transformOrigin =
         typeof this.transformOrigin === 'string'
@@ -175,7 +180,9 @@ export default {
 
     resetArrowPosition() {
       if (this.visibleArrow && this.arrowOffset > 0) {
-        let placement = this.popperJS.popper.getAttribute('x-placement').split('-')[0]
+        let placement = this.popperJS.popper
+          .getAttribute('x-placement')
+          .split('-')[0]
         let placementArrowMap = {
           top: 'left',
           bottom: 'left',

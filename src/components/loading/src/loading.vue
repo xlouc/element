@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <transition name="el-loading-fade" @after-leave="handleAfterLeave">
     <div

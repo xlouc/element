@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <table @click="handleYearTableClick" class="el-year-table">
     <tbody>
@@ -47,7 +45,12 @@
 
 <script type="text/babel">
 import { hasClass } from 'yak-ui/src/utils/dom'
-import { isDate, range, nextDate, getDayCountOfYear } from 'yak-ui/src/utils/date-util'
+import {
+  isDate,
+  range,
+  nextDate,
+  getDayCountOfYear
+} from 'yak-ui/src/utils/date-util'
 import { arrayFindIndex, coerceTruthyValueToArray } from 'yak-ui/src/utils/util'
 
 const datesInYear = year => {
@@ -80,10 +83,18 @@ export default {
       const style = {}
       const today = new Date()
 
-      style.disabled = typeof this.disabledDate === 'function' ? datesInYear(year).every(this.disabledDate) : false
-      style.current = arrayFindIndex(coerceTruthyValueToArray(this.value), date => date.getFullYear() === year) >= 0
+      style.disabled =
+        typeof this.disabledDate === 'function'
+          ? datesInYear(year).every(this.disabledDate)
+          : false
+      style.current =
+        arrayFindIndex(
+          coerceTruthyValueToArray(this.value),
+          date => date.getFullYear() === year
+        ) >= 0
       style.today = today.getFullYear() === year
-      style.default = this.defaultValue && this.defaultValue.getFullYear() === year
+      style.default =
+        this.defaultValue && this.defaultValue.getFullYear() === year
 
       return style
     },

@@ -1,5 +1,3 @@
-/** @format */
-
 import { createVue, destroyVM, waitImmediate } from '../util'
 
 const DELAY = 50
@@ -44,8 +42,12 @@ describe('Form', () => {
       },
       true
     )
-    expect(vm.$el.querySelector('.el-form-item__label').style.width).to.equal('80px')
-    expect(vm.$el.querySelector('.el-form-item__content').style.marginLeft).to.equal('80px')
+    expect(vm.$el.querySelector('.el-form-item__label').style.width).to.equal(
+      '80px'
+    )
+    expect(
+      vm.$el.querySelector('.el-form-item__content').style.marginLeft
+    ).to.equal('80px')
     done()
   })
   it('auto label width', async () => {
@@ -149,8 +151,10 @@ describe('Form', () => {
       },
       true
     )
-    expect(vm.$refs.labelTop.$el.classList.contains('el-form--label-top')).to.be.true
-    expect(vm.$refs.labelLeft.$el.classList.contains('el-form--label-left')).to.be.true
+    expect(vm.$refs.labelTop.$el.classList.contains('el-form--label-top')).to.be
+      .true
+    expect(vm.$refs.labelLeft.$el.classList.contains('el-form--label-left')).to
+      .be.true
     done()
   })
   it('label size', () => {
@@ -175,7 +179,11 @@ describe('Form', () => {
       },
       true
     )
-    expect(vm.$refs.labelMini.$el.children[0].classList.contains('el-form-item--mini')).to.be.true
+    expect(
+      vm.$refs.labelMini.$el.children[0].classList.contains(
+        'el-form-item--mini'
+      )
+    ).to.be.true
   })
   it('show message', done => {
     vm = createVue(
@@ -242,8 +250,12 @@ describe('Form', () => {
               type: []
             },
             rules: {
-              name: [{ required: true, message: '请输入活动名称', trigger: 'blur' }],
-              address: [{ required: true, message: '请选择活动区域', trigger: 'change' }],
+              name: [
+                { required: true, message: '请输入活动名称', trigger: 'blur' }
+              ],
+              address: [
+                { required: true, message: '请选择活动区域', trigger: 'change' }
+              ],
               type: [
                 {
                   type: 'array',
@@ -303,8 +315,12 @@ describe('Form', () => {
               type: []
             },
             rules: {
-              name: [{ required: true, message: '请输入活动名称', trigger: 'blur' }],
-              address: [{ required: true, message: '请选择活动区域', trigger: 'change' }],
+              name: [
+                { required: true, message: '请输入活动名称', trigger: 'blur' }
+              ],
+              address: [
+                { required: true, message: '请选择活动区域', trigger: 'change' }
+              ],
               type: [
                 {
                   type: 'array',
@@ -321,7 +337,9 @@ describe('Form', () => {
     )
     const form = vm.$refs.form
     const nameField = form.fields.filter(field => field.prop === 'name')[0]
-    const addressField = form.fields.filter(field => field.prop === 'address')[0]
+    const addressField = form.fields.filter(
+      field => field.prop === 'address'
+    )[0]
     form.validate()
     vm.$nextTick(() => {
       expect(nameField.validateMessage).to.equal('请输入活动名称')
@@ -694,7 +712,9 @@ describe('Form', () => {
                 accept: [
                   {
                     validator: (rule, value, callback) => {
-                      value ? callback() : callback(new Error('您需要接受用户协议'))
+                      value
+                        ? callback()
+                        : callback(new Error('您需要接受用户协议'))
                     },
                     trigger: 'change'
                   }
@@ -1080,7 +1100,9 @@ describe('Form', () => {
                   max: 6
                 }
               ],
-              addr: [{ required: true, message: '请输入活动名称', trigger: 'change' }]
+              addr: [
+                { required: true, message: '请输入活动名称', trigger: 'change' }
+              ]
             }
           }
         },

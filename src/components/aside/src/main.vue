@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <aside class="el-aside" :style="{ width }">
     <slot></slot>

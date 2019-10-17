@@ -1,5 +1,3 @@
-/** @format */
-
 import ElDialog from './src/component'
 
 /* istanbul ignore next */

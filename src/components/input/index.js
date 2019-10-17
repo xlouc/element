@@ -1,5 +1,3 @@
-/** @format */
-
 import ElInput from './src/input'
 
 /* istanbul ignore next */

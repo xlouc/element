@@ -1,9 +1,11 @@
-/** @format */
-
 import { hasOwn } from 'yak-ui/src/utils/util'
 
 export function isVNode(node) {
-  return node !== null && typeof node === 'object' && hasOwn(node, 'componentOptions')
+  return (
+    node !== null &&
+    typeof node === 'object' &&
+    hasOwn(node, 'componentOptions')
+  )
 }
 
 /**
@@ -16,7 +18,11 @@ export function cloneVNode(vnode, deep, props) {
   const componentOptions = Object.assign({}, vnode.componentOptions)
   const data = vnode.data
 
-  componentOptions.propsData = Object.assign({}, componentOptions.propsData, props)
+  componentOptions.propsData = Object.assign(
+    {},
+    componentOptions.propsData,
+    props
+  )
 
   let listeners = {}
   if (componentOptions && componentOptions.listeners) {
@@ -35,7 +41,9 @@ export function cloneVNode(vnode, deep, props) {
     vnode.text,
     vnode.elm,
     vnode.context,
-    componentOptions ? Object.assign({}, componentOptions, { listeners: listeners }) : componentOptions,
+    componentOptions
+      ? Object.assign({}, componentOptions, { listeners: listeners })
+      : componentOptions,
     vnode.asyncFactory
   )
   cloned.ns = vnode.ns

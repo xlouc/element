@@ -1,5 +1,3 @@
-/** @format */
-
 import ElIcon from './src/icon.vue'
 
 /* istanbul ignore next */

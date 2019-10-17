@@ -1,5 +1,3 @@
-/** @format */
-
 function getError(action, option, xhr) {
   let msg
   if (xhr.response) {

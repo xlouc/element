@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <div
     class="el-tree"
@@ -24,7 +22,11 @@
     <div class="el-tree__empty-block" v-if="isEmpty">
       <span class="el-tree__empty-text">{{ emptyText }}</span>
     </div>
-    <div v-show="dragState.showDropIndicator" class="el-tree__drop-indicator" ref="dropIndicator"></div>
+    <div
+      v-show="dragState.showDropIndicator"
+      class="el-tree__drop-indicator"
+      ref="dropIndicator"
+    ></div>
   </div>
 </template>
 
@@ -145,7 +147,11 @@ export default {
 
     isEmpty() {
       const { childNodes } = this.root
-      return !childNodes || childNodes.length === 0 || childNodes.every(({ visible }) => !visible)
+      return (
+        !childNodes ||
+        childNodes.length === 0 ||
+        childNodes.every(({ visible }) => !visible)
+      )
     }
   },
 
@@ -176,7 +182,8 @@ export default {
 
   methods: {
     filter(value) {
-      if (!this.filterNodeMethod) throw new Error('[Tree] filterNodeMethod is required when filter')
+      if (!this.filterNodeMethod)
+        throw new Error('[Tree] filterNodeMethod is required when filter')
       this.store.filter(value)
     },
 
@@ -185,7 +192,8 @@ export default {
     },
 
     getNodePath(data) {
-      if (!this.nodeKey) throw new Error('[Tree] nodeKey is required in getNodePath')
+      if (!this.nodeKey)
+        throw new Error('[Tree] nodeKey is required in getNodePath')
       const node = this.store.getNode(data)
       if (!node) return []
       const path = [node.data]
@@ -211,18 +219,21 @@ export default {
     },
 
     getCurrentKey() {
-      if (!this.nodeKey) throw new Error('[Tree] nodeKey is required in getCurrentKey')
+      if (!this.nodeKey)
+        throw new Error('[Tree] nodeKey is required in getCurrentKey')
       const currentNode = this.getCurrentNode()
       return currentNode ? currentNode[this.nodeKey] : null
     },
 
     setCheckedNodes(nodes, leafOnly) {
-      if (!this.nodeKey) throw new Error('[Tree] nodeKey is required in setCheckedNodes')
+      if (!this.nodeKey)
+        throw new Error('[Tree] nodeKey is required in setCheckedNodes')
       this.store.setCheckedNodes(nodes, leafOnly)
     },
 
     setCheckedKeys(keys, leafOnly) {
-      if (!this.nodeKey) throw new Error('[Tree] nodeKey is required in setCheckedKeys')
+      if (!this.nodeKey)
+        throw new Error('[Tree] nodeKey is required in setCheckedKeys')
       this.store.setCheckedKeys(keys, leafOnly)
     },
 
@@ -239,12 +250,14 @@ export default {
     },
 
     setCurrentNode(node) {
-      if (!this.nodeKey) throw new Error('[Tree] nodeKey is required in setCurrentNode')
+      if (!this.nodeKey)
+        throw new Error('[Tree] nodeKey is required in setCurrentNode')
       this.store.setUserCurrentNode(node)
     },
 
     setCurrentKey(key) {
-      if (!this.nodeKey) throw new Error('[Tree] nodeKey is required in setCurrentKey')
+      if (!this.nodeKey)
+        throw new Error('[Tree] nodeKey is required in setCurrentKey')
       this.store.setCurrentNodeKey(key)
     },
 
@@ -274,14 +287,17 @@ export default {
     },
 
     updateKeyChildren(key, data) {
-      if (!this.nodeKey) throw new Error('[Tree] nodeKey is required in updateKeyChild')
+      if (!this.nodeKey)
+        throw new Error('[Tree] nodeKey is required in updateKeyChild')
       this.store.updateChildren(key, data)
     },
 
     initTabIndex() {
       this.treeItems = this.$el.querySelectorAll('.is-focusable[role=treeitem]')
       this.checkboxItems = this.$el.querySelectorAll('input[type=checkbox]')
-      const checkedItem = this.$el.querySelectorAll('.is-checked[role=treeitem]')
+      const checkedItem = this.$el.querySelectorAll(
+        '.is-checked[role=treeitem]'
+      )
       if (checkedItem.length) {
         checkedItem[0].setAttribute('tabindex', 0)
         return
@@ -303,7 +319,8 @@ export default {
           // up
           nextIndex = currentIndex !== 0 ? currentIndex - 1 : 0
         } else {
-          nextIndex = currentIndex < this.treeItemArray.length - 1 ? currentIndex + 1 : 0
+          nextIndex =
+            currentIndex < this.treeItemArray.length - 1 ? currentIndex + 1 : 0
         }
         this.treeItemArray[nextIndex].focus() // 选中
       }
@@ -344,7 +361,10 @@ export default {
 
     let dragState = this.dragState
     this.$on('tree-node-drag-start', (event, treeNode) => {
-      if (typeof this.allowDrag === 'function' && !this.allowDrag(treeNode.node)) {
+      if (
+        typeof this.allowDrag === 'function' &&
+        !this.allowDrag(treeNode.node)
+      ) {
         event.preventDefault()
         return false
       }
@@ -377,13 +397,22 @@ export default {
       let userAllowDropInner = true
       if (typeof this.allowDrop === 'function') {
         dropPrev = this.allowDrop(draggingNode.node, dropNode.node, 'prev')
-        userAllowDropInner = dropInner = this.allowDrop(draggingNode.node, dropNode.node, 'inner')
+        userAllowDropInner = dropInner = this.allowDrop(
+          draggingNode.node,
+          dropNode.node,
+          'inner'
+        )
         dropNext = this.allowDrop(draggingNode.node, dropNode.node, 'next')
       }
       event.dataTransfer.dropEffect = dropInner ? 'move' : 'none'
       if ((dropPrev || dropInner || dropNext) && oldDropNode !== dropNode) {
         if (oldDropNode) {
-          this.$emit('node-drag-leave', draggingNode.node, oldDropNode.node, event)
+          this.$emit(
+            'node-drag-leave',
+            draggingNode.node,
+            oldDropNode.node,
+            event
+          )
         }
         this.$emit('node-drag-enter', draggingNode.node, dropNode.node, event)
       }
@@ -401,7 +430,10 @@ export default {
       if (dropNode.node.contains(draggingNode.node, false)) {
         dropInner = false
       }
-      if (draggingNode.node === dropNode.node || draggingNode.node.contains(dropNode.node)) {
+      if (
+        draggingNode.node === dropNode.node ||
+        draggingNode.node.contains(dropNode.node)
+      ) {
         dropPrev = false
         dropInner = false
         dropNext = false
@@ -411,8 +443,20 @@ export default {
       const treePosition = this.$el.getBoundingClientRect()
 
       let dropType
-      const prevPercent = dropPrev ? (dropInner ? 0.25 : dropNext ? 0.45 : 1) : -1
-      const nextPercent = dropNext ? (dropInner ? 0.75 : dropPrev ? 0.55 : 0) : 1
+      const prevPercent = dropPrev
+        ? dropInner
+          ? 0.25
+          : dropNext
+          ? 0.45
+          : 1
+        : -1
+      const nextPercent = dropNext
+        ? dropInner
+          ? 0.75
+          : dropPrev
+          ? 0.55
+          : 0
+        : 1
 
       let indicatorTop = -9999
       const distance = event.clientY - targetPosition.top
@@ -426,7 +470,9 @@ export default {
         dropType = 'none'
       }
 
-      const iconPosition = dropNode.$el.querySelector('.el-tree-node__expand-icon').getBoundingClientRect()
+      const iconPosition = dropNode.$el
+        .querySelector('.el-tree-node__expand-icon')
+        .getBoundingClientRect()
       const dropIndicator = this.$refs.dropIndicator
       if (dropType === 'before') {
         indicatorTop = iconPosition.top - treePosition.top
@@ -442,7 +488,8 @@ export default {
         removeClass(dropNode.$el, 'is-drop-inner')
       }
 
-      dragState.showDropIndicator = dropType === 'before' || dropType === 'after'
+      dragState.showDropIndicator =
+        dropType === 'before' || dropType === 'after'
       dragState.allowDrop = dragState.showDropIndicator || userAllowDropInner
       dragState.dropType = dropType
       this.$emit('node-drag-over', draggingNode.node, dropNode.node, event)
@@ -471,9 +518,21 @@ export default {
 
         removeClass(dropNode.$el, 'is-drop-inner')
 
-        this.$emit('node-drag-end', draggingNode.node, dropNode.node, dropType, event)
+        this.$emit(
+          'node-drag-end',
+          draggingNode.node,
+          dropNode.node,
+          dropType,
+          event
+        )
         if (dropType !== 'none') {
-          this.$emit('node-drop', draggingNode.node, dropNode.node, dropType, event)
+          this.$emit(
+            'node-drop',
+            draggingNode.node,
+            dropNode.node,
+            dropType,
+            event
+          )
         }
       }
       if (draggingNode && !dropNode) {

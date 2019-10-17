@@ -1,4 +1,3 @@
-/** @format */
 import Vue from 'vue'
 import assets_1 from './assets/images/Axure-Components.svg'
 import assets_2 from './assets/images/Module.svg'

@@ -1,12 +1,16 @@
-<!-- @format -->
-
 <template>
-  <table @click="handleMonthTableClick" @mousemove="handleMouseMove" class="el-month-table">
+  <table
+    @click="handleMonthTableClick"
+    @mousemove="handleMouseMove"
+    class="el-month-table"
+  >
     <tbody>
       <tr v-for="(row, key) in rows" :key="key">
         <td :class="getCellStyle(cell)" v-for="(cell, key) in row" :key="key">
           <div>
-            <a class="cell">{{ t('el.datepicker.months.' + months[cell.text]) }}</a>
+            <a class="cell">{{
+              t('el.datepicker.months.' + months[cell.text])
+            }}</a>
           </div>
         </td>
       </tr>
@@ -16,9 +20,18 @@
 
 <script type="text/babel">
 import Locale from 'yak-ui/src/mixins/locale'
-import { isDate, range, getDayCountOfMonth, nextDate } from 'yak-ui/src/utils/date-util'
+import {
+  isDate,
+  range,
+  getDayCountOfMonth,
+  nextDate
+} from 'yak-ui/src/utils/date-util'
 import { hasClass } from 'yak-ui/src/utils/dom'
-import { arrayFindIndex, coerceTruthyValueToArray, arrayFind } from 'yak-ui/src/utils/util'
+import {
+  arrayFindIndex,
+  coerceTruthyValueToArray,
+  arrayFind
+} from 'yak-ui/src/utils/util'
 
 const datesInMonth = (year, month) => {
   const numOfDays = getDayCountOfMonth(year, month)
@@ -52,7 +65,11 @@ export default {
     defaultValue: {
       validator(val) {
         // null or valid Date Object
-        return val === null || isDate(val) || (Array.isArray(val) && val.every(isDate))
+        return (
+          val === null ||
+          isDate(val) ||
+          (Array.isArray(val) && val.every(isDate))
+        )
       }
     },
     date: {},
@@ -88,7 +105,20 @@ export default {
 
   data() {
     return {
-      months: ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'],
+      months: [
+        'jan',
+        'feb',
+        'mar',
+        'apr',
+        'may',
+        'jun',
+        'jul',
+        'aug',
+        'sep',
+        'oct',
+        'nov',
+        'dec'
+      ],
       tableRows: [[], [], []],
       lastRow: null,
       lastColumn: null
@@ -98,18 +128,34 @@ export default {
   methods: {
     cellMatchesDate(cell, date) {
       const value = new Date(date)
-      return this.date.getFullYear() === value.getFullYear() && Number(cell.text) === value.getMonth()
+      return (
+        this.date.getFullYear() === value.getFullYear() &&
+        Number(cell.text) === value.getMonth()
+      )
     },
     getCellStyle(cell) {
       const style = {}
       const year = this.date.getFullYear()
       const today = new Date()
       const month = cell.text
-      const defaultValue = this.defaultValue ? (Array.isArray(this.defaultValue) ? this.defaultValue : [this.defaultValue]) : []
-      style.disabled = typeof this.disabledDate === 'function' ? datesInMonth(year, month).every(this.disabledDate) : false
-      style.current = arrayFindIndex(coerceTruthyValueToArray(this.value), date => date.getFullYear() === year && date.getMonth() === month) >= 0
+      const defaultValue = this.defaultValue
+        ? Array.isArray(this.defaultValue)
+          ? this.defaultValue
+          : [this.defaultValue]
+        : []
+      style.disabled =
+        typeof this.disabledDate === 'function'
+          ? datesInMonth(year, month).every(this.disabledDate)
+          : false
+      style.current =
+        arrayFindIndex(
+          coerceTruthyValueToArray(this.value),
+          date => date.getFullYear() === year && date.getMonth() === month
+        ) >= 0
       style.today = today.getFullYear() === year && today.getMonth() === month
-      style.default = defaultValue.some(date => this.cellMatchesDate(cell, date))
+      style.default = defaultValue.some(date =>
+        this.cellMatchesDate(cell, date)
+      )
 
       if (cell.inRange) {
         style['in-range'] = true
@@ -131,7 +177,10 @@ export default {
     markRange(minDate, maxDate) {
       minDate = getMonthTimestamp(minDate)
       maxDate = getMonthTimestamp(maxDate) || minDate
-      ;[minDate, maxDate] = [Math.min(minDate, maxDate), Math.max(minDate, maxDate)]
+      ;[minDate, maxDate] = [
+        Math.min(minDate, maxDate),
+        Math.max(minDate, maxDate)
+      ]
       const rows = this.rows
       for (let i = 0, k = rows.length; i < k; i++) {
         const row = rows[i]
@@ -237,7 +286,9 @@ export default {
 
           const index = i * 4 + j
           const time = new Date(this.date.getFullYear(), index).getTime()
-          cell.inRange = time >= getMonthTimestamp(this.minDate) && time <= getMonthTimestamp(this.maxDate)
+          cell.inRange =
+            time >= getMonthTimestamp(this.minDate) &&
+            time <= getMonthTimestamp(this.maxDate)
           cell.start = this.minDate && time === getMonthTimestamp(this.minDate)
           cell.end = this.maxDate && time === getMonthTimestamp(this.maxDate)
           const isToday = time === now
@@ -247,8 +298,12 @@ export default {
           }
           cell.text = index
           let cellDate = new Date(time)
-          cell.disabled = typeof disabledDate === 'function' && disabledDate(cellDate)
-          cell.selected = arrayFind(selectedDate, date => date.getTime() === cellDate.getTime())
+          cell.disabled =
+            typeof disabledDate === 'function' && disabledDate(cellDate)
+          cell.selected = arrayFind(
+            selectedDate,
+            date => date.getTime() === cellDate.getTime()
+          )
 
           this.$set(row, j, cell)
         }

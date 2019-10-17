@@ -1,6 +1,12 @@
-/** @format */
 import sinon from 'sinon'
-import { createTest, createVue, destroyVM, waitImmediate, wait, triggerEvent } from '../util'
+import {
+  createTest,
+  createVue,
+  destroyVM,
+  waitImmediate,
+  wait,
+  triggerEvent
+} from '../util'
 import CascaderPanel from 'packages/cascader-panel'
 
 const selectedValue = ['zhejiang', 'hangzhou', 'xihu']
@@ -116,8 +122,10 @@ const options2 = [
 ]
 
 const getMenus = el => el.querySelectorAll('.el-cascader-menu')
-const getOptions = (el, menuIndex) => getMenus(el)[menuIndex].querySelectorAll('.el-cascader-node')
-const getValidOptions = (el, menuIndex) => getMenus(el)[menuIndex].querySelectorAll('.el-cascader-node[tabindex="-1"]')
+const getOptions = (el, menuIndex) =>
+  getMenus(el)[menuIndex].querySelectorAll('.el-cascader-node')
+const getValidOptions = (el, menuIndex) =>
+  getMenus(el)[menuIndex].querySelectorAll('.el-cascader-node[tabindex="-1"]')
 const getLabel = el => el.querySelector('.el-cascader-node__label').textContent
 
 describe('CascaderPanel', () => {
@@ -332,11 +340,15 @@ describe('CascaderPanel', () => {
     const el = vm.$el
     const checkbox = getOptions(el, 0)[0].querySelector('.el-checkbox')
     expect(checkbox).to.exist
-    expect(checkbox.querySelector('.el-checkbox__input').className).to.not.includes('is-checked')
+    expect(
+      checkbox.querySelector('.el-checkbox__input').className
+    ).to.not.includes('is-checked')
     checkbox.querySelector('input').click()
 
     await waitImmediate()
-    expect(checkbox.querySelector('.el-checkbox__input').className).to.includes('is-checked')
+    expect(checkbox.querySelector('.el-checkbox__input').className).to.includes(
+      'is-checked'
+    )
     expect(vm.value.length).to.equal(3)
   })
 
@@ -367,11 +379,15 @@ describe('CascaderPanel', () => {
 
     await waitImmediate()
     expect(checkbox).to.exist
-    expect(checkbox.querySelector('.el-checkbox__input').className).to.includes('is-indeterminate')
+    expect(checkbox.querySelector('.el-checkbox__input').className).to.includes(
+      'is-indeterminate'
+    )
     checkbox.querySelector('input').click()
 
     await waitImmediate()
-    expect(checkbox.querySelector('.el-checkbox__input').className).to.includes('is-checked')
+    expect(checkbox.querySelector('.el-checkbox__input').className).to.includes(
+      'is-checked'
+    )
     expect(vm.value.length).to.equal(4)
 
     getOptions(el, 1)[1].click()
@@ -419,7 +435,9 @@ describe('CascaderPanel', () => {
       .click()
     await waitImmediate()
     expect(vm.value).to.deep.equal(['zhejiang', 'hangzhou'])
-    expect(getOptions(el, 0)[1].querySelector('.el-radio').className).to.includes('is-disabled')
+    expect(
+      getOptions(el, 0)[1].querySelector('.el-radio').className
+    ).to.includes('is-disabled')
   })
 
   it('check strictly in multiple mode', async () => {
@@ -455,13 +473,17 @@ describe('CascaderPanel', () => {
 
     getOptions(el, 0)[0].click()
     await waitImmediate()
-    expect(getOptions(el, 1)[0].querySelector('.el-checkbox').className).to.not.includes('is-checked')
+    expect(
+      getOptions(el, 1)[0].querySelector('.el-checkbox').className
+    ).to.not.includes('is-checked')
     getOptions(el, 1)[0]
       .querySelector('input')
       .click()
     await waitImmediate()
     expect(vm.value).to.deep.equal(['zhejiang', 'hangzhou'])
-    expect(getOptions(el, 0)[1].querySelector('.el-checkbox').className).to.includes('is-disabled')
+    expect(
+      getOptions(el, 0)[1].querySelector('.el-checkbox').className
+    ).to.includes('is-disabled')
   })
 
   it('custom props', async () => {
@@ -590,9 +612,13 @@ describe('CascaderPanel', () => {
     const firstOption = getOptions(el, 0)[0]
     firstOption.click()
     await waitImmediate()
-    expect(firstOption.querySelector('i').className).to.includes('el-icon-loading')
+    expect(firstOption.querySelector('i').className).to.includes(
+      'el-icon-loading'
+    )
     await wait(1000)
-    expect(firstOption.querySelector('i').className).to.includes('el-icon-right')
+    expect(firstOption.querySelector('i').className).to.includes(
+      'el-icon-right'
+    )
     expect(getMenus(el).length).to.equal(2)
     getOptions(el, 1)[0].click()
     await wait(1000)

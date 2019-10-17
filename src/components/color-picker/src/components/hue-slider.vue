@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <template>
   <div class="el-color-hue-slider" :class="{ 'is-vertical': vertical }">
     <div class="el-color-hue-slider__bar" @click="handleClick" ref="bar"></div>
@@ -68,13 +66,20 @@ export default {
         left = Math.min(left, rect.width - thumb.offsetWidth / 2)
         left = Math.max(thumb.offsetWidth / 2, left)
 
-        hue = Math.round(((left - thumb.offsetWidth / 2) / (rect.width - thumb.offsetWidth)) * 360)
+        hue = Math.round(
+          ((left - thumb.offsetWidth / 2) / (rect.width - thumb.offsetWidth)) *
+            360
+        )
       } else {
         let top = event.clientY - rect.top
         top = Math.min(top, rect.height - thumb.offsetHeight / 2)
         top = Math.max(thumb.offsetHeight / 2, top)
 
-        hue = Math.round(((top - thumb.offsetHeight / 2) / (rect.height - thumb.offsetHeight)) * 360)
+        hue = Math.round(
+          ((top - thumb.offsetHeight / 2) /
+            (rect.height - thumb.offsetHeight)) *
+            360
+        )
       }
 
       this.color.set('hue', hue)
@@ -97,7 +102,9 @@ export default {
 
       if (!el) return 0
       const thumb = this.$refs.thumb
-      return Math.round((hue * (el.offsetHeight - thumb.offsetHeight / 2)) / 360)
+      return Math.round(
+        (hue * (el.offsetHeight - thumb.offsetHeight / 2)) / 360
+      )
     },
 
     update() {

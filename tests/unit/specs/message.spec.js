@@ -1,5 +1,3 @@
-/** @format */
-
 import { triggerEvent } from '../util'
 import Message from 'packages/message'
 
@@ -89,7 +87,9 @@ describe('Message', () => {
 
   it('invoke with type', () => {
     Message.success('毛毛狗')
-    expect(document.querySelector('.el-message').__vue__.type).to.equal('success')
+    expect(document.querySelector('.el-message').__vue__.type).to.equal(
+      'success'
+    )
   })
 
   it('center', () => {
@@ -98,7 +98,9 @@ describe('Message', () => {
       center: true,
       duration: 0
     })
-    expect(document.querySelector('.el-message').classList.contains('is-center')).to.true
+    expect(
+      document.querySelector('.el-message').classList.contains('is-center')
+    ).to.true
   })
 
   it('reset timer', done => {

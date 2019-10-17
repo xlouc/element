@@ -1,8 +1,16 @@
-<!-- @format -->
-
 <template>
-  <transition name="el-zoom-in-top" @before-enter="handleMenuEnter" @after-leave="$emit('dodestroy')">
-    <div ref="popper" v-show="visible" :style="{ width: width + 'px' }" :class="popperClass" class="el-picker-panel time-select el-popper">
+  <transition
+    name="el-zoom-in-top"
+    @before-enter="handleMenuEnter"
+    @after-leave="$emit('dodestroy')"
+  >
+    <div
+      ref="popper"
+      v-show="visible"
+      :style="{ width: width + 'px' }"
+      :class="popperClass"
+      class="el-picker-panel time-select el-popper"
+    >
       <el-scrollbar noresize wrap-class="el-picker-panel__content">
         <div
           class="time-select-item"
@@ -57,7 +65,11 @@ const compareTime = function(time1, time2) {
 }
 
 const formatTime = function(time) {
-  return (time.hours < 10 ? '0' + time.hours : time.hours) + ':' + (time.minutes < 10 ? '0' + time.minutes : time.minutes)
+  return (
+    (time.hours < 10 ? '0' + time.hours : time.hours) +
+    ':' +
+    (time.minutes < 10 ? '0' + time.minutes : time.minutes)
+  )
 }
 
 const nextTime = function(time, step) {
@@ -105,9 +117,14 @@ export default {
     },
 
     handleMenuEnter() {
-      const selected = this.items.map(item => item.value).indexOf(this.value) !== -1
-      const hasDefault = this.items.map(item => item.value).indexOf(this.defaultValue) !== -1
-      const option = (selected && '.selected') || (hasDefault && '.default') || '.time-select-item:not(.disabled)'
+      const selected =
+        this.items.map(item => item.value).indexOf(this.value) !== -1
+      const hasDefault =
+        this.items.map(item => item.value).indexOf(this.defaultValue) !== -1
+      const option =
+        (selected && '.selected') ||
+        (hasDefault && '.default') ||
+        '.time-select-item:not(.disabled)'
       this.$nextTick(() => this.scrollToOption(option))
     },
 
@@ -174,7 +191,9 @@ export default {
         while (compareTime(current, end) <= 0) {
           result.push({
             value: current,
-            disabled: compareTime(current, this.minTime || '-1:-1') <= 0 || compareTime(current, this.maxTime || '100:100') >= 0
+            disabled:
+              compareTime(current, this.minTime || '-1:-1') <= 0 ||
+              compareTime(current, this.maxTime || '100:100') >= 0
           })
           current = nextTime(current, step)
         }

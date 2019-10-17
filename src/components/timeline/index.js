@@ -1,5 +1,3 @@
-/** @format */
-
 import Timeline from './src/main'
 
 /* istanbul ignore next */

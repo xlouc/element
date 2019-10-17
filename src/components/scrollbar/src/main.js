@@ -1,8 +1,9 @@
-/** @format */
-
 // reference https://github.com/noeldelgado/gemini-scrollbar/blob/master/index.js
 
-import { addResizeListener, removeResizeListener } from 'yak-ui/src/utils/resize-event'
+import {
+  addResizeListener,
+  removeResizeListener
+} from 'yak-ui/src/utils/resize-event'
 import scrollbarWidth from 'yak-ui/src/utils/scrollbar-width'
 import { toObject } from 'yak-ui/src/utils/util'
 import Bar from './bar'
@@ -72,17 +73,28 @@ export default {
         ref="wrap"
         style={style}
         onScroll={this.handleScroll}
-        class={[this.wrapClass, 'el-scrollbar__wrap', gutter ? '' : 'el-scrollbar__wrap--hidden-default']}>
+        class={[
+          this.wrapClass,
+          'el-scrollbar__wrap',
+          gutter ? '' : 'el-scrollbar__wrap--hidden-default'
+        ]}>
         {[view]}
       </div>
     )
     let nodes
 
     if (!this.native) {
-      nodes = [wrap, <Bar move={this.moveX} size={this.sizeWidth}></Bar>, <Bar vertical move={this.moveY} size={this.sizeHeight}></Bar>]
+      nodes = [
+        wrap,
+        <Bar move={this.moveX} size={this.sizeWidth}></Bar>,
+        <Bar vertical move={this.moveY} size={this.sizeHeight}></Bar>
+      ]
     } else {
       nodes = [
-        <div ref="wrap" class={[this.wrapClass, 'el-scrollbar__wrap']} style={style}>
+        <div
+          ref="wrap"
+          class={[this.wrapClass, 'el-scrollbar__wrap']}
+          style={style}>
           {[view]}
         </div>
       ]

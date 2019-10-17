@@ -1,5 +1,3 @@
-<!-- @format -->
-
 <script>
 export default {
   name: 'ElDescriptionsCol',
@@ -24,7 +22,10 @@ export default {
     const children = child.componentOptions.children
 
     const labelProps = {
-      class: ['el-descriptions__item-label', { 'is-colon': colon, 'is-no-label': !label }],
+      class: [
+        'el-descriptions__item-label',
+        { 'is-colon': colon, 'is-no-label': !label }
+      ],
       attrs: {}
     }
 
@@ -54,7 +55,9 @@ export default {
 
       return (
         <td colSpan={span} class="el-descriptions__item">
-          <span class={['el-descriptions__item-label', { 'is-colon': colon }]} key="label">
+          <span
+            class={['el-descriptions__item-label', { 'is-colon': colon }]}
+            key="label">
             {label}
           </span>
         </td>

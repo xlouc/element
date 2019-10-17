@@ -1,19 +1,30 @@
-<!-- @format -->
-
 <template>
   <li class="el-timeline-item">
     <div class="el-timeline-item__tail"></div>
 
-    <div v-if="!$slots.dot" class="el-timeline-item__node" :class="dotClass" :style="dotStyle">
+    <div
+      v-if="!$slots.dot"
+      class="el-timeline-item__node"
+      :class="dotClass"
+      :style="dotStyle"
+    >
       <i v-if="icon" class="el-timeline-item__icon" :class="icon"></i>
     </div>
 
-    <div v-if="$slots.dot" class="el-timeline-item__dot" ref="dot" :style="{ left: `-${dotLeft}px` }">
+    <div
+      v-if="$slots.dot"
+      class="el-timeline-item__dot"
+      ref="dot"
+      :style="{ left: `-${dotLeft}px` }"
+    >
       <slot name="dot"></slot>
     </div>
 
     <div class="el-timeline-item__wrapper">
-      <div v-if="!hideTimestamp && placement === 'top'" class="el-timeline-item__timestamp is-top">
+      <div
+        v-if="!hideTimestamp && placement === 'top'"
+        class="el-timeline-item__timestamp is-top"
+      >
         {{ timestamp }}
       </div>
 
@@ -21,7 +32,10 @@
         <slot></slot>
       </div>
 
-      <div v-if="!hideTimestamp && placement === 'bottom'" class="el-timeline-item__timestamp is-bottom">
+      <div
+        v-if="!hideTimestamp && placement === 'bottom'"
+        class="el-timeline-item__timestamp is-bottom"
+      >
         {{ timestamp }}
       </div>
     </div>
@@ -66,7 +80,8 @@ export default {
     },
     dotClass() {
       return {
-        [`el-timeline-item__node--${this.size}`]: ['normal', 'large'].indexOf(this.size) >= 0,
+        [`el-timeline-item__node--${this.size}`]:
+          ['normal', 'large'].indexOf(this.size) >= 0,
         [`el-timeline-item__node--${this.type}`]: Boolean(this.type)
       }
     },

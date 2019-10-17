@@ -1,5 +1,3 @@
-/** @format */
-
 import ElDropdownMenu from '../dropdown/src/dropdown-menu'
 
 /* istanbul ignore next */

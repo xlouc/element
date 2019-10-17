@@ -1,5 +1,3 @@
-/** @format */
-
 import Avatar from './src/main'
 
 /* istanbul ignore next */

@@ -1,5 +1,3 @@
-/** @format */
-
 import Container from './src/main'
 
 /* istanbul ignore next */

@@ -1,5 +1,3 @@
-/** @format */
-
 export default function(target) {
   for (let i = 1, j = arguments.length; i < j; i++) {
     let source = arguments[i] || {}

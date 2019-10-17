@@ -1,7 +1,5 @@
-<!-- @format -->
-
-<template>
-  <i :class="'el-icon-' + name"></i>
+<template functional>
+  <i :class="'el-icon-' + props.name"></i>
 </template>
 
 <script>

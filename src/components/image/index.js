@@ -1,5 +1,3 @@
-/** @format */
-
 import Image from './src/main'
 
 /* istanbul ignore next */

@@ -1,5 +1,3 @@
-/** @format */
-
 import ElOptionGroup from '../select/src/option-group'
 
 /* istanbul ignore next */

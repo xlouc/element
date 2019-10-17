@@ -1,8 +1,15 @@
-<!-- @format -->
-
 <template>
-  <div :class="['el-cascader-panel', border && 'is-bordered']" @keydown="handleKeyDown">
-    <cascader-menu ref="menu" v-for="(menu, index) in menus" :index="index" :key="index" :nodes="menu"></cascader-menu>
+  <div
+    :class="['el-cascader-panel', border && 'is-bordered']"
+    @keydown="handleKeyDown"
+  >
+    <cascader-menu
+      ref="menu"
+      v-for="(menu, index) in menus"
+      :index="index"
+      :key="index"
+      :nodes="menu"
+    ></cascader-menu>
   </div>
 </template>
 
@@ -12,7 +19,13 @@ import Store from './store'
 import merge from 'yak-ui/src/utils/merge'
 import AriaUtils from 'yak-ui/src/utils/aria-utils'
 import scrollIntoView from 'yak-ui/src/utils/scroll-into-view'
-import { noop, coerceTruthyValueToArray, isEqual, isEmpty, valueEquals } from 'yak-ui/src/utils/util'
+import {
+  noop,
+  coerceTruthyValueToArray,
+  isEqual,
+  isEmpty,
+  valueEquals
+} from 'yak-ui/src/utils/util'
 
 const { keys: KeyCode } = AriaUtils
 const DefaultProps = {
@@ -35,7 +48,9 @@ const isLeaf = el => !el.getAttribute('aria-owns')
 const getSibling = (el, distance) => {
   const { parentNode } = el
   if (parentNode) {
-    const siblings = parentNode.querySelectorAll('.el-cascader-node[tabindex="-1"]')
+    const siblings = parentNode.querySelectorAll(
+      '.el-cascader-node[tabindex="-1"]'
+    )
     const index = Array.prototype.indexOf.call(siblings, el)
     return siblings[index + distance] || null
   }
@@ -184,7 +199,9 @@ export default {
       const { store, multiple, activePath, checkedValue } = this
 
       if (!isEmpty(activePath)) {
-        const nodes = activePath.map(node => this.getNodeByValue(node.getValue()))
+        const nodes = activePath.map(node =>
+          this.getNodeByValue(node.getValue())
+        )
         this.expandNodes(nodes)
       } else if (!isEmpty(checkedValue)) {
         const value = multiple ? checkedValue[0] : checkedValue
@@ -201,7 +218,9 @@ export default {
     },
     calculateCheckedNodePaths() {
       const { checkedValue, multiple } = this
-      const checkedValues = multiple ? coerceTruthyValueToArray(checkedValue) : [checkedValue]
+      const checkedValues = multiple
+        ? coerceTruthyValueToArray(checkedValue)
+        : [checkedValue]
       this.checkedNodePaths = checkedValues.map(v => {
         const checkedNode = this.getNodeByValue(v)
         return checkedNode ? checkedNode.pathNodes : []
@@ -223,14 +242,18 @@ export default {
         case KeyCode.left:
           const preMenu = this.$refs.menu[getMenuIndex(target) - 1]
           if (preMenu) {
-            const expandedNode = preMenu.$el.querySelector('.el-cascader-node[aria-expanded="true"]')
+            const expandedNode = preMenu.$el.querySelector(
+              '.el-cascader-node[aria-expanded="true"]'
+            )
             focusNode(expandedNode)
           }
           break
         case KeyCode.right:
           const nextMenu = this.$refs.menu[getMenuIndex(target) + 1]
           if (nextMenu) {
-            const firstNode = nextMenu.$el.querySelector('.el-cascader-node[tabindex="-1"]')
+            const firstNode = nextMenu.$el.querySelector(
+              '.el-cascader-node[tabindex="-1"]'
+            )
             focusNode(firstNode)
           }
           break
@@ -291,7 +314,10 @@ export default {
           const valueKey = this.config.value
           const leafKey = this.config.leaf
 
-          if (Array.isArray(dataList) && dataList.filter(item => item[valueKey] === nodeValue).length > 0) {
+          if (
+            Array.isArray(dataList) &&
+            dataList.filter(item => item[valueKey] === nodeValue).length > 0
+          ) {
             const checkedNode = this.store.getNodeByValue(nodeValue)
 
             if (!checkedNode.data[leafKey]) {
@@ -315,7 +341,9 @@ export default {
      * public methods
      */
     calculateMultiCheckedValue() {
-      this.checkedValue = this.getCheckedNodes(this.leafOnly).map(node => node.getValueByOption())
+      this.checkedValue = this.getCheckedNodes(this.leafOnly).map(node =>
+        node.getValueByOption()
+      )
     },
     scrollIntoView() {
       if (this.$isServer) return
@@ -325,7 +353,9 @@ export default {
         const menuElement = menu.$el
         if (menuElement) {
           const container = menuElement.querySelector('.el-scrollbar__wrap')
-          const activeNode = menuElement.querySelector('.el-cascader-node.is-active') || menuElement.querySelector('.el-cascader-node.in-active-path')
+          const activeNode =
+            menuElement.querySelector('.el-cascader-node.is-active') ||
+            menuElement.querySelector('.el-cascader-node.in-active-path')
           scrollIntoView(container, activeNode)
         }
       })

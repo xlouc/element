@@ -1,5 +1,3 @@
-/** @format */
-
 import Cascader from './src/cascader'
 
 /* istanbul ignore next */

@@ -1,5 +1,3 @@
-/** @format */
-
 import ElCheckboxGroup from '../checkbox/src/checkbox-group.vue'
 
 /* istanbul ignore next */

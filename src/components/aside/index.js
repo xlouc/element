@@ -1,5 +1,3 @@
-/** @format */
-
 import Aside from './src/main'
 
 /* istanbul ignore next */

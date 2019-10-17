@@ -1,5 +1,3 @@
-/** @format */
-
 import Descriptions from './src/main'
 
 /* istanbul ignore next */

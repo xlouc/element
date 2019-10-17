@@ -38,6 +38,7 @@
   "form-item": "./src/components/form-item/index.js",
   "header": "./src/components/header/index.js",
   "icon": "./src/components/icon/index.js",
+  "icon-picker": "./src/components/icon-picker/index.js",
   "image": "./src/components/image/index.js",
   "infinite-scroll": "./src/components/infinite-scroll/index.js",
   "input": "./src/components/input/index.js",
@@ -87,5 +88,6 @@
   "tooltip": "./src/components/tooltip/index.js",
   "transfer": "./src/components/transfer/index.js",
   "tree": "./src/components/tree/index.js",
+  "treemap": "./src/components/treemap/index.js",
   "upload": "./src/components/upload/index.js"
 }
