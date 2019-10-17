@@ -152,7 +152,7 @@ export default {
         colorMaps.activeColor = this.activeColor
         colorMaps.activeBackgroundColor = tinycolor.mix(this.activeColor, '#fff', 95).toString()
       } else {
-        colorMaps.activeColor = tinycolor.mix(this.activeColor, '#fff', 95).toString()
+        colorMaps.activeColor = tinycolor.mix(this.activeColor, '#fff', 85).toString()
         colorMaps.activeBackgroundColor = this.activeColor
       }
 
