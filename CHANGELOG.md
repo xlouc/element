@@ -1,3 +1,18 @@
+## [1.3.5](https://github.com/yakcodo/yak/compare/v1.3.4...v1.3.5) (2019-10-17)
+
+
+### Bug Fixes
+
+* **menu:** 修复菜单主题色 ([90b2a9a](https://github.com/yakcodo/yak/commit/90b2a9a))
+
+
+### Features
+
+* **icon-picker:** 新增图标选择器 ([717b74c](https://github.com/yakcodo/yak/commit/717b74c))
+* **treemap:** 新增组织结构图 ([0120ae3](https://github.com/yakcodo/yak/commit/0120ae3))
+
+
+
 ## [1.3.4](https://github.com/yakcodo/yak/compare/v1.3.3...v1.3.4) (2019-10-10)
 
 
