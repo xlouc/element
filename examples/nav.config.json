@@ -156,6 +156,10 @@
             "title": "Tree 树形控件"
           },
           {
+            "path": "/treemap",
+            "title": "Treemap 组织结构图"
+          },
+          {
             "path": "/pagination",
             "title": "Pagination 分页"
           },

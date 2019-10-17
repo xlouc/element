@@ -89,6 +89,7 @@ import TimelineItem from './components/timeline-item/index.js'
 import Tooltip from './components/tooltip/index.js'
 import Transfer from './components/transfer/index.js'
 import Tree from './components/tree/index.js'
+import Treemap from './components/treemap/index.js'
 import Upload from './components/upload/index.js'
 import locale from 'yak-ui/src/locale'
 import CollapseTransition from 'yak-ui/src/transitions/collapse-transition'
@@ -179,6 +180,7 @@ const components = [
   Tooltip,
   Transfer,
   Tree,
+  Treemap,
   Upload,
   CollapseTransition
 ]
@@ -308,5 +310,6 @@ export default {
   Tooltip,
   Transfer,
   Tree,
+  Treemap,
   Upload
 }

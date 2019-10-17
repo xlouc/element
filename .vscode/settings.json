@@ -5,6 +5,10 @@
   "eslint.options": {
     "extensions": [".js", ".vue"]
   },
+  // Enable per-language
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
   // 添加 vue 支持
   "eslint.validate": [
     "javascript",
