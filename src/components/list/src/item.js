@@ -59,7 +59,7 @@ export default {
         }
         return (
           defs.filter(function(item) {
-            return !!item && (hasOwn(item, 'text') || hasOwn(item, 'text'))
+            return !!item && (!hasOwn(item, 'text') || !hasOwn(item, 'tag'))
           }).length > 0
         )
       }
