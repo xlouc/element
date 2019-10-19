@@ -1,3 +1,12 @@
+## [1.3.10](https://github.com/yakcodo/yak/compare/v1.3.9...v1.3.10) (2019-10-19)
+
+
+### Bug Fixes
+
+* **list-item:** 修复`isFlexMode`逻辑错误 ([b229fba](https://github.com/yakcodo/yak/commit/b229fba))
+
+
+
 ## [1.3.9](https://github.com/yakcodo/yak/compare/v1.3.8...v1.3.9) (2019-10-19)
 
 
