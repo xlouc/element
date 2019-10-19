@@ -52,17 +52,11 @@ export default {
       if (this._elList.layout === 'vertical') {
         return !!this.$slots.extra
       } else {
-        let result
         let defs = this.$slots.default
         if (!Array.isArray(defs)) {
           defs = [defs]
         }
-        defs.forEach(function(element) {
-          if (isVNode(element) && !element.tag) {
-            result = true
-          }
-        })
-        return !result
+        return !isVNode(defs)
       }
     }
   },
