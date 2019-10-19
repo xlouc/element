@@ -1,5 +1,4 @@
 import { isVNode } from 'yak-ui/src/utils/vdom'
-import { hasOwn } from 'yak-ui/src/utils/util'
 import Avatar from 'yak-ui/components/avatar'
 import Col from 'yak-ui/components/col'
 
@@ -59,14 +58,7 @@ export default {
         }
         return (
           defs.filter(function(item) {
-            return (
-              item !== null &&
-              typeof item === 'object' &&
-              (hasOwn(item, 'asyncFactory') ||
-                hasOwn(item, 'children') ||
-                hasOwn(item, 'componentOptions') ||
-                hasOwn(item, 'tag'))
-            )
+            return item.text === undefined
           }).length > 0
         )
       }
