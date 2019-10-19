@@ -1,6 +1,13 @@
 import { hasOwn } from 'yak-ui/src/utils/util'
 
 export function isVNode(node) {
+  if (Array.isArray(node)) {
+    return (
+      node.filter(function(item) {
+        return isVNode(item)
+      }).length > 0
+    )
+  }
   return (
     node !== null &&
     typeof node === 'object' &&
