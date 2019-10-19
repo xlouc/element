@@ -1,4 +1,5 @@
 import { isVNode } from 'yak-ui/src/utils/vdom'
+import { hasOwn } from 'yak-ui/src/utils/util'
 import Avatar from 'yak-ui/components/avatar'
 import Col from 'yak-ui/components/col'
 
@@ -58,7 +59,7 @@ export default {
         }
         return (
           defs.filter(function(item) {
-            return item.text === undefined
+            return !!item && (hasOwn(item, 'text') || hasOwn(item, 'text'))
           }).length > 0
         )
       }
