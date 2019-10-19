@@ -1,3 +1,12 @@
+## [1.3.9](https://github.com/yakcodo/yak/compare/v1.3.8...v1.3.9) (2019-10-19)
+
+
+### Bug Fixes
+
+* **list:** 修复ListItem中`isFlexMode`插口为异步组件时计算错误 ([b438630](https://github.com/yakcodo/yak/commit/b438630))
+
+
+
 ## [1.3.8](https://github.com/yakcodo/yak/compare/v1.3.7...v1.3.8) (2019-10-19)
 
 
