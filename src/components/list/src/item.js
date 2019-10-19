@@ -60,7 +60,7 @@ export default {
         return (
           defs.filter(function(item) {
             return (
-              (!!item && hasOwn(item, 'asyncFactory')) || !hasOwn(item, 'tag')
+              !!item && (hasOwn(item, 'asyncFactory') || !hasOwn(item, 'tag'))
             )
           }).length > 0
         )
