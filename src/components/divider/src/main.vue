@@ -28,7 +28,7 @@ export default {
       type: String,
       default: 'center',
       validator(val) {
-        return ['left', 'center', 'right'].indexOf(val) !== -1
+        return ['left', 'center', 'right', 'top', 'bottom'].indexOf(val) !== -1
       }
     }
   }

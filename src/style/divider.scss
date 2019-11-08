@@ -43,5 +43,13 @@
       right: 20px;
       transform: translateY(-50%);
     }
+
+    @include when(top){
+      top: -24px;
+    }
+
+    @include when(bottom){
+      bottom: -24px;
+    }
   }
 }
