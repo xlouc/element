@@ -56,7 +56,7 @@ Vue.component(Button.name, Button);
 
 如果你只想用`Yak`，跳过这一部分。
 
-对于那些对`Yak`感兴趣的人，请参考我们的[贡献指南]()
+对于那些对`Yak`感兴趣的人，请参考我们的[贡献指南](https://github.com/yakcodo/yak/blob/develop/.github/CONTRIBUTING.md)
 
 ## Changelog
 
