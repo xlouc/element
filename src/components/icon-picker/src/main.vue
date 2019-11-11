@@ -89,10 +89,7 @@ export default {
   directives: { Clickoutside },
 
   props: {
-    value: {
-      type: String,
-      required: true
-    },
+    value: String,
     disabled: Boolean,
     size: String,
     popperClass: String,
