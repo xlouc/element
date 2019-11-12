@@ -19,12 +19,15 @@
         'el-image__preview': preview
       }"
     />
-    <image-viewer
-      :z-index="zIndex"
-      v-if="preview && showViewer"
-      :on-close="closeViewer"
-      :url-list="previewSrcList"
-    />
+    <template v-if="preview">
+      <image-viewer
+        :z-index="zIndex"
+        :initial-index="imageIndex"
+        v-show="showViewer"
+        :on-close="closeViewer"
+        :url-list="previewSrcList"
+      />
+    </template>
   </div>
 </template>
 
@@ -105,6 +108,9 @@ export default {
     preview() {
       const { previewSrcList } = this
       return Array.isArray(previewSrcList) && previewSrcList.length > 0
+    },
+    imageIndex() {
+      return this.previewSrcList.indexOf(this.src)
     }
   },
 
