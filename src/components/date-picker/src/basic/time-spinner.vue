@@ -355,6 +355,7 @@ export default {
 
       this.modifyDateField(label, now)
       this.adjustSpinner(label, now)
+      this.$nextTick(() => this.emitSelectRange(this.currentScrollbar))
     },
     amPm(hour) {
       let shouldShowAmPm = this.amPmMode.toLowerCase() === 'a'
