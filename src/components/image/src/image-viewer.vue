@@ -1,11 +1,6 @@
 <template>
   <transition name="viewer-fade">
-    <div
-      tabindex="-1"
-      ref="el-image-viewer__wrapper"
-      class="el-image-viewer__wrapper"
-      :style="{ 'z-index': zIndex }"
-    >
+    <div tabindex="-1" ref="el-image-viewer__wrapper" class="el-image-viewer__wrapper" :style="{ 'z-index': zIndex }">
       <div class="el-image-viewer__mask"></div>
       <!-- CLOSE -->
       <span class="el-image-viewer__btn el-image-viewer__close" @click="hide">
@@ -285,9 +280,7 @@ export default {
       switch (action) {
         case 'zoomOut':
           if (transform.scale > 0.2) {
-            transform.scale = parseFloat(
-              (transform.scale - zoomRate).toFixed(3)
-            )
+            transform.scale = parseFloat((transform.scale - zoomRate).toFixed(3))
           }
           break
         case 'zoomIn':

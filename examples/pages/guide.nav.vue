@@ -3,8 +3,7 @@
     <h2>导航</h2>
     <div class="block">
       <p>
-        导航可以解决用户在访问页面时：在哪里，去哪里，怎样去的问题。一般导航会有「侧栏导航」和「顶部导航」2
-        种类型。
+        导航可以解决用户在访问页面时：在哪里，去哪里，怎样去的问题。一般导航会有「侧栏导航」和「顶部导航」2 种类型。
       </p>
     </div>
     <div class="block">
@@ -23,27 +22,15 @@
           </p>
         </el-col>
         <el-col :span="15" class="nav-demos">
-          <img
-            :src="$assets['navbar_1']"
-            alt="一级类目"
-            @click="enlarge(846, $event)"
-          />
+          <img :src="$assets['navbar_1']" alt="一级类目" @click="enlarge(846, $event)" />
           <h5>一级类目</h5>
           <p>适用于结构简单的网站：只有一级页面时，不需要使用面包屑。</p>
-          <img
-            :src="$assets['navbar_2']"
-            alt="二级类目"
-            @click="enlarge(846, $event)"
-          />
+          <img :src="$assets['navbar_2']" alt="二级类目" @click="enlarge(846, $event)" />
           <h5>二级类目</h5>
           <p>
             侧栏中最多可显示两级导航；当使用二级导航时，我们建议搭配使用面包屑，方便用户定位自己的位置和快速返回。
           </p>
-          <img
-            :src="$assets['navbar_3']"
-            alt="三级类目"
-            @click="enlarge(846, $event)"
-          />
+          <img :src="$assets['navbar_3']" alt="三级类目" @click="enlarge(846, $event)" />
           <h5>三级类目</h5>
           <p>
             适用于较复杂的工具型后台，左侧栏为一级导航，中间栏可显示其对应的二级导航，也可放置其他的工具型选项。
@@ -69,12 +56,7 @@
       <div class="mask" v-show="showDialog" @click="showDialog = false"></div>
     </transition>
     <transition name="zoom">
-      <div
-        class="dialog-img"
-        :style="imgWrapStyle"
-        v-show="showDialog"
-        @click="showDialog = false"
-      >
+      <div class="dialog-img" :style="imgWrapStyle" v-show="showDialog" @click="showDialog = false">
         <div class="imgWrap" :style="imgStyle">
           <img :src="imgUrl" alt="" />
         </div>
@@ -179,8 +161,7 @@ export default {
   }
   .zoom-enter-active,
   .zoom-leave-active {
-    transition: transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86),
-      opacity 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+    transition: transform 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86), opacity 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
   }
   .zoom-enter,
   .zoom-leave-active {

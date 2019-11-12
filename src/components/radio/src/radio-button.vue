@@ -25,11 +25,7 @@
       @focus="focus = true"
       @blur="focus = false"
     />
-    <span
-      class="el-radio-button__inner"
-      :style="value === label ? activeStyle : null"
-      @keydown.stop
-    >
+    <span class="el-radio-button__inner" :style="value === label ? activeStyle : null" @keydown.stop>
       <slot></slot>
       <template v-if="!$slots.default">
         {{ label }}
@@ -83,9 +79,7 @@ export default {
       return {
         backgroundColor: this._radioGroup.fill || '',
         borderColor: this._radioGroup.fill || '',
-        boxShadow: this._radioGroup.fill
-          ? `-1px 0 0 0 ${this._radioGroup.fill}`
-          : '',
+        boxShadow: this._radioGroup.fill ? `-1px 0 0 0 ${this._radioGroup.fill}` : '',
         color: this._radioGroup.textColor || ''
       }
     },
@@ -95,25 +89,15 @@ export default {
     },
 
     size() {
-      return (
-        this._radioGroup.radioGroupSize ||
-        this._elFormItemSize ||
-        (this.$ELEMENT || {}).size
-      )
+      return this._radioGroup.radioGroupSize || this._elFormItemSize || (this.$ELEMENT || {}).size
     },
 
     isDisabled() {
-      return (
-        this.disabled ||
-        this._radioGroup.disabled ||
-        (this.elForm || {}).disabled
-      )
+      return this.disabled || this._radioGroup.disabled || (this.elForm || {}).disabled
     },
 
     tabIndex() {
-      return this.isDisabled || (this._radioGroup && this.value !== this.label)
-        ? -1
-        : 0
+      return this.isDisabled || (this._radioGroup && this.value !== this.label) ? -1 : 0
     }
   },
 

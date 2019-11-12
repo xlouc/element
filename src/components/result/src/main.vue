@@ -23,12 +23,9 @@ const renderIcon = function(h, status, icon) {
     iconNode = h(ExceptionMap[status])
   } else {
     const iconString = IconMap[status]
-    iconNode =
-      typeof icon === 'string' || !icon ? <i class={iconString}></i> : icon
+    iconNode = typeof icon === 'string' || !icon ? <i class={iconString}></i> : icon
   }
-  return (
-    <div class={['el-result__icon', { 'is-image': isImage }]}>{iconNode}</div>
-  )
+  return <div class={['el-result__icon', { 'is-image': isImage }]}>{iconNode}</div>
 }
 
 export default {
@@ -47,17 +44,11 @@ export default {
     const { status, icon, title, subTitle } = context.props
     const $slots = context.slots()
     return (
-      <div
-        class={['el-result', { [`el-result--${status}`]: status }]}
-        {...context.data}>
+      <div class={['el-result', { [`el-result--${status}`]: status }]} {...context.data}>
         {renderIcon(h, status, $slots.icon || icon)}
         <div class="el-result__title">{$slots.title || title}</div>
-        {($slots.subTitle || subTitle) && (
-          <div class="el-result__subtitle">{$slots.subTitle || subTitle}</div>
-        )}
-        {$slots.default && (
-          <div class="el-result__content">{$slots.default}</div>
-        )}
+        {($slots.subTitle || subTitle) && <div class="el-result__subtitle">{$slots.subTitle || subTitle}</div>}
+        {$slots.default && <div class="el-result__content">{$slots.default}</div>}
         {$slots.extra && <div class="el-result__extra">{$slots.extra}</div>}
       </div>
     )

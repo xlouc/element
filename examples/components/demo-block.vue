@@ -15,16 +15,8 @@
         </el-tooltip>
         <el-tooltip content="显示代码" placement="top">
           <span @click="showCode = !showCode">
-            <img
-              alt="expand code"
-              src="../assets/code.svg"
-              v-show="!showCode"
-            />
-            <img
-              alt="expand code"
-              src="../assets/code-open.svg"
-              v-show="showCode"
-            />
+            <img alt="expand code" src="../assets/code.svg" v-show="!showCode" />
+            <img alt="expand code" src="../assets/code-open.svg" v-show="showCode" />
           </span>
         </el-tooltip>
       </span>
@@ -71,13 +63,9 @@ export default {
 
       let jsTpl = (script || '').replace(/export default/, 'var Main =').trim()
 
-      let cssTpl = `@import url("//unpkg.com/yak-ui@${version}/lib/theme-chalk/index.css");\n${(
-        style || ''
-      ).trim()}\n`
+      let cssTpl = `@import url("//unpkg.com/yak-ui@${version}/lib/theme-chalk/index.css");\n${(style || '').trim()}\n`
 
-      jsTpl = jsTpl
-        ? jsTpl + "\nvar Ctor = Vue.extend(Main)\nnew Ctor().$mount('#app')"
-        : "new Vue().$mount('#app')"
+      jsTpl = jsTpl ? jsTpl + "\nvar Ctor = Vue.extend(Main)\nnew Ctor().$mount('#app')" : "new Vue().$mount('#app')"
 
       const data = {
         js: jsTpl,
@@ -85,8 +73,7 @@ export default {
         html: htmlTpl,
         title: this.$route.meta && this.$route.meta.title
       }
-      const form =
-        document.getElementById('fiddle-form') || document.createElement('form')
+      const form = document.getElementById('fiddle-form') || document.createElement('form')
       while (form.firstChild) {
         form.removeChild(form.firstChild)
       }

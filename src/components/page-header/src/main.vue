@@ -28,9 +28,7 @@ export default {
       if (!backIcon) return h(false)
       return (
         <div class="el-page-header__back">
-          <div
-            class="el-back-button"
-            on-click={event => this.$emit('back', event)}>
+          <div class="el-back-button" on-click={event => this.$emit('back', event)}>
             <i class={['el-back-button__icon', backIcon]}></i>
           </div>
           {h(Divider, { props: { direction: 'vertical' } })}
@@ -46,16 +44,10 @@ export default {
         return (
           <div class="el-page-header__heading">
             {renderBack(h)}
-            {title && (
-              <span class="el-page-header__heading--title">{title}</span>
-            )}
-            {subTitle && (
-              <span class="el-page-header__heading--sub-title">{subTitle}</span>
-            )}
+            {title && <span class="el-page-header__heading--title">{title}</span>}
+            {subTitle && <span class="el-page-header__heading--sub-title">{subTitle}</span>}
             {tags && <span class="el-page-header__heading--tags">{tags}</span>}
-            {extra && (
-              <span class="el-page-header__heading--extra">{extra}</span>
-            )}
+            {extra && <span class="el-page-header__heading--extra">{extra}</span>}
           </div>
         )
       }
@@ -82,9 +74,7 @@ export default {
         ]}>
         {this.$slots.breadcrumb}
         {renderTitle(h)}
-        {$slots.default && (
-          <div class="el-page-header__content">{$slots.default}</div>
-        )}
+        {$slots.default && <div class="el-page-header__content">{$slots.default}</div>}
         {renderFooter(h)}
       </div>
     )

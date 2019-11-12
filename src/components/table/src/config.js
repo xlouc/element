@@ -32,9 +32,7 @@ export const cellForced = {
       return (
         <el-checkbox
           disabled={store.states.data && store.states.data.length === 0}
-          indeterminate={
-            store.states.selection.length > 0 && !this.isAllSelected
-          }
+          indeterminate={store.states.selection.length > 0 && !this.isAllSelected}
           nativeOn-click={this.toggleAllSelection}
           value={this.isAllSelected}
         />
@@ -45,11 +43,7 @@ export const cellForced = {
         <el-checkbox
           nativeOn-click={event => event.stopPropagation()}
           value={store.isSelected(row)}
-          disabled={
-            column.selectable
-              ? !column.selectable.call(null, row, $index)
-              : false
-          }
+          disabled={column.selectable ? !column.selectable.call(null, row, $index) : false}
           on-input={() => {
             store.commit('rowSelectedChanged', row)
           }}
@@ -119,28 +113,17 @@ export function treeCellPrefix(h, { row, treeNode, store }) {
     store.loadOrToggle(row)
   }
   if (treeNode.indent) {
-    ele.push(
-      <span
-        class="el-table__indent"
-        style={{ 'padding-left': treeNode.indent + 'px' }}></span>
-    )
+    ele.push(<span class="el-table__indent" style={{ 'padding-left': treeNode.indent + 'px' }}></span>)
   }
   if (typeof treeNode.expanded === 'boolean' && !treeNode.noLazyChildren) {
-    const expandClasses = [
-      'el-table__expand-icon',
-      treeNode.expanded ? 'el-table__expand-icon--expanded' : ''
-    ]
+    const expandClasses = ['el-table__expand-icon', treeNode.expanded ? 'el-table__expand-icon--expanded' : '']
     let iconClasses = ['el-icon-right']
     if (treeNode.loading) {
       iconClasses = ['el-icon-loading', 'anticon']
       ele.push(
         <div class={expandClasses} on-click={callback}>
           <i class={iconClasses}>
-            <svg
-              viewBox="0 0 32 32"
-              width="1em"
-              height="1em"
-              fill="currentColor">
+            <svg viewBox="0 0 32 32" width="1em" height="1em" fill="currentColor">
               <title>spinner</title>
               <path d="M13 29c0-1.657 1.343-3 3-3s3 1.343 3 3c0 1.657-1.343 3-3 3s-3-1.343-3-3zM0 16c0-1.657 1.343-3 3-3s3 1.343 3 3c0 1.657-1.343 3-3 3s-3-1.343-3-3zM26 16c0-1.657 1.343-3 3-3s3 1.343 3 3c0 1.657-1.343 3-3 3s-3-1.343-3-3zM3.808 6.808c0-1.657 1.343-3 3-3s3 1.343 3 3c0 1.657-1.343 3-3 3s-3-1.343-3-3zM22.192 25.192c0-1.657 1.343-3 3-3s3 1.343 3 3c0 1.657-1.343 3-3 3s-3-1.343-3-3zM3.808 25.192c0-1.657 1.343-3 3-3s3 1.343 3 3c0 1.657-1.343 3-3 3s-3-1.343-3-3zM22.192 6.808c0-1.657 1.343-3 3-3s3 1.343 3 3c0 1.657-1.343 3-3 3s-3-1.343-3-3z"></path>
             </svg>

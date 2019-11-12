@@ -464,9 +464,7 @@ describe('Radio', () => {
           true
         )
         setTimeout(_ => {
-          expect(
-            vm.$el.querySelectorAll('.el-radio-button--large').length
-          ).to.be.equal(3)
+          expect(vm.$el.querySelectorAll('.el-radio-button--large').length).to.be.equal(3)
           done()
         }, 10)
       })

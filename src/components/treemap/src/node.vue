@@ -9,22 +9,10 @@
       'is-collapsed': collapsed
     }"
   >
-    <a
-      :class="['el-treemap-node__wrapper', data.class]"
-      ref="wrapper"
-      @click="nodeClick"
-    >
+    <a :class="['el-treemap-node__wrapper', data.class]" ref="wrapper" @click="nodeClick">
       <NodeLabel :config="config" :data="data"></NodeLabel>
-      <div
-        class="el-treemap-node__line-top"
-        ref="topLine"
-        v-if="!root && !onlyOneChild"
-      />
-      <div
-        class="el-treemap-node__line-bottom"
-        ref="bottomLine"
-        v-if="children"
-      >
+      <div class="el-treemap-node__line-top" ref="topLine" v-if="!root && !onlyOneChild" />
+      <div class="el-treemap-node__line-bottom" ref="bottomLine" v-if="children">
         <i
           v-if="config.foldable"
           :class="{
@@ -35,21 +23,9 @@
         ></i>
       </div>
     </a>
-    <div
-      class="el-treemap-node__line"
-      v-if="hasChild && !isOnlyOneChild"
-      ref="centerLine"
-    />
-    <transition
-      name="el-fade-in"
-      @after-leave="_elTreemap.$emit('redraw-lines')"
-      v-if="children"
-    >
-      <div
-        class="el-treemap-node__children"
-        v-show="!collapsed"
-        :style="{ marginTop: `${config.rowSpace}px` }"
-      >
+    <div class="el-treemap-node__line" v-if="hasChild && !isOnlyOneChild" ref="centerLine" />
+    <transition name="el-fade-in" @after-leave="_elTreemap.$emit('redraw-lines')" v-if="children">
+      <div class="el-treemap-node__children" v-show="!collapsed" :style="{ marginTop: `${config.rowSpace}px` }">
         <treemap-node
           v-for="(item, index) in children"
           :key="GetVal(item, config.props.id, `${$attrs.index}-${index + 1}`)"

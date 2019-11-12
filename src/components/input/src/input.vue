@@ -10,8 +10,7 @@
         'el-input-group--append': $slots.append,
         'el-input-group--prepend': $slots.prepend,
         'el-input--prefix': $slots.prefix || prefixIcon,
-        'el-input--suffix':
-          $slots.suffix || suffixIcon || clearable || showPassword
+        'el-input--suffix': $slots.suffix || suffixIcon || clearable || showPassword
       }
     ]"
     @mouseenter="hovering = true"
@@ -71,16 +70,10 @@
             @click="handlePasswordVisible"
           ></i>
           <span v-if="isWordLimitVisible" class="el-input__count">
-            <span class="el-input__count-inner"
-              >{{ textLength }}/{{ upperLimit }}</span
-            >
+            <span class="el-input__count-inner">{{ textLength }}/{{ upperLimit }}</span>
           </span>
         </span>
-        <i
-          class="el-input__icon"
-          v-if="validateState"
-          :class="['el-input__validateIcon', validateIcon]"
-        ></i>
+        <i class="el-input__icon" v-if="validateState" :class="['el-input__validateIcon', validateIcon]"></i>
       </span>
       <!-- 后置元素 -->
       <div class="el-input-group__append" v-if="$slots.append">
@@ -106,9 +99,7 @@
       @change="handleChange"
       :aria-label="label"
     ></textarea>
-    <span
-      v-if="isWordLimitVisible && type === 'textarea'"
-      class="el-input__count"
+    <span v-if="isWordLimitVisible && type === 'textarea'" class="el-input__count"
       >{{ textLength }}/{{ upperLimit }}</span
     >
   </div>
@@ -216,9 +207,7 @@ export default {
       return this.disabled || (this.elForm || {}).disabled
     },
     nativeInputValue() {
-      return this.value === null || this.value === undefined
-        ? ''
-        : String(this.value)
+      return this.value === null || this.value === undefined ? '' : String(this.value)
     },
     showClear() {
       return (
@@ -230,12 +219,7 @@ export default {
       )
     },
     showPwdVisible() {
-      return (
-        this.showPassword &&
-        !this.inputDisabled &&
-        !this.readonly &&
-        (!!this.nativeInputValue || this.focused)
-      )
+      return this.showPassword && !this.inputDisabled && !this.readonly && (!!this.nativeInputValue || this.focused)
     },
     isWordLimitVisible() {
       return (
@@ -329,11 +313,7 @@ export default {
       const minRows = autosize.minRows
       const maxRows = autosize.maxRows
 
-      this.textareaCalcStyle = calcTextareaHeight(
-        this.$refs.textarea,
-        minRows,
-        maxRows
-      )
+      this.textareaCalcStyle = calcTextareaHeight(this.$refs.textarea, minRows, maxRows)
     },
     setNativeInputValue() {
       const input = this.getInput()
@@ -378,9 +358,7 @@ export default {
       this.$emit('change', event.target.value)
     },
     calcIconOffset(place) {
-      let elList = [].slice.call(
-        this.$el.querySelectorAll(`.el-input__${place}`) || []
-      )
+      let elList = [].slice.call(this.$el.querySelectorAll(`.el-input__${place}`) || [])
       if (!elList.length) return
       let el = null
       for (let i = 0; i < elList.length; i++) {

@@ -28,9 +28,7 @@ describe('Dialog', () => {
     const dialog = vm.$children[0]
     setTimeout(() => {
       expect(document.querySelector('.v-modal')).to.exist
-      expect(vm.$el.querySelector('.el-dialog__title').textContent).to.equal(
-        'dialog test'
-      )
+      expect(vm.$el.querySelector('.el-dialog__title').textContent).to.equal('dialog test')
       expect(dialog.$el.style.display).to.not.equal('none')
       done()
     }, 10)
@@ -61,12 +59,8 @@ describe('Dialog', () => {
       true
     )
     setTimeout(() => {
-      const footerBtns = vm.$el.querySelectorAll(
-        '.el-dialog__footer .el-button'
-      )
-      expect(
-        vm.$el.querySelector('.el-dialog__body span').textContent
-      ).to.equal('这是一段信息')
+      const footerBtns = vm.$el.querySelectorAll('.el-dialog__footer .el-button')
+      expect(vm.$el.querySelector('.el-dialog__body span').textContent).to.equal('这是一段信息')
       expect(footerBtns.length).to.equal(2)
       expect(footerBtns[0].querySelector('span').textContent).to.equal('取消')
       expect(footerBtns[1].querySelector('span').textContent).to.equal('确定')
@@ -167,15 +161,12 @@ describe('Dialog', () => {
 
     it('top', () => {
       vm = getDialogVm('top="100px"')
-      expect(vm.$el.querySelector('.el-dialog').style.marginTop).to.equal(
-        '100px'
-      )
+      expect(vm.$el.querySelector('.el-dialog').style.marginTop).to.equal('100px')
     })
 
     it('custom-class', () => {
       vm = getDialogVm('custom-class="my-dialog"')
-      expect(vm.$el.querySelector('.el-dialog').classList.contains('my-dialog'))
-        .to.true
+      expect(vm.$el.querySelector('.el-dialog').classList.contains('my-dialog')).to.true
     })
   })
 

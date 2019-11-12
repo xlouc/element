@@ -1,10 +1,6 @@
 <template>
   <transition name="el-zoom-in-top" @after-leave="$emit('dodestroy')">
-    <div
-      v-show="visible"
-      class="el-time-range-picker el-picker-panel el-popper"
-      :class="popperClass"
-    >
+    <div v-show="visible" class="el-time-range-picker el-picker-panel el-popper" :class="popperClass">
       <div class="el-time-range-picker__content">
         <div class="el-time-range-picker__cell">
           <div class="el-time-range-picker__header">
@@ -46,19 +42,10 @@
         </div>
       </div>
       <div class="el-time-panel__footer">
-        <button
-          type="button"
-          class="el-time-panel__btn cancel"
-          @click="handleCancel()"
-        >
+        <button type="button" class="el-time-panel__btn cancel" @click="handleCancel()">
           {{ t('el.datepicker.cancel') }}
         </button>
-        <button
-          type="button"
-          class="el-time-panel__btn confirm"
-          @click="handleConfirm()"
-          :disabled="btnDisabled"
-        >
+        <button type="button" class="el-time-panel__btn confirm" @click="handleConfirm()" :disabled="btnDisabled">
           {{ t('el.datepicker.confirm') }}
         </button>
       </div>
@@ -67,13 +54,7 @@
 </template>
 
 <script type="text/babel">
-import {
-  parseDate,
-  limitTimeRange,
-  modifyDate,
-  clearMilliseconds,
-  timeWithinRange
-} from 'yak-ui/src/utils/date-util'
+import { parseDate, limitTimeRange, modifyDate, clearMilliseconds, timeWithinRange } from 'yak-ui/src/utils/date-util'
 import Locale from 'yak-ui/src/mixins/locale'
 import TimeSpinner from '../basic/time-spinner'
 
@@ -81,28 +62,16 @@ const MIN_TIME = parseDate('00:00:00', 'HH:mm:ss')
 const MAX_TIME = parseDate('23:59:59', 'HH:mm:ss')
 
 const minTimeOfDay = function(date) {
-  return modifyDate(
-    MIN_TIME,
-    date.getFullYear(),
-    date.getMonth(),
-    date.getDate()
-  )
+  return modifyDate(MIN_TIME, date.getFullYear(), date.getMonth(), date.getDate())
 }
 
 const maxTimeOfDay = function(date) {
-  return modifyDate(
-    MAX_TIME,
-    date.getFullYear(),
-    date.getMonth(),
-    date.getDate()
-  )
+  return modifyDate(MAX_TIME, date.getFullYear(), date.getMonth(), date.getDate())
 }
 
 // increase time by amount of milliseconds, but within the range of day
 const advanceTime = function(date, amount) {
-  return new Date(
-    Math.min(date.getTime() + amount, maxTimeOfDay(date).getTime())
-  )
+  return new Date(Math.min(date.getTime() + amount, maxTimeOfDay(date).getTime()))
 }
 
 export default {
@@ -120,9 +89,7 @@ export default {
     },
 
     spinner() {
-      return this.selectionRange[0] < this.offset
-        ? this.$refs.minSpinner
-        : this.$refs.maxSpinner
+      return this.selectionRange[0] < this.offset ? this.$refs.minSpinner : this.$refs.maxSpinner
     },
 
     btnDisabled() {
@@ -161,10 +128,7 @@ export default {
           this.maxDate = new Date(this.defaultValue[1])
         } else if (this.defaultValue) {
           this.minDate = new Date(this.defaultValue)
-          this.maxDate = advanceTime(
-            new Date(this.defaultValue),
-            60 * 60 * 1000
-          )
+          this.maxDate = advanceTime(new Date(this.defaultValue), 60 * 60 * 1000)
         } else {
           this.minDate = new Date()
           this.maxDate = advanceTime(new Date(), 60 * 60 * 1000)
@@ -201,12 +165,8 @@ export default {
 
     handleChange() {
       if (this.isValidValue([this.minDate, this.maxDate])) {
-        this.$refs.minSpinner.selectableRange = [
-          [minTimeOfDay(this.minDate), this.maxDate]
-        ]
-        this.$refs.maxSpinner.selectableRange = [
-          [this.minDate, maxTimeOfDay(this.maxDate)]
-        ]
+        this.$refs.minSpinner.selectableRange = [[minTimeOfDay(this.minDate), this.maxDate]]
+        this.$refs.maxSpinner.selectableRange = [[this.minDate, maxTimeOfDay(this.maxDate)]]
         this.$emit('pick', [this.minDate, this.maxDate], true)
       }
     },
@@ -225,16 +185,8 @@ export default {
       const minSelectableRange = this.$refs.minSpinner.selectableRange
       const maxSelectableRange = this.$refs.maxSpinner.selectableRange
 
-      this.minDate = limitTimeRange(
-        this.minDate,
-        minSelectableRange,
-        this.format
-      )
-      this.maxDate = limitTimeRange(
-        this.maxDate,
-        maxSelectableRange,
-        this.format
-      )
+      this.minDate = limitTimeRange(this.minDate, minSelectableRange, this.format)
+      this.maxDate = limitTimeRange(this.maxDate, maxSelectableRange, this.format)
 
       this.$emit('pick', [this.minDate, this.maxDate], visible)
     },
@@ -246,9 +198,7 @@ export default {
 
     changeSelectionRange(step) {
       const list = this.showSeconds ? [0, 3, 6, 11, 14, 17] : [0, 3, 8, 11]
-      const mapping = ['hours', 'minutes'].concat(
-        this.showSeconds ? ['seconds'] : []
-      )
+      const mapping = ['hours', 'minutes'].concat(this.showSeconds ? ['seconds'] : [])
       const index = list.indexOf(this.selectionRange[0])
       const next = (index + step + list.length) % list.length
       const half = list.length / 2

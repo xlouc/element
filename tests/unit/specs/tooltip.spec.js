@@ -13,10 +13,7 @@ describe('Tooltip', () => {
       </el-tooltip>`)
 
     vm.$nextTick(_ => {
-      expect(vm.$refs.tooltip.popperVM.$el).to.have.property(
-        'textContent',
-        '提示文字'
-      )
+      expect(vm.$refs.tooltip.popperVM.$el).to.have.property('textContent', '提示文字')
       done()
     })
   })
@@ -27,8 +24,7 @@ describe('Tooltip', () => {
         <button>click</button>
       </el-tooltip>`)
     vm.$nextTick(_ => {
-      expect(vm.$refs.tooltip.popperVM.$el.classList.contains('custom-popper'))
-        .to.true
+      expect(vm.$refs.tooltip.popperVM.$el.classList.contains('custom-popper')).to.true
       done()
     })
   })
@@ -101,8 +97,7 @@ describe('Tooltip', () => {
       </el-tooltip>
     `)
     vm.$nextTick(_ => {
-      expect(vm.$refs.tooltip.popperVM.$el.classList.contains('is-light')).to
-        .exist
+      expect(vm.$refs.tooltip.popperVM.$el.classList.contains('is-light')).to.exist
       done()
     })
   })

@@ -1,22 +1,10 @@
 <template>
   <transition name="el-zoom-in-top">
-    <div
-      class="el-table-filter"
-      v-if="multiple"
-      v-clickoutside="handleOutsideClick"
-      v-show="showPopper"
-    >
+    <div class="el-table-filter" v-if="multiple" v-clickoutside="handleOutsideClick" v-show="showPopper">
       <div class="el-table-filter__content">
         <el-scrollbar wrap-class="el-table-filter__wrap">
-          <el-checkbox-group
-            class="el-table-filter__checkbox-group"
-            v-model="filteredValue"
-          >
-            <el-checkbox
-              v-for="filter in filters"
-              :key="filter.value"
-              :label="filter.value"
-            >
+          <el-checkbox-group class="el-table-filter__checkbox-group" v-model="filteredValue">
+            <el-checkbox v-for="filter in filters" :key="filter.value" :label="filter.value">
               {{ filter.text }}
             </el-checkbox>
           </el-checkbox-group>
@@ -33,12 +21,7 @@
         <button @click="handleReset">{{ t('el.table.resetFilter') }}</button>
       </div>
     </div>
-    <div
-      class="el-table-filter"
-      v-else
-      v-clickoutside="handleOutsideClick"
-      v-show="showPopper"
-    >
+    <div class="el-table-filter" v-else v-clickoutside="handleOutsideClick" v-show="showPopper">
       <ul class="el-table-filter__list">
         <li
           class="el-table-filter__list-item"
@@ -207,10 +190,7 @@ export default {
   },
   watch: {
     showPopper(val) {
-      if (
-        val === true &&
-        parseInt(this.popperJS.popper.style.zIndex, 10) < PopupManager.zIndex
-      ) {
+      if (val === true && parseInt(this.popperJS.popper.style.zIndex, 10) < PopupManager.zIndex) {
         this.popperJS.popper.style.zIndex = PopupManager.nextZIndex()
       }
     }

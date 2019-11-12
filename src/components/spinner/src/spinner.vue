@@ -1,10 +1,6 @@
 <template>
   <span class="el-spinner">
-    <svg
-      class="el-spinner-inner"
-      viewBox="0 0 50 50"
-      :style="{ width: radius / 2 + 'px', height: radius / 2 + 'px' }"
-    >
+    <svg class="el-spinner-inner" viewBox="0 0 50 50" :style="{ width: radius / 2 + 'px', height: radius / 2 + 'px' }">
       <circle
         class="path"
         cx="25"

@@ -1,9 +1,5 @@
 <template>
-  <transition
-    name="el-zoom-in-top"
-    @before-enter="handleMenuEnter"
-    @after-leave="$emit('dodestroy')"
-  >
+  <transition name="el-zoom-in-top" @before-enter="handleMenuEnter" @after-leave="$emit('dodestroy')">
     <div
       ref="popper"
       v-show="visible"
@@ -66,9 +62,7 @@ const compareTime = function(time1, time2) {
 
 const formatTime = function(time) {
   return (
-    (time.hours < 10 ? '0' + time.hours : time.hours) +
-    ':' +
-    (time.minutes < 10 ? '0' + time.minutes : time.minutes)
+    (time.hours < 10 ? '0' + time.hours : time.hours) + ':' + (time.minutes < 10 ? '0' + time.minutes : time.minutes)
   )
 }
 
@@ -117,14 +111,9 @@ export default {
     },
 
     handleMenuEnter() {
-      const selected =
-        this.items.map(item => item.value).indexOf(this.value) !== -1
-      const hasDefault =
-        this.items.map(item => item.value).indexOf(this.defaultValue) !== -1
-      const option =
-        (selected && '.selected') ||
-        (hasDefault && '.default') ||
-        '.time-select-item:not(.disabled)'
+      const selected = this.items.map(item => item.value).indexOf(this.value) !== -1
+      const hasDefault = this.items.map(item => item.value).indexOf(this.defaultValue) !== -1
+      const option = (selected && '.selected') || (hasDefault && '.default') || '.time-select-item:not(.disabled)'
       this.$nextTick(() => this.scrollToOption(option))
     },
 
@@ -192,8 +181,7 @@ export default {
           result.push({
             value: current,
             disabled:
-              compareTime(current, this.minTime || '-1:-1') <= 0 ||
-              compareTime(current, this.maxTime || '100:100') >= 0
+              compareTime(current, this.minTime || '-1:-1') <= 0 || compareTime(current, this.maxTime || '100:100') >= 0
           })
           current = nextTime(current, step)
         }

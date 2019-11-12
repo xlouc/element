@@ -83,9 +83,7 @@ describe('Avatar', () => {
     )
     const imgElm = vm.$el.children[0]
     expect(imgElm.tagName.toUpperCase()).to.equal('IMG')
-    expect(imgElm.src).to.equal(
-      'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png'
-    )
+    expect(imgElm.src).to.equal('https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png')
   })
 
   it('image fallback', done => {
@@ -124,8 +122,7 @@ describe('Avatar', () => {
         data() {
           return {
             fits: ['fill', 'contain', 'cover', 'none', 'scale-down'],
-            url:
-              'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
+            url: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg'
           }
         }
       },
@@ -133,24 +130,12 @@ describe('Avatar', () => {
     )
     setTimeout(() => {
       const containerElm = vm.$el
-      expect(containerElm.children[0].children[0].style.objectFit).to.equal(
-        'cover'
-      )
-      expect(containerElm.children[1].children[0].style.objectFit).to.equal(
-        'fill'
-      )
-      expect(containerElm.children[2].children[0].style.objectFit).to.equal(
-        'contain'
-      )
-      expect(containerElm.children[3].children[0].style.objectFit).to.equal(
-        'cover'
-      )
-      expect(containerElm.children[4].children[0].style.objectFit).to.equal(
-        'none'
-      )
-      expect(containerElm.children[5].children[0].style.objectFit).to.equal(
-        'scale-down'
-      )
+      expect(containerElm.children[0].children[0].style.objectFit).to.equal('cover')
+      expect(containerElm.children[1].children[0].style.objectFit).to.equal('fill')
+      expect(containerElm.children[2].children[0].style.objectFit).to.equal('contain')
+      expect(containerElm.children[3].children[0].style.objectFit).to.equal('cover')
+      expect(containerElm.children[4].children[0].style.objectFit).to.equal('none')
+      expect(containerElm.children[5].children[0].style.objectFit).to.equal('scale-down')
 
       done()
     }, 3000)

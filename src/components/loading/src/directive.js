@@ -33,8 +33,7 @@ loadingDirective.install = Vue => {
                 'px'
             })
             ;['height', 'width'].forEach(property => {
-              el.maskStyle[property] =
-                el.getBoundingClientRect()[property] + 'px'
+              el.maskStyle[property] = el.getBoundingClientRect()[property] + 'px'
             })
 
             insertDom(document.body, el, binding)
@@ -50,10 +49,7 @@ loadingDirective.install = Vue => {
         _ => {
           if (!el.instance.hiding) return
           el.domVisible = false
-          const target =
-            binding.modifiers.fullscreen || binding.modifiers.body
-              ? document.body
-              : el
+          const target = binding.modifiers.fullscreen || binding.modifiers.body ? document.body : el
           removeClass(target, 'el-loading-parent--relative')
           removeClass(target, 'el-loading-parent--hidden')
           el.instance.hiding = false
@@ -66,19 +62,12 @@ loadingDirective.install = Vue => {
     }
   }
   const insertDom = (parent, el, binding) => {
-    if (
-      !el.domVisible &&
-      getStyle(el, 'display') !== 'none' &&
-      getStyle(el, 'visibility') !== 'hidden'
-    ) {
+    if (!el.domVisible && getStyle(el, 'display') !== 'none' && getStyle(el, 'visibility') !== 'hidden') {
       Object.keys(el.maskStyle).forEach(property => {
         el.mask.style[property] = el.maskStyle[property]
       })
 
-      if (
-        el.originalPosition !== 'absolute' &&
-        el.originalPosition !== 'fixed'
-      ) {
+      if (el.originalPosition !== 'absolute' && el.originalPosition !== 'fixed') {
         addClass(parent, 'el-loading-parent--relative')
       }
       if (binding.modifiers.fullscreen && binding.modifiers.lock) {

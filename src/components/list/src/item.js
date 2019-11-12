@@ -21,9 +21,7 @@ const ListItemMeta = {
       avatarVm = h(Avatar, { props: { src: avatar, shape: 'circle' } })
     }
     let titleVm = h('h4', { class: 'el-list-item__meta-title' }, [title])
-    let descrVm = h('div', { class: 'el-list-item__meta-description' }, [
-      description
-    ])
+    let descrVm = h('div', { class: 'el-list-item__meta-description' }, [description])
     return (
       <div class="el-list-item__meta">
         <div class="el-list-item__meta--avatar">{avatarVm}</div>
@@ -59,9 +57,7 @@ export default {
         }
         return (
           defs.filter(function(item) {
-            return (
-              !!item && (hasOwn(item, 'asyncFactory') || !hasOwn(item, 'tag'))
-            )
+            return !!item && (hasOwn(item, 'asyncFactory') || !hasOwn(item, 'tag'))
           }).length > 0
         )
       }
@@ -94,9 +90,7 @@ export default {
         </div>
       )
     } else {
-      layout.push(
-        isMeta && h(ListItemMeta, { props: { avatar, title, description } })
-      )
+      layout.push(isMeta && h(ListItemMeta, { props: { avatar, title, description } }))
       layout.push(this.$slots.default)
       if (actions) {
         layout.push(<div class="el-list-item__action">{actions}</div>)
@@ -105,16 +99,10 @@ export default {
 
     if (_elList.itemAttr) {
       return h(Col, { props: _elList.itemAttr }, [
-        <div class={{ 'el-list-item': true, 'is-no-flex': !isFlexMode }}>
-          {layout}
-        </div>
+        <div class={{ 'el-list-item': true, 'is-no-flex': !isFlexMode }}>{layout}</div>
       ])
     } else {
-      return (
-        <li class={{ 'el-list-item': true, 'is-no-flex': !isFlexMode }}>
-          {layout}
-        </li>
-      )
+      return <li class={{ 'el-list-item': true, 'is-no-flex': !isFlexMode }}>{layout}</li>
     }
   }
 }

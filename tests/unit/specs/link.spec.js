@@ -38,9 +38,7 @@ describe('Link', () => {
       true
     )
     let linkElm = vm.$el
-    expect(linkElm.getAttribute('href')).to.be.equal(
-      'https://element.eleme.io/'
-    )
+    expect(linkElm.getAttribute('href')).to.be.equal('https://element.eleme.io/')
   })
   it('target', () => {
     vm = createVue(`

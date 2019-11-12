@@ -39,23 +39,19 @@ describe('Mixin:vue-popup', () => {
   it('custom modal class', () => {
     vm = createTest(Popup, { modal: true, modalClass: 'custom-class' })
     vm.open()
-    expect(
-      document.querySelector('.v-modal').classList.contains('custom-class')
-    ).to.true
+    expect(document.querySelector('.v-modal').classList.contains('custom-class')).to.true
   })
 
   it('lock scroll', done => {
     vm = createTest(Popup, { modal: true })
     vm.open()
-    expect(document.body.classList.contains('el-popup-parent--hidden')).to.be
-      .true
+    expect(document.body.classList.contains('el-popup-parent--hidden')).to.be.true
     vm.close()
     destroyVM(vm)
     setTimeout(() => {
       vm = createTest(Popup, { modal: true, lockScroll: false })
       vm.open()
-      expect(document.body.classList.contains('el-popup-parent--hidden')).to.be
-        .false
+      expect(document.body.classList.contains('el-popup-parent--hidden')).to.be.false
       done()
     }, 200)
   })

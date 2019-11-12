@@ -1,9 +1,4 @@
-import {
-  cellStarts,
-  cellForced,
-  defaultRenderCell,
-  treeCellPrefix
-} from './config'
+import { cellStarts, cellForced, defaultRenderCell, treeCellPrefix } from './config'
 import { mergeOptions, parseWidth, parseMinWidth, compose } from './util'
 import ElCheckbox from 'yak-ui/components/checkbox'
 
@@ -59,9 +54,7 @@ export default {
         return ['ascending', 'descending', null]
       },
       validator(val) {
-        return val.every(
-          order => ['ascending', 'descending', null].indexOf(order) > -1
-        )
+        return val.every(order => ['ascending', 'descending', null].indexOf(order) > -1)
       }
     }
   },
@@ -133,8 +126,7 @@ export default {
       if (!column.minWidth) {
         column.minWidth = 80
       }
-      column.realWidth =
-        column.width === undefined ? column.minWidth : column.width
+      column.realWidth = column.width === undefined ? column.minWidth : column.width
       return column
     },
 
@@ -145,8 +137,7 @@ export default {
       Object.keys(source).forEach(prop => {
         let value = source[prop]
         if (value !== undefined) {
-          column[prop] =
-            prop === 'className' ? `${column[prop]} ${value}` : value
+          column[prop] = prop === 'className' ? `${column[prop]} ${value}` : value
         }
       })
       return column
@@ -169,13 +160,9 @@ export default {
       // TODO: 这里的实现调整
       if (column.type === 'expand') {
         // 对于展开行，renderCell 不允许配置的。在上一步中已经设置过，这里需要简单封装一下。
-        column.renderCell = (h, data) => (
-          <div class="cell">{originRenderCell(h, data)}</div>
-        )
+        column.renderCell = (h, data) => <div class="cell">{originRenderCell(h, data)}</div>
         this.owner.renderExpanded = (h, data) => {
-          return this.$scopedSlots.default
-            ? this.$scopedSlots.default(data)
-            : this.$slots.default
+          return this.$scopedSlots.default ? this.$scopedSlots.default(data) : this.$slots.default
         }
       } else {
         originRenderCell = originRenderCell || defaultRenderCell
@@ -280,8 +267,7 @@ export default {
   created() {
     const parent = this.columnOrTableParent
     this.isSubColumn = this.owner !== parent
-    this.columnId =
-      (parent.tableId || parent.columnId) + '_column_' + columnIdSeed++
+    this.columnId = (parent.tableId || parent.columnId) + '_column_' + columnIdSeed++
 
     const type = this.type || 'default'
     const sortable = this.sortable === '' ? true : this.sortable
@@ -292,8 +278,7 @@ export default {
       property: this.prop || this.property,
       align: this.realAlign,
       headerAlign: this.realHeaderAlign,
-      showOverflowTooltip:
-        this.showOverflowTooltip || this.showTooltipWhenOverflow,
+      showOverflowTooltip: this.showOverflowTooltip || this.showTooltipWhenOverflow,
       // filter 相关属性
       filterable: this.filters || this.filterMethod,
       filteredValue: [],
@@ -328,12 +313,7 @@ export default {
       'filterPlacement'
     ]
 
-    let column = this.getPropsData(
-      basicProps,
-      sortProps,
-      selectProps,
-      filterProps
-    )
+    let column = this.getPropsData(basicProps, sortProps, selectProps, filterProps)
     column = mergeOptions(defaults, column)
 
     // 注意 compose 中函数执行的顺序是从右到左
@@ -354,27 +334,16 @@ export default {
   mounted() {
     const owner = this.owner
     const parent = this.columnOrTableParent
-    const children = this.isSubColumn
-      ? parent.$el.children
-      : parent.$refs.hiddenColumns.children
+    const children = this.isSubColumn ? parent.$el.children : parent.$refs.hiddenColumns.children
     const columnIndex = this.getColumnElIndex(children, this.$el)
 
-    owner.store.commit(
-      'insertColumn',
-      this.columnConfig,
-      columnIndex,
-      this.isSubColumn ? parent.columnConfig : null
-    )
+    owner.store.commit('insertColumn', this.columnConfig, columnIndex, this.isSubColumn ? parent.columnConfig : null)
   },
 
   destroyed() {
     if (!this.$parent) return
     const parent = this.$parent
-    this.owner.store.commit(
-      'removeColumn',
-      this.columnConfig,
-      this.isSubColumn ? parent.columnConfig : null
-    )
+    this.owner.store.commit('removeColumn', this.columnConfig, this.isSubColumn ? parent.columnConfig : null)
   },
 
   render(h) {

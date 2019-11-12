@@ -37,11 +37,7 @@
       @blur="focus = false"
     />
 
-    <span
-      class="el-checkbox-button__inner"
-      v-if="$slots.default || label"
-      :style="isChecked ? activeStyle : null"
-    >
+    <span class="el-checkbox-button__inner" v-if="$slots.default || label" :style="isChecked ? activeStyle : null">
       <slot>{{ label }}</slot>
     </span>
   </label>
@@ -83,26 +79,17 @@ export default {
   computed: {
     model: {
       get() {
-        return this._checkboxGroup
-          ? this.store
-          : this.value !== undefined
-          ? this.value
-          : this.selfModel
+        return this._checkboxGroup ? this.store : this.value !== undefined ? this.value : this.selfModel
       },
 
       set(val) {
         if (this._checkboxGroup) {
           this.isLimitExceeded = false
-          this._checkboxGroup.min !== undefined &&
-            val.length < this._checkboxGroup.min &&
-            (this.isLimitExceeded = true)
+          this._checkboxGroup.min !== undefined && val.length < this._checkboxGroup.min && (this.isLimitExceeded = true)
 
-          this._checkboxGroup.max !== undefined &&
-            val.length > this._checkboxGroup.max &&
-            (this.isLimitExceeded = true)
+          this._checkboxGroup.max !== undefined && val.length > this._checkboxGroup.max && (this.isLimitExceeded = true)
 
-          this.isLimitExceeded === false &&
-            this.dispatch('ElCheckboxGroup', 'input', [val])
+          this.isLimitExceeded === false && this.dispatch('ElCheckboxGroup', 'input', [val])
         } else if (this.value !== undefined) {
           this.$emit('input', val)
         } else {
@@ -152,11 +139,7 @@ export default {
     },
 
     size() {
-      return (
-        this._checkboxGroup.checkboxGroupSize ||
-        this._elFormItemSize ||
-        (this.$ELEMENT || {}).size
-      )
+      return this._checkboxGroup.checkboxGroupSize || this._elFormItemSize || (this.$ELEMENT || {}).size
     },
 
     /* used to make the isDisabled judgment under max/min props */
@@ -170,10 +153,7 @@ export default {
 
     isDisabled() {
       return this._checkboxGroup
-        ? this._checkboxGroup.disabled ||
-            this.disabled ||
-            (this.elForm || {}).disabled ||
-            this.isLimitDisabled
+        ? this._checkboxGroup.disabled || this.disabled || (this.elForm || {}).disabled || this.isLimitDisabled
         : this.disabled || (this.elForm || {}).disabled
     }
   },
@@ -196,9 +176,7 @@ export default {
       this.$emit('change', value, ev)
       this.$nextTick(() => {
         if (this._checkboxGroup) {
-          this.dispatch('ElCheckboxGroup', 'change', [
-            this._checkboxGroup.value
-          ])
+          this.dispatch('ElCheckboxGroup', 'change', [this._checkboxGroup.value])
         }
       })
     }

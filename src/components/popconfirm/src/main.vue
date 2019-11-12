@@ -2,12 +2,7 @@
   <el-popover v-bind="$attrs" v-model="visible" trigger="click">
     <div class="el-popconfirm">
       <p class="el-popconfirm__main">
-        <i
-          v-if="!hideIcon"
-          :class="icon"
-          class="el-popconfirm__icon"
-          :style="{ color: iconColor }"
-        ></i>
+        <i v-if="!hideIcon" :class="icon" class="el-popconfirm__icon" :style="{ color: iconColor }"></i>
         {{ title }}
       </p>
       <div class="el-popconfirm__action">

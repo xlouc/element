@@ -18,25 +18,11 @@
       :style="{ cursor: rateDisabled ? 'auto' : 'pointer' }"
       :key="key"
     >
-      <i
-        :class="[classes[item - 1], { hover: hoverIndex === item }]"
-        class="el-rate__icon"
-        :style="getIconStyle(item)"
-      >
-        <i
-          v-if="showDecimalIcon(item)"
-          :class="decimalIconClass"
-          :style="decimalStyle"
-          class="el-rate__decimal"
-        ></i>
+      <i :class="[classes[item - 1], { hover: hoverIndex === item }]" class="el-rate__icon" :style="getIconStyle(item)">
+        <i v-if="showDecimalIcon(item)" :class="decimalIconClass" :style="decimalStyle" class="el-rate__decimal"></i>
       </i>
     </span>
-    <span
-      v-if="showText || showScore"
-      class="el-rate__text"
-      :style="{ color: textColor }"
-      >{{ text }}</span
-    >
+    <span v-if="showText || showScore" class="el-rate__text" :style="{ color: textColor }">{{ text }}</span>
   </div>
 </template>
 
@@ -145,10 +131,7 @@ export default {
     text() {
       let result = ''
       if (this.showScore) {
-        result = this.scoreTemplate.replace(
-          /\{\s*value\s*\}/,
-          this.rateDisabled ? this.value : this.currentValue
-        )
+        result = this.scoreTemplate.replace(/\{\s*value\s*\}/, this.rateDisabled ? this.value : this.currentValue)
       } else if (this.showText) {
         result = this.texts[Math.ceil(this.currentValue) - 1]
       }
@@ -215,10 +198,7 @@ export default {
       let result = []
       let i = 0
       let threshold = this.currentValue
-      if (
-        this.allowHalf &&
-        this.currentValue !== Math.floor(this.currentValue)
-      ) {
+      if (this.allowHalf && this.currentValue !== Math.floor(this.currentValue)) {
         threshold--
       }
       for (; i < threshold; i++) {
@@ -264,24 +244,15 @@ export default {
     },
 
     showDecimalIcon(item) {
-      let showWhenDisabled =
-        this.rateDisabled &&
-        this.valueDecimal > 0 &&
-        item - 1 < this.value &&
-        item > this.value
+      let showWhenDisabled = this.rateDisabled && this.valueDecimal > 0 && item - 1 < this.value && item > this.value
       /* istanbul ignore next */
       let showWhenAllowHalf =
-        this.allowHalf &&
-        this.pointerAtLeftHalf &&
-        item - 0.5 <= this.currentValue &&
-        item > this.currentValue
+        this.allowHalf && this.pointerAtLeftHalf && item - 0.5 <= this.currentValue && item > this.currentValue
       return showWhenDisabled || showWhenAllowHalf
     },
 
     getIconStyle(item) {
-      const voidColor = this.rateDisabled
-        ? this.disabledVoidColor
-        : this.voidColor
+      const voidColor = this.rateDisabled ? this.disabledVoidColor : this.voidColor
       return {
         color: item <= this.currentValue ? this.activeColor : voidColor
       }

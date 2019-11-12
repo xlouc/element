@@ -1,27 +1,10 @@
 const path = require('path')
 const fileSave = require('file-save')
 
-let colorFile = fileSave(
-  path.resolve(__dirname, '../src/style/common/color.scss')
-)
+let colorFile = fileSave(path.resolve(__dirname, '../src/style/common/color.scss'))
 
 const colorSys = {
-  shades: [
-    '50',
-    '100',
-    '200',
-    '300',
-    '400',
-    '500',
-    '600',
-    '700',
-    '800',
-    '900',
-    'A100',
-    'A200',
-    'A400',
-    'A700'
-  ],
+  shades: ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900', 'A100', 'A200', 'A400', 'A700'],
   palettes: [
     {
       name: 'Red',
@@ -407,8 +390,5 @@ palettes.forEach(function(color) {
 })
 
 fileSave(path.resolve(__dirname, '../examples/colors.json'))
-  .write(
-    JSON.stringify({ quick: quickColors, colors: demoColors }, null, '  '),
-    'utf8'
-  )
+  .write(JSON.stringify({ quick: quickColors, colors: demoColors }, null, '  '), 'utf8')
   .end('\n')

@@ -89,9 +89,7 @@ describe('Timeline', () => {
 
     const contentElms = vm.$el.querySelectorAll('.el-timeline-item__content')
     contentElms.forEach((elm, index) => {
-      expect(elm.innerText).to.equal(
-        vm.activities[vm.activities.length - index - 1].content
-      )
+      expect(elm.innerText).to.equal(vm.activities[vm.activities.length - index - 1].content)
     })
 
     vm.reverse = false
@@ -142,9 +140,7 @@ describe('Timeline', () => {
       true
     )
 
-    const timestampElm = vm.$el.querySelectorAll(
-      '.el-timeline-item__timestamp'
-    )[0]
+    const timestampElm = vm.$el.querySelectorAll('.el-timeline-item__timestamp')[0]
     expect(timestampElm.classList.contains('is-top')).to.true
   })
 
@@ -186,9 +182,7 @@ describe('Timeline', () => {
       true
     )
 
-    const timestampElms = vm.$el.querySelectorAll(
-      '.el-timeline-item__timestamp'
-    )
+    const timestampElms = vm.$el.querySelectorAll('.el-timeline-item__timestamp')
     expect(timestampElms.length).to.equal(2)
   })
 
@@ -229,8 +223,7 @@ describe('Timeline', () => {
     )
 
     const nodeElm = vm.$el.querySelector('.el-timeline-item__node')
-    expect(nodeElm.classList.contains('el-timeline-item__node--primary')).to
-      .true
+    expect(nodeElm.classList.contains('el-timeline-item__node--primary')).to.true
   })
 
   it('size', () => {

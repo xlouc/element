@@ -1,9 +1,5 @@
 <template>
-  <div
-    :class="carouselClasses"
-    @mouseenter.stop="handleMouseEnter"
-    @mouseleave.stop="handleMouseLeave"
-  >
+  <div :class="carouselClasses" @mouseenter.stop="handleMouseEnter" @mouseleave.stop="handleMouseLeave">
     <div class="el-carousel__container" :style="{ height: height }">
       <transition v-if="arrowDisplay" name="carousel-arrow-left">
         <button
@@ -20,10 +16,7 @@
       <transition v-if="arrowDisplay" name="carousel-arrow-right">
         <button
           type="button"
-          v-show="
-            (arrow === 'always' || hover) &&
-              (loop || activeIndex < items.length - 1)
-          "
+          v-show="(arrow === 'always' || hover) && (loop || activeIndex < items.length - 1)"
           @mouseenter="handleButtonEnter('right')"
           @mouseleave="handleButtonLeave"
           @click.stop="throttledArrowClick(activeIndex + 1)"
@@ -56,10 +49,7 @@
 
 <script>
 import { throttle } from 'throttle-debounce'
-import {
-  addResizeListener,
-  removeResizeListener
-} from 'yak-ui/src/utils/resize-event'
+import { addResizeListener, removeResizeListener } from 'yak-ui/src/utils/resize-event'
 
 export default {
   name: 'ElCarousel',
@@ -133,10 +123,7 @@ export default {
     },
 
     indicatorsClasses() {
-      const classes = [
-        'el-carousel__indicators',
-        'el-carousel__indicators--' + this.direction
-      ]
+      const classes = ['el-carousel__indicators', 'el-carousel__indicators--' + this.direction]
       if (this.hasLabel) {
         classes.push('el-carousel__indicators--labels')
       }
@@ -212,9 +199,7 @@ export default {
     },
 
     updateItems() {
-      this.items = this.$children.filter(
-        child => child.$options.name === 'ElCarouselItem'
-      )
+      this.items = this.$children.filter(child => child.$options.name === 'ElCarouselItem')
     },
 
     resetItemPosition(oldIndex) {

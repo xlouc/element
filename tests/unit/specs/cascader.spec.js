@@ -1,12 +1,5 @@
 import sinon from 'sinon'
-import {
-  createTest,
-  createVue,
-  destroyVM,
-  waitImmediate,
-  wait,
-  triggerEvent
-} from '../util'
+import { createTest, createVue, destroyVM, waitImmediate, wait, triggerEvent } from '../util'
 import Cascader from 'packages/cascader'
 
 const options = [
@@ -65,8 +58,7 @@ const options = [
 ]
 
 const getMenus = el => el.querySelectorAll('.el-cascader-menu')
-const getOptions = (el, menuIndex) =>
-  getMenus(el)[menuIndex].querySelectorAll('.el-cascader-node')
+const getOptions = (el, menuIndex) => getMenus(el)[menuIndex].querySelectorAll('.el-cascader-node')
 const selectedValue = ['zhejiang', 'hangzhou', 'xihu']
 
 describe('Cascader', () => {
@@ -128,9 +120,7 @@ describe('Cascader', () => {
     expect(changeHandler.calledOnceWith(selectedValue)).to.be.true
     expect(vm.value).to.deep.equal(selectedValue)
     expect(checkedOption.querySelector('i.el-icon-check')).to.exist
-    expect(vm.$el.querySelector('input').value).to.equal(
-      'Zhejiang / Hangzhou / West Lake'
-    )
+    expect(vm.$el.querySelector('input').value).to.equal('Zhejiang / Hangzhou / West Lake')
   })
 
   it('disabled', async () => {
@@ -168,12 +158,8 @@ describe('Cascader', () => {
     const el = vm.$el
     await waitImmediate()
     expect(getMenus(el).length).to.equal(3)
-    expect(getOptions(el, 2)[0].querySelector('i').className).to.includes(
-      'el-icon-check'
-    )
-    expect(vm.$el.querySelector('input').value).to.equal(
-      'Zhejiang / Hangzhou / West Lake'
-    )
+    expect(getOptions(el, 2)[0].querySelector('i').className).to.includes('el-icon-check')
+    expect(vm.$el.querySelector('input').value).to.equal('Zhejiang / Hangzhou / West Lake')
   })
 
   it('async set selected value', async () => {
@@ -198,12 +184,8 @@ describe('Cascader', () => {
     vm.value = selectedValue
     await waitImmediate()
     expect(getMenus(el).length).to.equal(3)
-    expect(getOptions(el, 2)[0].querySelector('i').className).to.includes(
-      'el-icon-check'
-    )
-    expect(vm.$el.querySelector('input').value).to.equal(
-      'Zhejiang / Hangzhou / West Lake'
-    )
+    expect(getOptions(el, 2)[0].querySelector('i').className).to.includes('el-icon-check')
+    expect(vm.$el.querySelector('input').value).to.equal('Zhejiang / Hangzhou / West Lake')
   })
 
   it('default value with async options', async () => {
@@ -228,12 +210,8 @@ describe('Cascader', () => {
     vm.options = options
     await waitImmediate()
     expect(getMenus(el).length).to.equal(3)
-    expect(getOptions(el, 2)[0].querySelector('i').className).to.includes(
-      'el-icon-check'
-    )
-    expect(vm.$el.querySelector('input').value).to.equal(
-      'Zhejiang / Hangzhou / West Lake'
-    )
+    expect(getOptions(el, 2)[0].querySelector('i').className).to.includes('el-icon-check')
+    expect(vm.$el.querySelector('input').value).to.equal('Zhejiang / Hangzhou / West Lake')
   })
 
   it('clearable', async () => {
@@ -286,9 +264,7 @@ describe('Cascader', () => {
     const el = vm.$el
     await waitImmediate()
     expect(getMenus(el).length).to.equal(3)
-    expect(getOptions(el, 2)[0].querySelector('i').className).to.includes(
-      'el-icon-check'
-    )
+    expect(getOptions(el, 2)[0].querySelector('i').className).to.includes('el-icon-check')
     expect(vm.$el.querySelector('input').value).to.equal('West Lake')
   })
 
@@ -355,9 +331,7 @@ describe('Cascader', () => {
     )
     vm.value = ['xihu', 'binjiang', 'jiangbei', 'jiangdong']
     await waitImmediate()
-    expect(
-      getOptions(document.body, 0)[0].querySelector('.el-checkbox.is-checked')
-    ).to.exist
+    expect(getOptions(document.body, 0)[0].querySelector('.el-checkbox.is-checked')).to.exist
     triggerEvent(vm.$el, 'mouseenter')
     await waitImmediate()
     const closeBtn = vm.$el.querySelector('i.el-input__icon')
@@ -435,9 +409,7 @@ describe('Cascader', () => {
     triggerEvent(input, 'input')
     await wait(300)
     expect(body.querySelector('.el-cascader__suggestion-list')).to.exist
-    expect(
-      body.querySelectorAll('.el-cascader__suggestion-item').length
-    ).to.equal(3)
+    expect(body.querySelectorAll('.el-cascader__suggestion-item').length).to.equal(3)
     body.querySelectorAll('.el-cascader__suggestion-item')[0].click()
     await waitImmediate()
     expect(vm.value).to.deep.equal(selectedValue)
@@ -476,14 +448,10 @@ describe('Cascader', () => {
     input.value = 'Zhejiang'
     triggerEvent(input, 'input')
     await wait(300)
-    expect(
-      body.querySelectorAll('.el-cascader__suggestion-item').length
-    ).to.equal(3)
+    expect(body.querySelectorAll('.el-cascader__suggestion-item').length).to.equal(3)
     input.value = 'xihu'
     triggerEvent(input, 'input')
     await wait(300)
-    expect(
-      body.querySelector('.el-cascader__suggestion-item').textContent
-    ).to.equal('Zhejiang / Hangzhou / West Lake')
+    expect(body.querySelector('.el-cascader__suggestion-item').textContent).to.equal('Zhejiang / Hangzhou / West Lake')
   })
 })

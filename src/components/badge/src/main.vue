@@ -44,9 +44,7 @@ export default {
     type: {
       type: String,
       validator(val) {
-        return (
-          ['primary', 'success', 'warning', 'info', 'danger'].indexOf(val) > -1
-        )
+        return ['primary', 'success', 'warning', 'info', 'danger'].indexOf(val) > -1
       }
     }
   },

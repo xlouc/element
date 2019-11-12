@@ -86,8 +86,7 @@ export const valueEquals = (a, b) => {
   return true
 }
 
-export const escapeRegexpString = (value = '') =>
-  String(value).replace(/[|\\{}()[\]^$+*?.]/g, '\\$&')
+export const escapeRegexpString = (value = '') => String(value).replace(/[|\\{}()[\]^$+*?.]/g, '\\$&')
 
 // TODO: use native Array.find, Array.findIndex when IE support is dropped
 export const arrayFindIndex = function(arr, pred) {
@@ -124,9 +123,7 @@ export const isEdge = function() {
 }
 
 export const isFirefox = function() {
-  return (
-    !Vue.prototype.$isServer && !!window.navigator.userAgent.match(/firefox/i)
-  )
+  return !Vue.prototype.$isServer && !!window.navigator.userAgent.match(/firefox/i)
 }
 
 export const autoprefixer = function(style) {

@@ -102,9 +102,7 @@ describe('Utils:VuePopper', () => {
 
     vm.createPopper()
     vm2.createPopper()
-    expect(vm.popperJS.popper.getAttribute('x-placement')).to.equal(
-      'bottom-start'
-    )
+    expect(vm.popperJS.popper.getAttribute('x-placement')).to.equal('bottom-start')
     expect(vm2.popperJS).to.not.exist
   })
 

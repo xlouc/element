@@ -127,9 +127,7 @@ export default {
           if (this.stepStrictly) {
             const stepPrecision = this.getPrecision(this.step)
             const precisionFactor = Math.pow(10, stepPrecision)
-            newVal =
-              (Math.round(newVal / this.step) * precisionFactor * this.step) /
-              precisionFactor
+            newVal = (Math.round(newVal / this.step) * precisionFactor * this.step) / precisionFactor
           }
 
           if (this.precision !== undefined) {
@@ -156,9 +154,7 @@ export default {
       const stepPrecision = getPrecision(step)
       if (precision !== undefined) {
         if (stepPrecision > precision) {
-          console.warn(
-            '[Element Warn][InputNumber]precision should not be less than the decimal places of step'
-          )
+          console.warn('[Element Warn][InputNumber]precision should not be less than the decimal places of step')
         }
         return precision
       } else {
@@ -188,11 +184,7 @@ export default {
         if (this.stepStrictly) {
           const stepPrecision = this.getPrecision(this.step)
           const precisionFactor = Math.pow(10, stepPrecision)
-          currentValue =
-            (Math.round(currentValue / this.step) *
-              precisionFactor *
-              this.step) /
-            precisionFactor
+          currentValue = (Math.round(currentValue / this.step) * precisionFactor * this.step) / precisionFactor
         }
 
         if (this.precision !== undefined) {
@@ -206,9 +198,7 @@ export default {
   methods: {
     toPrecision(num, precision) {
       if (precision === undefined) precision = this.numPrecision
-      return parseFloat(
-        Math.round(num * Math.pow(10, precision)) / Math.pow(10, precision)
-      )
+      return parseFloat(Math.round(num * Math.pow(10, precision)) / Math.pow(10, precision))
     },
     getPrecision(value) {
       if (value === undefined) return 0
@@ -225,18 +215,14 @@ export default {
 
       const precisionFactor = Math.pow(10, this.numPrecision)
       // Solve the accuracy problem of JS decimal calculation by converting the value to integer.
-      return this.toPrecision(
-        (precisionFactor * val + precisionFactor * step) / precisionFactor
-      )
+      return this.toPrecision((precisionFactor * val + precisionFactor * step) / precisionFactor)
     },
     _decrease(val, step) {
       if (typeof val !== 'number' && val !== undefined) return this.currentValue
 
       const precisionFactor = Math.pow(10, this.numPrecision)
 
-      return this.toPrecision(
-        (precisionFactor * val - precisionFactor * step) / precisionFactor
-      )
+      return this.toPrecision((precisionFactor * val - precisionFactor * step) / precisionFactor)
     },
     increase() {
       if (this.inputNumberDisabled || this.maxDisabled) return

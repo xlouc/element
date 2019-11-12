@@ -142,16 +142,12 @@ export default {
     },
 
     sourceData() {
-      return this.data.filter(
-        item => this.value.indexOf(item[this.props.key]) === -1
-      )
+      return this.data.filter(item => this.value.indexOf(item[this.props.key]) === -1)
     },
 
     targetData() {
       if (this.targetOrder === 'original') {
-        return this.data.filter(
-          item => this.value.indexOf(item[this.props.key]) > -1
-        )
+        return this.data.filter(item => this.value.indexOf(item[this.props.key]) > -1)
       } else {
         return this.value.reduce((arr, cur) => {
           const val = this.dataObj[cur]
@@ -213,17 +209,12 @@ export default {
       const key = this.props.key
       this.data.forEach(item => {
         const itemKey = item[key]
-        if (
-          this.leftChecked.indexOf(itemKey) > -1 &&
-          this.value.indexOf(itemKey) === -1
-        ) {
+        if (this.leftChecked.indexOf(itemKey) > -1 && this.value.indexOf(itemKey) === -1) {
           itemsToBeMoved.push(itemKey)
         }
       })
       currentValue =
-        this.targetOrder === 'unshift'
-          ? itemsToBeMoved.concat(currentValue)
-          : currentValue.concat(itemsToBeMoved)
+        this.targetOrder === 'unshift' ? itemsToBeMoved.concat(currentValue) : currentValue.concat(itemsToBeMoved)
       this.$emit('input', currentValue)
       this.$emit('change', currentValue, 'right', this.leftChecked)
     },

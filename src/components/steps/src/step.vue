@@ -11,18 +11,12 @@
   >
     <!-- icon & line -->
     <div class="el-step__head" :class="`is-${currentStatus}`">
-      <div
-        class="el-step__line"
-        :style="isLast ? '' : { marginRight: $parent.stepOffset + 'px' }"
-      >
+      <div class="el-step__line" :style="isLast ? '' : { marginRight: $parent.stepOffset + 'px' }">
         <i class="el-step__line-inner" :style="lineStyle"></i>
       </div>
 
       <div class="el-step__icon" :class="`is-${icon ? 'icon' : 'text'}`">
-        <slot
-          v-if="currentStatus !== 'success' && currentStatus !== 'error'"
-          name="icon"
-        >
+        <slot v-if="currentStatus !== 'success' && currentStatus !== 'error'" name="icon">
           <i v-if="icon" class="el-step__icon-inner" :class="[icon]"></i>
           <div class="el-step__icon-inner" v-if="!icon && !isSimple">
             {{ index + 1 }}
@@ -30,9 +24,7 @@
         </slot>
         <i
           v-else
-          :class="[
-            'el-icon-' + (currentStatus === 'success' ? 'check' : 'close')
-          ]"
+          :class="['el-icon-' + (currentStatus === 'success' ? 'check' : 'close')]"
           class="el-step__icon-inner is-status"
         ></i>
       </div>
@@ -163,9 +155,7 @@ export default {
       }
 
       style.borderWidth = step && !this.isSimple ? '1px' : 0
-      this.$parent.direction === 'vertical'
-        ? (style.height = step + '%')
-        : (style.width = step + '%')
+      this.$parent.direction === 'vertical' ? (style.height = step + '%') : (style.width = step + '%')
 
       this.lineStyle = style
     }

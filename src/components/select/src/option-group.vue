@@ -42,9 +42,7 @@ export default {
   methods: {
     queryChange() {
       this.visible =
-        this.$children &&
-        Array.isArray(this.$children) &&
-        this.$children.some(option => option.visible === true)
+        this.$children && Array.isArray(this.$children) && this.$children.some(option => option.visible === true)
     }
   },
 

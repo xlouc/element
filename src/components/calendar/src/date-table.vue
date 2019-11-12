@@ -101,11 +101,7 @@ export default {
     },
 
     nextMonthDatePrefix() {
-      const temp = new Date(
-        this.date.getFullYear(),
-        this.date.getMonth() + 1,
-        1
-      )
+      const temp = new Date(this.date.getFullYear(), this.date.getMonth() + 1, 1)
       return fecha.format(temp, 'yyyy-MM')
     },
 
@@ -122,9 +118,7 @@ export default {
       // if range exists, should render days in range.
       if (this.isInRange) {
         const [start, end] = this.range
-        const currentMonthRange = rangeArr(
-          end.getDate() - start.getDate() + 1
-        ).map((_, index) => ({
+        const currentMonthRange = rangeArr(end.getDate() - start.getDate() + 1).map((_, index) => ({
           text: start.getDate() + index,
           type: 'current'
         }))
@@ -139,12 +133,8 @@ export default {
         const date = this.date
         let firstDay = getFirstDayOfMonth(date)
         firstDay = firstDay === 0 ? 7 : firstDay
-        const firstDayOfWeek =
-          typeof this.firstDayOfWeek === 'number' ? this.firstDayOfWeek : 1
-        const prevMonthDays = getPrevMonthLastDays(
-          date,
-          firstDay - firstDayOfWeek
-        ).map(day => ({
+        const firstDayOfWeek = typeof this.firstDayOfWeek === 'number' ? this.firstDayOfWeek : 1
+        const prevMonthDays = getPrevMonthLastDays(date, firstDay - firstDayOfWeek).map(day => ({
           text: day,
           type: 'prev'
         }))
@@ -196,18 +186,12 @@ export default {
             <tr
               class={{
                 'el-calendar-table__row': true,
-                'el-calendar-table__row--hide-border':
-                  index === 0 && this.hideHeader
+                'el-calendar-table__row--hide-border': index === 0 && this.hideHeader
               }}
               key={index}>
               {row.map((cell, key) => (
-                <td
-                  key={key}
-                  class={this.getCellClass(cell)}
-                  onClick={this.pickDay.bind(this, cell)}>
-                  <div class="el-calendar-day">
-                    {this.cellRenderProxy(cell)}
-                  </div>
+                <td key={key} class={this.getCellClass(cell)} onClick={this.pickDay.bind(this, cell)}>
+                  <div class="el-calendar-day">{this.cellRenderProxy(cell)}</div>
                 </td>
               ))}
             </tr>

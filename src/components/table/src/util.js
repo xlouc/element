@@ -18,11 +18,7 @@ const isObject = function(obj) {
 }
 
 export const orderBy = function(array, sortKey, reverse, sortMethod, sortBy) {
-  if (
-    !sortKey &&
-    !sortMethod &&
-    (!sortBy || (Array.isArray(sortBy) && !sortBy.length))
-  ) {
+  if (!sortKey && !sortMethod && (!sortBy || (Array.isArray(sortBy) && !sortBy.length))) {
     return array
   }
   if (typeof reverse === 'string') {
@@ -234,12 +230,7 @@ export function toggleRowStatus(statusArr, row, newVal) {
   return changed
 }
 
-export function walkTreeNode(
-  root,
-  cb,
-  childrenKey = 'children',
-  lazyKey = 'hasChildren'
-) {
+export function walkTreeNode(root, cb, childrenKey = 'children', lazyKey = 'hasChildren') {
   const isNil = array => !(Array.isArray(array) && array.length)
 
   function _walker(parent, children, level) {

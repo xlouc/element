@@ -1,15 +1,6 @@
 <template>
-  <div
-    class="el-tree-select"
-    @click.stop="toggleTree"
-    v-clickoutside="handleClose"
-  >
-    <div
-      class="el-tree-select__tags"
-      :style="{ 'max-width': inputWidth - 32 + 'px' }"
-      ref="tags"
-      v-if="multiple"
-    >
+  <div class="el-tree-select" @click.stop="toggleTree" v-clickoutside="handleClose">
+    <div class="el-tree-select__tags" :style="{ 'max-width': inputWidth - 32 + 'px' }" ref="tags" v-if="multiple">
       <transition-group @after-leave="resetInputHeight">
         <el-tag
           v-for="item in selected"
@@ -101,10 +92,7 @@ import ElTree from 'yak-ui/components/tree'
 import Clickoutside from 'yak-ui/src/utils/clickoutside'
 import Popper from 'yak-ui/src/utils/vue-popper'
 import { valueEquals } from 'yak-ui/src/utils/util'
-import {
-  addResizeListener,
-  removeResizeListener
-} from 'yak-ui/src/utils/resize-event'
+import { addResizeListener, removeResizeListener } from 'yak-ui/src/utils/resize-event'
 import emitter from 'yak-ui/src/mixins/emitter'
 import { t } from 'yak-ui/src/locale'
 
@@ -233,11 +221,7 @@ export default {
       return this.disabled || (this.elForm || {}).disabled
     },
     selectSize() {
-      return (
-        this.size ||
-        (this.elFormItem || {}).elFormItemSize ||
-        (this.$ELEMENT || {}).size
-      )
+      return this.size || (this.elFormItem || {}).elFormItemSize || (this.$ELEMENT || {}).size
     },
     collapseTagSize() {
       return ['small', 'mini'].indexOf(this.selectSize) > -1 ? 'mini' : 'small'
@@ -257,10 +241,7 @@ export default {
       if (this.filterable && this.visible) {
         return ''
       }
-      if (
-        !this.value ||
-        (Array.isArray(this.value) && this.value.length === 0)
-      ) {
+      if (!this.value || (Array.isArray(this.value) && this.value.length === 0)) {
         return this.placeholder
       } else {
         return ''
@@ -382,9 +363,7 @@ export default {
           nodes = this.getTreeCheckedParentNodes()
           break
         case 'child':
-          nodes = checkedNodes.filter(
-            ({ children }) => !(children && children.length)
-          )
+          nodes = checkedNodes.filter(({ children }) => !(children && children.length))
           break
         default:
           nodes = checkedNodes
@@ -456,10 +435,7 @@ export default {
         const tags = this.$refs.tags
         let height = sizeMap[this.selectSize] || 40
         if (this.selected.length !== 0) {
-          height = Math.max(
-            tags.clientHeight + (tags.clientHeight > height ? 6 : 0),
-            height
-          )
+          height = Math.max(tags.clientHeight + (tags.clientHeight > height ? 6 : 0), height)
         }
         inputEl.style.height = `${height}px`
         if (this.visible) {

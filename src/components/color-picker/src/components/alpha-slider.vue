@@ -61,27 +61,13 @@ export default {
         left = Math.max(thumb.offsetWidth / 2, left)
         left = Math.min(left, rect.width - thumb.offsetWidth / 2)
 
-        this.color.set(
-          'alpha',
-          Math.round(
-            ((left - thumb.offsetWidth / 2) /
-              (rect.width - thumb.offsetWidth)) *
-              100
-          )
-        )
+        this.color.set('alpha', Math.round(((left - thumb.offsetWidth / 2) / (rect.width - thumb.offsetWidth)) * 100))
       } else {
         let top = event.clientY - rect.top
         top = Math.max(thumb.offsetHeight / 2, top)
         top = Math.min(top, rect.height - thumb.offsetHeight / 2)
 
-        this.color.set(
-          'alpha',
-          Math.round(
-            ((top - thumb.offsetHeight / 2) /
-              (rect.height - thumb.offsetHeight)) *
-              100
-          )
-        )
+        this.color.set('alpha', Math.round(((top - thumb.offsetHeight / 2) / (rect.height - thumb.offsetHeight)) * 100))
       }
     },
 
@@ -92,9 +78,7 @@ export default {
 
       if (!el) return 0
       const thumb = this.$refs.thumb
-      return Math.round(
-        (alpha * (el.offsetWidth - thumb.offsetWidth / 2)) / 100
-      )
+      return Math.round((alpha * (el.offsetWidth - thumb.offsetWidth / 2)) / 100)
     },
 
     getThumbTop() {
@@ -104,9 +88,7 @@ export default {
 
       if (!el) return 0
       const thumb = this.$refs.thumb
-      return Math.round(
-        (alpha * (el.offsetHeight - thumb.offsetHeight / 2)) / 100
-      )
+      return Math.round((alpha * (el.offsetHeight - thumb.offsetHeight / 2)) / 100)
     },
 
     getBackground() {

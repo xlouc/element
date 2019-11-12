@@ -16,22 +16,10 @@
       </div>
       <i class="el-iconpicker__caret el-icon-up"></i>
     </div>
-    <transition
-      name="el-zoom-in-top"
-      @before-enter="handleMenuEnter"
-      @after-leave="doDestroy"
-    >
-      <dropdown
-        ref="popper"
-        :append-to-body="popperAppendToBody"
-        v-show="visible"
-      >
+    <transition name="el-zoom-in-top" @before-enter="handleMenuEnter" @after-leave="doDestroy">
+      <dropdown ref="popper" :append-to-body="popperAppendToBody" v-show="visible">
         <div class="el-iconpicker-search">
-          <el-input
-            v-model="searchVal"
-            size="small"
-            suffix-icon="el-icon-search"
-          ></el-input>
+          <el-input v-model="searchVal" size="small" suffix-icon="el-icon-search"></el-input>
         </div>
         <div class="el-iconpicker-list">
           <div
@@ -46,20 +34,10 @@
           <el-empty v-if="!iconDatas || iconDatas.length <= 0"></el-empty>
         </div>
         <div class="el-iconpicker-page">
-          <div class="el-iconpicker-page__count">
-            {{ currentPage }}/{{ iconPageSize }}({{ iconDataSize }})
-          </div>
+          <div class="el-iconpicker-page__count">{{ currentPage }}/{{ iconPageSize }}({{ iconDataSize }})</div>
           <div class="el-iconpicker-page__operate">
-            <i
-              class="el-icon-left"
-              v-if="currentPage > 1"
-              @click="currentPage = currentPage - 1"
-            ></i>
-            <i
-              class="el-icon-right"
-              v-if="currentPage < iconPageSize"
-              @click="currentPage = currentPage + 1"
-            ></i>
+            <i class="el-icon-left" v-if="currentPage > 1" @click="currentPage = currentPage - 1"></i>
+            <i class="el-icon-right" v-if="currentPage < iconPageSize" @click="currentPage = currentPage + 1"></i>
           </div>
         </div>
       </dropdown>
@@ -137,19 +115,14 @@ export default {
     iconArray() {
       let iconArray = [].concat(iconList, this.data || [])
       if (this.searchVal && this.searchVal !== null && this.searchVal !== '') {
-        iconArray = iconArray.filter(
-          val => val.toLowerCase().indexOf(this.searchVal.toLowerCase()) >= 0
-        )
+        iconArray = iconArray.filter(val => val.toLowerCase().indexOf(this.searchVal.toLowerCase()) >= 0)
       }
       return iconArray
     },
 
     iconDatas() {
       let iconDatas = this.iconArray
-      iconDatas = iconDatas.slice(
-        (this.currentPage - 1) * this.pageSize,
-        this.currentPage * this.pageSize
-      )
+      iconDatas = iconDatas.slice((this.currentPage - 1) * this.pageSize, this.currentPage * this.pageSize)
       return iconDatas
     },
 

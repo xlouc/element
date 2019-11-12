@@ -1,9 +1,5 @@
 <template>
-  <transition
-    name="el-drawer-fade"
-    @after-enter="afterEnter"
-    @after-leave="afterLeave"
-  >
+  <transition name="el-drawer-fade" @after-enter="afterEnter" @after-leave="afterLeave">
     <div class="el-drawer__wrapper" tabindex="-1" v-show="visible">
       <div
         class="el-drawer__container"
@@ -12,13 +8,7 @@
         role="document"
         tabindex="-1"
       >
-        <div
-          aria-modal="true"
-          class="el-drawer"
-          :class="[direction, customClass]"
-          :style="drawerStyle"
-          ref="drawer"
-        >
+        <div aria-modal="true" class="el-drawer" :class="[direction, customClass]" :style="drawerStyle" ref="drawer">
           <header
             :class="{
               'el-drawer__header': isTitle,
@@ -136,13 +126,9 @@ export default {
       }
       if (isPush) {
         if (direction === 'rtl' || direction === 'ltr') {
-          drawerStyle.transform = `translateX(${
-            direction === 'ltr' ? 180 : -180
-          }px)`
+          drawerStyle.transform = `translateX(${direction === 'ltr' ? 180 : -180}px)`
         } else {
-          drawerStyle.transform = `translateY(${
-            direction === 'ttb' ? 180 : -180
-          }px)`
+          drawerStyle.transform = `translateY(${direction === 'ttb' ? 180 : -180}px)`
         }
       }
       return drawerStyle

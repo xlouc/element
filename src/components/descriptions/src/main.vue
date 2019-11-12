@@ -1,8 +1,6 @@
 <script>
 import { cloneVNode } from 'yak-ui/src/utils/vdom'
-import ResponsiveObserve, {
-  responsiveArray
-} from 'yak-ui/src/utils/responsive-observe'
+import ResponsiveObserve, { responsiveArray } from 'yak-ui/src/utils/responsive-observe'
 import Col from './col'
 
 const defaultColumnMap = {

@@ -3,9 +3,7 @@ var fs = require('fs')
 
 var utilsList = fs.readdirSync(path.resolve(__dirname, './src/utils'))
 var mixinsList = fs.readdirSync(path.resolve(__dirname, './src/mixins'))
-var transitionList = fs.readdirSync(
-  path.resolve(__dirname, './src/transitions')
-)
+var transitionList = fs.readdirSync(path.resolve(__dirname, './src/transitions'))
 
 var Components = require('./components.json')
 
@@ -63,9 +61,7 @@ module.exports = {
 
       transitionList.forEach(function(file) {
         file = path.basename(file, '.js')
-        externals[
-          `yak-ui/src/transitions/${file}`
-        ] = `yak-ui/lib/transitions/${file}`
+        externals[`yak-ui/src/transitions/${file}`] = `yak-ui/lib/transitions/${file}`
       })
 
       config.externals(externals)

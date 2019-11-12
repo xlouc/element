@@ -1,10 +1,5 @@
 import { throttle } from 'throttle-debounce'
-import {
-  isHtmlElement,
-  isFunction,
-  isUndefined,
-  isDefined
-} from 'yak-ui/src/utils/types'
+import { isHtmlElement, isFunction, isUndefined, isDefined } from 'yak-ui/src/utils/types'
 import { getScrollContainer } from 'yak-ui/src/utils/dom'
 
 const getStyleComputedProperty = (element, property) => {
@@ -25,9 +20,7 @@ const entries = obj => {
 }
 
 const getPositionSize = (el, prop) => {
-  return el === window || el === document
-    ? document.documentElement[prop]
-    : el[prop]
+  return el === window || el === document ? document.documentElement[prop] : el[prop]
 }
 
 const getOffsetHeight = el => {
@@ -71,11 +64,7 @@ const getScrollOptions = (el, vm) => {
         value = Number.isNaN(value) ? defaultValue : value
         break
       case Boolean:
-        value = isDefined(value)
-          ? value === 'false'
-            ? false
-            : Boolean(value)
-          : defaultValue
+        value = isDefined(value) ? (value === 'false' ? false : Boolean(value)) : defaultValue
         break
       default:
         value = type(value)
@@ -103,12 +92,9 @@ const handleScroll = function(cb) {
     const scrollBottom = container.scrollTop + getClientHeight(container)
     shouldTrigger = container.scrollHeight - scrollBottom <= distance
   } else {
-    const heightBelowTop =
-      getOffsetHeight(el) + getElementTop(el) - getElementTop(container)
+    const heightBelowTop = getOffsetHeight(el) + getElementTop(el) - getElementTop(container)
     const offsetHeight = getOffsetHeight(container)
-    const borderBottom = Number.parseFloat(
-      getStyleComputedProperty(container, 'borderBottomWidth')
-    )
+    const borderBottom = Number.parseFloat(getStyleComputedProperty(container, 'borderBottomWidth'))
     shouldTrigger = heightBelowTop - offsetHeight + borderBottom <= distance
   }
 

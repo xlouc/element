@@ -1,13 +1,6 @@
 import Vue from 'vue'
 import merge from 'yak-ui/src/utils/merge'
-import {
-  getKeysMap,
-  getRowIdentity,
-  getColumnById,
-  getColumnByKey,
-  orderBy,
-  toggleRowStatus
-} from '../util'
+import { getKeysMap, getRowIdentity, getColumnById, getColumnByKey, orderBy, toggleRowStatus } from '../util'
 import expand from './expand'
 import current from './current'
 import tree from './tree'
@@ -17,13 +10,7 @@ const sortData = (data, states) => {
   if (!sortingColumn || typeof sortingColumn.sortable === 'string') {
     return data
   }
-  return orderBy(
-    data,
-    states.sortProp,
-    states.sortOrder,
-    sortingColumn.sortMethod,
-    sortingColumn.sortBy
-  )
+  return orderBy(data, states.sortProp, states.sortOrder, sortingColumn.sortMethod, sortingColumn.sortBy)
 }
 
 const doFlattenColumns = columns => {
@@ -98,19 +85,10 @@ export default Vue.extend({
     updateColumns() {
       const states = this.states
       const _columns = states._columns || []
-      states.fixedColumns = _columns.filter(
-        column => column.fixed === true || column.fixed === 'left'
-      )
-      states.rightFixedColumns = _columns.filter(
-        column => column.fixed === 'right'
-      )
+      states.fixedColumns = _columns.filter(column => column.fixed === true || column.fixed === 'left')
+      states.rightFixedColumns = _columns.filter(column => column.fixed === 'right')
 
-      if (
-        states.fixedColumns.length > 0 &&
-        _columns[0] &&
-        _columns[0].type === 'selection' &&
-        !_columns[0].fixed
-      ) {
+      if (states.fixedColumns.length > 0 && _columns[0] && _columns[0].type === 'selection' && !_columns[0].fixed) {
         _columns[0].fixed = true
         states.fixedColumns.unshift(_columns[0])
       }
@@ -133,8 +111,7 @@ export default Vue.extend({
         .concat(fixedLeafColumns)
         .concat(leafColumns)
         .concat(rightFixedLeafColumns)
-      states.isComplex =
-        states.fixedColumns.length > 0 || states.rightFixedColumns.length > 0
+      states.isComplex = states.fixedColumns.length > 0 || states.rightFixedColumns.length > 0
     },
 
     // 更新 DOM
@@ -178,9 +155,7 @@ export default Vue.extend({
         deleted = selection.filter(item => data.indexOf(item) === -1)
       }
       if (deleted.length) {
-        const newSelection = selection.filter(
-          item => deleted.indexOf(item) === -1
-        )
+        const newSelection = selection.filter(item => deleted.indexOf(item) === -1)
         states.selection = newSelection
         this.table.$emit('selection-change', newSelection.slice())
       }
@@ -203,18 +178,13 @@ export default Vue.extend({
       const { data = [], selection } = states
       // when only some rows are selected (but not all), select or deselect all of them
       // depending on the value of selectOnIndeterminate
-      const value = states.selectOnIndeterminate
-        ? !states.isAllSelected
-        : !(states.isAllSelected || selection.length)
+      const value = states.selectOnIndeterminate ? !states.isAllSelected : !(states.isAllSelected || selection.length)
       states.isAllSelected = value
 
       let selectionChanged = false
       data.forEach((row, index) => {
         if (states.selectable) {
-          if (
-            states.selectable.call(null, row, index) &&
-            toggleRowStatus(selection, row, value)
-          ) {
+          if (states.selectable.call(null, row, index) && toggleRowStatus(selection, row, value)) {
             selectionChanged = true
           }
         } else {
@@ -318,9 +288,7 @@ export default Vue.extend({
         const column = getColumnById(this.states, columnId)
         if (column && column.filterMethod) {
           data = data.filter(row => {
-            return values.some(value =>
-              column.filterMethod.call(null, value, row, column)
-            )
+            return values.some(value => column.filterMethod.call(null, value, row, column))
           })
         }
       })
@@ -343,18 +311,12 @@ export default Vue.extend({
 
     clearFilter(columnKeys) {
       const states = this.states
-      const {
-        tableHeader,
-        fixedTableHeader,
-        rightFixedTableHeader
-      } = this.table.$refs
+      const { tableHeader, fixedTableHeader, rightFixedTableHeader } = this.table.$refs
 
       let panels = {}
       if (tableHeader) panels = merge(panels, tableHeader.filterPanels)
-      if (fixedTableHeader)
-        panels = merge(panels, fixedTableHeader.filterPanels)
-      if (rightFixedTableHeader)
-        panels = merge(panels, rightFixedTableHeader.filterPanels)
+      if (fixedTableHeader) panels = merge(panels, fixedTableHeader.filterPanels)
+      if (rightFixedTableHeader) panels = merge(panels, rightFixedTableHeader.filterPanels)
 
       const keys = Object.keys(panels)
       if (!keys.length) return
@@ -412,9 +374,7 @@ export default Vue.extend({
 
     // 展开行与 TreeTable 都要使用
     toggleRowExpansionAdapter(row, expanded) {
-      const hasExpandColumn = this.states.columns.some(
-        ({ type }) => type === 'expand'
-      )
+      const hasExpandColumn = this.states.columns.some(({ type }) => type === 'expand')
       if (hasExpandColumn) {
         this.toggleRowExpansion(row, expanded)
       } else {

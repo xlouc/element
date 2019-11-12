@@ -12,10 +12,7 @@ export function isHtmlElement(node) {
 
 export const isFunction = functionToCheck => {
   var getType = {}
-  return (
-    functionToCheck &&
-    getType.toString.call(functionToCheck) === '[object Function]'
-  )
+  return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]'
 }
 
 export const isUndefined = val => {

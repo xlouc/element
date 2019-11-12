@@ -1,11 +1,5 @@
 import sinon from 'sinon'
-import {
-  createVue,
-  triggerEvent,
-  triggerClick,
-  destroyVM,
-  waitImmediate
-} from '../util'
+import { createVue, triggerEvent, triggerClick, destroyVM, waitImmediate } from '../util'
 
 const DELAY = 1
 
@@ -494,22 +488,14 @@ describe('InputNumber', () => {
         true
       )
 
-      expect(
-        vm.$refs.inputNumComp.$refs.input.$refs.input.selectionStart
-      ).to.equal(testContent.length)
-      expect(
-        vm.$refs.inputNumComp.$refs.input.$refs.input.selectionEnd
-      ).to.equal(testContent.length)
+      expect(vm.$refs.inputNumComp.$refs.input.$refs.input.selectionStart).to.equal(testContent.length)
+      expect(vm.$refs.inputNumComp.$refs.input.$refs.input.selectionEnd).to.equal(testContent.length)
 
       vm.$refs.inputNumComp.select()
 
       vm.$nextTick(_ => {
-        expect(
-          vm.$refs.inputNumComp.$refs.input.$refs.input.selectionStart
-        ).to.equal(0)
-        expect(
-          vm.$refs.inputNumComp.$refs.input.$refs.input.selectionEnd
-        ).to.equal(testContent.length)
+        expect(vm.$refs.inputNumComp.$refs.input.$refs.input.selectionStart).to.equal(0)
+        expect(vm.$refs.inputNumComp.$refs.input.$refs.input.selectionEnd).to.equal(testContent.length)
 
         done()
       })

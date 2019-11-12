@@ -34,9 +34,7 @@ describe('Card', () => {
       bodyStyle: { padding: '10px' }
     })
 
-    expect(vm.$el.querySelector('.el-card__body').style.padding).to.equal(
-      '10px'
-    )
+    expect(vm.$el.querySelector('.el-card__body').style.padding).to.equal('10px')
   })
 
   it('shadow', () => {

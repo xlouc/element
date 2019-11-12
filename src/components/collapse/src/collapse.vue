@@ -48,10 +48,7 @@ export default {
     handleItemClick(item) {
       if (this.accordion) {
         this.setActiveNames(
-          (this.activeNames[0] || this.activeNames[0] === 0) &&
-            this.activeNames[0] === item.name
-            ? ''
-            : item.name
+          (this.activeNames[0] || this.activeNames[0] === 0) && this.activeNames[0] === item.name ? '' : item.name
         )
       } else {
         let activeNames = this.activeNames.slice(0)

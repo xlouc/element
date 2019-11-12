@@ -88,26 +88,17 @@ export default {
   computed: {
     model: {
       get() {
-        return this.isGroup
-          ? this.store
-          : this.value !== undefined
-          ? this.value
-          : this.selfModel
+        return this.isGroup ? this.store : this.value !== undefined ? this.value : this.selfModel
       },
 
       set(val) {
         if (this.isGroup) {
           this.isLimitExceeded = false
-          this._checkboxGroup.min !== undefined &&
-            val.length < this._checkboxGroup.min &&
-            (this.isLimitExceeded = true)
+          this._checkboxGroup.min !== undefined && val.length < this._checkboxGroup.min && (this.isLimitExceeded = true)
 
-          this._checkboxGroup.max !== undefined &&
-            val.length > this._checkboxGroup.max &&
-            (this.isLimitExceeded = true)
+          this._checkboxGroup.max !== undefined && val.length > this._checkboxGroup.max && (this.isLimitExceeded = true)
 
-          this.isLimitExceeded === false &&
-            this.dispatch('ElCheckboxGroup', 'input', [val])
+          this.isLimitExceeded === false && this.dispatch('ElCheckboxGroup', 'input', [val])
         } else {
           this.$emit('input', val)
           this.selfModel = val
@@ -154,10 +145,7 @@ export default {
 
     isDisabled() {
       return this.isGroup
-        ? this._checkboxGroup.disabled ||
-            this.disabled ||
-            (this.elForm || {}).disabled ||
-            this.isLimitDisabled
+        ? this._checkboxGroup.disabled || this.disabled || (this.elForm || {}).disabled || this.isLimitDisabled
         : this.disabled || (this.elForm || {}).disabled
     },
 
@@ -166,11 +154,8 @@ export default {
     },
 
     checkboxSize() {
-      const temCheckboxSize =
-        this.size || this._elFormItemSize || (this.$ELEMENT || {}).size
-      return this.isGroup
-        ? this._checkboxGroup.checkboxGroupSize || temCheckboxSize
-        : temCheckboxSize
+      const temCheckboxSize = this.size || this._elFormItemSize || (this.$ELEMENT || {}).size
+      return this.isGroup ? this._checkboxGroup.checkboxGroupSize || temCheckboxSize : temCheckboxSize
     }
   },
 
@@ -211,9 +196,7 @@ export default {
       this.$emit('change', value, ev)
       this.$nextTick(() => {
         if (this.isGroup) {
-          this.dispatch('ElCheckboxGroup', 'change', [
-            this._checkboxGroup.value
-          ])
+          this.dispatch('ElCheckboxGroup', 'change', [this._checkboxGroup.value])
         }
       })
     }

@@ -119,19 +119,11 @@ export default class Node {
     if (!this.data) return
     const defaultExpandedKeys = store.defaultExpandedKeys
     const key = store.key
-    if (
-      key &&
-      defaultExpandedKeys &&
-      defaultExpandedKeys.indexOf(this.key) !== -1
-    ) {
+    if (key && defaultExpandedKeys && defaultExpandedKeys.indexOf(this.key) !== -1) {
       this.expand(null, store.autoExpandParent)
     }
 
-    if (
-      key &&
-      store.currentNodeKey !== undefined &&
-      this.key === store.currentNodeKey
-    ) {
+    if (key && store.currentNodeKey !== undefined && this.key === store.currentNodeKey) {
       store.currentNode = this
       store.currentNode.isCurrent = true
     }
@@ -336,11 +328,7 @@ export default class Node {
 
   doCreateChildren(array, defaultProps = {}) {
     array.forEach(item => {
-      this.insertChild(
-        objectAssign({ data: item }, defaultProps),
-        undefined,
-        true
-      )
+      this.insertChild(objectAssign({ data: item }, defaultProps), undefined, true)
     })
   }
 
@@ -353,19 +341,12 @@ export default class Node {
   }
 
   updateLeafState() {
-    if (
-      this.store.lazy === true &&
-      this.loaded !== true &&
-      typeof this.isLeafByUser !== 'undefined'
-    ) {
+    if (this.store.lazy === true && this.loaded !== true && typeof this.isLeafByUser !== 'undefined') {
       this.isLeaf = this.isLeafByUser
       return
     }
     const childNodes = this.childNodes
-    if (
-      !this.store.lazy ||
-      (this.store.lazy === true && this.loaded === true)
-    ) {
+    if (!this.store.lazy || (this.store.lazy === true && this.loaded === true)) {
       this.isLeaf = !childNodes || childNodes.length === 0
       return
     }
@@ -460,8 +441,7 @@ export default class Node {
 
     newData.forEach((item, index) => {
       const key = item[NODE_KEY]
-      const isNodeExists =
-        !!key && arrayFindIndex(oldData, data => data[NODE_KEY] === key) >= 0
+      const isNodeExists = !!key && arrayFindIndex(oldData, data => data[NODE_KEY] === key) >= 0
       if (isNodeExists) {
         newDataMap[key] = { index, data: item }
       } else {
