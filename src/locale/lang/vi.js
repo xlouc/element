@@ -114,6 +114,10 @@ export default {
     },
     empty: {
       noData: 'Không tìm thấy dữ liệu'
+    },
+    popconfirm: {
+      confirmButtonText: 'Yes', // to be translated
+      cancelButtonText: 'No' // to be translated
     }
   }
 }

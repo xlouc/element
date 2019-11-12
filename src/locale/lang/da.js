@@ -113,6 +113,10 @@ export default {
     },
     empty: {
       noData: 'Ingen data'
+    },
+    popconfirm: {
+      confirmButtonText: 'Yes', // to be translated
+      cancelButtonText: 'No' // to be translated
     }
   }
 }

@@ -93,6 +93,7 @@ import { ElResult } from "./result";
 import { ElStatistic } from "./statistic";
 import { ElIconPicker } from "./icon-picker";
 import { ElTreemap, TreemapData } from "./treemap";
+import { ElPopconfirm } from './popconfirm'
 
 export interface InstallationOptions {
   locale: any;
@@ -354,6 +355,9 @@ export class Avatar extends ElAvatar {}
 
 /** Drawer Component */
 export class Drawer extends ElDrawer {}
+
+/** Popconfirm Component */
+export class Popconfirm extends ElPopconfirm {}
 
 /** Empty Component */
 export class Empty extends ElEmpty {}

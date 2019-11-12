@@ -114,6 +114,10 @@ export default {
     },
     empty: {
       noData: 'ئۇچۇر يوق'
+    },
+    popconfirm: {
+      confirmButtonText: 'Yes', // to be translated
+      cancelButtonText: 'No' // to be translated
     }
   }
 }

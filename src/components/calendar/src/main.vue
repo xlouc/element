@@ -48,8 +48,8 @@
 <script>
 import Locale from 'yak-ui/src/mixins/locale'
 import fecha from 'yak-ui/src/utils/date'
-import ElButton from 'yak-ui/packages/button'
-import ElButtonGroup from 'yak-ui/packages/button-group'
+import ElButton from 'yak-ui/components/button'
+import ElButtonGroup from 'yak-ui/components/button-group'
 import DateTable from './date-table'
 import { validateRangeInOneMonth } from 'yak-ui/src/utils/date-util'
 

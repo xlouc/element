@@ -59,6 +59,7 @@ import Option from './components/option/index.js'
 import OptionGroup from './components/option-group/index.js'
 import PageHeader from './components/page-header/index.js'
 import Pagination from './components/pagination/index.js'
+import Popconfirm from './components/popconfirm/index.js'
 import Popover from './components/popover/index.js'
 import Progress from './components/progress/index.js'
 import Radio from './components/radio/index.js'
@@ -150,6 +151,7 @@ const components = [
   OptionGroup,
   PageHeader,
   Pagination,
+  Popconfirm,
   Popover,
   Progress,
   Radio,
@@ -280,6 +282,7 @@ export default {
   OptionGroup,
   PageHeader,
   Pagination,
+  Popconfirm,
   Popover,
   Progress,
   Radio,
