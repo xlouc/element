@@ -72,6 +72,7 @@ import { ElTimeSelect } from "./time-select";
 import { ElTooltip } from "./tooltip";
 import { ElTransfer } from "./transfer";
 import { ElTree, TreeData } from "./tree";
+import { ElTreeSelect } from "./tree-select";
 import { ElUpload } from "./upload";
 import { ElLink } from "./link";
 import { ElDivider } from "./divider";
@@ -322,6 +323,9 @@ export class Transfer extends ElTransfer {}
 
 /** Tree Component */
 export class Tree<K = any, D = TreeData> extends ElTree<K, D> {}
+
+/** TreeSelect Component */
+export class TreeSelect<K = any, D = TreeData> extends ElTreeSelect<K, D> {}
 
 /** Upload Component */
 export class Upload extends ElUpload {}

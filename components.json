@@ -89,6 +89,7 @@
   "tooltip": "./src/components/tooltip/index.js",
   "transfer": "./src/components/transfer/index.js",
   "tree": "./src/components/tree/index.js",
+  "tree-select": "./src/components/tree-select/index.js",
   "treemap": "./src/components/treemap/index.js",
   "upload": "./src/components/upload/index.js"
 }

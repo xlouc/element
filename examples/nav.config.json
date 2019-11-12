@@ -131,6 +131,10 @@
             "title": "Transfer 穿梭框"
           },
           {
+            "path": "/tree-select",
+            "title": "TreeSelect 树选择"
+          },
+          {
             "path": "/form",
             "title": "Form 表单"
           }
