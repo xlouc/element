@@ -139,6 +139,24 @@
     }
   }
 
+  @include e(help) {
+    color: $--color-info;
+    font-size: 12px;
+    line-height: 1;
+    padding-top: 4px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    @include m(inline) {
+      position: relative;
+      top: auto;
+      left: auto;
+      display: inline-block;
+      margin-left: 10px;
+    }
+  }
+
   @include when(required) {
     @include pseudo("not(.is-no-asterisk)") {
       & > .el-form-item__label:before,
