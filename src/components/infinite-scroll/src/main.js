@@ -93,6 +93,9 @@ const handleScroll = function(cb) {
 
   if (disabled) return
 
+  const containerInfo = container.getBoundingClientRect()
+  if (!containerInfo.width && !containerInfo.height) return
+
   let shouldTrigger = false
 
   if (container === el) {
