@@ -121,7 +121,7 @@
               },
               {
                 label: "土豆",
-                class: "bg-purple"
+                class: "bg-color-purple"
               }
             ]
           },
