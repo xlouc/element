@@ -51,6 +51,9 @@ export default {
     },
     elFormItem: {
       default: ''
+    },
+    _radioGroup: {
+      default: ''
     }
   },
 
@@ -59,11 +62,13 @@ export default {
     disabled: Boolean,
     name: String
   },
+
   data() {
     return {
       focus: false
     }
   },
+
   computed: {
     value: {
       get() {
@@ -73,17 +78,7 @@ export default {
         this._radioGroup.$emit('input', value)
       }
     },
-    _radioGroup() {
-      let parent = this.$parent
-      while (parent) {
-        if (parent.$options.componentName !== 'ElRadioGroup') {
-          parent = parent.$parent
-        } else {
-          return parent
-        }
-      }
-      return false
-    },
+
     activeStyle() {
       return {
         backgroundColor: this._radioGroup.fill || '',
@@ -94,9 +89,11 @@ export default {
         color: this._radioGroup.textColor || ''
       }
     },
+
     _elFormItemSize() {
       return (this.elFormItem || {}).elFormItemSize
     },
+
     size() {
       return (
         this._radioGroup.radioGroupSize ||
@@ -104,6 +101,7 @@ export default {
         (this.$ELEMENT || {}).size
       )
     },
+
     isDisabled() {
       return (
         this.disabled ||
@@ -111,6 +109,7 @@ export default {
         (this.elForm || {}).disabled
       )
     },
+
     tabIndex() {
       return this.isDisabled || (this._radioGroup && this.value !== this.label)
         ? -1

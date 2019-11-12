@@ -22,6 +22,12 @@ export default {
 
   componentName: 'ElRadioGroup',
 
+  provide() {
+    return {
+      _radioGroup: this
+    }
+  },
+
   inject: {
     elFormItem: {
       default: ''
