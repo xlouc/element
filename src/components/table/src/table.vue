@@ -448,6 +448,7 @@ export default {
     updateScrollY() {
       const changed = this.layout.updateScrollY()
       if (changed) {
+        this.layout.notifyObservers('scrollable')
         this.layout.updateColumnsWidth()
       }
     },
