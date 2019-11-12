@@ -1,6 +1,12 @@
 <template>
   <transition name="el-zoom-in-top">
-    <div class="el-table-filter" v-if="multiple" v-clickoutside="handleOutsideClick" v-show="showPopper">
+    <div class="el-table-filter" v-if="search" v-clickoutside="handleOutsideClick" v-show="showPopper">
+      <div class="el-table-filter__content">
+        <el-input v-model="searchText" ref="search" size="mini" @input="handleSearch" />
+      </div>
+    </div>
+
+    <div class="el-table-filter" v-else-if="multiple" v-clickoutside="handleOutsideClick" v-show="showPopper">
       <div class="el-table-filter__content">
         <el-scrollbar wrap-class="el-table-filter__wrap">
           <el-checkbox-group class="el-table-filter__checkbox-group" v-model="filteredValue">
@@ -55,6 +61,7 @@ import Clickoutside from 'yak-ui/src/utils/clickoutside'
 import Dropdown from './dropdown'
 import ElCheckbox from 'yak-ui/components/checkbox'
 import ElCheckboxGroup from 'yak-ui/components/checkbox-group'
+import ElInput from 'yak-ui/components/input'
 import ElScrollbar from 'yak-ui/components/scrollbar'
 
 export default {
@@ -69,6 +76,7 @@ export default {
   components: {
     ElCheckbox,
     ElCheckboxGroup,
+    ElInput,
     ElScrollbar
   },
 
@@ -113,6 +121,15 @@ export default {
       this.handleOutsideClick()
     },
 
+    handleSearch() {
+      if (this.searchText) {
+        this.filterValue = this.searchText
+      } else {
+        this.filteredValue = []
+      }
+      this.confirmFilter(this.filteredValue)
+    },
+
     confirmFilter(filteredValue) {
       this.table.store.commit('filterChange', {
         column: this.column,
@@ -126,7 +143,8 @@ export default {
     return {
       table: null,
       cell: null,
-      column: null
+      column: null,
+      searchText: ''
     }
   },
 
@@ -169,6 +187,12 @@ export default {
         return this.column.filterMultiple
       }
       return true
+    },
+    search() {
+      if (this.column) {
+        return this.column.filterSearch
+      }
+      return false
     }
   },
 
@@ -183,6 +207,9 @@ export default {
       if (this.column) this.column.filterOpened = value
       if (value) {
         Dropdown.open(this)
+        if (this.$refs.search) {
+          this.$refs.search.$el.querySelector('input').focus()
+        }
       } else {
         Dropdown.close(this)
       }

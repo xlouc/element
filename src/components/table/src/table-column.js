@@ -47,6 +47,10 @@ export default {
       type: Boolean,
       default: true
     },
+    filterSearch: {
+      type: Boolean,
+      default: false
+    },
     index: [Number, Function],
     sortOrders: {
       type: Array,
@@ -202,6 +206,7 @@ export default {
         'property',
         'filters',
         'filterMultiple',
+        'filterSearch',
         'sortable',
         'index',
         'formatter',
@@ -308,6 +313,7 @@ export default {
       'filterMethod',
       'filters',
       'filterMultiple',
+      'filterSearch',
       'filterOpened',
       'filteredValue',
       'filterPlacement'
