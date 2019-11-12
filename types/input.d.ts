@@ -48,9 +48,6 @@ export declare class ElInput extends YakUIComponent {
   /** Whether textarea has an adaptive height, only works when type is 'textarea' */
   autosize: boolean | AutoSize
 
-  /** @Deprecated in next major version */
-  autoComplete: string
-
   /** Same as autocomplete in native input */
   autocomplete: string
 

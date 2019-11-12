@@ -4,7 +4,7 @@ import { PopupManager } from 'yak-ui/src/utils/popup'
 
 const PopperJS = Vue.prototype.$isServer
   ? function() {}
-  : require('popper.js/dist/umd/popper.js')
+  : require('popper.js/dist/umd/popper')
 const stop = e => e.stopPropagation()
 
 /**

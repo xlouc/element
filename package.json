@@ -15,10 +15,10 @@
   },
   "dependencies": {
     "async-validator": "^3.2.2",
-    "deepmerge": "^4.0.0",
+    "deepmerge": "^4.2.2",
     "enquire.js": "^2.1.6",
     "normalize-wheel": "^1.0.1",
-    "popper.js": "^1.15.0",
+    "popper.js": "^1.16.0",
     "resize-observer-polyfill": "^1.5.1",
     "throttle-debounce": "^2.1.0",
     "tinycolor2": "^1.4.1"
@@ -29,7 +29,7 @@
     "@vue/cli-plugin-router": "^4.0.0",
     "@vue/cli-plugin-unit-jest": "^4.0.0",
     "@vue/cli-service": "^4.0.0",
-    "@vue/component-compiler-utils": "^3.0.0",
+    "@vue/component-compiler-utils": "^3.0.2",
     "@vue/eslint-config-prettier": "^5.0.0",
     "@vue/test-utils": "1.0.0-beta.29",
     "babel-eslint": "^10.0.3",

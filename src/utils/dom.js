@@ -1,8 +1,4 @@
-/**
- * /* istanbul ignore next
- *
- * @format
- */
+/** istanbul ignore next */
 
 import Vue from 'vue'
 

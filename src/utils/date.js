@@ -23,7 +23,6 @@
  *     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- * @format
  */
 
 /*eslint-disable*/
@@ -56,7 +55,9 @@ function shorten(arr, sLen) {
 
 function monthUpdate(arrName) {
   return function(d, v, i18n) {
-    var index = i18n[arrName].indexOf(v.charAt(0).toUpperCase() + v.substr(1).toLowerCase());
+    var index = i18n[arrName].indexOf(
+      v.charAt(0).toUpperCase() + v.substr(1).toLowerCase()
+    );
     if (~index) {
       d.month = index;
     }
@@ -72,8 +73,29 @@ function pad(val, len) {
   return val;
 }
 
-var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+var dayNames = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+];
+var monthNames = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December"
+];
 var monthNamesShort = shorten(monthNames, 3);
 var dayNamesShort = shorten(dayNames, 3);
 fecha.i18n = {
@@ -83,7 +105,12 @@ fecha.i18n = {
   monthNames: monthNames,
   amPm: ["am", "pm"],
   DoFn: function DoFn(D) {
-    return D + ["th", "st", "nd", "rd"][D % 10 > 3 ? 0 : ((D - (D % 10) !== 10) * D) % 10];
+    return (
+      D +
+      ["th", "st", "nd", "rd"][
+        D % 10 > 3 ? 0 : ((D - (D % 10) !== 10) * D) % 10
+      ]
+    );
   }
 };
 
@@ -164,11 +191,16 @@ var formatFlags = {
     return dateObj.getHours() < 12 ? i18n.amPm[0] : i18n.amPm[1];
   },
   A: function(dateObj, i18n) {
-    return dateObj.getHours() < 12 ? i18n.amPm[0].toUpperCase() : i18n.amPm[1].toUpperCase();
+    return dateObj.getHours() < 12
+      ? i18n.amPm[0].toUpperCase()
+      : i18n.amPm[1].toUpperCase();
   },
   ZZ: function(dateObj) {
     var o = dateObj.getTimezoneOffset();
-    return (o > 0 ? "-" : "+") + pad(Math.floor(Math.abs(o) / 60) * 100 + (Math.abs(o) % 60), 4);
+    return (
+      (o > 0 ? "-" : "+") +
+      pad(Math.floor(Math.abs(o) / 60) * 100 + (Math.abs(o) % 60), 4)
+    );
   }
 };
 
@@ -303,7 +335,10 @@ fecha.format = function(dateObj, mask, i18nSettings) {
     dateObj = new Date(dateObj);
   }
 
-  if (Object.prototype.toString.call(dateObj) !== "[object Date]" || isNaN(dateObj.getTime())) {
+  if (
+    Object.prototype.toString.call(dateObj) !== "[object Date]" ||
+    isNaN(dateObj.getTime())
+  ) {
     throw new Error("Invalid Date in fecha.format");
   }
 
@@ -318,7 +353,9 @@ fecha.format = function(dateObj, mask, i18nSettings) {
   });
   // Apply formatting rules
   mask = mask.replace(token, function($0) {
-    return $0 in formatFlags ? formatFlags[$0](dateObj, i18n) : $0.slice(1, $0.length - 1);
+    return $0 in formatFlags
+      ? formatFlags[$0](dateObj, i18n)
+      : $0.slice(1, $0.length - 1);
   });
   // Inline literal values back into the formatted value
   return mask.replace(/@@@/g, function() {
@@ -377,7 +414,11 @@ fecha.parse = function(dateStr, format, i18nSettings) {
   }
 
   var today = new Date();
-  if (dateInfo.isPm === true && dateInfo.hour != null && +dateInfo.hour !== 12) {
+  if (
+    dateInfo.isPm === true &&
+    dateInfo.hour != null &&
+    +dateInfo.hour !== 12
+  ) {
     dateInfo.hour = +dateInfo.hour + 12;
   } else if (dateInfo.isPm === false && +dateInfo.hour === 12) {
     dateInfo.hour = 0;
@@ -386,9 +427,27 @@ fecha.parse = function(dateStr, format, i18nSettings) {
   var date;
   if (dateInfo.timezoneOffset != null) {
     dateInfo.minute = +(dateInfo.minute || 0) - +dateInfo.timezoneOffset;
-    date = new Date(Date.UTC(dateInfo.year || today.getFullYear(), dateInfo.month || 0, dateInfo.day || 1, dateInfo.hour || 0, dateInfo.minute || 0, dateInfo.second || 0, dateInfo.millisecond || 0));
+    date = new Date(
+      Date.UTC(
+        dateInfo.year || today.getFullYear(),
+        dateInfo.month || 0,
+        dateInfo.day || 1,
+        dateInfo.hour || 0,
+        dateInfo.minute || 0,
+        dateInfo.second || 0,
+        dateInfo.millisecond || 0
+      )
+    );
   } else {
-    date = new Date(dateInfo.year || today.getFullYear(), dateInfo.month || 0, dateInfo.day || 1, dateInfo.hour || 0, dateInfo.minute || 0, dateInfo.second || 0, dateInfo.millisecond || 0);
+    date = new Date(
+      dateInfo.year || today.getFullYear(),
+      dateInfo.month || 0,
+      dateInfo.day || 1,
+      dateInfo.hour || 0,
+      dateInfo.minute || 0,
+      dateInfo.second || 0,
+      dateInfo.millisecond || 0
+    );
   }
   return date;
 };

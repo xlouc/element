@@ -30,7 +30,7 @@
         :type="showPassword ? (passwordVisible ? 'text' : 'password') : type"
         :disabled="inputDisabled"
         :readonly="readonly"
-        :autocomplete="autoComplete || autocomplete"
+        :autocomplete="autocomplete"
         ref="input"
         @compositionstart="handleCompositionStart"
         @compositionupdate="handleCompositionUpdate"
@@ -99,7 +99,7 @@
       v-bind="$attrs"
       :disabled="inputDisabled"
       :readonly="readonly"
-      :autocomplete="autoComplete || autocomplete"
+      :autocomplete="autocomplete"
       :style="textareaStyle"
       @focus="handleFocus"
       @blur="handleBlur"
@@ -166,17 +166,6 @@ export default {
     autocomplete: {
       type: String,
       default: 'off'
-    },
-    /** @Deprecated in next major version */
-    autoComplete: {
-      type: String,
-      validator(val) {
-        process.env.NODE_ENV !== 'production' &&
-          console.warn(
-            "[Element Warn][Input]'auto-complete' property will be deprecated in next major version. please use 'autocomplete' instead."
-          )
-        return true
-      }
     },
     validateEvent: {
       type: Boolean,
