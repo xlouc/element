@@ -42,7 +42,7 @@
       </transition-group>
 
       <input
-        type="text"
+        :type="inputType"
         class="el-select__input"
         :class="[selectSize ? `is-${selectSize}` : '']"
         :disabled="selectDisabled"
@@ -74,7 +74,7 @@
     <el-input
       ref="reference"
       v-model="selectedLabel"
-      type="text"
+      :type="inputType"
       :placeholder="currentPlaceholder"
       :name="name"
       :id="id"
@@ -175,6 +175,10 @@ export default {
   computed: {
     _elFormItemSize() {
       return (this.elFormItem || {}).elFormItemSize
+    },
+
+    inputType() {
+      return this.autocomplete === 'off' ? 'search' : 'text'
     },
 
     readonly() {
