@@ -40,13 +40,15 @@
           <div
             :class="['el-message-box__status', icon]"
             v-if="icon && !center && message !== ''"
-          ></div>
+          />
+
           <div class="el-message-box__message" v-if="message !== ''">
             <slot>
               <p v-if="!dangerouslyUseHTMLString">{{ message }}</p>
               <p v-else v-html="message"></p>
             </slot>
           </div>
+
           <div class="el-message-box__input" v-show="showInput">
             <el-input
               v-model="inputValue"
