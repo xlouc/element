@@ -46,6 +46,19 @@
             {{ validateMessage }}
           </div>
         </slot>
+        <slot v-else-if="help" name="help">
+          <div
+            class="el-form-item__help"
+            :class="{
+              'el-form-item__help--inline':
+                typeof inlineMessage === 'boolean'
+                  ? inlineMessage
+                  : (elForm && elForm.inlineMessage) || false
+            }"
+          >
+            {{ help }}
+          </div>
+        </slot>
       </transition>
     </div>
   </div>
@@ -81,6 +94,7 @@ export default {
     },
     rules: [Object, Array],
     error: String,
+    help: String,
     validateStatus: String,
     for: String,
     inlineMessage: {
