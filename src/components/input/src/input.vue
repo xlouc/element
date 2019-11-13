@@ -418,10 +418,20 @@ export default {
     this.setNativeInputValue()
     this.resizeTextarea()
     this.updateIconOffset()
+    this.getInput().addEventListener('animationstart', e => {
+      switch (e.animationName) {
+        case 'onAutoFillStart':
+          this.isComposing = false
+          break
+      }
+    })
   },
 
   updated() {
     this.$nextTick(this.updateIconOffset)
+  },
+  beforeDestory() {
+    this.getInput().removeEventListener('animationstart')
   }
 }
 </script>
