@@ -111,6 +111,9 @@ export default {
     visible(val) {
       if (val) {
         this.closed = false
+        if (this.destroyOnClose) {
+          this.key++
+        }
         this.$emit('open')
         this.$el.addEventListener('scroll', this.updatePopper)
         this.$nextTick(() => {
@@ -122,11 +125,6 @@ export default {
       } else {
         this.$el.removeEventListener('scroll', this.updatePopper)
         if (!this.closed) this.$emit('close')
-        if (this.destroyOnClose) {
-          this.$nextTick(() => {
-            this.key++
-          })
-        }
       }
     }
   },

@@ -140,6 +140,7 @@ $directions: rtl, ltr, ttb, btt;
     position: relative;
     color: $--color-text-regular;
     padding: $--dialog-padding-primary;
+    padding-bottom: 10px;
     background: $--color-white;
     border-bottom: $--border-base;
     border-radius: 4px 4px 0 0;
@@ -159,16 +160,24 @@ $directions: rtl, ltr, ttb, btt;
 
   &__close-btn {
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 54px;
-    height: 54px;
+    top: $--dialog-padding-primary;
+    right: $--dialog-padding-primary;
+    padding: 0;
+    background: transparent;
     border: none;
     outline: none;
     cursor: pointer;
-    font-size: $--font-size-medium;
-    color: inherit;
-    background-color: transparent;
+    font-size: $--message-close-size;
+
+    .el-dialog__close {
+      color: $--color-text-secondary;
+    }
+
+    &:focus, &:hover {
+      .el-dialog__close {
+        color: $--color-primary;
+      }
+    }
   }
 
   &__body {
