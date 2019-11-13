@@ -47,6 +47,7 @@
     "gulp-babel": "^8.0.0",
     "gulp-cssmin": "^0.2.0",
     "gulp-sass": "^4.0.2",
+    "inquirer": "^7.0.0",
     "json-templater": "^1.2.0",
     "lint-staged": "^9.4.2",
     "markdown-it": "^9.0.1",
