@@ -1,4 +1,5 @@
 import { getValueByPath } from 'yak-ui/src/utils/util'
+import { isDefined } from 'yak-ui/src/utils/types'
 
 export const getCell = function(event) {
   let cell = event.target
@@ -51,10 +52,10 @@ export const orderBy = function(array, sortKey, reverse, sortMethod, sortBy) {
       return sortMethod(a.value, b.value)
     }
     for (let i = 0, len = a.key.length; i < len; i++) {
-      if (a.key[i] < b.key[i]) {
+      if (!isDefined(a.key[i]) || a.key[i] < b.key[i]) {
         return -1
       }
-      if (a.key[i] > b.key[i]) {
+      if (!isDefined(b.key[i]) || a.key[i] > b.key[i]) {
         return 1
       }
     }
