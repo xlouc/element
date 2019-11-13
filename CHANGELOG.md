@@ -1,3 +1,12 @@
+## [1.4.1](https://github.com/yakcodo/yak/compare/v1.4.0...v1.4.1) (2019-11-13)
+
+
+### Reverts
+
+* **button:** 取消错误修复 ([8b42a9c](https://github.com/yakcodo/yak/commit/8b42a9c))
+
+
+
 ## [1.4.0](https://github.com/yakcodo/yak/compare/v1.3.10...v1.4.0) (2019-11-13)
 
 
