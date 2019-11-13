@@ -106,7 +106,12 @@
       </template>
     </el-input>
     <transition name="el-zoom-in-top" @before-enter="handleMenuEnter" @after-leave="doDestroy">
-      <el-select-menu ref="popper" :append-to-body="popperAppendToBody" v-show="visible && emptyText !== false">
+      <el-select-menu
+        ref="popper"
+        :size="selectSize"
+        :append-to-body="popperAppendToBody"
+        v-show="visible && emptyText !== false"
+      >
         <el-scrollbar
           tag="ul"
           wrap-class="el-select-dropdown__wrap"
