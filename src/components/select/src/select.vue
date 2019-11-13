@@ -542,6 +542,9 @@ export default {
         this.selectedLabel = option.currentLabel
         this.selected = option
         if (this.filterable) this.query = this.selectedLabel
+        this.$nextTick(() => {
+          this.scrollToOption(this.selected)
+        })
         return
       }
       let result = []
@@ -553,6 +556,7 @@ export default {
       this.selected = result
       this.$nextTick(() => {
         this.resetInputHeight()
+        this.scrollToOption(this.selected)
       })
     },
 
