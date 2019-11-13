@@ -2,20 +2,7 @@ import fecha from 'yak-ui/src/utils/date'
 import { t } from 'yak-ui/src/locale'
 
 const weeks = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
-const months = [
-  'jan',
-  'feb',
-  'mar',
-  'apr',
-  'may',
-  'jun',
-  'jul',
-  'aug',
-  'sep',
-  'oct',
-  'nov',
-  'dec'
-]
+const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
 
 const newArray = function(start, end) {
   let result = []
@@ -30,9 +17,7 @@ export const getI18nSettings = () => {
     dayNamesShort: weeks.map(week => t(`el.datepicker.weeks.${week}`)),
     dayNames: weeks.map(week => t(`el.datepicker.weeks.${week}`)),
     monthNamesShort: months.map(month => t(`el.datepicker.months.${month}`)),
-    monthNames: months.map((month, index) =>
-      t(`el.datepicker.month${index + 1}`)
-    ),
+    monthNames: months.map((month, index) => t(`el.datepicker.month${index + 1}`)),
     amPm: ['am', 'pm']
   }
 }
@@ -121,15 +106,7 @@ export const getWeekNumber = function(src) {
   const week1 = new Date(date.getFullYear(), 0, 4)
   // Adjust to Thursday in week 1 and count number of weeks from date to week 1.
   // Rounding should be fine for Daylight Saving Time. Its shift should never be more than 12 hours.
-  return (
-    1 +
-    Math.round(
-      ((date.getTime() - week1.getTime()) / 86400000 -
-        3 +
-        ((week1.getDay() + 6) % 7)) /
-        7
-    )
-  )
+  return 1 + Math.round(((date.getTime() - week1.getTime()) / 86400000 - 3 + ((week1.getDay() + 6) % 7)) / 7)
 }
 
 export const getRangeHours = function(ranges) {
@@ -208,27 +185,11 @@ export const range = function(n) {
 }
 
 export const modifyDate = function(date, y, m, d) {
-  return new Date(
-    y,
-    m,
-    d,
-    date.getHours(),
-    date.getMinutes(),
-    date.getSeconds(),
-    date.getMilliseconds()
-  )
+  return new Date(y, m, d, date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds())
 }
 
 export const modifyTime = function(date, h, m, s) {
-  return new Date(
-    date.getFullYear(),
-    date.getMonth(),
-    date.getDate(),
-    h,
-    m,
-    s,
-    date.getMilliseconds()
-  )
+  return new Date(date.getFullYear(), date.getMonth(), date.getDate(), h, m, s, date.getMilliseconds())
 }
 
 export const modifyWithTimeString = (date, time) => {
@@ -261,8 +222,7 @@ export const limitTimeRange = function(date, ranges, format = 'HH:mm:ss') {
   const normalizeDate = date => fecha.parse(fecha.format(date, format), format)
   const ndate = normalizeDate(date)
   const nranges = ranges.map(range => range.map(normalizeDate))
-  if (nranges.some(nrange => ndate >= nrange[0] && ndate <= nrange[1]))
-    return date
+  if (nranges.some(nrange => ndate >= nrange[0] && ndate <= nrange[1])) return date
 
   let minDate = nranges[0][0]
   let maxDate = nranges[0][0]
@@ -325,14 +285,9 @@ export const extractDateFormat = function(format) {
 }
 
 export const extractTimeFormat = function(format) {
-  return format
-    .replace(/\W?D{1,2}|\W?Do|\W?d{1,4}|\W?M{1,4}|\W?y{2,4}/g, '')
-    .trim()
+  return format.replace(/\W?D{1,2}|\W?Do|\W?d{1,4}|\W?M{1,4}|\W?y{2,4}/g, '').trim()
 }
 
 export const validateRangeInOneMonth = function(start, end) {
-  return (
-    start.getMonth() === end.getMonth() &&
-    start.getFullYear() === end.getFullYear()
-  )
+  return start.getMonth() === end.getMonth() && start.getFullYear() === end.getFullYear()
 }

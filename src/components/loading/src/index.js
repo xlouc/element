@@ -57,8 +57,7 @@ const addStyle = (options, parent, instance) => {
         'px'
     })
     ;['height', 'width'].forEach(property => {
-      maskStyle[property] =
-        options.target.getBoundingClientRect()[property] + 'px'
+      maskStyle[property] = options.target.getBoundingClientRect()[property] + 'px'
     })
   } else {
     instance.originalPosition = getStyle(parent, 'position')
@@ -91,10 +90,7 @@ const Loading = (options = {}) => {
   })
 
   addStyle(options, parent, instance)
-  if (
-    instance.originalPosition !== 'absolute' &&
-    instance.originalPosition !== 'fixed'
-  ) {
+  if (instance.originalPosition !== 'absolute' && instance.originalPosition !== 'fixed') {
     addClass(parent, 'el-loading-parent--relative')
   }
   if (options.fullscreen && options.lock) {

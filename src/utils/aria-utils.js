@@ -13,10 +13,7 @@ aria.Utils = aria.Utils || {}
 aria.Utils.focusFirstDescendant = function(element) {
   for (var i = 0; i < element.childNodes.length; i++) {
     var child = element.childNodes[i]
-    if (
-      aria.Utils.attemptFocus(child) ||
-      aria.Utils.focusFirstDescendant(child)
-    ) {
+    if (aria.Utils.attemptFocus(child) || aria.Utils.focusFirstDescendant(child)) {
       return true
     }
   }
@@ -34,10 +31,7 @@ aria.Utils.focusFirstDescendant = function(element) {
 aria.Utils.focusLastDescendant = function(element) {
   for (var i = element.childNodes.length - 1; i >= 0; i--) {
     var child = element.childNodes[i]
-    if (
-      aria.Utils.attemptFocus(child) ||
-      aria.Utils.focusLastDescendant(child)
-    ) {
+    if (aria.Utils.attemptFocus(child) || aria.Utils.focusLastDescendant(child)) {
       return true
     }
   }
@@ -66,10 +60,7 @@ aria.Utils.attemptFocus = function(element) {
 }
 
 aria.Utils.isFocusable = function(element) {
-  if (
-    element.tabIndex > 0 ||
-    (element.tabIndex === 0 && element.getAttribute('tabIndex') !== null)
-  ) {
+  if (element.tabIndex > 0 || (element.tabIndex === 0 && element.getAttribute('tabIndex') !== null)) {
     return true
   }
 

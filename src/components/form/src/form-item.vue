@@ -13,37 +13,34 @@
       sizeClass ? 'el-form-item--' + sizeClass : ''
     ]"
   >
-    <label-wrap
-      :is-auto-width="labelStyle && labelStyle.width === 'auto'"
-      :update-all="form.labelWidth === 'auto'"
-    >
-      <label
-        :for="labelFor"
-        class="el-form-item__label"
-        :style="labelStyle"
-        v-if="label || $slots.label"
-      >
+    <label-wrap :is-auto-width="labelStyle && labelStyle.width === 'auto'" :update-all="form.labelWidth === 'auto'">
+      <label :for="labelFor" class="el-form-item__label" :style="labelStyle" v-if="label || $slots.label">
         <slot name="label">{{ label + form.labelSuffix }}</slot>
       </label>
     </label-wrap>
     <div class="el-form-item__content" :style="contentStyle">
       <slot></slot>
       <transition name="el-zoom-in-top">
-        <slot
-          v-if="validateState === 'error' && showMessage && form.showMessage"
-          name="error"
-          :error="validateMessage"
-        >
+        <slot v-if="validateState === 'error' && showMessage && form.showMessage" name="error" :error="validateMessage">
           <div
             class="el-form-item__error"
             :class="{
               'el-form-item__error--inline':
-                typeof inlineMessage === 'boolean'
-                  ? inlineMessage
-                  : (elForm && elForm.inlineMessage) || false
+                typeof inlineMessage === 'boolean' ? inlineMessage : (elForm && elForm.inlineMessage) || false
             }"
           >
             {{ validateMessage }}
+          </div>
+        </slot>
+        <slot v-else-if="help" name="help">
+          <div
+            class="el-form-item__help"
+            :class="{
+              'el-form-item__help--inline':
+                typeof inlineMessage === 'boolean' ? inlineMessage : (elForm && elForm.inlineMessage) || false
+            }"
+          >
+            {{ help }}
           </div>
         </slot>
       </transition>
@@ -81,6 +78,7 @@ export default {
     },
     rules: [Object, Array],
     error: String,
+    help: String,
     validateStatus: String,
     for: String,
     inlineMessage: {
@@ -227,23 +225,13 @@ export default {
 
       model[this.prop] = this.fieldValue
 
-      validator.validate(
-        model,
-        { firstFields: true },
-        (errors, invalidFields) => {
-          this.validateState = !errors ? 'success' : 'error'
-          this.validateMessage = errors ? errors[0].message : ''
+      validator.validate(model, { firstFields: true }, (errors, invalidFields) => {
+        this.validateState = !errors ? 'success' : 'error'
+        this.validateMessage = errors ? errors[0].message : ''
 
-          callback(this.validateMessage, invalidFields)
-          this.elForm &&
-            this.elForm.$emit(
-              'validate',
-              this.prop,
-              !errors,
-              this.validateMessage || null
-            )
-        }
-      )
+        callback(this.validateMessage, invalidFields)
+        this.elForm && this.elForm.$emit('validate', this.prop, !errors, this.validateMessage || null)
+      })
     },
     clearValidate() {
       this.validateState = ''
@@ -280,8 +268,7 @@ export default {
     getRules() {
       let formRules = this.form.rules
       const selfRules = this.rules
-      const requiredRule =
-        this.required !== undefined ? { required: !!this.required } : []
+      const requiredRule = this.required !== undefined ? { required: !!this.required } : []
 
       const prop = getPropByPath(formRules, this.prop || '')
       formRules = formRules ? prop.o[this.prop || ''] || prop.v : []

@@ -1,10 +1,4 @@
-import {
-  createTest,
-  createVue,
-  triggerEvent,
-  destroyVM,
-  waitImmediate
-} from '../util'
+import { createTest, createVue, triggerEvent, destroyVM, waitImmediate } from '../util'
 import Slider from 'packages/slider'
 
 describe('Slider', () => {
@@ -556,12 +550,8 @@ describe('Slider', () => {
       )
 
       waitImmediate()
-      const stops = vm.$el.querySelectorAll(
-        '.el-slider__marks-stop.el-slider__stop'
-      )
-      const marks = vm.$el.querySelectorAll(
-        '.el-slider__marks .el-slider__marks-text'
-      )
+      const stops = vm.$el.querySelectorAll('.el-slider__marks-stop.el-slider__stop')
+      const marks = vm.$el.querySelectorAll('.el-slider__marks .el-slider__marks-text')
       expect(marks.length).to.equal(2)
       expect(stops.length).to.equal(2)
     })

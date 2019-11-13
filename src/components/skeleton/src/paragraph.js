@@ -19,9 +19,7 @@ export default {
   functional: true,
   render(h, context) {
     const { rows } = context.props
-    const rowList = [...Array(rows)].map((_, index) => (
-      <li key={index} style={{ width: getWidth(index, context) }} />
-    ))
+    const rowList = [...Array(rows)].map((_, index) => <li key={index} style={{ width: getWidth(index, context) }} />)
     return <ul {...context.data}>{rowList}</ul>
   }
 }

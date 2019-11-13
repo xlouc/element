@@ -1,24 +1,12 @@
 <template>
-  <transition
-    name="dialog-fade"
-    @after-enter="afterEnter"
-    @after-leave="afterLeave"
-  >
-    <div
-      v-show="visible"
-      class="el-dialog__wrapper"
-      @click.self="handleWrapperClick"
-    >
+  <transition name="dialog-fade" @after-enter="afterEnter" @after-leave="afterLeave">
+    <div v-show="visible" class="el-dialog__wrapper" @click.self="handleWrapperClick">
       <div
         role="dialog"
         :key="key"
         aria-modal="true"
         :aria-label="title || 'dialog'"
-        :class="[
-          'el-dialog',
-          { 'is-fullscreen': fullscreen, 'el-dialog--center': center },
-          customClass
-        ]"
+        :class="['el-dialog', { 'is-fullscreen': fullscreen, 'el-dialog--center': center }, customClass]"
         ref="dialog"
         :style="style"
       >
@@ -26,13 +14,7 @@
           <slot name="title">
             <span class="el-dialog__title">{{ title }}</span>
           </slot>
-          <button
-            type="button"
-            class="el-dialog__headerbtn"
-            aria-label="Close"
-            v-if="showClose"
-            @click="handleClose"
-          >
+          <button type="button" class="el-dialog__headerbtn" aria-label="Close" v-if="showClose" @click="handleClose">
             <i class="el-dialog__close el-icon el-icon-close"></i>
           </button>
         </div>
@@ -129,6 +111,9 @@ export default {
     visible(val) {
       if (val) {
         this.closed = false
+        if (this.destroyOnClose) {
+          this.key++
+        }
         this.$emit('open')
         this.$el.addEventListener('scroll', this.updatePopper)
         this.$nextTick(() => {
@@ -140,11 +125,6 @@ export default {
       } else {
         this.$el.removeEventListener('scroll', this.updatePopper)
         if (!this.closed) this.$emit('close')
-        if (this.destroyOnClose) {
-          this.$nextTick(() => {
-            this.key++
-          })
-        }
       }
     }
   },

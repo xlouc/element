@@ -114,6 +114,10 @@ export default {
     },
     empty: {
       noData: '暂无数据'
+    },
+    popconfirm: {
+      confirmButtonText: '确定', // to be translated
+      cancelButtonText: '取消' // to be translated
     }
   }
 }

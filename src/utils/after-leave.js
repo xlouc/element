@@ -1,7 +1,6 @@
 /**
  * Bind after-leave event for vue instance. Make sure after-leave is called in any browsers.
  *
- * @format
  * @param {Vue} instance Vue instance.
  * @param {Function} callback callback of after-leave event
  * @param {Number} speed the speed of transition, default value is 300ms

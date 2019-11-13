@@ -18,8 +18,7 @@
           :key="hour"
           :class="{ active: hour === hours, disabled: disabled }"
         >
-          {{ ('0' + (amPmMode ? hour % 12 || 12 : hour)).slice(-2)
-          }}{{ amPm(hour) }}
+          {{ ('0' + (amPmMode ? hour % 12 || 12 : hour)).slice(-2) }}{{ amPm(hour) }}
         </li>
       </el-scrollbar>
       <el-scrollbar
@@ -65,18 +64,9 @@
       </el-scrollbar>
     </template>
     <template v-if="arrowControl">
-      <div
-        @mouseenter="emitSelectRange('hours')"
-        class="el-time-spinner__wrapper is-arrow"
-      >
-        <i
-          v-repeat-click="decrease"
-          class="el-time-spinner__arrow el-icon-up"
-        ></i>
-        <i
-          v-repeat-click="increase"
-          class="el-time-spinner__arrow el-icon-down"
-        ></i>
+      <div @mouseenter="emitSelectRange('hours')" class="el-time-spinner__wrapper is-arrow">
+        <i v-repeat-click="decrease" class="el-time-spinner__arrow el-icon-up"></i>
+        <i v-repeat-click="increase" class="el-time-spinner__arrow el-icon-down"></i>
         <ul class="el-time-spinner__list" ref="hours">
           <li
             class="el-time-spinner__item"
@@ -84,27 +74,13 @@
             v-for="(hour, key) in arrowHourList"
             :key="key"
           >
-            {{
-              hour === undefined
-                ? ''
-                : ('0' + (amPmMode ? hour % 12 || 12 : hour)).slice(-2) +
-                  amPm(hour)
-            }}
+            {{ hour === undefined ? '' : ('0' + (amPmMode ? hour % 12 || 12 : hour)).slice(-2) + amPm(hour) }}
           </li>
         </ul>
       </div>
-      <div
-        @mouseenter="emitSelectRange('minutes')"
-        class="el-time-spinner__wrapper is-arrow"
-      >
-        <i
-          v-repeat-click="decrease"
-          class="el-time-spinner__arrow el-icon-up"
-        ></i>
-        <i
-          v-repeat-click="increase"
-          class="el-time-spinner__arrow el-icon-down"
-        ></i>
+      <div @mouseenter="emitSelectRange('minutes')" class="el-time-spinner__wrapper is-arrow">
+        <i v-repeat-click="decrease" class="el-time-spinner__arrow el-icon-up"></i>
+        <i v-repeat-click="increase" class="el-time-spinner__arrow el-icon-down"></i>
         <ul class="el-time-spinner__list" ref="minutes">
           <li
             class="el-time-spinner__item"
@@ -116,19 +92,9 @@
           </li>
         </ul>
       </div>
-      <div
-        @mouseenter="emitSelectRange('seconds')"
-        class="el-time-spinner__wrapper is-arrow"
-        v-if="showSeconds"
-      >
-        <i
-          v-repeat-click="decrease"
-          class="el-time-spinner__arrow el-icon-up"
-        ></i>
-        <i
-          v-repeat-click="increase"
-          class="el-time-spinner__arrow el-icon-down"
-        ></i>
+      <div @mouseenter="emitSelectRange('seconds')" class="el-time-spinner__wrapper is-arrow" v-if="showSeconds">
+        <i v-repeat-click="decrease" class="el-time-spinner__arrow el-icon-up"></i>
+        <i v-repeat-click="increase" class="el-time-spinner__arrow el-icon-down"></i>
         <ul class="el-time-spinner__list" ref="seconds">
           <li
             v-for="(second, key) in arrowSecondList"
@@ -145,11 +111,7 @@
 </template>
 
 <script type="text/babel">
-import {
-  getRangeHours,
-  getRangeMinutes,
-  modifyTime
-} from 'yak-ui/src/utils/date-util'
+import { getRangeHours, getRangeMinutes, modifyTime } from 'yak-ui/src/utils/date-util'
 import ElScrollbar from 'yak-ui/components/scrollbar'
 import RepeatClick from 'yak-ui/src/directives/repeat-click'
 
@@ -192,27 +154,15 @@ export default {
     },
     arrowHourList() {
       const hours = this.hours
-      return [
-        hours > 0 ? hours - 1 : undefined,
-        hours,
-        hours < 23 ? hours + 1 : undefined
-      ]
+      return [hours > 0 ? hours - 1 : undefined, hours, hours < 23 ? hours + 1 : undefined]
     },
     arrowMinuteList() {
       const minutes = this.minutes
-      return [
-        minutes > 0 ? minutes - 1 : undefined,
-        minutes,
-        minutes < 59 ? minutes + 1 : undefined
-      ]
+      return [minutes > 0 ? minutes - 1 : undefined, minutes, minutes < 59 ? minutes + 1 : undefined]
     },
     arrowSecondList() {
       const seconds = this.seconds
-      return [
-        seconds > 0 ? seconds - 1 : undefined,
-        seconds,
-        seconds < 59 ? seconds + 1 : undefined
-      ]
+      return [seconds > 0 ? seconds - 1 : undefined, seconds, seconds < 59 ? seconds + 1 : undefined]
     }
   },
 
@@ -241,22 +191,13 @@ export default {
     modifyDateField(type, value) {
       switch (type) {
         case 'hours':
-          this.$emit(
-            'change',
-            modifyTime(this.date, value, this.minutes, this.seconds)
-          )
+          this.$emit('change', modifyTime(this.date, value, this.minutes, this.seconds))
           break
         case 'minutes':
-          this.$emit(
-            'change',
-            modifyTime(this.date, this.hours, value, this.seconds)
-          )
+          this.$emit('change', modifyTime(this.date, this.hours, value, this.seconds))
           break
         case 'seconds':
-          this.$emit(
-            'change',
-            modifyTime(this.date, this.hours, this.minutes, value)
-          )
+          this.$emit('change', modifyTime(this.date, this.hours, this.minutes, value))
           break
       }
     },
@@ -296,10 +237,7 @@ export default {
     handleScroll(type) {
       const value = Math.min(
         Math.round(
-          (this.$refs[type].wrap.scrollTop -
-            (this.scrollBarHeight(type) * 0.5 - 10) /
-              this.typeItemHeight(type) +
-            3) /
+          (this.$refs[type].wrap.scrollTop - (this.scrollBarHeight(type) * 0.5 - 10) / this.typeItemHeight(type) + 3) /
             this.typeItemHeight(type)
         ),
         type === 'hours' ? 23 : 59
@@ -355,6 +293,7 @@ export default {
 
       this.modifyDateField(label, now)
       this.adjustSpinner(label, now)
+      this.$nextTick(() => this.emitSelectRange(this.currentScrollbar))
     },
     amPm(hour) {
       let shouldShowAmPm = this.amPmMode.toLowerCase() === 'a'

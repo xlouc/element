@@ -20,35 +20,19 @@
       @keydown.enter="switchValue"
     />
     <span
-      :class="[
-        'el-switch__label',
-        'el-switch__label--left',
-        !checked ? 'is-active' : ''
-      ]"
+      :class="['el-switch__label', 'el-switch__label--left', !checked ? 'is-active' : '']"
       v-if="inactiveIconClass || inactiveText"
     >
       <i :class="[inactiveIconClass]" v-if="inactiveIconClass"></i>
-      <span v-if="!inactiveIconClass && inactiveText" :aria-hidden="checked">{{
-        inactiveText
-      }}</span>
+      <span v-if="!inactiveIconClass && inactiveText" :aria-hidden="checked">{{ inactiveText }}</span>
     </span>
+    <span class="el-switch__core" ref="core" :style="{ width: coreWidth + 'px' }"></span>
     <span
-      class="el-switch__core"
-      ref="core"
-      :style="{ width: coreWidth + 'px' }"
-    ></span>
-    <span
-      :class="[
-        'el-switch__label',
-        'el-switch__label--right',
-        checked ? 'is-active' : ''
-      ]"
+      :class="['el-switch__label', 'el-switch__label--right', checked ? 'is-active' : '']"
       v-if="activeIconClass || activeText"
     >
       <i :class="[activeIconClass]" v-if="activeIconClass"></i>
-      <span v-if="!activeIconClass && activeText" :aria-hidden="!checked">{{
-        activeText
-      }}</span>
+      <span v-if="!activeIconClass && activeText" :aria-hidden="!checked">{{ activeText }}</span>
     </span>
   </div>
 </template>

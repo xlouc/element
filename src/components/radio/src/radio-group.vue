@@ -1,10 +1,5 @@
 <template>
-  <component
-    :is="_elTag"
-    class="el-radio-group"
-    role="radiogroup"
-    @keydown="handleKeydown"
-  >
+  <component :is="_elTag" class="el-radio-group" role="radiogroup" @keydown="handleKeydown">
     <slot></slot>
   </component>
 </template>
@@ -21,6 +16,12 @@ export default {
   name: 'ElRadioGroup',
 
   componentName: 'ElRadioGroup',
+
+  provide() {
+    return {
+      _radioGroup: this
+    }
+  },
 
   inject: {
     elFormItem: {
@@ -67,8 +68,7 @@ export default {
     handleKeydown(e) {
       // 左右上下按键 可以在radio组内切换不同选项
       const target = e.target
-      const className =
-        target.nodeName === 'INPUT' ? '[type=radio]' : '[role=radio]'
+      const className = target.nodeName === 'INPUT' ? '[type=radio]' : '[role=radio]'
       const radios = this.$el.querySelectorAll(className)
       const length = radios.length
       const index = [].indexOf.call(radios, target)

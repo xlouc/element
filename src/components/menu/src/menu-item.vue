@@ -15,11 +15,7 @@
     @mouseleave="onMouseLeave"
   >
     <el-tooltip
-      v-if="
-        parentMenu.$options.componentName === 'ElMenu' &&
-          rootMenu.collapse &&
-          $slots.title
-      "
+      v-if="parentMenu.$options.componentName === 'ElMenu' && rootMenu.collapse && $slots.title"
       effect="dark"
       placement="right"
     >
@@ -79,9 +75,7 @@ export default {
       if (this.active) {
         if (this.mode === 'horizontal' && !this.isNested) {
           itemStyle.color = this.colorMaps.activeBackgroundColor
-          itemStyle[
-            'border-bottom-color'
-          ] = this.colorMaps.activeBackgroundColor
+          itemStyle['border-bottom-color'] = this.colorMaps.activeBackgroundColor
         } else {
           itemStyle.color = this.colorMaps.activeColor
           itemStyle.backgroundColor = this.colorMaps.activeBackgroundColor
@@ -102,9 +96,7 @@ export default {
       if (!this.colorMaps || this.active || this.disabled) return
       if (this.mode === 'horizontal' && !this.isNested) {
         this.$el.style.color = this.colorMaps.activeBackgroundColor
-        this.$el.style[
-          'border-bottom-color'
-        ] = this.colorMaps.activeBackgroundColor
+        this.$el.style['border-bottom-color'] = this.colorMaps.activeBackgroundColor
       } else {
         this.$el.style.color = this.colorMaps.activeColor
       }

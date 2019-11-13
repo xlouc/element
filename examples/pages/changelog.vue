@@ -4,20 +4,14 @@
     <p>
       <code>yak-ui</code>
       严格遵循
-      <el-link
-        type="primary"
-        href="https://semver.org/lang/zh-CN/"
-        target="_blank"
-        >Semantic Versioning 2.0.0</el-link
-      >
+      <el-link type="primary" href="https://semver.org/lang/zh-CN/" target="_blank">Semantic Versioning 2.0.0</el-link>
       语义化版本规范。
     </p>
     <h4>发布周期</h4>
     <ul>
       <li>
         <p>
-          修订版本号：每周末会进行日常 bugfix 更新。（如果有紧急的
-          bugfix，则任何时候都可发布）
+          修订版本号：每周末会进行日常 bugfix 更新。（如果有紧急的 bugfix，则任何时候都可发布）
         </p>
       </li>
       <li>
@@ -28,18 +22,11 @@
       </li>
     </ul>
     <el-timeline pending>
-      <el-timeline-item
-        v-for="item in timelines"
-        :key="item.version"
-        :timestamp="item.date"
-        placement="top"
-      >
+      <el-timeline-item v-for="item in timelines" :key="item.version" :timestamp="item.date" placement="top">
         <el-card>
           <template v-slot:header>
             <el-link
-              :href="
-                `https://github.com/yakcodo/yak/releases/tag/v${item.version}`
-              "
+              :href="`https://github.com/yakcodo/yak/releases/tag/v${item.version}`"
               type="primary"
               target="_blank"
             >
@@ -50,16 +37,11 @@
         </el-card>
       </el-timeline-item>
       <el-timeline-item>
-        <el-link
-          type="primary"
-          href="https://github.com/ElemeFE/element/releases/tag/v2.11.1"
-          target="_blank"
+        <el-link type="primary" href="https://github.com/ElemeFE/element/releases/tag/v2.11.1" target="_blank"
           >Fork: Element v2.11.1</el-link
         >
       </el-timeline-item>
-      <el-timeline-item
-        ><el-link type="primary">查看更多</el-link></el-timeline-item
-      >
+      <el-timeline-item><el-link type="primary">查看更多</el-link></el-timeline-item>
     </el-timeline>
     <CHANGELOG ref="changeLog" v-show="false"></CHANGELOG>
   </section>

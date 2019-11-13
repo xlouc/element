@@ -113,6 +113,10 @@ export default {
     },
     empty: {
       noData: 'لايوجد بيانات'
+    },
+    popconfirm: {
+      confirmButtonText: 'Yes', // to be translated
+      cancelButtonText: 'No' // to be translated
     }
   }
 }

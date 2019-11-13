@@ -1,9 +1,5 @@
 <template>
-  <transition
-    name="el-zoom-in-top"
-    @after-enter="handleEnter"
-    @after-leave="handleLeave"
-  >
+  <transition name="el-zoom-in-top" @after-enter="handleEnter" @after-leave="handleLeave">
     <div
       v-show="visible"
       class="el-picker-panel el-date-picker el-popper"
@@ -39,10 +35,7 @@
                 @change="handleVisibleDateChange"
               />
             </span>
-            <span
-              class="el-date-picker__editor-wrap"
-              v-clickoutside="handleTimePickClose"
-            >
+            <span class="el-date-picker__editor-wrap" v-clickoutside="handleTimePickClose">
               <el-input
                 ref="input"
                 @focus="timePickerVisible = true"
@@ -64,8 +57,7 @@
           <div
             class="el-date-picker__header"
             :class="{
-              'el-date-picker__header--bordered':
-                currentView === 'year' || currentView === 'month'
+              'el-date-picker__header--bordered': currentView === 'year' || currentView === 'month'
             }"
             v-show="currentView !== 'time'"
           >
@@ -82,12 +74,7 @@
               :aria-label="t(`el.datepicker.prevMonth`)"
               class="el-picker-panel__icon-btn el-date-picker__prev-btn el-icon-left"
             ></button>
-            <span
-              @click="showYearPicker"
-              role="button"
-              class="el-date-picker__header-label"
-              >{{ yearLabel }}</span
-            >
+            <span @click="showYearPicker" role="button" class="el-date-picker__header-label">{{ yearLabel }}</span>
             <span
               @click="showMonthPicker"
               v-show="currentView === 'date'"
@@ -144,10 +131,7 @@
         </div>
       </div>
 
-      <div
-        class="el-picker-panel__footer"
-        v-show="footerVisible && currentView === 'date'"
-      >
+      <div class="el-picker-panel__footer" v-show="footerVisible && currentView === 'date'">
         <el-button
           size="mini"
           type="text"
@@ -157,12 +141,7 @@
         >
           {{ t('el.datepicker.now') }}
         </el-button>
-        <el-button
-          plain
-          size="mini"
-          class="el-picker-panel__link-btn"
-          @click="confirm"
-        >
+        <el-button plain size="mini" class="el-picker-panel__link-btn" @click="confirm">
           {{ t('el.datepicker.confirm') }}
         </el-button>
       </div>
@@ -281,16 +260,10 @@ export default {
       if (!value) {
         this.$emit('pick', value, ...args)
       } else if (Array.isArray(value)) {
-        const dates = value.map(date =>
-          this.showTime ? clearMilliseconds(date) : clearTime(date)
-        )
+        const dates = value.map(date => (this.showTime ? clearMilliseconds(date) : clearTime(date)))
         this.$emit('pick', dates, ...args)
       } else {
-        this.$emit(
-          'pick',
-          this.showTime ? clearMilliseconds(value) : clearTime(value),
-          ...args
-        )
+        this.$emit('pick', this.showTime ? clearMilliseconds(value) : clearTime(value), ...args)
       }
       this.userInputDate = null
       this.userInputTime = null
@@ -350,12 +323,7 @@ export default {
     handleTimePick(value, visible, first) {
       if (isDate(value)) {
         const newDate = this.value
-          ? modifyTime(
-              this.value,
-              value.getHours(),
-              value.getMinutes(),
-              value.getSeconds()
-            )
+          ? modifyTime(this.value, value.getHours(), value.getMinutes(), value.getSeconds())
           : modifyWithTimeString(this.getDefaultValue(), this.defaultTime)
         this.date = newDate
         this.emit(this.date, true)
@@ -386,21 +354,11 @@ export default {
     handleDatePick(value) {
       if (this.selectionMode === 'day') {
         let newDate = this.value
-          ? modifyDate(
-              this.value,
-              value.getFullYear(),
-              value.getMonth(),
-              value.getDate()
-            )
+          ? modifyDate(this.value, value.getFullYear(), value.getMonth(), value.getDate())
           : modifyWithTimeString(value, this.defaultTime)
         // change default time while out of selectableRange
         if (!this.checkDateWithinRange(newDate)) {
-          newDate = modifyDate(
-            this.selectableRange[0][0],
-            value.getFullYear(),
-            value.getMonth(),
-            value.getDate()
-          )
+          newDate = modifyDate(this.selectableRange[0][0], value.getFullYear(), value.getMonth(), value.getDate())
         }
         this.date = newDate
         this.emit(this.date, this.showTime)
@@ -426,10 +384,7 @@ export default {
     changeToNow() {
       // NOTE: not a permanent solution
       //       consider disable "now" button in the future
-      if (
-        (!this.disabledDate || !this.disabledDate(new Date())) &&
-        this.checkDateWithinRange(new Date())
-      ) {
+      if ((!this.disabledDate || !this.disabledDate(new Date())) && this.checkDateWithinRange(new Date())) {
         this.date = new Date()
         this.emit(this.date)
       }
@@ -441,9 +396,7 @@ export default {
       } else {
         // value were emitted in handle{Date,Time}Pick, nothing to update here
         // deal with the scenario where: user opens the picker, then confirm without doing anything
-        const value = this.value
-          ? this.value
-          : modifyWithTimeString(this.getDefaultValue(), this.defaultTime)
+        const value = this.value ? this.value : modifyWithTimeString(this.getDefaultValue(), this.defaultTime)
         this.date = new Date(value) // refresh date
         this.emit(value)
       }
@@ -477,11 +430,7 @@ export default {
           event.stopPropagation()
           event.preventDefault()
         }
-        if (
-          keyCode === 13 &&
-          this.userInputDate === null &&
-          this.userInputTime === null
-        ) {
+        if (keyCode === 13 && this.userInputDate === null && this.userInputTime === null) {
           // Enter
           this.emit(this.date, false)
         }
@@ -526,10 +475,7 @@ export default {
       while (Math.abs(now - newDate.getTime()) <= year) {
         const map = mapping[mode]
         map.offset(newDate, map[keyCode])
-        if (
-          typeof this.disabledDate === 'function' &&
-          this.disabledDate(newDate)
-        ) {
+        if (typeof this.disabledDate === 'function' && this.disabledDate(newDate)) {
           continue
         }
         this.date = newDate
@@ -552,18 +498,10 @@ export default {
     handleVisibleDateChange(value) {
       const date = parseDate(value, this.dateFormat)
       if (date) {
-        if (
-          typeof this.disabledDate === 'function' &&
-          this.disabledDate(date)
-        ) {
+        if (typeof this.disabledDate === 'function' && this.disabledDate(date)) {
           return
         }
-        this.date = modifyTime(
-          date,
-          this.date.getHours(),
-          this.date.getMinutes(),
-          this.date.getSeconds()
-        )
+        this.date = modifyTime(date, this.date.getHours(), this.date.getMinutes(), this.date.getSeconds())
         this.userInputDate = null
         this.resetView()
         this.emit(this.date, true)
@@ -574,9 +512,7 @@ export default {
       return (
         value &&
         !isNaN(value) &&
-        (typeof this.disabledDate === 'function'
-          ? !this.disabledDate(value)
-          : true) &&
+        (typeof this.disabledDate === 'function' ? !this.disabledDate(value) : true) &&
         this.checkDateWithinRange(value)
       )
     },
@@ -670,15 +606,7 @@ export default {
       if (this.currentView === 'year') {
         const startYear = Math.floor(this.year / 10) * 10
         if (yearTranslation) {
-          return (
-            startYear +
-            ' ' +
-            yearTranslation +
-            ' - ' +
-            (startYear + 9) +
-            ' ' +
-            yearTranslation
-          )
+          return startYear + ' ' + yearTranslation + ' - ' + (startYear + 9) + ' ' + yearTranslation
         }
         return startYear + ' - ' + (startYear + 9)
       }

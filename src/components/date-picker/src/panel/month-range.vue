@@ -24,15 +24,9 @@
           </button>
         </div>
         <div class="el-picker-panel__body">
-          <div
-            class="el-picker-panel__content el-date-range-picker__content is-left"
-          >
+          <div class="el-picker-panel__content el-date-range-picker__content is-left">
             <div class="el-date-range-picker__header">
-              <button
-                type="button"
-                @click="leftPrevYear"
-                class="el-picker-panel__icon-btn el-icon-doubleleft"
-              ></button>
+              <button type="button" @click="leftPrevYear" class="el-picker-panel__icon-btn el-icon-doubleleft"></button>
               <button
                 type="button"
                 v-if="unlinkPanels"
@@ -55,9 +49,7 @@
               @pick="handleRangePick"
             ></month-table>
           </div>
-          <div
-            class="el-picker-panel__content el-date-range-picker__content is-right"
-          >
+          <div class="el-picker-panel__content el-date-range-picker__content is-right">
             <div class="el-date-range-picker__header">
               <button
                 type="button"
@@ -93,13 +85,7 @@
 </template>
 
 <script type="text/babel">
-import {
-  isDate,
-  modifyWithTimeString,
-  prevYear,
-  nextYear,
-  nextMonth
-} from 'yak-ui/src/utils/date-util'
+import { isDate, modifyWithTimeString, prevYear, nextYear, nextMonth } from 'yak-ui/src/utils/date-util'
 import Clickoutside from 'yak-ui/src/utils/clickoutside'
 import Locale from 'yak-ui/src/mixins/locale'
 import MonthTable from '../basic/month-table'
@@ -120,12 +106,7 @@ export default {
 
   computed: {
     btnDisabled() {
-      return !(
-        this.minDate &&
-        this.maxDate &&
-        !this.selecting &&
-        this.isValidValue([this.minDate, this.maxDate])
-      )
+      return !(this.minDate && this.maxDate && !this.selecting && this.isValidValue([this.minDate, this.maxDate]))
     },
 
     leftLabel() {
@@ -189,10 +170,7 @@ export default {
           if (this.unlinkPanels && this.maxDate) {
             const minDateYear = this.minDate.getFullYear()
             const maxDateYear = this.maxDate.getFullYear()
-            this.rightDate =
-              minDateYear === maxDateYear
-                ? nextYear(this.maxDate)
-                : this.maxDate
+            this.rightDate = minDateYear === maxDateYear ? nextYear(this.maxDate) : this.maxDate
           } else {
             this.rightDate = nextYear(this.leftDate)
           }
@@ -208,10 +186,7 @@ export default {
         const [left, right] = calcDefaultValue(val)
         this.leftDate = left
         this.rightDate =
-          val &&
-          val[1] &&
-          left.getFullYear() !== right.getFullYear() &&
-          this.unlinkPanels
+          val && val[1] && left.getFullYear() !== right.getFullYear() && this.unlinkPanels
             ? right
             : nextYear(this.leftDate)
       }
@@ -298,9 +273,7 @@ export default {
         isDate(value[0]) &&
         isDate(value[1]) &&
         value[0].getTime() <= value[1].getTime() &&
-        (typeof this.disabledDate === 'function'
-          ? !this.disabledDate(value[0]) && !this.disabledDate(value[1])
-          : true)
+        (typeof this.disabledDate === 'function' ? !this.disabledDate(value[0]) && !this.disabledDate(value[1]) : true)
       )
     },
 
@@ -308,10 +281,8 @@ export default {
       // NOTE: this is a hack to reset {min, max}Date on picker open.
       // TODO: correct way of doing so is to refactor {min, max}Date to be dependent on value and internal selection state
       //       an alternative would be resetView whenever picker becomes visible, should also investigate date-panel's resetView
-      this.minDate =
-        this.value && isDate(this.value[0]) ? new Date(this.value[0]) : null
-      this.maxDate =
-        this.value && isDate(this.value[0]) ? new Date(this.value[1]) : null
+      this.minDate = this.value && isDate(this.value[0]) ? new Date(this.value[0]) : null
+      this.maxDate = this.value && isDate(this.value[0]) ? new Date(this.value[1]) : null
     }
   },
 

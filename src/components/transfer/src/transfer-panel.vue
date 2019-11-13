@@ -1,19 +1,13 @@
 <template>
   <div class="el-transfer-panel">
     <p class="el-transfer-panel__header">
-      <el-checkbox
-        v-model="allChecked"
-        @change="handleAllCheckedChange"
-        :indeterminate="isIndeterminate"
-      >
+      <el-checkbox v-model="allChecked" @change="handleAllCheckedChange" :indeterminate="isIndeterminate">
         {{ title }}
         <span>{{ checkedSummary }}</span>
       </el-checkbox>
     </p>
 
-    <div
-      :class="['el-transfer-panel__body', hasFooter ? 'is-with-footer' : '']"
-    >
+    <div :class="['el-transfer-panel__body', hasFooter ? 'is-with-footer' : '']">
       <el-input
         class="el-transfer-panel__filter"
         v-model="query"
@@ -23,11 +17,7 @@
         @mouseleave.native="inputHover = false"
         v-if="filterable"
       >
-        <i
-          slot="prefix"
-          :class="['el-input__icon', 'el-icon-' + inputIcon]"
-          @click="clearQuery"
-        ></i>
+        <i slot="prefix" :class="['el-input__icon', 'el-icon-' + inputIcon]" @click="clearQuery"></i>
       </el-input>
       <el-checkbox-group
         v-model="checked"
@@ -48,10 +38,7 @@
       <p class="el-transfer-panel__empty" v-show="hasNoMatch">
         {{ t('el.transfer.noMatch') }}
       </p>
-      <p
-        class="el-transfer-panel__empty"
-        v-show="data.length === 0 && !hasNoMatch"
-      >
+      <p class="el-transfer-panel__empty" v-show="data.length === 0 && !hasNoMatch">
         {{ t('el.transfer.noData') }}
       </p>
     </div>
@@ -99,9 +86,7 @@ export default {
         ) : transfer.$scopedSlots.default ? (
           transfer.$scopedSlots.default({ option: this.option })
         ) : (
-          <span>
-            {this.option[panel.labelProp] || this.option[panel.keyProp]}
-          </span>
+          <span>{this.option[panel.labelProp] || this.option[panel.keyProp]}</span>
         )
       }
     }
@@ -138,9 +123,7 @@ export default {
     checked(val, oldVal) {
       this.updateAllChecked()
       if (this.checkChangeByUser) {
-        const movedKeys = val
-          .concat(oldVal)
-          .filter(v => val.indexOf(v) === -1 || oldVal.indexOf(v) === -1)
+        const movedKeys = val.concat(oldVal).filter(v => val.indexOf(v) === -1 || oldVal.indexOf(v) === -1)
         this.$emit('checked-change', val, movedKeys)
       } else {
         this.$emit('checked-change', val)
@@ -167,16 +150,9 @@ export default {
     defaultChecked: {
       immediate: true,
       handler(val, oldVal) {
-        if (
-          oldVal &&
-          val.length === oldVal.length &&
-          val.every(item => oldVal.indexOf(item) > -1)
-        )
-          return
+        if (oldVal && val.length === oldVal.length && val.every(item => oldVal.indexOf(item) > -1)) return
         const checked = []
-        const checkableDataKeys = this.checkableData.map(
-          item => item[this.keyProp]
-        )
+        const checkableDataKeys = this.checkableData.map(item => item[this.keyProp])
         val.forEach(item => {
           if (checkableDataKeys.indexOf(item) > -1) {
             checked.push(item)
@@ -210,9 +186,7 @@ export default {
       const { noChecked, hasChecked } = this.format
       if (noChecked && hasChecked) {
         return checkedLength > 0
-          ? hasChecked
-              .replace(/\${checked}/g, checkedLength)
-              .replace(/\${total}/g, dataLength)
+          ? hasChecked.replace(/\${checked}/g, checkedLength).replace(/\${total}/g, dataLength)
           : noChecked.replace(/\${total}/g, dataLength)
       } else {
         return `${checkedLength}/${dataLength}`
@@ -229,9 +203,7 @@ export default {
     },
 
     inputIcon() {
-      return this.query.length > 0 && this.inputHover
-        ? 'circle-close'
-        : 'search'
+      return this.query.length > 0 && this.inputHover ? 'circle-close' : 'search'
     },
 
     labelProp() {
@@ -253,18 +225,12 @@ export default {
 
   methods: {
     updateAllChecked() {
-      const checkableDataKeys = this.checkableData.map(
-        item => item[this.keyProp]
-      )
-      this.allChecked =
-        checkableDataKeys.length > 0 &&
-        checkableDataKeys.every(item => this.checked.indexOf(item) > -1)
+      const checkableDataKeys = this.checkableData.map(item => item[this.keyProp])
+      this.allChecked = checkableDataKeys.length > 0 && checkableDataKeys.every(item => this.checked.indexOf(item) > -1)
     },
 
     handleAllCheckedChange(value) {
-      this.checked = value
-        ? this.checkableData.map(item => item[this.keyProp])
-        : []
+      this.checked = value ? this.checkableData.map(item => item[this.keyProp]) : []
     },
 
     clearQuery() {

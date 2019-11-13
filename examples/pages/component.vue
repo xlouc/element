@@ -2,11 +2,7 @@
   <el-container class="is-absolute">
     <el-aside width="256px">
       <el-scrollbar wrap-class="doc-component-scrollbar-wrap">
-        <doc-aside
-          class="doc-aside"
-          base="/components"
-          :navs="navs"
-        ></doc-aside>
+        <doc-aside class="doc-aside" base="/components" :navs="navs"></doc-aside>
       </el-scrollbar>
     </el-aside>
     <el-main>

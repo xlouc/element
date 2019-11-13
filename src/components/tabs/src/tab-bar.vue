@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="el-tabs__active-bar"
-    :class="`is-${rootTabs.tabPosition}`"
-    :style="barStyle"
-  ></div>
+  <div class="el-tabs__active-bar" :class="`is-${rootTabs.tabPosition}`" :style="barStyle"></div>
 </template>
 <script>
 import { arrayFind } from 'yak-ui/src/utils/util'
@@ -27,17 +23,11 @@ export default {
         let style = {}
         let offset = 0
         let tabSize = 0
-        const sizeName =
-          ['top', 'bottom'].indexOf(this.rootTabs.tabPosition) !== -1
-            ? 'width'
-            : 'height'
+        const sizeName = ['top', 'bottom'].indexOf(this.rootTabs.tabPosition) !== -1 ? 'width' : 'height'
         const sizeDir = sizeName === 'width' ? 'x' : 'y'
 
         this.tabs.every((tab, index) => {
-          let $el = arrayFind(
-            this.$parent.$refs.tabs || [],
-            t => t.id.replace('tab-', '') === tab.paneName
-          )
+          let $el = arrayFind(this.$parent.$refs.tabs || [], t => t.id.replace('tab-', '') === tab.paneName)
           if (!$el) {
             return false
           }

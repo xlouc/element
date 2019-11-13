@@ -2,12 +2,7 @@
   <div :class="['el-empty', { 'el-empty--normal': !Boolean(image) }]">
     <div class="el-empty__image">
       <template v-if="!image">
-        <svg
-          width="64"
-          height="41"
-          viewBox="0 0 64 41"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg width="64" height="41" viewBox="0 0 64 41" xmlns="http://www.w3.org/2000/svg">
           <g transform="translate(0 1)" fill="none" fill-rule="evenodd">
             <ellipse fill="#F5F5F5" cx="32" cy="33" rx="32" ry="7"></ellipse>
             <g fill-rule="nonzero" stroke="#D9D9D9">

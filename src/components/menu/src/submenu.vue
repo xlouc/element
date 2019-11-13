@@ -70,9 +70,7 @@ export default {
   computed: {
     // popper option
     appendToBody() {
-      return this.popperAppendToBody === undefined
-        ? this.isFirstLevel
-        : this.popperAppendToBody
+      return this.popperAppendToBody === undefined ? this.isFirstLevel : this.popperAppendToBody
     },
     menuTransitionName() {
       return this.rootMenu.collapse ? 'el-zoom-in-left' : 'el-zoom-in-top'
@@ -114,9 +112,7 @@ export default {
       if (this.active) {
         if (this.mode === 'horizontal' && this.isFirstLevel) {
           itemStyle.color = this.colorMaps.activeBackgroundColor
-          itemStyle[
-            'border-bottom-color'
-          ] = this.colorMaps.activeBackgroundColor
+          itemStyle['border-bottom-color'] = this.colorMaps.activeBackgroundColor
         } else {
           itemStyle.color = this.colorMaps.activeColor
         }
@@ -130,11 +126,7 @@ export default {
       let isFirstLevel = true
       let parent = this.$parent
       while (parent && parent !== this.rootMenu) {
-        if (
-          ['ElSubmenu', 'ElMenuItemGroup'].indexOf(
-            parent.$options.componentName
-          ) > -1
-        ) {
+        if (['ElSubmenu', 'ElMenuItemGroup'].indexOf(parent.$options.componentName) > -1) {
           isFirstLevel = false
           break
         } else {
@@ -176,11 +168,7 @@ export default {
       this.dispatch('ElMenu', 'submenu-click', this)
     },
     handleMouseenter(event, showTimeout = this.showTimeout) {
-      if (
-        !('ActiveXObject' in window) &&
-        event.type === 'focus' &&
-        !event.relatedTarget
-      ) {
+      if (!('ActiveXObject' in window) && event.type === 'focus' && !event.relatedTarget) {
         return
       }
       const { rootMenu, disabled } = this
@@ -198,7 +186,7 @@ export default {
       }, showTimeout)
 
       if (this.appendToBody) {
-        this.$parent.$el.dispatchEvent(new MouseEvent('mouseenter'))
+        this.parentMenu.$el.dispatchEvent(new MouseEvent('mouseenter'))
       }
     },
     handleMouseleave(deepDispatch = false) {
@@ -216,8 +204,8 @@ export default {
       }, this.hideTimeout)
 
       if (this.appendToBody && deepDispatch) {
-        if (this.$parent.$options.name === 'ElSubmenu') {
-          this.$parent.handleMouseleave(true)
+        if (this.parentMenu.$options.name === 'ElSubmenu') {
+          this.parentMenu.handleMouseleave(true)
         }
       }
     },
@@ -227,9 +215,7 @@ export default {
       if (!title) return
       if (this.mode === 'horizontal' && this.isFirstLevel) {
         title.style.color = this.colorMaps.activeBackgroundColor
-        title.style[
-          'border-bottom-color'
-        ] = this.colorMaps.activeBackgroundColor
+        title.style['border-bottom-color'] = this.colorMaps.activeBackgroundColor
       } else {
         title.style.color = this.colorMaps.activeColor
       }
@@ -246,10 +232,7 @@ export default {
       }
     },
     updatePlacement() {
-      this.currentPlacement =
-        this.mode === 'horizontal' && this.isFirstLevel
-          ? 'bottom-start'
-          : 'right-start'
+      this.currentPlacement = this.mode === 'horizontal' && this.isFirstLevel ? 'bottom-start' : 'right-start'
     },
     initPopper() {
       this.referenceElm = this.$el
@@ -305,10 +288,7 @@ export default {
           on-focus={$event => this.handleMouseenter($event, 100)}>
           <ul
             role="menu"
-            class={[
-              'el-menu el-menu--popup',
-              `el-menu--popup-${currentPlacement}`
-            ]}
+            class={['el-menu el-menu--popup', `el-menu--popup-${currentPlacement}`]}
             style={{
               backgroundColor: colorMaps ? colorMaps.backgroundColor : ''
             }}>
@@ -333,8 +313,7 @@ export default {
     )
 
     const submenuTitleIcon =
-      (rootMenu.mode === 'horizontal' && isFirstLevel) ||
-      (rootMenu.mode === 'vertical' && !rootMenu.collapse)
+      (rootMenu.mode === 'horizontal' && isFirstLevel) || (rootMenu.mode === 'vertical' && !rootMenu.collapse)
         ? 'el-icon-down'
         : 'el-icon-right'
 

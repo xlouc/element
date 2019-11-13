@@ -1,9 +1,5 @@
 <template functional>
-  <div
-    v-bind="data.attrs"
-    v-on="listeners"
-    :class="[data.staticClass, 'el-divider', `el-divider--${props.direction}`]"
-  >
+  <div v-bind="data.attrs" v-on="listeners" :class="[data.staticClass, 'el-divider', `el-divider--${props.direction}`]">
     <div
       v-if="slots().default && props.direction !== 'vertical'"
       :class="['el-divider__text', `is-${props.contentPosition}`]"
@@ -28,7 +24,7 @@ export default {
       type: String,
       default: 'center',
       validator(val) {
-        return ['left', 'center', 'right'].indexOf(val) !== -1
+        return ['left', 'center', 'right', 'top', 'bottom'].indexOf(val) !== -1
       }
     }
   }

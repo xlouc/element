@@ -19,29 +19,26 @@
         'el-image__preview': preview
       }"
     />
-    <image-viewer
-      :z-index="zIndex"
-      v-if="preview && showViewer"
-      :on-close="closeViewer"
-      :url-list="previewSrcList"
-    />
+    <template v-if="preview">
+      <image-viewer
+        :z-index="zIndex"
+        :initial-index="imageIndex"
+        v-show="showViewer"
+        :on-close="closeViewer"
+        :url-list="previewSrcList"
+      />
+    </template>
   </div>
 </template>
 
 <script>
 import ImageViewer from './image-viewer'
 import Locale from 'yak-ui/src/mixins/locale'
-import {
-  on,
-  off,
-  getScrollContainer,
-  isInContainer
-} from 'yak-ui/src/utils/dom'
+import { on, off, getScrollContainer, isInContainer } from 'yak-ui/src/utils/dom'
 import { isString, isHtmlElement } from 'yak-ui/src/utils/types'
 import { throttle } from 'throttle-debounce'
 
-const isSupportObjectFit = () =>
-  document.documentElement.style.objectFit !== undefined
+const isSupportObjectFit = () => document.documentElement.style.objectFit !== undefined
 
 const ObjectFit = {
   NONE: 'none',
@@ -50,6 +47,8 @@ const ObjectFit = {
   FILL: 'fill',
   SCALE_DOWN: 'scale-down'
 }
+
+let prevOverflow = ''
 
 export default {
   name: 'ElImage',
@@ -91,20 +90,19 @@ export default {
     imageStyle() {
       const { fit } = this
       if (!this.$isServer && fit) {
-        return isSupportObjectFit()
-          ? { 'object-fit': fit }
-          : this.getImageStyle(fit)
+        return isSupportObjectFit() ? { 'object-fit': fit } : this.getImageStyle(fit)
       }
       return {}
     },
     alignCenter() {
-      return (
-        !this.$isServer && !isSupportObjectFit() && this.fit !== ObjectFit.FILL
-      )
+      return !this.$isServer && !isSupportObjectFit() && this.fit !== ObjectFit.FILL
     },
     preview() {
       const { previewSrcList } = this
       return Array.isArray(previewSrcList) && previewSrcList.length > 0
+    },
+    imageIndex() {
+      return this.previewSrcList.indexOf(this.src)
     }
   },
 
@@ -200,19 +198,14 @@ export default {
      */
     getImageStyle(fit) {
       const { imageWidth, imageHeight } = this
-      const {
-        clientWidth: containerWidth,
-        clientHeight: containerHeight
-      } = this.$el
+      const { clientWidth: containerWidth, clientHeight: containerHeight } = this.$el
 
-      if (!imageWidth || !imageHeight || !containerWidth || !containerHeight)
-        return {}
+      if (!imageWidth || !imageHeight || !containerWidth || !containerHeight) return {}
 
       const vertical = imageWidth / imageHeight < 1
 
       if (fit === ObjectFit.SCALE_DOWN) {
-        const isSmaller =
-          imageWidth < containerWidth && imageHeight < containerHeight
+        const isSmaller = imageWidth < containerWidth && imageHeight < containerHeight
         fit = isSmaller ? ObjectFit.NONE : ObjectFit.CONTAIN
       }
 
@@ -228,9 +221,14 @@ export default {
       }
     },
     clickHandler() {
+      // prevent body scroll
+      prevOverflow = document.body.style.overflow
+      document.body.style.overflow = 'hidden'
+
       this.showViewer = true
     },
     closeViewer() {
+      document.body.style.overflow = prevOverflow
       this.showViewer = false
     }
   }

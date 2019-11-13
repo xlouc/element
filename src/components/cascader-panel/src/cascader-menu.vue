@@ -65,10 +65,7 @@ export default {
           <path style="pointer-events: auto;" fill="transparent" d="M${startX} ${bottom} L${offsetWidth} ${offsetHeight} V${bottom} Z" />
         `
       } else if (!hoverTimer) {
-        this.hoverTimer = setTimeout(
-          this.clearHoverZone,
-          this.panel.config.hoverThreshold
-        )
+        this.hoverTimer = setTimeout(this.clearHoverZone, this.panel.config.hoverThreshold)
       }
     },
     clearHoverZone() {
@@ -78,11 +75,7 @@ export default {
     },
 
     renderEmptyText(h) {
-      return (
-        <div class="el-cascader-menu__empty-text">
-          {this.t('el.cascader.noData')}
-        </div>
-      )
+      return <div class="el-cascader-menu__empty-text">{this.t('el.cascader.noData')}</div>
     },
     renderNodeList(h) {
       const { menuId } = this
@@ -106,12 +99,7 @@ export default {
         )
       })
 
-      return [
-        ...nodes,
-        isHoverMenu ? (
-          <svg ref="hoverZone" class="el-cascader-menu__hover-zone"></svg>
-        ) : null
-      ]
+      return [...nodes, isHoverMenu ? <svg ref="hoverZone" class="el-cascader-menu__hover-zone"></svg> : null]
     }
   },
 

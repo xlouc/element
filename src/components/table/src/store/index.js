@@ -70,10 +70,7 @@ Watcher.prototype.mutations = {
   sort(states, options) {
     const { prop, order, init } = options
     if (prop) {
-      const column = arrayFind(
-        states.columns,
-        column => column.property === prop
-      )
+      const column = arrayFind(states.columns, column => column.property === prop)
       if (column) {
         column.order = order
         this.updateSort(column, prop, order)

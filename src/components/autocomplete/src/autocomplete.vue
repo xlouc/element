@@ -170,10 +170,7 @@ export default {
     suggestionVisible(val) {
       let $input = this.getInput()
       if ($input) {
-        this.broadcast('ElAutocompleteSuggestions', 'visible', [
-          val,
-          $input.offsetWidth
-        ])
+        this.broadcast('ElAutocompleteSuggestions', 'visible', [val, $input.offsetWidth])
       }
     }
   },
@@ -200,9 +197,7 @@ export default {
           this.suggestions = suggestions
           this.highlightedIndex = this.highlightFirstItem ? 0 : -1
         } else {
-          console.error(
-            '[Element Error][Autocomplete]autocomplete suggestions must be an array'
-          )
+          console.error('[Element Error][Autocomplete]autocomplete suggestions must be an array')
         }
       })
     },
@@ -234,11 +229,7 @@ export default {
       this.activated = false
     },
     handleKeyEnter(e) {
-      if (
-        this.suggestionVisible &&
-        this.highlightedIndex >= 0 &&
-        this.highlightedIndex < this.suggestions.length
-      ) {
+      if (this.suggestionVisible && this.highlightedIndex >= 0 && this.highlightedIndex < this.suggestions.length) {
         e.preventDefault()
         this.select(this.suggestions[this.highlightedIndex])
       } else if (this.selectWhenUnmatched) {
@@ -268,21 +259,14 @@ export default {
       if (index >= this.suggestions.length) {
         index = this.suggestions.length - 1
       }
-      const suggestion = this.$refs.suggestions.$el.querySelector(
-        '.el-autocomplete-suggestion__wrap'
-      )
-      const suggestionList = suggestion.querySelectorAll(
-        '.el-autocomplete-suggestion__list li'
-      )
+      const suggestion = this.$refs.suggestions.$el.querySelector('.el-autocomplete-suggestion__wrap')
+      const suggestionList = suggestion.querySelectorAll('.el-autocomplete-suggestion__list li')
 
       let highlightItem = suggestionList[index]
       let scrollTop = suggestion.scrollTop
       let offsetTop = highlightItem.offsetTop
 
-      if (
-        offsetTop + highlightItem.scrollHeight >
-        scrollTop + suggestion.clientHeight
-      ) {
+      if (offsetTop + highlightItem.scrollHeight > scrollTop + suggestion.clientHeight) {
         suggestion.scrollTop += highlightItem.scrollHeight
       }
       if (offsetTop < scrollTop) {
@@ -290,10 +274,7 @@ export default {
       }
       this.highlightedIndex = index
       let $input = this.getInput()
-      $input.setAttribute(
-        'aria-activedescendant',
-        `${this.id}-item-${this.highlightedIndex}`
-      )
+      $input.setAttribute('aria-activedescendant', `${this.id}-item-${this.highlightedIndex}`)
     },
     getInput() {
       return this.$refs.input.getInput()
@@ -308,10 +289,7 @@ export default {
     $input.setAttribute('role', 'textbox')
     $input.setAttribute('aria-autocomplete', 'list')
     $input.setAttribute('aria-controls', 'id')
-    $input.setAttribute(
-      'aria-activedescendant',
-      `${this.id}-item-${this.highlightedIndex}`
-    )
+    $input.setAttribute('aria-activedescendant', `${this.id}-item-${this.highlightedIndex}`)
   },
   beforeDestroy() {
     this.$refs.suggestions.$destroy()

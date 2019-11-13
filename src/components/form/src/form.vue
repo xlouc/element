@@ -1,10 +1,7 @@
 <template>
   <form
     class="el-form"
-    :class="[
-      labelPosition ? 'el-form--label-' + labelPosition : '',
-      { 'el-form--inline': inline }
-    ]"
+    :class="[labelPosition ? 'el-form--label-' + labelPosition : '', { 'el-form--inline': inline }]"
   >
     <slot></slot>
   </form>
@@ -92,9 +89,7 @@ export default {
   methods: {
     resetFields() {
       if (!this.model) {
-        console.warn(
-          '[Element Warn][Form]model is required for resetFields to work.'
-        )
+        console.warn('[Element Warn][Form]model is required for resetFields to work.')
         return
       }
       this.fields.forEach(field => {
@@ -113,9 +108,7 @@ export default {
     },
     validate(callback) {
       if (!this.model) {
-        console.warn(
-          '[Element Warn][Form]model is required for validate to work!'
-        )
+        console.warn('[Element Warn][Form]model is required for validate to work!')
         return
       }
 
@@ -142,10 +135,7 @@ export default {
             valid = false
           }
           invalidFields = objectAssign({}, invalidFields, field)
-          if (
-            typeof callback === 'function' &&
-            ++count === this.fields.length
-          ) {
+          if (typeof callback === 'function' && ++count === this.fields.length) {
             callback(valid, invalidFields)
           }
         })
@@ -157,9 +147,7 @@ export default {
     },
     validateField(props, cb) {
       props = [].concat(props)
-      const fields = this.fields.filter(
-        field => props.indexOf(field.prop) !== -1
-      )
+      const fields = this.fields.filter(field => props.indexOf(field.prop) !== -1)
       if (!fields.length) {
         console.warn('[Element Warn]please pass correct props!')
         return

@@ -3,16 +3,9 @@
     <el-container>
       <doc-header></doc-header>
       <div>
-        <el-scrollbar
-          wrap-class="doc-scrollbar-wrap"
-          view-class="doc-container"
-        >
+        <el-scrollbar wrap-class="doc-scrollbar-wrap" view-class="doc-container">
           <router-view />
-          <el-backtop
-            :right="100"
-            :bottom="100"
-            target=".doc-scrollbar-wrap"
-          ></el-backtop>
+          <el-backtop :right="100" :bottom="100" target=".doc-scrollbar-wrap"></el-backtop>
         </el-scrollbar>
       </div>
     </el-container>
@@ -100,8 +93,7 @@ img {
   min-width: 719px;
   margin: 2em 0;
   font-size: 14px;
-  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier,
-    monospace;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
   line-height: 1.5;
   border-width: 0;
   empty-cells: show;

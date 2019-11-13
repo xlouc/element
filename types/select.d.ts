@@ -30,9 +30,6 @@ export declare class ElSelect extends YakUIComponent {
   /** Maximum number of options user can select when multiple is true. No limit when set to 0 */
   multipleLimit: number
 
-  /** @Deprecated in next major version */
-  autoComplete: string
-
   /** Same as autocomplete in native input */
   autocomplete: string
 

@@ -321,9 +321,7 @@ describe('Upload', () => {
         })
       }
 
-      uploader.$nextTick(_ =>
-        uploader.$refs['upload-inner'].handleChange({ target: { files } })
-      )
+      uploader.$nextTick(_ => uploader.$refs['upload-inner'].handleChange({ target: { files } }))
     })
   })
 })

@@ -32,6 +32,7 @@ export default class TreeStore {
 
   filter(value) {
     const filterNodeMethod = this.filterNodeMethod
+    const expandAfterFilter = this.expandAfterFilter
     const lazy = this.lazy
     const traverse = function(node) {
       const childNodes = node.root ? node.root.childNodes : node.childNodes
@@ -54,7 +55,13 @@ export default class TreeStore {
       }
       if (!value) return
 
-      if (node.visible && !node.isLeaf && !lazy) node.expand()
+      if (node.visible && !node.isLeaf) {
+        if (!lazy && expandAfterFilter === 'expand') {
+          node.expand()
+        } else if (expandAfterFilter === 'collapse') {
+          node.collapse()
+        }
+      }
     }
 
     traverse(this)
@@ -231,7 +238,7 @@ export default class TreeStore {
     const allNodes = this._getAllNodes().sort((a, b) => b.level - a.level)
     const cache = Object.create(null)
     const keys = Object.keys(checkedKeys)
-    allNodes.forEach(node => node.setChecked(false, false))
+    allNodes.forEach(node => node.setChecked(false, false, true))
     for (let i = 0, j = allNodes.length; i < j; i++) {
       const node = allNodes[i]
       const nodeKey = node.data[key].toString()

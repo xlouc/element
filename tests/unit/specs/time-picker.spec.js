@@ -15,9 +15,7 @@ describe('TimePicker', () => {
       placeholder: 'test',
       readonly: true
     })
-    expect(vm.$el.querySelector('input').getAttribute('placeholder')).to.equal(
-      'test'
-    )
+    expect(vm.$el.querySelector('input').getAttribute('placeholder')).to.equal('test')
     expect(vm.$el.querySelector('input').getAttribute('readonly')).to.ok
   })
 
@@ -49,18 +47,10 @@ describe('TimePicker', () => {
     setTimeout(_ => {
       const list = vm.picker.$el.querySelectorAll('.el-time-spinner__list')
       const hoursEl = list[0]
-      expect(
-        hoursEl.querySelectorAll('.el-time-spinner__item')[0].textContent
-      ).to.equal('12 AM')
-      expect(
-        hoursEl.querySelectorAll('.el-time-spinner__item')[1].textContent
-      ).to.equal('01 AM')
-      expect(
-        hoursEl.querySelectorAll('.el-time-spinner__item')[12].textContent
-      ).to.equal('12 PM')
-      expect(
-        hoursEl.querySelectorAll('.el-time-spinner__item')[15].textContent
-      ).to.equal('03 PM')
+      expect(hoursEl.querySelectorAll('.el-time-spinner__item')[0].textContent).to.equal('12 AM')
+      expect(hoursEl.querySelectorAll('.el-time-spinner__item')[1].textContent).to.equal('01 AM')
+      expect(hoursEl.querySelectorAll('.el-time-spinner__item')[12].textContent).to.equal('12 PM')
+      expect(hoursEl.querySelectorAll('.el-time-spinner__item')[15].textContent).to.equal('03 PM')
       done()
     }, DELAY)
   })
@@ -93,8 +83,7 @@ describe('TimePicker', () => {
   it('select time', done => {
     vm = createVue(
       {
-        template:
-          '<el-time-picker ref="compo" v-model="value"></el-time-picker>',
+        template: '<el-time-picker ref="compo" v-model="value"></el-time-picker>',
         data() {
           return {
             value: ''
@@ -110,9 +99,7 @@ describe('TimePicker', () => {
     input.focus()
 
     setTimeout(_ => {
-      const list = timePicker.picker.$el.querySelectorAll(
-        '.el-time-spinner__list'
-      )
+      const list = timePicker.picker.$el.querySelectorAll('.el-time-spinner__list')
 
       const hoursEl = list[0]
       const minutesEl = list[1]
@@ -145,8 +132,7 @@ describe('TimePicker', () => {
   it('click cancel button', done => {
     vm = createVue(
       {
-        template:
-          '<el-time-picker ref="compo" v-model="value"></el-time-picker>',
+        template: '<el-time-picker ref="compo" v-model="value"></el-time-picker>',
         data() {
           return {
             value: ''
@@ -174,8 +160,7 @@ describe('TimePicker', () => {
   it('click confirm button', done => {
     vm = createVue(
       {
-        template:
-          '<el-time-picker ref="compo" v-model="value"></el-time-picker>',
+        template: '<el-time-picker ref="compo" v-model="value"></el-time-picker>',
         data() {
           return {
             value: ''
@@ -215,10 +200,7 @@ describe('TimePicker', () => {
     input.focus()
 
     setTimeout(_ => {
-      expect(
-        vm.picker.$el.querySelectorAll('.el-time-spinner__wrapper')[2].style
-          .display
-      ).to.equal('none')
+      expect(vm.picker.$el.querySelectorAll('.el-time-spinner__wrapper')[2].style.display).to.equal('none')
       done()
     }, 20)
   })
@@ -238,10 +220,7 @@ describe('TimePicker', () => {
     input.focus()
 
     setTimeout(_ => {
-      expect(
-        vm.picker.$el.querySelectorAll('.el-time-spinner__wrapper')[2].style
-          .display
-      ).to.equal('none')
+      expect(vm.picker.$el.querySelectorAll('.el-time-spinner__wrapper')[2].style.display).to.equal('none')
       done()
     }, DELAY)
   })
@@ -251,11 +230,7 @@ describe('TimePicker', () => {
       TimePicker,
       {
         pickerOptions: {
-          selectableRange: [
-            '17:30:00 - 18:30:00',
-            '18:50:00 - 20:30:00',
-            '21:00:00 - 22:00:00'
-          ]
+          selectableRange: ['17:30:00 - 18:30:00', '18:50:00 - 20:30:00', '21:00:00 - 22:00:00']
         }
       },
       true
@@ -268,9 +243,7 @@ describe('TimePicker', () => {
     setTimeout(_ => {
       const list = vm.picker.$el.querySelectorAll('.el-time-spinner__list')
       const hoursEl = list[0]
-      const disabledHours = [].slice
-        .call(hoursEl.querySelectorAll('.disabled'))
-        .map(node => Number(node.textContent))
+      const disabledHours = [].slice.call(hoursEl.querySelectorAll('.disabled')).map(node => Number(node.textContent))
 
       hoursEl.querySelectorAll('.disabled')[0].click()
       expect(disabledHours).to.not.include.members([17, 18, 19, 20, 21, 22])
@@ -363,24 +336,15 @@ describe('TimePicker(range)', () => {
     vm.$el.querySelector('input').click()
 
     setTimeout(_ => {
-      expect(
-        vm.picker.$el.querySelectorAll('.el-time-range-picker__cell')
-      ).to.length(2)
-      expect(vm.picker.minDate.getTime()).to.equal(
-        new Date(2016, 9, 10, 18, 40).getTime()
-      )
-      expect(vm.picker.maxDate.getTime()).to.equal(
-        new Date(2016, 9, 10, 19, 40).getTime()
-      )
+      expect(vm.picker.$el.querySelectorAll('.el-time-range-picker__cell')).to.length(2)
+      expect(vm.picker.minDate.getTime()).to.equal(new Date(2016, 9, 10, 18, 40).getTime())
+      expect(vm.picker.maxDate.getTime()).to.equal(new Date(2016, 9, 10, 19, 40).getTime())
       done()
     }, DELAY)
   })
 
   it('default value', done => {
-    const defaultValue = [
-      new Date(2000, 9, 1, 10, 0, 0),
-      new Date(2000, 9, 1, 11, 0, 0)
-    ]
+    const defaultValue = [new Date(2000, 9, 1, 10, 0, 0), new Date(2000, 9, 1, 11, 0, 0)]
     vm = createVue(
       {
         template:
@@ -399,12 +363,8 @@ describe('TimePicker(range)', () => {
     timePicker.$el.querySelector('input').click()
 
     setTimeout(_ => {
-      expect(timePicker.picker.minDate.getTime()).to.equal(
-        defaultValue[0].getTime()
-      )
-      expect(timePicker.picker.maxDate.getTime()).to.equal(
-        defaultValue[1].getTime()
-      )
+      expect(timePicker.picker.minDate.getTime()).to.equal(defaultValue[0].getTime())
+      expect(timePicker.picker.maxDate.getTime()).to.equal(defaultValue[1].getTime())
       done()
     }, DELAY)
   })
@@ -412,8 +372,7 @@ describe('TimePicker(range)', () => {
   it('cancel button', done => {
     vm = createVue(
       {
-        template:
-          '<el-time-picker ref="compo" is-range v-model="value"></el-time-picker>',
+        template: '<el-time-picker ref="compo" is-range v-model="value"></el-time-picker>',
         data() {
           return {
             value: ''

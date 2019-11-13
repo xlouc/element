@@ -114,6 +114,10 @@ export default {
     },
     empty: {
       noData: 'Nu există date'
+    },
+    popconfirm: {
+      confirmButtonText: 'Yes', // to be translated
+      cancelButtonText: 'No' // to be translated
     }
   }
 }

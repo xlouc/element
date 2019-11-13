@@ -59,6 +59,7 @@ import Option from './components/option/index.js'
 import OptionGroup from './components/option-group/index.js'
 import PageHeader from './components/page-header/index.js'
 import Pagination from './components/pagination/index.js'
+import Popconfirm from './components/popconfirm/index.js'
 import Popover from './components/popover/index.js'
 import Progress from './components/progress/index.js'
 import Radio from './components/radio/index.js'
@@ -89,6 +90,7 @@ import TimelineItem from './components/timeline-item/index.js'
 import Tooltip from './components/tooltip/index.js'
 import Transfer from './components/transfer/index.js'
 import Tree from './components/tree/index.js'
+import TreeSelect from './components/tree-select/index.js'
 import Treemap from './components/treemap/index.js'
 import Upload from './components/upload/index.js'
 import locale from 'yak-ui/src/locale'
@@ -150,6 +152,7 @@ const components = [
   OptionGroup,
   PageHeader,
   Pagination,
+  Popconfirm,
   Popover,
   Progress,
   Radio,
@@ -180,6 +183,7 @@ const components = [
   Tooltip,
   Transfer,
   Tree,
+  TreeSelect,
   Treemap,
   Upload,
   CollapseTransition
@@ -280,6 +284,7 @@ export default {
   OptionGroup,
   PageHeader,
   Pagination,
+  Popconfirm,
   Popover,
   Progress,
   Radio,
@@ -310,6 +315,7 @@ export default {
   Tooltip,
   Transfer,
   Tree,
+  TreeSelect,
   Treemap,
   Upload
 }

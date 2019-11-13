@@ -2,20 +2,11 @@
   <transition name="el-zoom-in-top" @after-leave="doDestroy">
     <div class="el-color-dropdown" v-show="showPopper">
       <div class="el-color-dropdown__main-wrapper">
-        <hue-slider
-          ref="hue"
-          :color="color"
-          vertical
-          style="float: right;"
-        ></hue-slider>
+        <hue-slider ref="hue" :color="color" vertical style="float: right;"></hue-slider>
         <sv-panel ref="sl" :color="color"></sv-panel>
       </div>
       <alpha-slider v-if="showAlpha" ref="alpha" :color="color"></alpha-slider>
-      <predefine
-        v-if="predefine"
-        :color="color"
-        :colors="predefine"
-      ></predefine>
+      <predefine v-if="predefine" :color="color" :colors="predefine"></predefine>
       <div class="el-color-dropdown__btns">
         <span class="el-color-dropdown__value">
           <el-input
@@ -26,20 +17,10 @@
             size="mini"
           ></el-input>
         </span>
-        <el-button
-          size="mini"
-          type="text"
-          class="el-color-dropdown__link-btn"
-          @click="$emit('clear')"
-        >
+        <el-button size="mini" type="text" class="el-color-dropdown__link-btn" @click="$emit('clear')">
           {{ t('el.colorpicker.clear') }}
         </el-button>
-        <el-button
-          plain
-          size="mini"
-          class="el-color-dropdown__btn"
-          @click="confirmValue"
-        >
+        <el-button plain size="mini" class="el-color-dropdown__btn" @click="confirmValue">
           {{ t('el.colorpicker.confirm') }}
         </el-button>
       </div>

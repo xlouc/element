@@ -7,7 +7,6 @@ Input 为受控组件，它**总会显示 Vue 绑定值**。
 
 通常情况下，应当处理 `input` 事件，并更新组件的绑定值（或使用`v-model`）。否则，输入框内显示的值将不会改变。
 
-不支持 `v-model` 修饰符。
 :::
 
 ### 基础用法
@@ -693,7 +692,6 @@ export default {
 | rows          | 输入框行数，只对 `type="textarea"` 有效  |  number | — |  2   |
 | autosize      | 自适应内容高度，只对 `type="textarea"` 有效，可传入对象，如，{ minRows: 2, maxRows: 6 }  |  boolean / object | — |  false   |
 | autocomplete | 原生属性，自动补全 | string | on, off | off |
-| auto-complete | 下个主版本弃用 | string | on, off | off |
 | name | 原生属性 | string | — | — |
 | readonly | 原生属性，是否只读 | boolean | — | false |
 | max | 原生属性，设置最大值 | — | — | — |

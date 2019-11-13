@@ -213,9 +213,7 @@ describe('Pagination', () => {
       .to.property('textContent')
       .include('35')
     expect(
-      [].slice
-        .call(vm.$el.querySelectorAll('.el-select-dropdown__item'))
-        .map(node => parseInt(node.textContent, 10))
+      [].slice.call(vm.$el.querySelectorAll('.el-select-dropdown__item')).map(node => parseInt(node.textContent, 10))
     ).to.deep.equal([10, 15, 35, 50])
   })
 

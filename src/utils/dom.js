@@ -1,8 +1,4 @@
-/**
- * /* istanbul ignore next
- *
- * @format
- */
+/** istanbul ignore next */
 
 import Vue from 'vue'
 
@@ -73,8 +69,7 @@ export const once = function(el, event, fn) {
 /* istanbul ignore next */
 export function hasClass(el, cls) {
   if (!el || !cls) return false
-  if (cls.indexOf(' ') !== -1)
-    throw new Error('className should not contain space.')
+  if (cls.indexOf(' ') !== -1) throw new Error('className should not contain space.')
   if (el.classList) {
     return el.classList.contains(cls)
   } else {
@@ -143,9 +138,7 @@ export const getStyle =
                 return 1.0
               }
             default:
-              return element.style[styleName] || element.currentStyle
-                ? element.currentStyle[styleName]
-                : null
+              return element.style[styleName] || element.currentStyle ? element.currentStyle[styleName] : null
           }
         } catch (e) {
           return element.style[styleName]
@@ -160,9 +153,7 @@ export const getStyle =
         }
         try {
           var computed = document.defaultView.getComputedStyle(element, '')
-          return element.style[styleName] || computed
-            ? computed[styleName]
-            : null
+          return element.style[styleName] || computed ? computed[styleName] : null
         } catch (e) {
           return element.style[styleName]
         }
@@ -181,9 +172,7 @@ export function setStyle(element, styleName, value) {
   } else {
     styleName = camelCase(styleName)
     if (styleName === 'opacity' && ieVersion < 9) {
-      element.style.filter = isNaN(value)
-        ? ''
-        : 'alpha(opacity=' + value * 100 + ')'
+      element.style.filter = isNaN(value) ? '' : 'alpha(opacity=' + value * 100 + ')'
     } else {
       element.style[styleName] = value
     }
@@ -226,11 +215,7 @@ export const isInContainer = (el, container) => {
   const elRect = el.getBoundingClientRect()
   let containerRect
 
-  if (
-    [window, document, document.documentElement, null, undefined].includes(
-      container
-    )
-  ) {
+  if ([window, document, document.documentElement, null, undefined].includes(container)) {
     containerRect = {
       top: 0,
       right: window.innerWidth,

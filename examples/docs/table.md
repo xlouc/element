@@ -1017,7 +1017,9 @@
     <el-table-column
       prop="address"
       label="地址"
-      :formatter="formatter">
+      :formatter="formatter"
+      filter-search
+      :filter-method="filterIncludes">
     </el-table-column>
     <el-table-column
       prop="tag"
@@ -1078,6 +1080,10 @@
       filterHandler(value, row, column) {
         const property = column['property'];
         return row[property] === value;
+      },
+      filterIncludes(value, row, column) {
+        const property = column['property'];
+        return row[property].includes(value);
       }
     }
   }
@@ -1952,6 +1958,7 @@
 | filters | 数据过滤的选项，数组格式，数组中的元素需要有 text 和 value 属性。 | Array[{ text, value }] | — | — |
 | filter-placement | 过滤弹出框的定位 | String | 与 Tooltip 的 `placement` 属性相同 | — |
 | filter-multiple | 数据过滤的选项是否多选 | Boolean | — | true |
+| filter-search | 数据过滤是否使用文本输入 | Boolean | — | false |
 | filter-method | 数据过滤使用的方法，如果是多选的筛选项，对每一条数据会执行多次，任意一次返回 true 就会显示。 | Function(value, row, column) | — | — |
 | filtered-value | 选中的数据过滤项，如果需要自定义表头过滤的渲染方式，可能会需要此属性。 | Array | — | — |
 

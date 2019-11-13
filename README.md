@@ -56,8 +56,14 @@ Vue.component(Button.name, Button);
 
 如果你只想用`Yak`，跳过这一部分。
 
-对于那些对`Yak`感兴趣的人，请参考我们的[贡献指南]()
+对于那些对`Yak`感兴趣的人，请参考我们的[贡献指南](https://github.com/yakcodo/yak/blob/develop/.github/CONTRIBUTING.md)
 
 ## Changelog
 
 每个版本的详细更改记录在[发行说明](https://github.com/yakcodo/yak/releases).
+
+## Yak-UI is Inspired or Powered By:
+
+- [Element UI](https://github.com/ElemeFE/element)
+
+- [Ant Design](https://github.com/ant-design/ant-design)

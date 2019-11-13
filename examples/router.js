@@ -27,9 +27,7 @@ navs.forEach(nav => {
 
 function addRoute(page) {
   const component =
-    page.path === '/changelog'
-      ? () => import('./pages/changelog.vue')
-      : () => import(`./docs${page.path}.md`)
+    page.path === '/changelog' ? () => import('./pages/changelog.vue') : () => import(`./docs${page.path}.md`)
   let child = {
     path: page.path.slice(1),
     meta: {

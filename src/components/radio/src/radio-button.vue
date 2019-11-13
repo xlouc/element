@@ -14,6 +14,7 @@
     @keydown.space.stop.prevent="value = isDisabled ? value : label"
   >
     <input
+      ref="radio"
       class="el-radio-button__orig-radio"
       :value="label"
       type="radio"
@@ -25,11 +26,7 @@
       @focus="focus = true"
       @blur="focus = false"
     />
-    <span
-      class="el-radio-button__inner"
-      :style="value === label ? activeStyle : null"
-      @keydown.stop
-    >
+    <span class="el-radio-button__inner" :style="value === label ? activeStyle : null" @keydown.stop>
       <slot></slot>
       <template v-if="!$slots.default">
         {{ label }}
@@ -51,6 +48,9 @@ export default {
     },
     elFormItem: {
       default: ''
+    },
+    _radioGroup: {
+      default: ''
     }
   },
 
@@ -59,11 +59,13 @@ export default {
     disabled: Boolean,
     name: String
   },
+
   data() {
     return {
       focus: false
     }
   },
+
   computed: {
     value: {
       get() {
@@ -71,50 +73,33 @@ export default {
       },
       set(value) {
         this._radioGroup.$emit('input', value)
+        this.$refs.radio && (this.$refs.radio.checked = this.value === this.label)
       }
     },
-    _radioGroup() {
-      let parent = this.$parent
-      while (parent) {
-        if (parent.$options.componentName !== 'ElRadioGroup') {
-          parent = parent.$parent
-        } else {
-          return parent
-        }
-      }
-      return false
-    },
+
     activeStyle() {
       return {
         backgroundColor: this._radioGroup.fill || '',
         borderColor: this._radioGroup.fill || '',
-        boxShadow: this._radioGroup.fill
-          ? `-1px 0 0 0 ${this._radioGroup.fill}`
-          : '',
+        boxShadow: this._radioGroup.fill ? `-1px 0 0 0 ${this._radioGroup.fill}` : '',
         color: this._radioGroup.textColor || ''
       }
     },
+
     _elFormItemSize() {
       return (this.elFormItem || {}).elFormItemSize
     },
+
     size() {
-      return (
-        this._radioGroup.radioGroupSize ||
-        this._elFormItemSize ||
-        (this.$ELEMENT || {}).size
-      )
+      return this._radioGroup.radioGroupSize || this._elFormItemSize || (this.$ELEMENT || {}).size
     },
+
     isDisabled() {
-      return (
-        this.disabled ||
-        this._radioGroup.disabled ||
-        (this.elForm || {}).disabled
-      )
+      return this.disabled || this._radioGroup.disabled || (this.elForm || {}).disabled
     },
+
     tabIndex() {
-      return this.isDisabled || (this._radioGroup && this.value !== this.label)
-        ? -1
-        : 0
+      return this.isDisabled || (this._radioGroup && this.value !== this.label) ? -1 : 0
     }
   },
 

@@ -12,6 +12,7 @@ module.exports = {
     'prettier/prettier': [
       'warn',
       {
+        printWidth: 120,
         singleQuote: true,
         semi: false,
         bracketSpacing: true,
@@ -21,5 +22,13 @@ module.exports = {
   },
   parserOptions: {
     parser: 'babel-eslint'
-  }
+  },
+  overrides: [
+    {
+      files: ['**/__tests__/*.{j,t}s?(x)', '**/tests/unit/**/*.spec.{j,t}s?(x)'],
+      env: {
+        jest: true
+      }
+    }
+  ]
 }

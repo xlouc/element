@@ -1,7 +1,11 @@
 <template>
   <div
     class="el-select-dropdown el-popper"
-    :class="[{ 'is-multiple': $parent.multiple }, popperClass]"
+    :class="[
+      { 'is-multiple': $parent.multiple },
+      popperClass,
+      { [`el-select-dropdown--${_computedSize}`]: !!_computedSize }
+    ]"
     :style="{ minWidth: minWidth }"
   >
     <slot></slot>
@@ -19,6 +23,8 @@ export default {
   mixins: [Popper],
 
   props: {
+    size: String,
+
     placement: {
       default: 'bottom-start'
     },
@@ -44,6 +50,9 @@ export default {
   computed: {
     popperClass() {
       return this.$parent.popperClass
+    },
+    _computedSize() {
+      return this.size || (this.$ELEMENT || {}).size
     }
   },
 

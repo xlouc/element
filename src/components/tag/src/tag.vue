@@ -64,19 +64,11 @@ export default {
     const tagEl = (
       <span class={classes} style={this.tagStyle} on-click={this.handleClick}>
         {this.$slots.default}
-        {this.closable && (
-          <i
-            class="el-tag__close el-icon-close"
-            on-click={this.handleClose}></i>
-        )}
+        {this.closable && <i class="el-tag__close el-icon-close" on-click={this.handleClose}></i>}
       </span>
     )
 
-    return this.disableTransitions ? (
-      tagEl
-    ) : (
-      <transition name="el-zoom-in-center">{tagEl}</transition>
-    )
+    return this.disableTransitions ? tagEl : <transition name="el-zoom-in-center">{tagEl}</transition>
   }
 }
 </script>

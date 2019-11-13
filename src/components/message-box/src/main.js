@@ -60,10 +60,7 @@ const defaultCallback = action => {
         } else {
           currentMsg.resolve(action)
         }
-      } else if (
-        currentMsg.reject &&
-        (action === 'cancel' || action === 'close')
-      ) {
+      } else if (currentMsg.reject && (action === 'cancel' || action === 'close')) {
         currentMsg.reject(action)
       }
     }
@@ -109,13 +106,7 @@ const showNextMsg = () => {
       } else {
         delete instance.$slots.default
       }
-      ;[
-        'modal',
-        'showClose',
-        'closeOnClickModal',
-        'closeOnPressEscape',
-        'closeOnHashChange'
-      ].forEach(prop => {
+      ;['modal', 'showClose', 'closeOnClickModal', 'closeOnPressEscape', 'closeOnHashChange'].forEach(prop => {
         if (instance[prop] === undefined) {
           instance[prop] = true
         }

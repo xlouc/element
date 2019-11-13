@@ -114,6 +114,10 @@ export default {
     },
     empty: {
       noData: 'Sem dados'
+    },
+    popconfirm: {
+      confirmButtonText: 'Yes', // to be translated
+      cancelButtonText: 'No' // to be translated
     }
   }
 }

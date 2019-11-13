@@ -1,5 +1,6 @@
 @import "mixins/mixins";
 @import "checkbox";
+@import "input";
 @import "tag";
 @import "common/var";
 
@@ -47,6 +48,11 @@
 
   @include e(content) {
     min-width: 100px;
+
+    .el-input {
+      padding: 10px;
+      box-sizing: border-box;
+    }
   }
 
   @include e(bottom) {

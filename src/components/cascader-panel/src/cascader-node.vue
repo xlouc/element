@@ -42,9 +42,7 @@ export default {
     inCheckedPath() {
       if (!this.config.checkStrictly) return false
 
-      return this.panel.checkedNodePaths.some(checkedPath =>
-        this.isInPath(checkedPath)
-      )
+      return this.panel.checkedNodePaths.some(checkedPath => this.isInPath(checkedPath))
     },
     value() {
       return this.node.getValueByOption()
@@ -190,15 +188,7 @@ export default {
   },
 
   render(h) {
-    const {
-      inActivePath,
-      inCheckedPath,
-      isChecked,
-      isLeaf,
-      isDisabled,
-      config,
-      nodeId
-    } = this
+    const { inActivePath, inCheckedPath, isChecked, isLeaf, isDisabled, config, nodeId } = this
     const { expandTrigger, checkStrictly, multiple } = config
     const disabled = !checkStrictly && isDisabled
     const events = { on: {} }

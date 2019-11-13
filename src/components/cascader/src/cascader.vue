@@ -1,11 +1,7 @@
 <template>
   <div
     ref="reference"
-    :class="[
-      'el-cascader',
-      realSize && `el-cascader--${realSize}`,
-      { 'is-disabled': isDisabled }
-    ]"
+    :class="['el-cascader', realSize && `el-cascader--${realSize}`, { 'is-disabled': isDisabled }]"
     v-clickoutside="() => toggleDropDownVisible(false)"
     @mouseenter="inputHover = true"
     @mouseleave="inputHover = false"
@@ -26,20 +22,11 @@
       @input="handleInput"
     >
       <template slot="suffix">
-        <i
-          v-if="clearBtnVisible"
-          key="clear"
-          class="el-input__icon el-icon-close-circle"
-          @click.stop="handleClear"
-        ></i>
+        <i v-if="clearBtnVisible" key="clear" class="el-input__icon el-icon-close-circle" @click.stop="handleClear"></i>
         <i
           v-else
           key="down"
-          :class="[
-            'el-input__icon',
-            'el-icon-down',
-            dropDownVisible && 'is-reverse'
-          ]"
+          :class="['el-input__icon', 'el-icon-down', dropDownVisible && 'is-reverse']"
           @click.stop="toggleDropDownVisible()"
         ></i>
       </template>
@@ -71,11 +58,7 @@
     </div>
 
     <transition name="el-zoom-in-top" @after-leave="handleDropdownLeave">
-      <div
-        v-show="dropDownVisible"
-        ref="popper"
-        :class="['el-popper', 'el-cascader__dropdown', popperClass]"
-      >
+      <div v-show="dropDownVisible" ref="popper" :class="['el-popper', 'el-cascader__dropdown', popperClass]">
         <el-cascader-panel
           ref="panel"
           v-show="!filtering"
@@ -83,6 +66,7 @@
           :options="options"
           :props="config"
           :border="false"
+          :size="realSize"
           :render-label="$scopedSlots.default"
           @expand-change="handleExpandChange"
           @close="toggleDropDownVisible(false)"
@@ -100,10 +84,7 @@
             <li
               v-for="(item, index) in suggestions"
               :key="item.uid"
-              :class="[
-                'el-cascader__suggestion-item',
-                item.checked && 'is-checked'
-              ]"
+              :class="['el-cascader__suggestion-item', item.checked && 'is-checked']"
               :tabindex="-1"
               @click="handleSuggestionClick(index)"
             >
@@ -137,10 +118,7 @@ import { t } from 'yak-ui/src/locale'
 import { isEqual, isEmpty, kebabCase } from 'yak-ui/src/utils/util'
 import { isUndefined, isFunction } from 'yak-ui/src/utils/types'
 import { isDef } from 'yak-ui/src/utils/shared'
-import {
-  addResizeListener,
-  removeResizeListener
-} from 'yak-ui/src/utils/resize-event'
+import { addResizeListener, removeResizeListener } from 'yak-ui/src/utils/resize-event'
 import { debounce } from 'throttle-debounce'
 
 const { keys: KeyCode } = AriaUtils
@@ -295,18 +273,11 @@ export default {
       return !this.filterable || this.multiple
     },
     clearBtnVisible() {
-      if (
-        !this.clearable ||
-        this.isDisabled ||
-        this.filtering ||
-        !this.inputHover
-      ) {
+      if (!this.clearable || this.isDisabled || this.filtering || !this.inputHover) {
         return false
       }
 
-      return this.multiple
-        ? !!this.checkedNodes.filter(node => !node.isDisabled).length
-        : !!this.presentText
+      return this.multiple ? !!this.checkedNodes.filter(node => !node.isDisabled).length : !!this.presentText
     },
     panel() {
       return this.$refs.panel
@@ -362,8 +333,7 @@ export default {
   mounted() {
     const { input } = this.$refs
     if (input && input.$el) {
-      this.inputInitialHeight =
-        input.$el.offsetHeight || InputSizeMap[this.realSize] || 40
+      this.inputInitialHeight = input.$el.offsetHeight || InputSizeMap[this.realSize] || 40
     }
 
     if (!isEmpty(this.value)) {
@@ -399,12 +369,9 @@ export default {
     getMigratingConfig() {
       return {
         props: {
-          'expand-trigger':
-            'expand-trigger is removed, use `props.expandTrigger` instead.',
-          'change-on-select':
-            'change-on-select is removed, use `props.checkStrictly` instead.',
-          'hover-threshold':
-            'hover-threshold is removed, use `props.hoverThreshold` instead'
+          'expand-trigger': 'expand-trigger is removed, use `props.expandTrigger` instead.',
+          'change-on-select': 'change-on-select is removed, use `props.checkStrictly` instead.',
+          'hover-threshold': 'hover-threshold is removed, use `props.hoverThreshold` instead'
         },
         events: {
           'active-item-change': 'active-item-change is renamed to expand-change'
@@ -481,14 +448,10 @@ export default {
         let firstNode = null
 
         if (filtering && suggestionPanel) {
-          firstNode = suggestionPanel.$el.querySelector(
-            '.el-cascader__suggestion-item'
-          )
+          firstNode = suggestionPanel.$el.querySelector('.el-cascader__suggestion-item')
         } else {
           const firstMenu = popper.querySelector('.el-cascader-menu')
-          firstNode = firstMenu.querySelector(
-            '.el-cascader-node[tabindex="-1"]'
-          )
+          firstNode = firstMenu.querySelector('.el-cascader-node[tabindex="-1"]')
         }
 
         if (firstNode) {
@@ -520,13 +483,7 @@ export default {
       this.presentText = null
     },
     computePresentTags() {
-      const {
-        isDisabled,
-        leafOnly,
-        showAllLevels,
-        separator,
-        collapseTags
-      } = this
+      const { isDisabled, leafOnly, showAllLevels, separator, collapseTags } = this
       const checkedNodes = this.getCheckedNodes(leafOnly)
       const tags = []
 
@@ -566,13 +523,11 @@ export default {
         filterMethod = (node, keyword) => node.text.includes(keyword)
       }
 
-      const suggestions = this.panel
-        .getFlattedNodes(this.leafOnly)
-        .filter(node => {
-          if (node.isDisabled) return false
-          node.text = node.getText(this.showAllLevels, this.separator) || ''
-          return filterMethod(node, this.inputValue)
-        })
+      const suggestions = this.panel.getFlattedNodes(this.leafOnly).filter(node => {
+        if (node.isDisabled) return false
+        node.text = node.getText(this.showAllLevels, this.separator) || ''
+        return filterMethod(node, this.inputValue)
+      })
 
       if (this.multiple) {
         this.presentTags.forEach(tag => {
@@ -657,9 +612,7 @@ export default {
       let suggestionPanelEl = null
 
       if (suggestionPanel && (suggestionPanelEl = suggestionPanel.$el)) {
-        const suggestionList = suggestionPanelEl.querySelector(
-          '.el-cascader__suggestion-list'
-        )
+        const suggestionList = suggestionPanelEl.querySelector('.el-cascader__suggestion-list')
         suggestionList.style.minWidth = inputInner.offsetWidth + 'px'
       }
 

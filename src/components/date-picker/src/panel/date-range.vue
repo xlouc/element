@@ -39,10 +39,7 @@
                   @change="val => handleDateChange(val, 'min')"
                 />
               </span>
-              <span
-                class="el-date-range-picker__time-picker-wrap"
-                v-clickoutside="handleMinTimeClose"
-              >
+              <span class="el-date-range-picker__time-picker-wrap" v-clickoutside="handleMinTimeClose">
                 <el-input
                   size="small"
                   class="el-date-range-picker__editor"
@@ -76,10 +73,7 @@
                   @change="val => handleDateChange(val, 'max')"
                 />
               </span>
-              <span
-                class="el-date-range-picker__time-picker-wrap"
-                v-clickoutside="handleMaxTimeClose"
-              >
+              <span class="el-date-range-picker__time-picker-wrap" v-clickoutside="handleMaxTimeClose">
                 <el-input
                   size="small"
                   class="el-date-range-picker__editor"
@@ -101,20 +95,10 @@
               </span>
             </span>
           </div>
-          <div
-            class="el-picker-panel__content el-date-range-picker__content is-left"
-          >
+          <div class="el-picker-panel__content el-date-range-picker__content is-left">
             <div class="el-date-range-picker__header">
-              <button
-                type="button"
-                @click="leftPrevYear"
-                class="el-picker-panel__icon-btn el-icon-doubleleft"
-              ></button>
-              <button
-                type="button"
-                @click="leftPrevMonth"
-                class="el-picker-panel__icon-btn el-icon-left"
-              ></button>
+              <button type="button" @click="leftPrevYear" class="el-picker-panel__icon-btn el-icon-doubleleft"></button>
+              <button type="button" @click="leftPrevMonth" class="el-picker-panel__icon-btn el-icon-left"></button>
               <button
                 type="button"
                 @click="leftNextYear"
@@ -147,9 +131,7 @@
               @pick="handleRangePick"
             ></date-table>
           </div>
-          <div
-            class="el-picker-panel__content el-date-range-picker__content is-right"
-          >
+          <div class="el-picker-panel__content el-date-range-picker__content is-right">
             <div class="el-date-range-picker__header">
               <button
                 type="button"
@@ -172,11 +154,7 @@
                 @click="rightNextYear"
                 class="el-picker-panel__icon-btn el-icon-doubleright"
               ></button>
-              <button
-                type="button"
-                @click="rightNextMonth"
-                class="el-picker-panel__icon-btn el-icon-right"
-              ></button>
+              <button type="button" @click="rightNextMonth" class="el-picker-panel__icon-btn el-icon-right"></button>
               <div>{{ rightLabel }}</div>
             </div>
             <date-table
@@ -196,12 +174,7 @@
         </div>
       </div>
       <div class="el-picker-panel__footer" v-if="showTime">
-        <el-button
-          size="mini"
-          type="text"
-          class="el-picker-panel__link-btn"
-          @click="handleClear"
-        >
+        <el-button size="mini" type="text" class="el-picker-panel__link-btn" @click="handleClear" v-if="clearable">
           {{ t('el.datepicker.clear') }}
         </el-button>
         <el-button
@@ -258,12 +231,7 @@ export default {
 
   computed: {
     btnDisabled() {
-      return !(
-        this.minDate &&
-        this.maxDate &&
-        !this.selecting &&
-        this.isValidValue([this.minDate, this.maxDate])
-      )
+      return !(this.minDate && this.maxDate && !this.selecting && this.isValidValue([this.minDate, this.maxDate]))
     },
 
     leftLabel() {
@@ -318,8 +286,7 @@ export default {
 
     maxVisibleDate() {
       if (this.dateUserInput.max !== null) return this.dateUserInput.max
-      if (this.maxDate || this.minDate)
-        return formatDate(this.maxDate || this.minDate, this.dateFormat)
+      if (this.maxDate || this.minDate) return formatDate(this.maxDate || this.minDate, this.dateFormat)
       return ''
     },
 
@@ -331,8 +298,7 @@ export default {
 
     maxVisibleTime() {
       if (this.timeUserInput.max !== null) return this.timeUserInput.max
-      if (this.maxDate || this.minDate)
-        return formatDate(this.maxDate || this.minDate, this.timeFormat)
+      if (this.maxDate || this.minDate) return formatDate(this.maxDate || this.minDate, this.timeFormat)
       return ''
     },
 
@@ -356,19 +322,13 @@ export default {
       const nextMonth = (this.leftMonth + 1) % 12
       const yearOffset = this.leftMonth + 1 >= 12 ? 1 : 0
       return (
-        this.unlinkPanels &&
-        new Date(this.leftYear + yearOffset, nextMonth) <
-          new Date(this.rightYear, this.rightMonth)
+        this.unlinkPanels && new Date(this.leftYear + yearOffset, nextMonth) < new Date(this.rightYear, this.rightMonth)
       )
     },
 
     enableYearArrow() {
       return (
-        this.unlinkPanels &&
-        this.rightYear * 12 +
-          this.rightMonth -
-          (this.leftYear * 12 + this.leftMonth + 1) >=
-          12
+        this.unlinkPanels && this.rightYear * 12 + this.rightMonth - (this.leftYear * 12 + this.leftMonth + 1) >= 12
       )
     }
   },
@@ -407,7 +367,8 @@ export default {
       timeUserInput: {
         min: null,
         max: null
-      }
+      },
+      clearable: true
     }
   },
 
@@ -416,17 +377,10 @@ export default {
       this.dateUserInput.min = null
       this.timeUserInput.min = null
       this.$nextTick(() => {
-        if (
-          this.$refs.maxTimePicker &&
-          this.maxDate &&
-          this.maxDate < this.minDate
-        ) {
+        if (this.$refs.maxTimePicker && this.maxDate && this.maxDate < this.minDate) {
           const format = 'HH:mm:ss'
           this.$refs.maxTimePicker.selectableRange = [
-            [
-              parseDate(formatDate(this.minDate, format), format),
-              parseDate('23:59:59', format)
-            ]
+            [parseDate(formatDate(this.minDate, format), format), parseDate('23:59:59', format)]
           ]
         }
       })
@@ -480,9 +434,7 @@ export default {
             const maxDateYear = this.maxDate.getFullYear()
             const maxDateMonth = this.maxDate.getMonth()
             this.rightDate =
-              minDateYear === maxDateYear && minDateMonth === maxDateMonth
-                ? nextMonth(this.maxDate)
-                : this.maxDate
+              minDateYear === maxDateYear && minDateMonth === maxDateMonth ? nextMonth(this.maxDate) : this.maxDate
           } else {
             this.rightDate = nextMonth(this.leftDate)
           }
@@ -497,8 +449,7 @@ export default {
       if (!Array.isArray(this.value)) {
         const [left, right] = calcDefaultValue(val)
         this.leftDate = left
-        this.rightDate =
-          val && val[1] && this.unlinkPanels ? right : nextMonth(this.leftDate)
+        this.rightDate = val && val[1] && this.unlinkPanels ? right : nextMonth(this.leftDate)
       }
     }
   },
@@ -524,10 +475,7 @@ export default {
       const parsedValue = parseDate(value, this.dateFormat)
 
       if (parsedValue) {
-        if (
-          typeof this.disabledDate === 'function' &&
-          this.disabledDate(new Date(parsedValue))
-        ) {
+        if (typeof this.disabledDate === 'function' && this.disabledDate(new Date(parsedValue))) {
           return
         }
         if (type === 'min') {
@@ -670,22 +618,14 @@ export default {
     handleMinTimePick(value, visible, first) {
       this.minDate = this.minDate || new Date()
       if (value) {
-        this.minDate = modifyTime(
-          this.minDate,
-          value.getHours(),
-          value.getMinutes(),
-          value.getSeconds()
-        )
+        this.minDate = modifyTime(this.minDate, value.getHours(), value.getMinutes(), value.getSeconds())
       }
 
       if (!first) {
         this.minTimePickerVisible = visible
       }
 
-      if (
-        !this.maxDate ||
-        (this.maxDate && this.maxDate.getTime() < this.minDate.getTime())
-      ) {
+      if (!this.maxDate || (this.maxDate && this.maxDate.getTime() < this.minDate.getTime())) {
         this.maxDate = new Date(this.minDate)
       }
     },
@@ -696,23 +636,14 @@ export default {
 
     handleMaxTimePick(value, visible, first) {
       if (this.maxDate && value) {
-        this.maxDate = modifyTime(
-          this.maxDate,
-          value.getHours(),
-          value.getMinutes(),
-          value.getSeconds()
-        )
+        this.maxDate = modifyTime(this.maxDate, value.getHours(), value.getMinutes(), value.getSeconds())
       }
 
       if (!first) {
         this.maxTimePickerVisible = visible
       }
 
-      if (
-        this.maxDate &&
-        this.minDate &&
-        this.minDate.getTime() > this.maxDate.getTime()
-      ) {
+      if (this.maxDate && this.minDate && this.minDate.getTime() > this.maxDate.getTime()) {
         this.minDate = new Date(this.maxDate)
       }
     },
@@ -786,9 +717,7 @@ export default {
         isDate(value[0]) &&
         isDate(value[1]) &&
         value[0].getTime() <= value[1].getTime() &&
-        (typeof this.disabledDate === 'function'
-          ? !this.disabledDate(value[0]) && !this.disabledDate(value[1])
-          : true)
+        (typeof this.disabledDate === 'function' ? !this.disabledDate(value[0]) && !this.disabledDate(value[1]) : true)
       )
     },
 
@@ -796,10 +725,11 @@ export default {
       // NOTE: this is a hack to reset {min, max}Date on picker open.
       // TODO: correct way of doing so is to refactor {min, max}Date to be dependent on value and internal selection state
       //       an alternative would be resetView whenever picker becomes visible, should also investigate date-panel's resetView
-      this.minDate =
-        this.value && isDate(this.value[0]) ? new Date(this.value[0]) : null
-      this.maxDate =
-        this.value && isDate(this.value[0]) ? new Date(this.value[1]) : null
+      if (this.minDate && this.maxDate == null) {
+        this.rangeState.selecting = false
+      }
+      this.minDate = this.value && isDate(this.value[0]) ? new Date(this.value[0]) : null
+      this.maxDate = this.value && isDate(this.value[0]) ? new Date(this.value[1]) : null
     }
   },
 

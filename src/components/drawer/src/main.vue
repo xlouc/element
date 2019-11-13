@@ -1,10 +1,6 @@
 <template>
-  <transition
-    name="el-drawer-fade"
-    @after-enter="afterEnter"
-    @after-leave="afterLeave"
-  >
-    <div class="el-dialog__wrapper" role="presentation" v-show="visible">
+  <transition name="el-drawer-fade" @after-enter="afterEnter" @after-leave="afterLeave">
+    <div class="el-drawer__wrapper" tabindex="-1" v-show="visible">
       <div
         class="el-drawer__container"
         :class="visible && 'el-drawer__open'"
@@ -12,19 +8,17 @@
         role="document"
         tabindex="-1"
       >
-        <div
-          aria-modal="true"
-          aria-labelledby="el-drawer__title"
-          class="el-drawer"
-          :class="[direction, customClass]"
-          :style="drawerStyle"
-          ref="drawer"
-          role="presentation"
-        >
-          <header class="el-drawer__header" id="el-drawer__title">
-            <slot name="title">
-              <span role="heading">{{ title }}</span>
-            </slot>
+        <div aria-modal="true" class="el-drawer" :class="[direction, customClass]" :style="drawerStyle" ref="drawer">
+          <header
+            :class="{
+              'el-drawer__header': isTitle,
+              'el-drawer__header-no-title': !isTitle
+            }"
+            v-if="isShowHeader"
+          >
+            <span role="heading" class="el-drawer__title">
+              <slot name="title">{{ title }} </slot>
+            </span>
             <button
               :aria-label="`close ${title || 'drawer'}`"
               class="el-drawer__close-btn"
@@ -46,12 +40,11 @@
 
 <script>
 import Popup from 'yak-ui/src/utils/popup'
-import Migrating from 'yak-ui/src/mixins/migrating'
 import emitter from 'yak-ui/src/mixins/emitter'
 
 export default {
   name: 'ElDrawer',
-  mixins: [Popup, emitter, Migrating],
+  mixins: [Popup, emitter],
 
   inject: {
     parentDrawer: {
@@ -116,6 +109,13 @@ export default {
     isHorizontal() {
       return this.direction === 'rtl' || this.direction === 'ltr'
     },
+    isTitle() {
+      const { title, $slots } = this
+      return Boolean(title || $slots.title)
+    },
+    isShowHeader() {
+      return this.showClose || this.isTitle
+    },
     drawerStyle() {
       const { isHorizontal, isPush, size, direction } = this
       let drawerStyle = {}
@@ -126,13 +126,9 @@ export default {
       }
       if (isPush) {
         if (direction === 'rtl' || direction === 'ltr') {
-          drawerStyle.transform = `translateX(${
-            direction === 'ltr' ? 180 : -180
-          }px)`
+          drawerStyle.transform = `translateX(${direction === 'ltr' ? 180 : -180}px)`
         } else {
-          drawerStyle.transform = `translateY(${
-            direction === 'ttb' ? 180 : -180
-          }px)`
+          drawerStyle.transform = `translateY(${direction === 'ttb' ? 180 : -180}px)`
         }
       }
       return drawerStyle

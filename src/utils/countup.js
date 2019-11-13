@@ -26,44 +26,25 @@ function CountUp(options) {
 
     if (_this.useEasing) {
       if (_this.countDown) {
-        _this.frameVal =
-          _this.startVal -
-          _this.easingFn(
-            progress,
-            0,
-            _this.startVal - _this.endVal,
-            _this.duration
-          )
+        _this.frameVal = _this.startVal - _this.easingFn(progress, 0, _this.startVal - _this.endVal, _this.duration)
       } else {
-        _this.frameVal = _this.easingFn(
-          progress,
-          _this.startVal,
-          _this.endVal - _this.startVal,
-          _this.duration
-        )
+        _this.frameVal = _this.easingFn(progress, _this.startVal, _this.endVal - _this.startVal, _this.duration)
       }
     } else {
       if (_this.countDown) {
-        _this.frameVal =
-          _this.startVal -
-          (_this.startVal - _this.endVal) * (progress / _this.duration)
+        _this.frameVal = _this.startVal - (_this.startVal - _this.endVal) * (progress / _this.duration)
       } else {
-        _this.frameVal =
-          _this.startVal +
-          (_this.endVal - _this.startVal) * (progress / _this.duration)
+        _this.frameVal = _this.startVal + (_this.endVal - _this.startVal) * (progress / _this.duration)
       }
     } // don't go past endVal since progress can exceed duration in the last frame
 
     if (_this.countDown) {
-      _this.frameVal =
-        _this.frameVal < _this.endVal ? _this.endVal : _this.frameVal
+      _this.frameVal = _this.frameVal < _this.endVal ? _this.endVal : _this.frameVal
     } else {
-      _this.frameVal =
-        _this.frameVal > _this.endVal ? _this.endVal : _this.frameVal
+      _this.frameVal = _this.frameVal > _this.endVal ? _this.endVal : _this.frameVal
     } // decimal
 
-    _this.frameVal =
-      Math.round(_this.frameVal * _this.decimalMult) / _this.decimalMult // format and print value
+    _this.frameVal = Math.round(_this.frameVal * _this.decimalMult) / _this.decimalMult // format and print value
 
     _this.printValue(_this.frameVal) // whether to continue
 
@@ -121,12 +102,8 @@ function CountUp(options) {
   // 初始化
   this.options = Object.assign({}, defaults, options)
 
-  this.formattingFn = this.options.formattingFn
-    ? this.options.formattingFn
-    : this.formatNumber
-  this.easingFn = this.options.easingFn
-    ? this.options.easingFn
-    : this.easeOutExpo
+  this.formattingFn = this.options.formattingFn ? this.options.formattingFn : this.formatNumber
+  this.easingFn = this.options.easingFn ? this.options.easingFn : this.easeOutExpo
 
   this.startVal = this.validateValue(this.options.startVal)
   this.frameVal = this.startVal

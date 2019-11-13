@@ -20,17 +20,9 @@
           @close="deleteTag($event, selected[0])"
           disable-transitions
         >
-          <span class="el-select__tags-text">{{
-            selected[0].currentLabel
-          }}</span>
+          <span class="el-select__tags-text">{{ selected[0].currentLabel }}</span>
         </el-tag>
-        <el-tag
-          v-if="selected.length > 1"
-          :closable="false"
-          :size="collapseTagSize"
-          type="info"
-          disable-transitions
-        >
+        <el-tag v-if="selected.length > 1" :closable="false" :size="collapseTagSize" type="info" disable-transitions>
           <span class="el-select__tags-text">+ {{ selected.length - 1 }}</span>
         </el-tag>
       </span>
@@ -50,11 +42,11 @@
       </transition-group>
 
       <input
-        type="text"
+        :type="inputType"
         class="el-select__input"
         :class="[selectSize ? `is-${selectSize}` : '']"
         :disabled="selectDisabled"
-        :autocomplete="autoComplete || autocomplete"
+        :autocomplete="autocomplete"
         @focus="handleFocus"
         @blur="softFocus = false"
         @keyup="managePlaceholder"
@@ -82,11 +74,11 @@
     <el-input
       ref="reference"
       v-model="selectedLabel"
-      type="text"
+      :type="inputType"
       :placeholder="currentPlaceholder"
       :name="name"
       :id="id"
-      :autocomplete="autoComplete || autocomplete"
+      :autocomplete="autocomplete"
       :size="selectSize"
       :disabled="selectDisabled"
       :readonly="readonly"
@@ -109,28 +101,14 @@
         <slot name="prefix"></slot>
       </template>
       <template slot="suffix">
-        <i
-          v-show="!showClose"
-          :class="[
-            'el-select__caret',
-            'el-input__icon',
-            'el-icon-' + iconClass
-          ]"
-        ></i>
-        <i
-          v-if="showClose"
-          class="el-select__caret el-input__icon el-icon-close-circle"
-          @click="handleClearClick"
-        ></i>
+        <i v-show="!showClose" :class="['el-select__caret', 'el-input__icon', 'el-icon-' + iconClass]"></i>
+        <i v-if="showClose" class="el-select__caret el-input__icon el-icon-close-circle" @click="handleClearClick"></i>
       </template>
     </el-input>
-    <transition
-      name="el-zoom-in-top"
-      @before-enter="handleMenuEnter"
-      @after-leave="doDestroy"
-    >
+    <transition name="el-zoom-in-top" @before-enter="handleMenuEnter" @after-leave="doDestroy">
       <el-select-menu
         ref="popper"
+        :size="selectSize"
         :append-to-body="popperAppendToBody"
         v-show="visible && emptyText !== false"
       >
@@ -147,12 +125,7 @@
           <el-option :value="query" created v-if="showNewOption"></el-option>
           <slot></slot>
         </el-scrollbar>
-        <template
-          v-if="
-            emptyText &&
-              (!allowCreate || loading || (allowCreate && options.length === 0))
-          "
-        >
+        <template v-if="emptyText && (!allowCreate || loading || (allowCreate && options.length === 0))">
           <slot name="empty" v-if="$slots.empty"></slot>
           <p class="el-select-dropdown__empty" v-else>
             {{ emptyText }}
@@ -174,18 +147,10 @@ import ElTag from 'yak-ui/components/tag'
 import ElScrollbar from 'yak-ui/components/scrollbar'
 import { debounce } from 'throttle-debounce'
 import Clickoutside from 'yak-ui/src/utils/clickoutside'
-import {
-  addResizeListener,
-  removeResizeListener
-} from 'yak-ui/src/utils/resize-event'
+import { addResizeListener, removeResizeListener } from 'yak-ui/src/utils/resize-event'
 import { t } from 'yak-ui/src/locale'
 import scrollIntoView from 'yak-ui/src/utils/scroll-into-view'
-import {
-  getValueByPath,
-  valueEquals,
-  isIE,
-  isEdge
-} from 'yak-ui/src/utils/util'
+import { getValueByPath, valueEquals, isIE, isEdge } from 'yak-ui/src/utils/util'
 import NavigationMixin from './navigation-mixin'
 import { isKorean } from 'yak-ui/src/utils/shared'
 
@@ -217,29 +182,24 @@ export default {
       return (this.elFormItem || {}).elFormItemSize
     },
 
+    inputType() {
+      return this.autocomplete === 'off' ? 'search' : 'text'
+    },
+
     readonly() {
-      return (
-        !this.filterable ||
-        this.multiple ||
-        (!isIE() && !isEdge() && !this.visible)
-      )
+      return !this.filterable || this.multiple || (!isIE() && !isEdge() && !this.visible)
     },
 
     showClose() {
       let hasValue = this.multiple
         ? Array.isArray(this.value) && this.value.length > 0
         : this.value !== undefined && this.value !== null && this.value !== ''
-      let criteria =
-        this.clearable && !this.selectDisabled && this.inputHovering && hasValue
+      let criteria = this.clearable && !this.selectDisabled && this.inputHovering && hasValue
       return criteria
     },
 
     iconClass() {
-      return this.remote && this.filterable
-        ? ''
-        : this.visible
-        ? 'up is-reverse'
-        : 'up'
+      return this.remote && this.filterable ? '' : this.visible ? 'up is-reverse' : 'up'
     },
 
     debounce() {
@@ -250,14 +210,8 @@ export default {
       if (this.loading) {
         return this.loadingText || this.t('el.select.loading')
       } else {
-        if (this.remote && this.query === '' && this.options.length === 0)
-          return false
-        if (
-          this.filterable &&
-          this.query &&
-          this.options.length > 0 &&
-          this.filteredOptionsCount === 0
-        ) {
+        if (this.remote && this.query === '' && this.options.length === 0) return false
+        if (this.filterable && this.query && this.options.length > 0 && this.filteredOptionsCount === 0) {
           return this.noMatchText || this.t('el.select.noMatch')
         }
         if (this.options.length === 0) {
@@ -271,12 +225,7 @@ export default {
       let hasExistingOption = this.options
         .filter(option => !option.created)
         .some(option => option.currentLabel === this.query)
-      return (
-        this.filterable &&
-        this.allowCreate &&
-        this.query !== '' &&
-        !hasExistingOption
-      )
+      return this.filterable && this.allowCreate && this.query !== '' && !hasExistingOption
     },
 
     selectSize() {
@@ -311,17 +260,6 @@ export default {
     autocomplete: {
       type: String,
       default: 'off'
-    },
-    /** @Deprecated in next major version */
-    autoComplete: {
-      type: String,
-      validator(val) {
-        process.env.NODE_ENV !== 'production' &&
-          console.warn(
-            "[Element Warn][Select]'auto-complete' property will be deprecated in next major version. please use 'autocomplete' instead."
-          )
-        return true
-      }
     },
     automaticDropdown: Boolean,
     size: String,
@@ -402,10 +340,7 @@ export default {
     value(val, oldVal) {
       if (this.multiple) {
         this.resetInputHeight()
-        if (
-          (val && val.length > 0) ||
-          (this.$refs.input && this.query !== '')
-        ) {
+        if ((val && val.length > 0) || (this.$refs.input && this.query !== '')) {
           this.currentPlaceholder = ''
         } else {
           this.currentPlaceholder = this.cachedPlaceHolder
@@ -437,22 +372,13 @@ export default {
         this.menuVisibleOnFocus = false
         this.resetHoverIndex()
         this.$nextTick(() => {
-          if (
-            this.$refs.input &&
-            this.$refs.input.value === '' &&
-            this.selected.length === 0
-          ) {
+          if (this.$refs.input && this.$refs.input.value === '' && this.selected.length === 0) {
             this.currentPlaceholder = this.cachedPlaceHolder
           }
         })
         if (!this.multiple) {
           if (this.selected) {
-            if (
-              this.filterable &&
-              this.allowCreate &&
-              this.createdSelected &&
-              this.createdLabel
-            ) {
+            if (this.filterable && this.allowCreate && this.createdSelected && this.createdLabel) {
               this.selectedLabel = this.createdLabel
             } else {
               this.selectedLabel = this.selected.currentLabel
@@ -499,11 +425,7 @@ export default {
       if ([].indexOf.call(inputs, document.activeElement) === -1) {
         this.setSelected()
       }
-      if (
-        this.defaultFirstOption &&
-        (this.filterable || this.remote) &&
-        this.filteredOptionsCount
-      ) {
+      if (this.defaultFirstOption && (this.filterable || this.remote) && this.filteredOptionsCount) {
         this.checkDefaultFirstOption()
       }
     }
@@ -524,8 +446,7 @@ export default {
       if (this.previousQuery === val || this.isOnComposition) return
       if (
         this.previousQuery === null &&
-        (typeof this.filterMethod === 'function' ||
-          typeof this.remoteMethod === 'function')
+        (typeof this.filterMethod === 'function' || typeof this.remoteMethod === 'function')
       ) {
         this.previousQuery = val
         return
@@ -554,22 +475,15 @@ export default {
         this.broadcast('ElOption', 'queryChange', val)
         this.broadcast('ElOptionGroup', 'queryChange')
       }
-      if (
-        this.defaultFirstOption &&
-        (this.filterable || this.remote) &&
-        this.filteredOptionsCount
-      ) {
+      if (this.defaultFirstOption && (this.filterable || this.remote) && this.filteredOptionsCount) {
         this.checkDefaultFirstOption()
       }
     },
 
     scrollToOption(option) {
-      const target =
-        Array.isArray(option) && option[0] ? option[0].$el : option.$el
+      const target = Array.isArray(option) && option[0] ? option[0].$el : option.$el
       if (this.$refs.popper && target) {
-        const menu = this.$refs.popper.$el.querySelector(
-          '.el-select-dropdown__wrap'
-        )
+        const menu = this.$refs.popper.$el.querySelector('.el-select-dropdown__wrap')
         scrollIntoView(menu, target)
       }
       this.$refs.scrollbar && this.$refs.scrollbar.handleScroll()
@@ -590,20 +504,14 @@ export default {
 
     getOption(value) {
       let option
-      const isObject =
-        Object.prototype.toString.call(value).toLowerCase() ===
-        '[object object]'
-      const isNull =
-        Object.prototype.toString.call(value).toLowerCase() === '[object null]'
-      const isUndefined =
-        Object.prototype.toString.call(value).toLowerCase() ===
-        '[object undefined]'
+      const isObject = Object.prototype.toString.call(value).toLowerCase() === '[object object]'
+      const isNull = Object.prototype.toString.call(value).toLowerCase() === '[object null]'
+      const isUndefined = Object.prototype.toString.call(value).toLowerCase() === '[object undefined]'
 
       for (let i = this.cachedOptions.length - 1; i >= 0; i--) {
         const cachedOption = this.cachedOptions[i]
         const isEqual = isObject
-          ? getValueByPath(cachedOption.value, this.valueKey) ===
-            getValueByPath(value, this.valueKey)
+          ? getValueByPath(cachedOption.value, this.valueKey) === getValueByPath(value, this.valueKey)
           : cachedOption.value === value
         if (isEqual) {
           option = cachedOption
@@ -634,6 +542,9 @@ export default {
         this.selectedLabel = option.currentLabel
         this.selected = option
         if (this.filterable) this.query = this.selectedLabel
+        this.$nextTick(() => {
+          this.scrollToOption(this.selected)
+        })
         return
       }
       let result = []
@@ -645,6 +556,7 @@ export default {
       this.selected = result
       this.$nextTick(() => {
         this.resetInputHeight()
+        this.scrollToOption(this.selected)
       })
     },
 
@@ -715,9 +627,7 @@ export default {
 
     managePlaceholder() {
       if (this.currentPlaceholder !== '') {
-        this.currentPlaceholder = this.$refs.input.value
-          ? ''
-          : this.cachedPlaceHolder
+        this.currentPlaceholder = this.$refs.input.value ? '' : this.cachedPlaceHolder
       }
     },
 
@@ -732,21 +642,13 @@ export default {
       this.$nextTick(() => {
         if (!this.$refs.reference) return
         let inputChildNodes = this.$refs.reference.$el.childNodes
-        let input = [].filter.call(
-          inputChildNodes,
-          item => item.tagName === 'INPUT'
-        )[0]
+        let input = [].filter.call(inputChildNodes, item => item.tagName === 'INPUT')[0]
         const tags = this.$refs.tags
         const sizeInMap = this.initialInputHeight || 40
         input.style.height =
           this.selected.length === 0
             ? sizeInMap + 'px'
-            : Math.max(
-                tags
-                  ? tags.clientHeight + (tags.clientHeight > sizeInMap ? 6 : 0)
-                  : 0,
-                sizeInMap
-              ) + 'px'
+            : Math.max(tags ? tags.clientHeight + (tags.clientHeight > sizeInMap ? 6 : 0) : 0, sizeInMap) + 'px'
         if (this.visible && this.emptyText !== false) {
           this.broadcast('ElSelectDropdown', 'updatePopper')
         }
@@ -759,10 +661,7 @@ export default {
           this.hoverIndex = this.options.indexOf(this.selected)
         } else {
           if (this.selected.length > 0) {
-            this.hoverIndex = Math.min.apply(
-              null,
-              this.selected.map(item => this.options.indexOf(item))
-            )
+            this.hoverIndex = Math.min.apply(null, this.selected.map(item => this.options.indexOf(item)))
           } else {
             this.hoverIndex = -1
           }
@@ -776,10 +675,7 @@ export default {
         const optionIndex = this.getValueIndex(value, option.value)
         if (optionIndex > -1) {
           value.splice(optionIndex, 1)
-        } else if (
-          this.multipleLimit <= 0 ||
-          value.length < this.multipleLimit
-        ) {
+        } else if (this.multipleLimit <= 0 || value.length < this.multipleLimit) {
           value.push(option.value)
         }
         this.$emit('input', value)
@@ -812,18 +708,14 @@ export default {
     },
 
     getValueIndex(arr = [], value) {
-      const isObject =
-        Object.prototype.toString.call(value).toLowerCase() ===
-        '[object object]'
+      const isObject = Object.prototype.toString.call(value).toLowerCase() === '[object object]'
       if (!isObject) {
         return arr.indexOf(value)
       } else {
         const valueKey = this.valueKey
         let index = -1
         arr.some((item, i) => {
-          if (
-            getValueByPath(item, valueKey) === getValueByPath(value, valueKey)
-          ) {
+          if (getValueByPath(item, valueKey) === getValueByPath(value, valueKey)) {
             index = i
             return true
           }
@@ -932,10 +824,7 @@ export default {
     },
 
     getValueKey(item) {
-      if (
-        Object.prototype.toString.call(item.value).toLowerCase() !==
-        '[object object]'
-      ) {
+      if (Object.prototype.toString.call(item.value).toLowerCase() !== '[object object]') {
         return item.value
       } else {
         return getValueByPath(item.value, this.valueKey)
@@ -978,8 +867,7 @@ export default {
         mini: 28
       }
       const input = reference.$el.querySelector('input')
-      this.initialInputHeight =
-        input.getBoundingClientRect().height || sizeMap[this.selectSize]
+      this.initialInputHeight = input.getBoundingClientRect().height || sizeMap[this.selectSize]
     }
     if (this.remote && this.multiple) {
       this.resetInputHeight()
@@ -993,8 +881,7 @@ export default {
   },
 
   beforeDestroy() {
-    if (this.$el && this.handleResize)
-      removeResizeListener(this.$el, this.handleResize)
+    if (this.$el && this.handleResize) removeResizeListener(this.$el, this.handleResize)
   }
 }
 </script>

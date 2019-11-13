@@ -72,6 +72,7 @@ import { ElTimeSelect } from "./time-select";
 import { ElTooltip } from "./tooltip";
 import { ElTransfer } from "./transfer";
 import { ElTree, TreeData } from "./tree";
+import { ElTreeSelect } from "./tree-select";
 import { ElUpload } from "./upload";
 import { ElLink } from "./link";
 import { ElDivider } from "./divider";
@@ -93,6 +94,7 @@ import { ElResult } from "./result";
 import { ElStatistic } from "./statistic";
 import { ElIconPicker } from "./icon-picker";
 import { ElTreemap, TreemapData } from "./treemap";
+import { ElPopconfirm } from './popconfirm'
 
 export interface InstallationOptions {
   locale: any;
@@ -322,6 +324,9 @@ export class Transfer extends ElTransfer {}
 /** Tree Component */
 export class Tree<K = any, D = TreeData> extends ElTree<K, D> {}
 
+/** TreeSelect Component */
+export class TreeSelect<K = any, D = TreeData> extends ElTreeSelect<K, D> {}
+
 /** Upload Component */
 export class Upload extends ElUpload {}
 
@@ -354,6 +359,9 @@ export class Avatar extends ElAvatar {}
 
 /** Drawer Component */
 export class Drawer extends ElDrawer {}
+
+/** Popconfirm Component */
+export class Popconfirm extends ElPopconfirm {}
 
 /** Empty Component */
 export class Empty extends ElEmpty {}

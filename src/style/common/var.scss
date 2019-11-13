@@ -729,6 +729,17 @@ $--tree-font-color: $--color-text-regular !default;
 /// color||Color|0
 $--tree-expand-icon-color: $--color-text-placeholder !default;
 
+/* TreeSelect
+-------------------------- */
+$--tree-select-input-focus-background: $--color-primary !default;
+$--tree-select-multiple-input-color: $--color-text-regular !default;
+$--tree-select-font-size: $--font-size-base !default;
+$--tree-select-dropdown-border: solid 1px $--border-color-light !default;
+$--tree-select-dropdown-background: $--color-white !default;
+$--tree-select-dropdown-shadow: $--box-shadow-light !default;
+$--tree-select-node-selected: $--color-primary !default;
+
+
 /* Dropdown
 -------------------------- */
 $--dropdown-menu-box-shadow: $--box-shadow-light !default;

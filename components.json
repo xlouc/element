@@ -58,6 +58,7 @@
   "option-group": "./src/components/option-group/index.js",
   "page-header": "./src/components/page-header/index.js",
   "pagination": "./src/components/pagination/index.js",
+  "popconfirm": "./src/components/popconfirm/index.js",
   "popover": "./src/components/popover/index.js",
   "progress": "./src/components/progress/index.js",
   "radio": "./src/components/radio/index.js",
@@ -88,6 +89,7 @@
   "tooltip": "./src/components/tooltip/index.js",
   "transfer": "./src/components/transfer/index.js",
   "tree": "./src/components/tree/index.js",
+  "tree-select": "./src/components/tree-select/index.js",
   "treemap": "./src/components/treemap/index.js",
   "upload": "./src/components/upload/index.js"
 }

@@ -14,12 +14,7 @@
           {{ t('el.datepicker.weeks.' + week) }}
         </th>
       </tr>
-      <tr
-        class="el-date-table__row"
-        v-for="(row, key) in rows"
-        :class="{ current: isWeekActive(row[1]) }"
-        :key="key"
-      >
+      <tr class="el-date-table__row" v-for="(row, key) in rows" :class="{ current: isWeekActive(row[1]) }" :key="key">
         <td v-for="(cell, key) in row" :class="getCellClasses(cell)" :key="key">
           <div>
             <span>
@@ -44,11 +39,7 @@ import {
   clearTime as _clearTime
 } from 'yak-ui/src/utils/date-util'
 import Locale from 'yak-ui/src/mixins/locale'
-import {
-  arrayFindIndex,
-  arrayFind,
-  coerceTruthyValueToArray
-} from 'yak-ui/src/utils/util'
+import { arrayFindIndex, arrayFind, coerceTruthyValueToArray } from 'yak-ui/src/utils/util'
 
 const WEEKS = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat']
 const getDateTimestamp = function(time) {
@@ -65,8 +56,7 @@ const getDateTimestamp = function(time) {
 // return a new array if modification occurs
 // return the original array otherwise
 const removeFromArray = function(arr, pred) {
-  const idx =
-    typeof pred === 'function' ? arrayFindIndex(arr, pred) : arr.indexOf(pred)
+  const idx = typeof pred === 'function' ? arrayFindIndex(arr, pred) : arr.indexOf(pred)
   return idx >= 0 ? [...arr.slice(0, idx), ...arr.slice(idx + 1)] : arr
 }
 
@@ -85,11 +75,7 @@ export default {
     defaultValue: {
       validator(val) {
         // either: null, valid Date object, Array of valid Date objects
-        return (
-          val === null ||
-          isDate(val) ||
-          (Array.isArray(val) && val.every(isDate))
-        )
+        return val === null || isDate(val) || (Array.isArray(val) && val.every(isDate))
       }
     },
 
@@ -150,10 +136,7 @@ export default {
       // TODO: refactory rows / getCellClasses
       const date = new Date(this.year, this.month, 1)
       let day = getFirstDayOfMonth(date) // day of first day
-      const dateCountOfMonth = getDayCountOfMonth(
-        date.getFullYear(),
-        date.getMonth()
-      )
+      const dateCountOfMonth = getDayCountOfMonth(date.getFullYear(), date.getMonth())
       const dateCountOfLastMonth = getDayCountOfMonth(
         date.getFullYear(),
         date.getMonth() === 0 ? 11 : date.getMonth() - 1
@@ -168,10 +151,7 @@ export default {
       const startDate = this.startDate
       const disabledDate = this.disabledDate
       const cellClassName = this.cellClassName
-      const selectedDate =
-        this.selectionMode === 'dates'
-          ? coerceTruthyValueToArray(this.value)
-          : []
+      const selectedDate = this.selectionMode === 'dates' ? coerceTruthyValueToArray(this.value) : []
       const now = getDateTimestamp(new Date())
 
       for (let i = 0; i < 6; i++) {
@@ -203,9 +183,7 @@ export default {
 
           const index = i * 7 + j
           const time = nextDate(startDate, index - offset).getTime()
-          cell.inRange =
-            time >= getDateTimestamp(this.minDate) &&
-            time <= getDateTimestamp(this.maxDate)
+          cell.inRange = time >= getDateTimestamp(this.minDate) && time <= getDateTimestamp(this.maxDate)
           cell.start = this.minDate && time === getDateTimestamp(this.minDate)
           cell.end = this.maxDate && time === getDateTimestamp(this.maxDate)
           const isToday = time === now
@@ -215,17 +193,12 @@ export default {
           }
 
           if (i >= 0 && i <= 1) {
-            const numberOfDaysFromPreviousMonth =
-              day + offset < 0 ? 7 + day + offset : day + offset
+            const numberOfDaysFromPreviousMonth = day + offset < 0 ? 7 + day + offset : day + offset
 
             if (j + i * 7 >= numberOfDaysFromPreviousMonth) {
               cell.text = count++
             } else {
-              cell.text =
-                dateCountOfLastMonth -
-                (numberOfDaysFromPreviousMonth - (j % 7)) +
-                1 +
-                i * 7
+              cell.text = dateCountOfLastMonth - (numberOfDaysFromPreviousMonth - (j % 7)) + 1 + i * 7
               cell.type = 'prev-month'
             }
           } else {
@@ -238,14 +211,9 @@ export default {
           }
 
           let cellDate = new Date(time)
-          cell.disabled =
-            typeof disabledDate === 'function' && disabledDate(cellDate)
-          cell.selected = arrayFind(
-            selectedDate,
-            date => date.getTime() === cellDate.getTime()
-          )
-          cell.customClass =
-            typeof cellClassName === 'function' && cellClassName(cellDate)
+          cell.disabled = typeof disabledDate === 'function' && disabledDate(cellDate)
+          cell.selected = arrayFind(selectedDate, date => date.getTime() === cellDate.getTime())
+          cell.customClass = typeof cellClassName === 'function' && cellClassName(cellDate)
 
           this.$set(row, this.showWeekNumber ? j + 1 : j, cell)
         }
@@ -296,9 +264,7 @@ export default {
     cellMatchesDate(cell, date) {
       const value = new Date(date)
       return (
-        this.year === value.getFullYear() &&
-        this.month === value.getMonth() &&
-        Number(cell.text) === value.getDate()
+        this.year === value.getFullYear() && this.month === value.getMonth() && Number(cell.text) === value.getDate()
       )
     },
 
@@ -320,10 +286,7 @@ export default {
         classes.push(cell.type)
       }
 
-      if (
-        cell.type === 'normal' &&
-        defaultValue.some(date => this.cellMatchesDate(cell, date))
-      ) {
+      if (cell.type === 'normal' && defaultValue.some(date => this.cellMatchesDate(cell, date))) {
         classes.push('default')
       }
 
@@ -335,12 +298,7 @@ export default {
         classes.push('current')
       }
 
-      if (
-        cell.inRange &&
-        (cell.type === 'normal' ||
-          cell.type === 'today' ||
-          this.selectionMode === 'week')
-      ) {
+      if (cell.inRange && (cell.type === 'normal' || cell.type === 'today' || this.selectionMode === 'week')) {
         classes.push('in-range')
 
         if (cell.start) {
@@ -368,8 +326,7 @@ export default {
     },
 
     getDateOfCell(row, column) {
-      const offsetFromStart =
-        row * 7 + (column - (this.showWeekNumber ? 1 : 0)) - this.offsetDay
+      const offsetFromStart = row * 7 + (column - (this.showWeekNumber ? 1 : 0)) - this.offsetDay
       return nextDate(this.startDate, offsetFromStart)
     },
 
@@ -392,8 +349,7 @@ export default {
       newDate.setDate(parseInt(cell.text, 10))
 
       if (isDate(this.value)) {
-        const dayOffset =
-          ((this.value.getDay() - this.firstDayOfWeek + 7) % 7) - 1
+        const dayOffset = ((this.value.getDay() - this.firstDayOfWeek + 7) % 7) - 1
         const weekDate = prevDate(this.value, dayOffset)
         return weekDate.getTime() === newDate.getTime()
       }
@@ -403,10 +359,7 @@ export default {
     markRange(minDate, maxDate) {
       minDate = getDateTimestamp(minDate)
       maxDate = getDateTimestamp(maxDate) || minDate
-      ;[minDate, maxDate] = [
-        Math.min(minDate, maxDate),
-        Math.max(minDate, maxDate)
-      ]
+      ;[minDate, maxDate] = [Math.min(minDate, maxDate), Math.max(minDate, maxDate)]
 
       const startDate = this.startDate
       const rows = this.rows

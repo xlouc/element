@@ -75,11 +75,7 @@ export default {
     const isGroup = columnRows.length > 1
     if (isGroup) this.$parent.isGroup = true
     return (
-      <table
-        class="el-table__header"
-        cellspacing="0"
-        cellpadding="0"
-        border="0">
+      <table class="el-table__header" cellspacing="0" cellpadding="0" border="0">
         <colgroup>
           {this.columns.map(column => (
             <col name={column.id} key={column.id} />
@@ -88,9 +84,7 @@ export default {
         </colgroup>
         <thead class={[{ 'is-group': isGroup, 'has-gutter': this.hasGutter }]}>
           {this._l(columnRows, (columns, rowIndex) => (
-            <tr
-              style={this.getHeaderRowStyle(rowIndex)}
-              class={this.getHeaderRowClass(rowIndex)}>
+            <tr style={this.getHeaderRowStyle(rowIndex)} class={this.getHeaderRowClass(rowIndex)}>
               {columns.map((column, cellIndex) => (
                 <th
                   colspan={column.colSpan}
@@ -99,28 +93,14 @@ export default {
                   on-mouseout={this.handleMouseOut}
                   on-mousedown={$event => this.handleMouseDown($event, column)}
                   on-click={$event => this.handleHeaderClick($event, column)}
-                  on-contextmenu={$event =>
-                    this.handleHeaderContextMenu($event, column)
-                  }
-                  style={this.getHeaderCellStyle(
-                    rowIndex,
-                    cellIndex,
-                    columns,
-                    column
-                  )}
-                  class={this.getHeaderCellClass(
-                    rowIndex,
-                    cellIndex,
-                    columns,
-                    column
-                  )}
+                  on-contextmenu={$event => this.handleHeaderContextMenu($event, column)}
+                  style={this.getHeaderCellStyle(rowIndex, cellIndex, columns, column)}
+                  class={this.getHeaderCellClass(rowIndex, cellIndex, columns, column)}
                   key={column.id}>
                   <div
                     class={[
                       'cell',
-                      column.filteredValue && column.filteredValue.length > 0
-                        ? 'highlight'
-                        : '',
+                      column.filteredValue && column.filteredValue.length > 0 ? 'highlight' : '',
                       column.labelClassName
                     ]}>
                     {column.renderHeader
@@ -132,21 +112,13 @@ export default {
                         })
                       : column.label}
                     {column.sortable ? (
-                      <span
-                        class="caret-wrapper"
-                        on-click={$event =>
-                          this.handleSortClick($event, column)
-                        }>
+                      <span class="caret-wrapper" on-click={$event => this.handleSortClick($event, column)}>
                         <i
                           class="sort-caret ascending"
-                          on-click={$event =>
-                            this.handleSortClick($event, column, 'ascending')
-                          }></i>
+                          on-click={$event => this.handleSortClick($event, column, 'ascending')}></i>
                         <i
                           class="sort-caret descending"
-                          on-click={$event =>
-                            this.handleSortClick($event, column, 'descending')
-                          }></i>
+                          on-click={$event => this.handleSortClick($event, column, 'descending')}></i>
                       </span>
                     ) : (
                       ''
@@ -154,14 +126,8 @@ export default {
                     {column.filterable ? (
                       <span
                         class="el-table__column-filter-trigger"
-                        on-click={$event =>
-                          this.handleFilterClick($event, column)
-                        }>
-                        <i
-                          class={[
-                            'el-icon-down',
-                            column.filterOpened ? 'el-icon-up' : ''
-                          ]}></i>
+                        on-click={$event => this.handleFilterClick($event, column)}>
+                        <i class={['el-icon-down', column.filterOpened ? 'el-icon-up' : '']}></i>
                       </span>
                     ) : (
                       ''
@@ -252,10 +218,7 @@ export default {
       } else if (this.fixed === 'right') {
         return start < this.columnsCount - this.rightFixedLeafCount
       } else {
-        return (
-          after < this.leftFixedLeafCount ||
-          start >= this.columnsCount - this.rightFixedLeafCount
-        )
+        return after < this.leftFixedLeafCount || start >= this.columnsCount - this.rightFixedLeafCount
       }
     },
 
@@ -294,13 +257,7 @@ export default {
     },
 
     getHeaderCellClass(rowIndex, columnIndex, row, column) {
-      const classes = [
-        column.id,
-        column.order,
-        column.headerAlign,
-        column.className,
-        column.labelClassName
-      ]
+      const classes = [column.id, column.order, column.headerAlign, column.className, column.labelClassName]
 
       if (rowIndex === 0 && this.isCellHidden(columnIndex, row)) {
         classes.push('is-hidden')
@@ -430,13 +387,7 @@ export default {
             const finalLeft = parseInt(resizeProxy.style.left, 10)
             const columnWidth = finalLeft - startColumnLeft
             column.width = column.realWidth = columnWidth
-            table.$emit(
-              'header-dragend',
-              column.width,
-              startLeft - startColumnLeft,
-              column,
-              event
-            )
+            table.$emit('header-dragend', column.width, startLeft - startColumnLeft, column, event)
 
             this.store.scheduleLayout()
 
@@ -505,10 +456,7 @@ export default {
 
     handleSortClick(event, column, givenOrder) {
       event.stopPropagation()
-      let order =
-        column.order === givenOrder
-          ? null
-          : givenOrder || this.toggleOrder(column)
+      let order = column.order === givenOrder ? null : givenOrder || this.toggleOrder(column)
 
       let target = event.target
       while (target && target.tagName !== 'TH') {
@@ -529,10 +477,7 @@ export default {
       let sortOrder
       const sortingColumn = states.sortingColumn
 
-      if (
-        sortingColumn !== column ||
-        (sortingColumn === column && sortingColumn.order === null)
-      ) {
+      if (sortingColumn !== column || (sortingColumn === column && sortingColumn.order === null)) {
         if (sortingColumn) {
           sortingColumn.order = null
         }

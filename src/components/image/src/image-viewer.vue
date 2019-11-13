@@ -1,6 +1,6 @@
 <template>
   <transition name="viewer-fade">
-    <div class="el-image-viewer__wrapper" :style="{ 'z-index': zIndex }">
+    <div tabindex="-1" ref="el-image-viewer__wrapper" class="el-image-viewer__wrapper" :style="{ 'z-index': zIndex }">
       <div class="el-image-viewer__mask"></div>
       <!-- CLOSE -->
       <span class="el-image-viewer__btn el-image-viewer__close" @click="hide">
@@ -91,12 +91,16 @@ export default {
     onClose: {
       type: Function,
       default: () => {}
+    },
+    initialIndex: {
+      type: Number,
+      default: 0
     }
   },
 
   data() {
     return {
-      index: 0,
+      index: this.initialIndex,
       isShow: false,
       infinite: true,
       loading: false,
@@ -247,6 +251,18 @@ export default {
     toggleMode() {
       if (this.loading) return
 
+      if (!Object.values) {
+        Object.values = function(obj) {
+          var vals = []
+          for (var key in obj) {
+            if (obj.hasOwnProperty(key)) {
+              vals.push(obj[key])
+            }
+          }
+          return vals
+        }
+      }
+
       const modeNames = Object.keys(Mode)
       const modeValues = Object.values(Mode)
       const index = modeValues.indexOf(this.mode)
@@ -276,9 +292,7 @@ export default {
       switch (action) {
         case 'zoomOut':
           if (transform.scale > 0.2) {
-            transform.scale = parseFloat(
-              (transform.scale - zoomRate).toFixed(3)
-            )
+            transform.scale = parseFloat((transform.scale - zoomRate).toFixed(3))
           }
           break
         case 'zoomIn':
@@ -296,6 +310,10 @@ export default {
   },
   mounted() {
     this.deviceSupportInstall()
+
+    // add tabindex then wrapper can be focusable via Javascript
+    // focus wrapper so arrow key can't cause inner scroll behavior underneath
+    this.$refs['el-image-viewer__wrapper'].focus()
   }
 }
 </script>

@@ -1,22 +1,9 @@
 <template>
   <transition name="el-alert-fade">
-    <div
-      class="el-alert"
-      :class="[typeClass, center ? 'is-center' : '', 'is-' + effect]"
-      v-show="visible"
-      role="alert"
-    >
-      <i
-        class="el-alert__icon"
-        :class="[iconClass, isBigIcon]"
-        v-if="showIcon"
-      ></i>
+    <div class="el-alert" :class="[typeClass, center ? 'is-center' : '', 'is-' + effect]" v-show="visible" role="alert">
+      <i class="el-alert__icon" :class="[iconClass, isBigIcon]" v-if="showIcon"></i>
       <div class="el-alert__content">
-        <span
-          class="el-alert__title"
-          :class="[isBoldTitle]"
-          v-if="title || $slots.title"
-        >
+        <span class="el-alert__title" :class="[isBoldTitle]" v-if="title || $slots.title">
           <slot name="title">{{ title }}</slot>
         </span>
         <p class="el-alert__description" v-if="$slots.default && !description">
