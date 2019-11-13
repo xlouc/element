@@ -1,3 +1,72 @@
+## [1.4.0](https://github.com/yakcodo/yak/compare/v1.3.10...v1.4.0) (2019-11-13)
+
+
+### Bug Fixes
+
+* **avatar:** 修复IE兼容性问题 ([a9215fb](https://github.com/yakcodo/yak/commit/a9215fb))
+* **avatar:** 删除没有使用的css属性 ([472aac0](https://github.com/yakcodo/yak/commit/472aac0))
+* **backtop:** 使用`Cubic Bezier`滚动 ([b7353fc](https://github.com/yakcodo/yak/commit/b7353fc))
+* **calendar:** 导入`el-button`和`el-button-group` ([6be3d8b](https://github.com/yakcodo/yak/commit/6be3d8b))
+* **cascader:** 修复改变大小时选项没有明显变化 ([d3eb55b](https://github.com/yakcodo/yak/commit/d3eb55b))
+* **cascader:** 导入声明与“CascaderOption”的局部声明冲突 ([b43fb75](https://github.com/yakcodo/yak/commit/b43fb75))
+* **collapse:** fix horizontal scroll bar when expanding ([c4b1fa0](https://github.com/yakcodo/yak/commit/c4b1fa0))
+* **datepicker:** hide `clear` button inside the popover too if `:clearable="false"` is specified ([539bb9f](https://github.com/yakcodo/yak/commit/539bb9f))
+* **datepicker:** 修复只选中最小日期范围问题 ([90488c1](https://github.com/yakcodo/yak/commit/90488c1))
+* **dialog:** fixed the timing when dialog content is recreated ([5ce7103](https://github.com/yakcodo/yak/commit/5ce7103))
+* **drawer:** 修复已存在的一些问题 ([ab2d80f](https://github.com/yakcodo/yak/commit/ab2d80f))
+* **dropdown:** update type file ([08ee4a6](https://github.com/yakcodo/yak/commit/08ee4a6))
+* **form:** callback of validateField should be optional ([49aff08](https://github.com/yakcodo/yak/commit/49aff08))
+* **icon-picker:** 修复`value`错误 ([14ff7c1](https://github.com/yakcodo/yak/commit/14ff7c1))
+* **image:** fix shield the page when preview big image ([3542430](https://github.com/yakcodo/yak/commit/3542430))
+* **image:** perfect picture preview behavior ([73242b1](https://github.com/yakcodo/yak/commit/73242b1))
+* **image:** 修复IE10不支持Object.values ([7cc7523](https://github.com/yakcodo/yak/commit/7cc7523))
+* **infinite-scroll:** fix trigger when component is invisable ([19d932c](https://github.com/yakcodo/yak/commit/19d932c))
+* **input:** triggle input event when using autofill under IME mode ([e1cf5f6](https://github.com/yakcodo/yak/commit/e1cf5f6))
+* **menu:** fix router NavigationDuplicated error when using vue-router@^3.1.0 ([ddf8259](https://github.com/yakcodo/yak/commit/ddf8259))
+* **menu:** fix that the SubMenu parent component is not a Menu component cause stack overflow ([c0565c3](https://github.com/yakcodo/yak/commit/c0565c3))
+* **menu:** 修复`updateActiveIndex` BUG ([7bde9a5](https://github.com/yakcodo/yak/commit/7bde9a5))
+* **message:** fix close instace offsetHeight ([6a3ad7c](https://github.com/yakcodo/yak/commit/6a3ad7c))
+* **messagebox:** 修复 icon 位置异常 ([2885749](https://github.com/yakcodo/yak/commit/2885749))
+* **radio:** 优化`provide-inject` ([77f1203](https://github.com/yakcodo/yak/commit/77f1203))
+* **radio-button:** fix display error ([758ac9c](https://github.com/yakcodo/yak/commit/758ac9c))
+* **select:** fix select component cannot scroll to the selected location by default ([587afb6](https://github.com/yakcodo/yak/commit/587afb6))
+* **select:** fix tag show value or empty issue ([cd70b08](https://github.com/yakcodo/yak/commit/cd70b08))
+* **select:** prevent browser autocomplete ([bdc3f18](https://github.com/yakcodo/yak/commit/bdc3f18))
+* **select:** 修复改变大小时选项没有明显变化 ([c27339f](https://github.com/yakcodo/yak/commit/c27339f))
+* **slider:** 修复slider滑块出现在有固定列的表格时，滑块圆点层级盖在固定列之上的bug ([2bef73e](https://github.com/yakcodo/yak/commit/2bef73e))
+* **table:** column sort handle null and undefined ([f0373f0](https://github.com/yakcodo/yak/commit/f0373f0))
+* **table:** fix header table not display ([6fc6f14](https://github.com/yakcodo/yak/commit/6fc6f14))
+* **table:** 修复`firefox`中从隐藏到显示表闪烁的问题 ([f113ade](https://github.com/yakcodo/yak/commit/f113ade))
+* **table:** 修复固定高滚动问题 ([d65d72a](https://github.com/yakcodo/yak/commit/d65d72a))
+* **table:** 修复显示无效的固定行样式 ([c51d2ed](https://github.com/yakcodo/yak/commit/c51d2ed))
+* 删除废弃属性 ([74ebc20](https://github.com/yakcodo/yak/commit/74ebc20))
+* **table:** 修复过滤后固定表头高度 ([12b67de](https://github.com/yakcodo/yak/commit/12b67de))
+* **table:** 更新table表头单元格样式 ([95d03e3](https://github.com/yakcodo/yak/commit/95d03e3))
+* **table:** 表头可以自定义 ([7df9fd3](https://github.com/yakcodo/yak/commit/7df9fd3))
+* **timepicker:** set the selection range after scrolling up or down ([30f34a1](https://github.com/yakcodo/yak/commit/30f34a1))
+* **transfer:** 修复按钮样式错误 ([583a3aa](https://github.com/yakcodo/yak/commit/583a3aa))
+* **tree:** add expandAfterFilter option in Tree Component ([93637fa](https://github.com/yakcodo/yak/commit/93637fa))
+* **tree:** 添加空数据时字体大小 ([b9700b6](https://github.com/yakcodo/yak/commit/b9700b6))
+
+
+### Features
+
+* **divider:** 新增分割线文案的位置：`top` 和 `bottom` ([dbd39b7](https://github.com/yakcodo/yak/commit/dbd39b7))
+* **form-item:** 新增了一个新的 API `help` 来控制是否显示文案提示 ([15e4c2a](https://github.com/yakcodo/yak/commit/15e4c2a))
+* **form-item:** 新增了一个新的 API `help` 来控制是否显示文案提示 ([5dbc54d](https://github.com/yakcodo/yak/commit/5dbc54d))
+* **infinitescroll:** skip trigger event on invisible element ([b757fd6](https://github.com/yakcodo/yak/commit/b757fd6))
+* **popconfirm:** add popconfirm component ([b732c77](https://github.com/yakcodo/yak/commit/b732c77))
+* **progress:** add strokeLinecap prop ([249b133](https://github.com/yakcodo/yak/commit/249b133))
+* **table:** 字段过滤添加文本搜索 ([f40b535](https://github.com/yakcodo/yak/commit/f40b535))
+* **tree-select:** 新增组件`TreeSelect` ([938ed46](https://github.com/yakcodo/yak/commit/938ed46))
+
+
+### Reverts
+
+* **avatar:** recover removed css-property ([ecf082f](https://github.com/yakcodo/yak/commit/ecf082f))
+
+
+
 ## [1.3.10](https://github.com/yakcodo/yak/compare/v1.3.9...v1.3.10) (2019-10-19)
 
 
