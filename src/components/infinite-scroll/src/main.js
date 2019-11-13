@@ -74,16 +74,29 @@ const getScrollOptions = (el, vm) => {
   }, {})
 }
 
-const getElementTop = el => el.getBoundingClientRect().top
+const getElementTop = el => getElementContainer(el).getBoundingClientRect().top
+
+const getElementContainer = el => (el === window ? window.document.body : el)
+
+const isElementVisible = el => {
+  let rect = getElementContainer(el).getBoundingClientRect()
+  return rect.width > 0 && rect.height > 0
+}
 
 const handleScroll = function(cb) {
-  const { el, vm, container, observer } = this[scope]
-  const { distance, disabled } = getScrollOptions(el, vm)
+  const { el, vm, container, observer, visibleObserver, onScroll } = this[scope]
+  const { distance, disabled, delay } = getScrollOptions(el, vm)
 
   if (disabled) return
 
   const containerInfo = container.getBoundingClientRect()
   if (!containerInfo.width && !containerInfo.height) return
+
+  if (!isElementVisible(el)) {
+    if (visibleObserver) clearTimeout(visibleObserver)
+    this[scope].visibleObserver = setTimeout(onScroll, delay)
+    return
+  }
 
   let shouldTrigger = false
 
@@ -103,6 +116,7 @@ const handleScroll = function(cb) {
   } else if (observer) {
     observer.disconnect()
     this[scope].observer = null
+    visibleObserver && clearTimeout(visibleObserver)
   }
 }
 
@@ -124,7 +138,11 @@ export default {
 
       if (immediate) {
         const observer = (el[scope].observer = new MutationObserver(onScroll))
-        observer.observe(container, { childList: true, subtree: true })
+        observer.observe(getElementContainer(container), {
+          childList: true,
+          subtree: true
+        })
+
         onScroll()
       }
     }
