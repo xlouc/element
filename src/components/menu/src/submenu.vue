@@ -186,7 +186,7 @@ export default {
       }, showTimeout)
 
       if (this.appendToBody) {
-        this.$parent.$el.dispatchEvent(new MouseEvent('mouseenter'))
+        this.parentMenu.$el.dispatchEvent(new MouseEvent('mouseenter'))
       }
     },
     handleMouseleave(deepDispatch = false) {
@@ -204,8 +204,8 @@ export default {
       }, this.hideTimeout)
 
       if (this.appendToBody && deepDispatch) {
-        if (this.$parent.$options.name === 'ElSubmenu') {
-          this.$parent.handleMouseleave(true)
+        if (this.parentMenu.$options.name === 'ElSubmenu') {
+          this.parentMenu.handleMouseleave(true)
         }
       }
     },
