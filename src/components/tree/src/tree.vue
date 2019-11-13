@@ -89,6 +89,12 @@ export default {
       type: Boolean,
       default: true
     },
+    expandAfterFilter: {
+      validator: function(value) {
+        return ['expand', 'collapse', 'notChange'].includes(value)
+      },
+      default: 'expand'
+    },
     defaultCheckedKeys: Array,
     defaultExpandedKeys: Array,
     currentNodeKey: [String, Number],
@@ -334,6 +340,7 @@ export default {
       defaultCheckedKeys: this.defaultCheckedKeys,
       defaultExpandedKeys: this.defaultExpandedKeys,
       autoExpandParent: this.autoExpandParent,
+      expandAfterFilter: this.expandAfterFilter,
       defaultExpandAll: this.defaultExpandAll,
       filterNodeMethod: this.filterNodeMethod
     })

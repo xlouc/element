@@ -1,5 +1,5 @@
-import { CreateElement, VNode } from 'vue';
-import { YakUIComponent } from './component';
+import { CreateElement, VNode } from "vue";
+import { YakUIComponent } from "./component";
 
 export interface TreeData {
   id?: any;
@@ -69,7 +69,10 @@ export declare class ElTree<K, D extends TreeData> extends YakUIComponent {
    *
    * @param h The render function
    */
-  renderContent: (h: CreateElement, context: { node: TreeNode<K, D>; data: D; store: TreeStore<K, D> }) => VNode;
+  renderContent: (
+    h: CreateElement,
+    context: { node: TreeNode<K, D>; data: D; store: TreeStore<K, D> }
+  ) => VNode;
 
   /** Whether current node is highlighted */
   highlightCurrent: boolean;
@@ -85,6 +88,9 @@ export declare class ElTree<K, D extends TreeData> extends YakUIComponent {
 
   /** Whether to expand father node when a child node is expanded */
   autoExpandParent: boolean;
+
+  /** expand after filter  ['expand', 'collapse', 'notChange']*/
+  expandAfterFilter: string;
 
   /** Array of keys of initially expanded nodes */
   defaultExpandedKeys: K[];
@@ -130,7 +136,11 @@ export declare class ElTree<K, D extends TreeData> extends YakUIComponent {
    * @param dropNode The target node
    * @param type Drop type
    */
-  allowDrop: (draggingNode: TreeNode<K, D>, dropNode: TreeNode<K, D>, type: 'prev' | 'inner' | 'next') => boolean;
+  allowDrop: (
+    draggingNode: TreeNode<K, D>,
+    dropNode: TreeNode<K, D>,
+    type: "prev" | "inner" | "next"
+  ) => boolean;
 
   /**
    * Filter all tree nodes. Filtered nodes will be hidden
@@ -262,5 +272,4 @@ export declare class ElTree<K, D extends TreeData> extends YakUIComponent {
 
   /** Custom tree node icon */
   iconClass?: string;
-
 }
