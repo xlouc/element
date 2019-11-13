@@ -174,7 +174,7 @@
         </div>
       </div>
       <div class="el-picker-panel__footer" v-if="showTime">
-        <el-button size="mini" type="text" class="el-picker-panel__link-btn" @click="handleClear">
+        <el-button size="mini" type="text" class="el-picker-panel__link-btn" @click="handleClear" v-if="clearable">
           {{ t('el.datepicker.clear') }}
         </el-button>
         <el-button
@@ -367,7 +367,8 @@ export default {
       timeUserInput: {
         min: null,
         max: null
-      }
+      },
+      clearable: true
     }
   },
 

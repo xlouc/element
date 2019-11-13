@@ -833,6 +833,13 @@ export default {
       this.$watch('format', format => {
         this.picker.format = format
       })
+      this.$watch(
+        'clearable',
+        clearable => {
+          this.picker.clearable = clearable
+        },
+        { immediate: true }
+      )
 
       const updateOptions = () => {
         const options = this.pickerOptions
