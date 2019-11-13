@@ -1,5 +1,12 @@
 <template>
-  <div :class="['el-cascader-panel', border && 'is-bordered']" @keydown="handleKeyDown">
+  <div
+    :class="[
+      'el-cascader-panel',
+      border && 'is-bordered',
+      { [`el-cascader-panel--${_computedSize}`]: !!_computedSize }
+    ]"
+    @keydown="handleKeyDown"
+  >
     <cascader-menu ref="menu" v-for="(menu, index) in menus" :index="index" :key="index" :nodes="menu"></cascader-menu>
   </div>
 </template>
@@ -72,6 +79,7 @@ export default {
 
   props: {
     value: {},
+    size: String,
     options: Array,
     props: Object,
     border: {
@@ -116,6 +124,9 @@ export default {
     },
     renderLabelFn() {
       return this.renderLabel || this.$scopedSlots.default
+    },
+    _computedSize() {
+      return this.size || (this.$ELEMENT || {}).size
     }
   },
 

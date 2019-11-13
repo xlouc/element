@@ -66,6 +66,7 @@
           :options="options"
           :props="config"
           :border="false"
+          :size="realSize"
           :render-label="$scopedSlots.default"
           @expand-change="handleExpandChange"
           @close="toggleDropDownVisible(false)"
