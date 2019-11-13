@@ -121,16 +121,16 @@ git
     return distGit.init()
   })
   .then(function(distGit) {
-    return distGit.add('-A')
-  })
-  .then(function(distGit) {
-    return distGit.commit(`'[deploy]: [release] v${version}'`)
-  })
-  .then(function(distGit) {
     return distGit.config('user.name', 'yak-bot')
   })
   .then(function(distGit) {
     return distGit.config('user.email', 'robot@yakcode.com')
+  })
+  .then(function(distGit) {
+    return distGit.add('-A')
+  })
+  .then(function(distGit) {
+    return distGit.commit(`'[deploy]: [release] v${version}'`)
   })
   .then(function(distGit) {
     return distGit.push('-f', repo, `master:${branch}`)
