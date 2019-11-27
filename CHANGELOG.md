@@ -1,3 +1,12 @@
+## [1.4.3](https://github.com/yakcodo/yak/compare/v1.4.2...v1.4.3) (2019-11-27)
+
+
+### Bug Fixes
+
+* **form-item:** 修复`v-slot:help`错误问题 ([9fcfc9d](https://github.com/yakcodo/yak/commit/9fcfc9d))
+
+
+
 ## [1.4.2](https://github.com/yakcodo/yak/compare/v1.4.1...v1.4.2) (2019-11-27)
 
 
