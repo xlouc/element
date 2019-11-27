@@ -32,7 +32,7 @@
             {{ validateMessage }}
           </div>
         </slot>
-        <slot v-else-if="help" name="help">
+        <slot v-else-if="help && $slots.help">
           <div
             class="el-form-item__help"
             :class="{
@@ -40,7 +40,7 @@
                 typeof inlineMessage === 'boolean' ? inlineMessage : (elForm && elForm.inlineMessage) || false
             }"
           >
-            {{ help }}
+            <slot name="help">{{ help }}</slot>
           </div>
         </slot>
       </transition>
