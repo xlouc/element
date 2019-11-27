@@ -32,7 +32,7 @@
             {{ validateMessage }}
           </div>
         </slot>
-        <slot v-else-if="help && $slots.help">
+        <slot v-else-if="help || $slots.help">
           <div
             class="el-form-item__help"
             :class="{
