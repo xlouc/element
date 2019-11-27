@@ -1,3 +1,15 @@
+## [1.4.2](https://github.com/yakcodo/yak/compare/v1.4.1...v1.4.2) (2019-11-27)
+
+
+### Bug Fixes
+
+* **form-item:** 修复`v-slot:help`错误问题 ([3ac5fbd](https://github.com/yakcodo/yak/commit/3ac5fbd))
+* **message-box:** 修复图表位置 ([1261da6](https://github.com/yakcodo/yak/commit/1261da6))
+* **scrollbar:** 修复 FireFox 双滚动条的 bug ([f9e65f9](https://github.com/yakcodo/yak/commit/f9e65f9))
+* **table:** 修复 row-style 失效的 bug ([e6b3438](https://github.com/yakcodo/yak/commit/e6b3438))
+
+
+
 ## [1.4.1](https://github.com/yakcodo/yak/compare/v1.4.0...v1.4.1) (2019-11-13)
 
 
