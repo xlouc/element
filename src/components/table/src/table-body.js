@@ -328,11 +328,10 @@ export default {
         display = treeRowData.display
       }
       // 指令 v-show 会覆盖 row-style 中 display
-      // 使用 :style 代替 v-show https://github.com/ElemeFE/element/issues/16995
+      // 使用 :style 代替 v-show
       let displayStyle = display ? null : { display: 'none' }
       return (
         <tr
-          v-show={display}
           style={[displayStyle, this.getRowStyle(row, $index)]}
           class={rowClasses}
           key={this.getKeyOfRow(row, $index)}
